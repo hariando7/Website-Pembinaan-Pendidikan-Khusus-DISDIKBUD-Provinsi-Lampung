@@ -21,20 +21,20 @@
                          class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('/') ? '' : 'font-thin' }} ">Home</a>
                  </li>
                  <li>
-                     <a href="/cleaning"
+                     <a href="/slb"
                          class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('slb') ? '' : 'font-thin' }}">SLB</a>
                  </li>
                  <li>
-                     <a href="/tentang"
+                     <a href="/sekolah-inklusi"
                          class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('login') ? '' : 'font-thin' }}">Sekolah
                          Inklusi</a>
                  </li>
                  <li>
-                     <a href="/catering"
+                     <a href="/tentang"
                          class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('tentang') ? '' : 'font-thin' }}">Tentang</a>
                  </li>
                  <li>
-                     <a href="/tentang"
+                     <a href="/login"
                          class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('login') ? '' : 'font-thin' }}">Login</a>
                  </li>
              </ul>
