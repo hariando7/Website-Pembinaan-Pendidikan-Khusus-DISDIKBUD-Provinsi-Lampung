@@ -28,3 +28,7 @@ Route::get('/slb', function () {
 Route::get('/sekolah-inklusi', function () {
     return view('pages/landing/sekolah-inklusi');
 });
+
+Route::get('/tentang', function () {
+    return view('pages/landing/tentang');
+});
