@@ -24,3 +24,7 @@ Route::get('/', function () {
 Route::get('/slb', function () {
     return view('pages/landing/slb');
 });
+
+Route::get('/sekolah-inklusi', function () {
+    return view('pages/landing/sekolah-inklusi');
+});
