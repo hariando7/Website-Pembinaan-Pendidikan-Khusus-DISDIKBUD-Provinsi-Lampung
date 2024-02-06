@@ -1,15 +1,16 @@
-<div class="bg-[#C4DDDE] flex items-center justify-center m-auto text-center gap-10 p-20">
+<div class="bg-[#C4DDDE] lg:flex items-center justify-center m-auto text-center gap-10 p-5 lg:p-10">
     <div class="">
         <div class="flex gap-4 mb-2">
             <div class="">
-                <img src="{{ asset('assets/landing/prov-lampung.png') }}" alt="" class="w-[70px]">
+                <img src="{{ asset('assets/landing/prov-lampung.png') }}" alt="" class="w-[100px] lg:w-[70px]">
             </div>
             <div class="">
-                <div class="text-2xl font-bold text-left">DINAS PENDIDIKAN KEBUDAYAAN <br>PROVINSI LAMPUNG</div>
-                <div class="text-base text-left mt-2 text-[#717275]">Bidang Pembinaan Pendidikan Khusus</div>
+                <div class="text-base lg:text-2xl font-bold text-left">DINAS PENDIDIKAN KEBUDAYAAN <br>PROVINSI LAMPUNG
+                </div>
+                <div class="text-xs text-left mt-2 text-[#717275]">Bidang Pembinaan Pendidikan Khusus</div>
             </div>
         </div>
-        <div class="bg-[#C4DDDE] w-[80%] items-center m-auto justify-center">
+        <div class="bg-[#C4DDDE] w-full lg:w-[80%] items-center m-auto justify-center mb-5">
             <a href="URL_HALAMAN_TUJUAN"
                 class="text-center inline-block w-full bg-[#C4DDDE] overflow-hidden relative group rounded-[100px]">
                 <div
@@ -33,9 +34,9 @@
             </a>
         </div>
     </div>
-    <div class="flex items-center justify-center ">
+    <div class=" items-center justify-center lg:w-[50%]">
         <div class="rounded-lg">
-            <iframe
+            <iframe class="w-full"
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3971.8506211410627!2d105.2553472!3d-5.4396433!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40da2fb3cce6bb%3A0xd4bc96297bfd331c!2sDinas%20Pendidikan%20dan%20Kebudayaan%20Provinsi%20Lampung!5e0!3m2!1sid!2sid!4v1706958565702!5m2!1sid!2sid"
                 width="550" height="350" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -43,7 +44,7 @@
     </div>
 </div>
 <div class="bg-[#297785] w-full">
-    <div class="gap-5 max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
+    <div class="gap-5 max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5 lg:p-6">
         <div class="text-white gap-2">
             <div class="flex gap-2">
                 <div class="div">
@@ -106,33 +107,40 @@
                 </a>
             </div>
         </div>
-        <div class="w-[60%] text-center text-white">
+        <div class="w-[60%] text-center text-white text-sm lg:text-base">
             <div class="italic">@ 2024 All Rights Reserved.</div>
             <div class="font-bold">Made with ♡ Dinas Pendidikan Kebudayaan Provinsi Lampung</div>
             <div class="font-bold">Bidang Pembinaan Pendidikan Khusus</div>
         </div>
         <div class="flex gap-2">
-            <div class="div">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1" y="1" width="35" height="35" rx="17.5" fill="white" />
-                    <g clip-path="url(#clip0_397_8014)">
-                        <path
-                            d="M36 18.12C36 14.84 35.2 11.82 33.6 9.06C32 6.3 29.82 4.1 27.06 2.46C24.3 0.820001 21.28 8.04663e-07 18 8.04663e-07C14.72 8.04663e-07 11.7 0.820001 8.94 2.46C6.18 4.1 4 6.3 2.4 9.06C0.8 11.82 0 14.84 0 18.12C0 21.08 0.66 23.84 1.98 26.4C3.3 28.96 5.12 31.08 7.44 32.76C9.76 34.44 12.36 35.52 15.24 36V23.4H10.56V18.12H15.24V14.16C15.24 11.92 15.84 10.18 17.04 8.94C18.24 7.7 19.88 7.08 21.96 7.08C22.76 7.08 23.68 7.12 24.72 7.2L26.04 7.44V11.88H23.76C22.72 11.88 21.96 12.14 21.48 12.66C21 13.18 20.76 13.88 20.76 14.76V18.12H25.8L24.96 23.4H20.76V36C23.64 35.52 26.24 34.44 28.56 32.76C30.88 31.08 32.7 28.96 34.02 26.4C35.34 23.84 36 21.08 36 18.12Z"
-                            fill="#106BFF" />
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_397_8014">
-                            <rect width="36" height="36" fill="white" transform="matrix(1 0 0 -1 0 36)" />
-                        </clipPath>
-                    </defs>
-                </svg>
+            <div class="">
+                <a href="">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="35" height="35" rx="17.5" fill="white" />
+                        <g clip-path="url(#clip0_397_8014)">
+                            <path
+                                d="M36 18.12C36 14.84 35.2 11.82 33.6 9.06C32 6.3 29.82 4.1 27.06 2.46C24.3 0.820001 21.28 8.04663e-07 18 8.04663e-07C14.72 8.04663e-07 11.7 0.820001 8.94 2.46C6.18 4.1 4 6.3 2.4 9.06C0.8 11.82 0 14.84 0 18.12C0 21.08 0.66 23.84 1.98 26.4C3.3 28.96 5.12 31.08 7.44 32.76C9.76 34.44 12.36 35.52 15.24 36V23.4H10.56V18.12H15.24V14.16C15.24 11.92 15.84 10.18 17.04 8.94C18.24 7.7 19.88 7.08 21.96 7.08C22.76 7.08 23.68 7.12 24.72 7.2L26.04 7.44V11.88H23.76C22.72 11.88 21.96 12.14 21.48 12.66C21 13.18 20.76 13.88 20.76 14.76V18.12H25.8L24.96 23.4H20.76V36C23.64 35.52 26.24 34.44 28.56 32.76C30.88 31.08 32.7 28.96 34.02 26.4C35.34 23.84 36 21.08 36 18.12Z"
+                                fill="#106BFF" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_397_8014">
+                                <rect width="36" height="36" fill="white"
+                                    transform="matrix(1 0 0 -1 0 36)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
             </div>
             <div class="div">
-                <img src={{ asset('assets/landing/ig.png') }} alt="">
+                <a href="">
+                    <img src={{ asset('assets/landing/ig.png') }} alt="">
+                </a>
             </div>
             <div class="div">
-                <img src={{ asset('assets/landing/yt.png') }} alt="">
+                <a href="">
+                    <img src={{ asset('assets/landing/yt.png') }} alt="">
+                </a>
             </div>
         </div>
     </div>
