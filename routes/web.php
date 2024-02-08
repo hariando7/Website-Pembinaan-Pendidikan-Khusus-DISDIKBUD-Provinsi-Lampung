@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\GeneralPage;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +19,16 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('pages/landing/home');
+// Route::get('/', [GeneralPage::class, 'home']);
+
+Route::controller(GeneralPage::class) -> group(function () {
+    Route::get('/', 'home');
+    Route::get('/slb', 'slb');
 });
 
-Route::get('/slb', function () {
-    return view('pages/landing/slb');
-});
+// Route::get('/slb', function () {
+//     return view('pages/landing/slb');
+// });
 
 Route::get('/sekolah-inklusi', function () {
     return view('pages/landing/sekolah-inklusi');
