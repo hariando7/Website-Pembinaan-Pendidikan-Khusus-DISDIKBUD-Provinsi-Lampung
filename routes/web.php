@@ -24,6 +24,11 @@ use App\Http\Controllers\GeneralPage;
 Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/', 'home');
     Route::get('/slb', 'slb');
+    Route::get('/admin-guru-slb', 'adminguruslb');
+    Route::get('/admin-kebutuhan-guru-slb', 'adminkebutuhanguruslb');
+    Route::get('/admin-pesertadidik-slb', 'adminpesertadidikslb');
+    Route::get('/admin-sarpras-slb', 'adminsarprasslb');
+    Route::get('/admin-tendik-slb', 'admintendikslb');
 });
 
 // Route::get('/slb', function () {

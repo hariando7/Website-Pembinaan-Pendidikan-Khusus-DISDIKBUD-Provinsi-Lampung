@@ -114,7 +114,7 @@
     <div class="bg-[url({{ 'assets/landing/disdikbud.png' }})] w-full min-h-screen bg-cover bg-no-repeat bg-[#000000]/[0.10] bg-blend-overlay"
         style="background-size: 100% 100%;">
         <div class="flex justify-between p-5">
-            <div class="div">
+            <div class="">
                 <img src="assets/landing/prov-lampung.png" alt="" class="w-full h-[80%] lg:w-full lg:h-full">
             </div>
             <div class="">
