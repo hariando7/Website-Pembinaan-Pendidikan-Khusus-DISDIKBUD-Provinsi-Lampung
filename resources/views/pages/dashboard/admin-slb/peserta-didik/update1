@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Sarpras SLB</title>
+    <title>Admin Peserta Didik SLB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
@@ -19,6 +19,7 @@
 
         .hide-scrollbar::-webkit-scrollbar {
             width: 6px;
+            /* Atur lebar scrollbar sesuai keinginan */
         }
 
         .hide-scrollbar::-webkit-scrollbar-thumb {
@@ -32,18 +33,53 @@
         <x-dashboard-side-bar-slb />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
             <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Sarpras SLB
+                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Peserta Didik
+                    SLB A
                 </div>
                 <div class="">
-                    <x-buttitle-landing ref="/admin-tambah-sarpras-slb" color="#FA8F21" width="[13rem]"
-                        title="+ Tambah Sarpras" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/admin-tambah-pesertadidik-slb" color="#FA8F21" width="[13rem]"
+                        title="+ Tambah Peserta Didik"
+                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1">
-                <div class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar">
+            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pl-5 pt-5 pr-3 pb-3">
+                <div class="max-h-[calc(100%-1rem)] overflow-y-auto hide-scrollbar">
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">
-                        <div class="basis-[90%]">
+                        <div class="basis-[20%]">
+                            <form>
+                                <div class="relative">
+                                    <button id="dropdown-button" data-dropdown-toggle="dropdown"
+                                        class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
+                                        type="button" onclick="toggleDropdown()">Filter Jenis Kelamin
+                                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 1 4 4 4-4" />
+                                        </svg>
+                                    </button>
+                                    <div id="dropdown"
+                                        class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#FA8F21] top-full mt-1">
+                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                            aria-labelledby="dropdown-button">
+                                            <li>
+                                                <a href="#" onclick="filterGender('All')"
+                                                    class="block px-4 py-2 hover:bg-[#D87815] dark:hover:bg-[#D87815] dark:hover:text-white">Semua</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="filterGender('L')"
+                                                    class="block px-4 py-2 hover:bg-[#D87815] dark:hover:bg-[#D87815] dark:hover:text-white">Laki-Laki</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="filterGender('P')"
+                                                    class="block px-4 py-2 hover:bg-[#D87815] dark:hover:bg-[#D87815] dark:hover:text-white">Perempuan</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="basis-[70%]">
                             <form class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -54,10 +90,12 @@
                                                 stroke="#9E9E9E" stroke-width="1.5" stroke-linecap="round"
                                                 stroke-linejoin="round" />
                                         </svg>
+
                                     </div>
                                     <input type="text" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black dark:placeholder-gray-400 dark:focus:ring-[#FA8F21]"
                                         placeholder="Search..." oninput="searchTable()" required />
+
                                 </div>
                             </form>
                         </div>
@@ -86,22 +124,22 @@
                                         Tahun
                                     </th>
                                     <th scope="col" class="px-3 py-2">
+                                        Nama Siswa
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
+                                        JK
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
                                         Nama Sekolah
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Gedung/Ruang
+                                        Jenis Ketunaan
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Jumlah/Vol
+                                        Kelas
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Total Luas
-                                    </th>
-                                    <th scope="col" class="px-3 py-2">
-                                        Kondisi
-                                    </th>
-                                    <th scope="col" class="px-3 py-2">
-                                        Catatan
+                                        Romble
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Aksi
@@ -112,9 +150,33 @@
                                 @php
                                     $perPage = 10;
                                     $dummyData = [
-                                        ['2022/2023', 'Dummyyyyyyyyyyy 1', 'P', 'Sekolah Dummmm', '121212121212', 'PNS', 'loremloremlorem lorem'],
+                                        ['2022/2023', 'Dummy 1', 'P', 'Sekolah Dummy 1', 'Tuna Netra', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 2', 'P', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 3', 'P', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 4', 'P', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 5', 'P', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 6', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 7', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 8', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 9', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 10', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 11', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 12', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 13', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 14', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 15', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 16', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 17', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 18', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 19', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 20', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 21', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 22', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 23', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
+                                        ['2022/2023', 'Dummy 24', 'L', 'Sekolah Dummy 1', 'Tuna Daksa', 'Kelas A', 'Rombel 1'],
                                         // ... (Data dummy tetap sama) ...
                                     ];
+
                                     $totalPages = ceil(count($dummyData) / $perPage);
                                     $currentPage = request('page', 1);
                                     $startIndex = ($currentPage - 1) * $perPage;
@@ -129,7 +191,7 @@
                                         @endforeach
                                         <td class="px-3 py-2">
                                             <div class="flex justify-items-center m-auto text-center gap-2">
-                                                <a href="/admin-edit-sarpras-slb" title="Edit">
+                                                <a href="/admin-edit-pesertadidik-slb">
                                                     <div
                                                         class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
                                                         <svg width="23" height="20" viewBox="0 0 23 20"
@@ -141,7 +203,7 @@
                                                     </div>
                                                 </a>
                                                 <div
-                                                    class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer" title="Delete">
+                                                    class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer">
                                                     <svg width="18" height="20" viewBox="0 0 18 20"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -185,6 +247,12 @@
             </div>
         </div>
     </div>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+    </script>
 </body>
 
 </html>

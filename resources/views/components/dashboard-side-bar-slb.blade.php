@@ -58,22 +58,22 @@
     <aside id="default-sidebar"
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"aria-label="Sidebar">
         <div class="h-full px-4 py-4 overflow-y-auto bg-[#297785]">
-            <img src="assets/landing/prov-lampung2.svg" alt=""
-                class="w-[50%] h-[50%] m-auto items-center lg:w-[70px] lg:h-[100px] mb-5 lg:mb-0">
+            <a href="/admin-home-slb">
+                <img src="assets/landing/prov-lampung2.svg" alt=""
+                    class="w-[50%] h-[50%] m-auto items-center lg:w-[70px] lg:h-[100px] mb-5 lg:mb-0">
+            </a>
             <div class="flex items-center justify-center m-auto text-white">
                 <ul class=''>
                     {{-- peserta didik slb --}}
                     @php
-                        // halaman aktif
-                        $activePagePath = 'admin-pesertadidik-slb'; // path halaman aktif
+                        $activePagePath = ['admin-pesertadidik-slb', 'admin-tambah-pesertadidik-slb', 'admin-edit-pesertadidik-slb']; // halaman aktif
                     @endphp
                     <li class="absolute flex items-center justify-center inset-x-0 mt-5">
                         <a href="/admin-pesertadidik-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
-        @if (Request::is($activePagePath . '*')) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+  @if (in_array(Request::path(), $activePagePath)) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
             text-white rounded-lg hover:bg-white hover:text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">
-
                             <div class="text-start justify-center items-center flex">
                                 <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg" class="icon-peserta-didik-slb">
@@ -87,7 +87,6 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-
                             <div class="text-start justify-center items-center flex">Peserta Didik SLB</div>
                         </a>
                     </li>
@@ -95,11 +94,11 @@
                     <li class="absolute flex items-center justify-center inset-x-0 mt-[90px]">
                         @php
                             // path halaman aktif
-                            $activePagePath2 = 'admin-guru-slb'; // path halaman aktif
+                            $activePagePath2 = ['admin-guru-slb', 'admin-tambah-guru-slb', 'admin-edit-guru-slb']; // halaman aktif
                         @endphp
                         <a href="/admin-guru-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
-        @if (Request::is($activePagePath2 . '*')) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+        @if (in_array(Request::path(), $activePagePath2)) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
             text-white rounded-lg hover:bg-white hover:text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">
                             <div class="text-start justify-center items-center flex">
@@ -117,11 +116,11 @@
                     <li class="absolute flex items-center justify-center inset-x-0 mt-[160px]">
                         @php
                             // path halaman aktif
-                            $activePagePath3 = 'admin-tendik-slb'; // path halaman aktif
+                            $activePagePath3 = ['admin-tendik-slb', 'admin-tambah-tendik-slb', 'admin-edit-tendik-slb']; // path halaman aktif
                         @endphp
                         <a href="/admin-tendik-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
-        @if (Request::is($activePagePath3 . '*')) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+        @if (in_array(Request::path(), $activePagePath3)) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
             text-white rounded-lg hover:bg-white hover:text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">
                             <div class="text-start justify-center items-center flex">
@@ -148,11 +147,11 @@
                     <li class="absolute flex items-center justify-center inset-x-0 mt-[230px]">
                         @php
                             // path halaman aktif
-                            $activePagePath4 = 'admin-sarpras-slb'; // path halaman aktif
+                            $activePagePath4 = ['admin-sarpras-slb', 'admin-tambah-sarpras-slb', 'admin-edit-sarpras-slb']; // path halaman aktif
                         @endphp
                         <a href="/admin-sarpras-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
-        @if (Request::is($activePagePath4 . '*')) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+        @if (in_array(Request::path(), $activePagePath4)) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
             text-white rounded-lg hover:bg-white hover:text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">
                             <div class="text-start justify-center items-center flex">
@@ -209,7 +208,6 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-
                             </div>
                             <div class="text-start justify-center items-center flex">Sarpras SLB</div>
                         </a>
@@ -218,11 +216,11 @@
                     <li class="absolute flex items-center justify-center inset-x-0 mt-[300px]">
                         @php
                             // path halaman aktif
-                            $activePagePath5 = 'admin-kebutuhan-guru-slb'; // path halaman aktif
+                            $activePagePath5 = ['admin-kebutuhan-guru-slb', 'admin-tambah-kebutuhan-guru-slb', 'admin-edit-kebutuhan-guru-slb']; // path halaman aktif
                         @endphp
                         <a href="/admin-kebutuhan-guru-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
-        @if (Request::is($activePagePath5 . '*')) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+        @if (in_array(Request::path(), $activePagePath5)) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
             text-white rounded-lg hover:bg-white hover:text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">
                             <div class="text-start justify-center items-center flex">

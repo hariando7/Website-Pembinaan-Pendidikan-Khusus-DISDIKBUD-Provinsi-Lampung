@@ -118,7 +118,7 @@
                 <img src="assets/landing/prov-lampung.png" alt="" class="w-full h-[80%] lg:w-full lg:h-full">
             </div>
             <div class="">
-                <x-buttitle-landing ref="" color="#FA8F21" width="[10rem]" title="Selengkapnya"
+                <x-buttitle-landing ref="/admin-home-slb" color="#FA8F21" width="[10rem]" title="Selengkapnya"
                     extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
             </div>
         </div>
