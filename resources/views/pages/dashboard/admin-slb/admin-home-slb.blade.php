@@ -95,7 +95,7 @@
                                 <div class="relative bg-white rounded-lg shadow dark:bg-[#297785]">
                                     <!-- Modal header -->
                                     <div
-                                        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-white">
                                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                                             Pengumuman Dinas
                                         </h3>
@@ -125,13 +125,12 @@
                                                     </svg>
                                                 </span>
                                                 <h3
-                                                    class="flex items-start mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                                    Flowbite Application UI v2.0.0 <span
-                                                        class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span>
+                                                    class="flex items-start mb-1 text-lg font-semibold text-white dark:text-white">
+                                                    Pengumuman 1 <span
+                                                        class="bg-blue-100 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-white ms-3">Terbaru</span>
                                                 </h3>
                                                 <time
-                                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Released
-                                                    on Nov 10th, 2023</time>
+                                                    class="block mb-3 text-sm font-normal leading-none text-white dark:text-white">Lorem ipsum dolor sit amet.</time>
                                                 <button type="button"
                                                     class="py-2 px-3 inline-flex items-center text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-[#FA8F21] dark:text-white dark:border-[#FA8F21] dark:hover:text-white dark:bg-[#FA8F21] dark:hover:bg-[#D87815]">
                                                     <svg class="w-3 h-3 me-1.5" aria-hidden="true"
@@ -142,7 +141,7 @@
                                                         <path
                                                             d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
                                                     </svg>
-                                                    Download
+                                                    Selengkapnya
                                                 </button>
                                             </li>
                                             <li class="mb-10 ms-8">
@@ -156,10 +155,9 @@
                                                     </svg>
                                                 </span>
                                                 <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                                    Flowbite Figma v2.8.0</h3>
+                                                    Pengumuman 2</h3>
                                                 <time
-                                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Released
-                                                    on Oct 7th, 2023</time>
+                                                    class="block mb-3 text-sm font-normal leading-none text-white dark:text-white">Lorem ipsum dolor sit amet.</time>
                                                 <button type="button"
                                                     class="py-2 px-3 inline-flex items-center text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-[#FA8F21] dark:focus:ring-[#FA8F21] dark:text-white dark:border-[#FA8F21] dark:hover:text-white dark:bg-[#FA8F21] dark:hover:bg-[#D87815]">
                                                     <svg class="w-3 h-3 me-1.5" aria-hidden="true" viewBox="0 0 30 45"
@@ -180,7 +178,7 @@
                                                             d="M30 22.5C30 26.64 26.6399 30 22.4999 30C18.3599 30 14.9998 26.64 14.9998 22.5C14.9998 18.36 18.3599 14.9999 22.4999 14.9999C26.6399 14.9999 30 18.36 30 22.5Z"
                                                             fill="#1ABCFE" />
                                                     </svg>
-                                                    Duplicate in Figma
+                                                    Selengkapnya
                                                 </button>
                                             </li>
                                             <li class="ms-8">
@@ -194,16 +192,15 @@
                                                     </svg>
                                                 </span>
                                                 <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                                    Flowbite Library v1.2.2</h3>
+                                                    Pengumuman 3</h3>
                                                 <time
-                                                    class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Released
-                                                    on December 2nd, 2021</time>
+                                                    class="block mb-3 text-sm font-normal leading-none text-white dark:text-white">Lorem ipsum dolor sit amet.</time>
                                             </li>
                                         </ol>
-                                        <button
+                                        {{-- <button
                                             class="text-white inline-flex w-full justify-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            My Downloads
-                                        </button>
+                                            Kembali
+                                        </button> --}}
                                     </div>
                                 </div>
                             </div>

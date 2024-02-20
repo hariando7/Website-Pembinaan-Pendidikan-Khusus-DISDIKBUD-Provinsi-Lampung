@@ -10,6 +10,19 @@ class GeneralPage extends Controller
         return view('pages/landing/home');
     }
 
+    function login () {
+        return view('pages/dashboard/login');
+    }
+    function lupapassword () {
+        return view('pages/dashboard/lupa-password');
+    }
+    function otp () {
+        return view('pages/dashboard/otp');
+    }
+    function newpassword () {
+        return view('pages/dashboard/new-password');
+    }
+
     function slb () {
         return view('pages/landing/slb');
     }
@@ -72,4 +85,5 @@ class GeneralPage extends Controller
     function adminedittendikslb () {
         return view('pages/dashboard/admin-slb/tendik/edit/edit-tendik-slb');
     } 
+
 }

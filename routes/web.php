@@ -25,9 +25,14 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/', 'home');
     Route::get('/slb', 'slb');
 
+    Route::get('/login', 'login');
+    Route::get('/lupa-password', 'lupapassword');
+    Route::get('/otp', 'otp');
+    Route::get('/new-password', 'newpassword');
+
     // Home Admin SLB
     Route::get('/admin-home-slb', 'adminhomeslb');
-    
+
     // Guru
     Route::get('/admin-guru-slb', 'adminguruslb');
     Route::get('/admin-tambah-guru-slb', 'admintambahguruslb');
@@ -52,6 +57,8 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/admin-tendik-slb', 'admintendikslb');
     Route::get('/admin-tambah-tendik-slb', 'admintambahtendikslb');
     Route::get('/admin-edit-tendik-slb', 'adminedittendikslb');
+
+
 });
 
 // Route::get('/slb', function () {
@@ -66,6 +73,6 @@ Route::get('/tentang', function () {
     return view('pages/landing/tentang');
 });
 
-Route::get('/login', function () {
-    return view('pages/dashboard/login');
-});
+// Route::get('/login', function () {
+//     return view('pages/dashboard/login');
+// });
