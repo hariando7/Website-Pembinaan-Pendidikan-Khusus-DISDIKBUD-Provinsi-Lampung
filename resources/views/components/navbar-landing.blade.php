@@ -25,8 +25,8 @@
                          class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('slb') ? '' : 'font-thin' }}">SLB</a>
                  </li>
                  <li>
-                     <a href="/sekolah-inklusi"
-                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('sekolah-inklusi') ? '' : 'font-thin' }}">Sekolah
+                     <a href="/portal-sekolah-inklusi"
+                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('portal-sekolah-inklusi') ? '' : 'font-thin' }}">Sekolah
                          Inklusi</a>
                  </li>
                  <li>
