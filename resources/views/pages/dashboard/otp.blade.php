@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>OTP</title>
+    <title>OTP | Bidang Pembinaan Pendidikan Khusus | Disdikbud Provinsi Lampung</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
@@ -22,27 +22,176 @@
     <!-- Slick Carousel JS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <script>
-        // fungtion lain
-        function togglePasswordVisibility(action) {
-            var passwordInput = document.getElementById("password");
-            var eyeOpenIcon = document.getElementById("eye-open");
-            var eyeCloseIcon = document.getElementById("eye-close");
-            if (action === "open") {
-                passwordInput.type = "text";
-                eyeOpenIcon.style.display = "none";
-                eyeCloseIcon.style.display = "block";
-            } else {
-                passwordInput.type = "password";
-                eyeOpenIcon.style.display = "block";
-                eyeCloseIcon.style.display = "none";
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .box {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .box::before {
+            content: '';
+            z-index: 1;
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 380px;
+            height: 420px;
+            transform-origin: bottom right;
+            background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+            animation: animate 6s linear infinite;
+        }
+
+        .box::after {
+            content: '';
+            z-index: 1;
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 380px;
+            height: 420px;
+            transform-origin: bottom right;
+            background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+            animation: animate 6s linear infinite;
+            animation-delay: -3s;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
             }
         }
-    </script>
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        form {
+            position: absolute;
+            inset: 5px;
+            background: #494A4C;
+            padding: 50px 40px;
+            border-radius: 8px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            color: #45f3ff;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+
+        .inputBox input {
+            width: 100%;
+            padding: 20px 10px 10px;
+            background: transparent;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            color: white;
+            font-size: 1em;
+            letter-spacing: 0.05em;
+            transition: 0.5s;
+            z-index: 10;
+        }
+
+        .inputBox input {
+            position: relative;
+            width: 100%;
+            padding: 20px 10px 10px;
+            background: transparent;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            color: white;
+            font-size: 1em;
+            letter-spacing: 0.05em;
+            transition: 0.5s;
+            z-index: 10;
+        }
+
+        .inputBox span {
+            position: absolute;
+            left: 0;
+            padding: 20px 0px 10px;
+            pointer-events: none;
+            font-size: 1em;
+            color: white;
+            letter-spacing: 0.05em;
+            transition: 0.5s;
+        }
+
+        .inputBox input:valid~span,
+        .inputBox input:focus~span {
+            color: #45f3ff;
+            transform: translateX(0px) translateY(-34px);
+            font-size: 0.75em;
+        }
+
+        .inputBox i {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #FA8F21;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.5s;
+            pointer-events: none;
+            z-index: 9;
+        }
+
+        .inputBox input:valid~i,
+        .inputBox input:focus~i {
+            height: 44px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+        }
+
+        .links a {
+            margin: 5px 3px;
+            font-size: 1em;
+            color: #45f3ff;
+            text-decoration: beige;
+        }
+
+        input[type="submit"] {
+            border: none;
+            outline: none;
+            padding: 11px 11px;
+            background: #FA8F21;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            width: 200px;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:active {
+            opacity: 0.8;
         }
 
         .password-container {
@@ -61,139 +210,57 @@
         #eye-close {
             display: none;
         }
-
-        #customModal {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        #customModal .bg-white {
-            max-width: 320px;
-        }
-
-        #customModal .bg-white {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-            }
-
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideOut {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(100%);
-            }
-        }
-
-        .slide-in {
-            animation: slideIn 0.5s forwards;
-        }
-
-        .slide-out {
-            animation: slideOut 0.5s forwards;
-        }
     </style>
+    <script>
+        function togglePasswordVisibility(action) {
+            var passwordInput = document.getElementById("password");
+            var eyeOpenIcon = document.getElementById("eye-open");
+            var eyeCloseIcon = document.getElementById("eye-close");
+
+            if (action === "open") {
+                passwordInput.type = "text";
+                eyeOpenIcon.style.display = "none";
+                eyeCloseIcon.style.display = "block";
+            } else {
+                passwordInput.type = "password";
+                eyeOpenIcon.style.display = "block";
+                eyeCloseIcon.style.display = "none";
+            }
+        }
+    </script>
 
 </head>
 
 <body>
-    <div class="bg-[url({{ 'assets/landing/disdikbud.png' }})] w-full min-h-screen bg-cover bg-no-repeat bg-[#000000]/[0.10] bg-blend-overlay"
-        style="background-size: 100% 100%;">
-        <div class="flex justify-between p-5">
+    <div class="relative w-full min-h-screen bg-cover bg-no-repeat bg-center"
+        style="background-image: url('{{ asset('assets/landing/disdikbud.svg') }}');">
+        <div class="absolute inset-0 bg-[#000000]/[0.10] bg-blend-overlay"></div>
+        <div class="flex justify-between pl-10 pr-10 pt-10 absolute w-full">
             <div class="">
-                <img src="assets/landing/prov-lampung.png" alt="" class="w-full h-[80%] lg:w-full lg:h-full">
+                <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] lg:h-full">
             </div>
-            <div class="">
-                <x-buttitle-landing ref="/" color="#FA8F21" width="[10rem]" title="Home"
+            <div class="flex items-start">
+                <x-buttitle-landing ref="/admin-home-slb" color="#FA8F21" width="[10rem]" title="Home"
                     extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
             </div>
         </div>
-        <div class="lg:w-1/2 lg:p-10 relative justify-center items-center m-auto">
-            <div class="absolute inset-0 bg-white opacity-50 rounded-lg"></div>
-            <div class="relative z-10 text-black text-[24px] items-center justify-center text-center font-bold">
-                Selamat Datang Di Dashboard SLB Bidang Pembinaan Pendidikan Khusus
-            </div>
-            <form action="{{ url('/login') }}" method="POST"
-                class="relative w-full flex-col justify-between h-full flex mt-2 lg:pl-20 lg:pr-20">
-                <div class="m-auto flex flex-col w-full">
-                    <div class="heading mb-2 text-center text-black">
-                        <div class="text-[24px] font-bold">Verifikasi Email</div>
-                        <div class="mt-2">
-                            <div class="text-base">Masukkan Kode OTP Anda</div>
-                        </div>
+        <div class="box relative w-[400px] h-[450px] m-auto flex items-center m-auto mt-28">
+            <form autocomplete="off" class="">
+                <h2 class="mb-5">Selamat datang di Portal Pendataan Sekolah Inklusi DISDIKBUD Provinsi Lampung</h2>
+                <h2 class="mb-3 font-bold">Verifikasi Email</h2>
+                <h3 class="text-center text-sm text-white">Masukkan Kode OTP Anda</h3>
+                <div class="inputBox relative w-[300px] mt-5">
+                    <input class="relative" type="text" required="required">
+                    <span>OTP</span>
+                    <i></i>
+                </div>
+                <input type="submit" value="Verifikasi"
+                    class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
+                <div class="links">
+                    <div class="text-white text-[0.75em] text-decoration">Kembali ke
+                        <a href="/login" class="hover:text-white text-[0.75em]">Sign In
+                        </a>
                     </div>
-                    <div class="text-black">
-                        <div class="mt-2">
-                            <form class="max-w-sm mx-auto">
-                                <div class="flex mb-2 space-x-2 rtl:space-x-reverse justify-center items-center m-auto">
-                                    <div>
-                                        <label for="code-1" class="sr-only">First code</label>
-                                        <input type="text" maxlength="1" data-focus-input-init
-                                            data-focus-input-next="code-2" id="code-1"
-                                            class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-[#FA8F21] focus:border-[#FA8F21] dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-[#FA8F21] dark:focus:border-[#FA8F21]"
-                                            required />
-                                    </div>
-                                    <div>
-                                        <label for="code-2" class="sr-only">Second code</label>
-                                        <input type="text" maxlength="1" data-focus-input-init
-                                            data-focus-input-prev="code-1" data-focus-input-next="code-3" id="code-2"
-                                            class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-[#FA8F21] focus:border-[#FA8F21] dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-[#FA8F21] dark:focus:border-[#FA8F21]"
-                                            required />
-                                    </div>
-                                    <div>
-                                        <label for="code-3" class="sr-only">Third code</label>
-                                        <input type="text" maxlength="1" data-focus-input-init
-                                            data-focus-input-prev="code-2" data-focus-input-next="code-4" id="code-3"
-                                            class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-[#FA8F21] focus:border-[#FA8F21] dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-[#FA8F21] dark:focus:border-[#FA8F21]"
-                                            required />
-                                    </div>
-                                    <div>
-                                        <label for="code-4" class="sr-only">Fourth code</label>
-                                        <input type="text" maxlength="1" data-focus-input-init
-                                            data-focus-input-prev="code-3" data-focus-input-next="code-5" id="code-4"
-                                            class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-[#FA8F21] focus:border-[#FA8F21] dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-[#FA8F21] dark:focus:border-[#FA8F21]"
-                                            required />
-                                    </div>
-                                    <div>
-                                        <label for="code-5" class="sr-only">Fifth code</label>
-                                        <input type="text" maxlength="1" data-focus-input-init
-                                            data-focus-input-prev="code-4" data-focus-input-next="code-6" id="code-5"
-                                            class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-[#FA8F21] focus:border-[#FA8F21] dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-[#FA8F21] dark:focus:border-[#FA8F21]"
-                                            required />
-                                    </div>
-                                    <div>
-                                        <label for="code-6" class="sr-only">Sixth code</label>
-                                        <input type="text" maxlength="1" data-focus-input-init
-                                            data-focus-input-prev="code-5" id="code-6"
-                                            class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-[#FA8F21] focus:border-[#FA8F21] dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-[#FA8F21] dark:focus:border-[#FA8F21]"
-                                            required />
-                                    </div>
-                                </div>
-                                <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                                    Please introduce the 6
-                                    digit code we sent via email.</p>
-                            </form>
-                        </div>
-                    </div>
-                    <button type="submit" id="signIn"
-                        class="w-full h-15 text-base text-white bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-blue-300 px-5 py-2.5 mr-2 mb-2 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] rounded transition duration-300">Verifikasi</button>
-                    <a href="/login">
-                        <div class="text-center text-black text-bold">Kirim Ulang</div>
-                    </a>
                 </div>
             </form>
         </div>

@@ -93,6 +93,21 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/sa-detail-laporan-pendataan-si', 'sadetaillaporanpendataansi');
     Route::get('/sa-lihat-pendataan-si', 'salihatpendataansi');
     Route::get('/sa-detail-lihat-pendataan-si', 'sadetaillihatpendataansi');
+    
+    // Auth Admin Sekolah Inklusi
+    Route::get('/login-si', 'loginsi');
+    Route::get('/registrasi-si', 'registrasisi');
+    Route::get('/lupa-password-si', 'lupapasswordsi');
+    Route::get('/otp-si', 'otpsi');
+    Route::get('/new-password-si', 'newpasswordsi');
+    // Akhir Auth Admin Sekolah Inklusi
+
+    // Awal Admin Sekolah Inklusi
+    Route::get('/ai-cek-status', 'aicekstatus');
+    Route::get('/ai-form-pendataan', 'aiformpendataan');
+    Route::get('/ai-edit-pendataan', 'aieditpendataan');
+    Route::get('/ai-lihat-pendataan', 'ailihatpendataan');
+    // Akhir Admin Sekolah Inklusi
 });
 
 // Route::get('/slb', function () {

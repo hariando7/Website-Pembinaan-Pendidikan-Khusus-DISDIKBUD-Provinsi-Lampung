@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Forgot | Bidang Pembinaan Pendidikan Khusus | Disdikbud Provinsi Lampung</title>
+    <title>Registrasi Sekolah Inklusi | Bidang Pembinaan Pendidikan Khusus | Disdikbud Provinsi Lampung</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
@@ -168,12 +168,12 @@
 
         .links {
             display: flex;
-            justify-content: center;
+            /* justify-content: space-between; */
         }
 
         .links a {
-            margin: 5px 3px;
-            font-size: 1em;
+            margin: 10px 3px;
+            font-size: 1.00em;
             color: #45f3ff;
             text-decoration: beige;
         }
@@ -181,13 +181,13 @@
         input[type="submit"] {
             border: none;
             outline: none;
-            padding: 11px 25px;
+            padding: 11px 11px;
             background: #FA8F21;
             cursor: pointer;
             border-radius: 4px;
             font-weight: 600;
             width: 100px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         input[type="submit"]:active {
@@ -240,30 +240,70 @@
                 <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] lg:h-full">
             </div>
             <div class="flex items-start">
-                <x-buttitle-landing ref="/admin-home-slb" color="#FA8F21" width="[10rem]" title="Home"
+                <x-buttitle-landing ref="/ai-form-pendataan" color="#FA8F21" width="[10rem]" title="Home"
                     extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
             </div>
         </div>
-        <div class="box relative w-[400px] h-[450px] m-auto flex items-center m-auto mt-28">
+        <div class="box relative w-[400px] h-[650px] m-auto mb-10 mt-10">
             <form autocomplete="off" class="">
-                <h2 class="mb-5">selamat datang
-di Dashboard SLB Bidang 
-Pembinaan Pendidikan Khusus</h2>
-                <h2 class="mb-3 font-bold">Lupa Password</h2>
-                <h3 class="text-center text-sm text-white">Masukkan Email</h3>
+                <h2 class="mb-5">Selamat Datang
+                    Di Portal Pendataan Sekolah Inklusi
+                    DISDIKBUD Provinsi Lampung</h2>
+                <h2 class="mb-3 font-bold">Buat Akun</h2>
+                <h3 class="text-center text-sm text-white">Masukkan Data Yang Dibutuhkan</h3>
+                <div class="inputBox relative w-[300px] mt-5">
+                    <input class="relative" type="text" required="required">
+                    <span>Nama Sekolah</span>
+                    <i></i>
+                </div>
+                <div class="inputBox relative w-[300px] mt-5">
+                    <input class="relative" type="text" required="required">
+                    <span>NPSN</span>
+                    <i></i>
+                </div>
                 <div class="inputBox relative w-[300px] mt-5">
                     <input class="relative" type="text" required="required">
                     <span>Email</span>
                     <i></i>
                 </div>
-                <input type="submit" value="Login"
-                    class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
+                <div class="inputBox relative w-[300px] mt-5">
+                    <input type="password" name="password" id="password"
+                        oninvalid="this.setCustomValidity('Input your password, at least 6 character'); alertInputRequired()"
+                        oninput="this.setCustomValidity('')" minLength="6" maxlength="255" required />
+                    <div class="eye-icon absolute right-4 top-[60%] z-50">
+                        <button type="button" class="cursor-pointer" id="eye-open"
+                            onclick="togglePasswordVisibility('open')">
+                            <svg id="eye-open" width="1em" height="1em" viewBox="0 0 16 16"
+                                class="bi bi-eye-fill text-white" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                            </svg>
+                        </button>
+                        <button type="button" class="" id="eye-close"
+                            onclick="togglePasswordVisibility('close')">
+                            <svg id="eye-icon" width="1em" height="1em" viewBox="0 0 16 16"
+                                class="bi bi-eye-fill text-black" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.79 12.912l-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
+                                <path
+                                    d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829z" />
+                                <path fill-rule="evenodd" d="M13.646 14.354l-12-12 .708-.708 12 12-.708.708z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <span>Password</span>
+                    <i></i>
+                </div>
                 <div class="links">
-                    <div class="text-white text-[0.75em] text-decoration">Kembali ke
-                        <a href="/login" class="hover:text-white text-[0.75em]">Sign In
+                    {{-- <a href="/lupa-password-si" class="hover:text-white">Forgot Password ?</a> --}}
+                    <div class="text-white text-[0.75em] mt-5 text-decoration mb-3">Sudah Punya Akun?
+                        <a href="/login-si" class="hover:text-white text-[0.75em]"> Sign In
                         </a>
                     </div>
                 </div>
+                <input type="submit" value="Sign Up"
+                    class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
             </form>
         </div>
     </div>

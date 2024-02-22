@@ -171,4 +171,37 @@ class GeneralPage extends Controller
         return view('pages/dashboard/super-admin/sekolah-inklusi/lihat-pendataan-si/detail/detail-pendataan');
     }
     // Akhir Super Admin
+    
+    // Awal Auth Admin Sekolah Inklusi
+    function loginsi () {
+        return view('pages/dashboard/admin-sekolah-inklusi/login-si');
+    }
+    function registrasisi () {
+        return view('pages/dashboard/admin-sekolah-inklusi/registrasi-si');
+    }
+    function lupapasswordsi () {
+        return view('pages/dashboard/admin-sekolah-inklusi/lupa-password-si');
+    }
+    function otpsi () {
+        return view('pages/dashboard/admin-sekolah-inklusi/otp-si');
+    }
+    function newpasswordsi () {
+        return view('pages/dashboard/admin-sekolah-inklusi/new-password-si');
+    }
+    // Akhir Auth Admin Sekolah Inklusi
+
+    // Awal Admin Sekolah Inklusi
+    function aiformpendataan () {
+        return view('pages/dashboard/admin-sekolah-inklusi/form-pendataan-si/ai-form-pendataan');
+    }
+    function aicekstatus () {
+        return view('pages/dashboard/admin-sekolah-inklusi/cek-status-pendataan-si/ai-cek-status');
+    }
+    function aieditpendataan () {
+        return view('pages/dashboard/admin-sekolah-inklusi/cek-status-pendataan-si/edit/edit-pendataan-si');
+    }
+    function ailihatpendataan () {
+        return view('pages/dashboard/admin-sekolah-inklusi/cek-status-pendataan-si/lihat/lihat-pendataan-si');
+    }
+    // Akhir Admin Sekolah Inklusi
 }

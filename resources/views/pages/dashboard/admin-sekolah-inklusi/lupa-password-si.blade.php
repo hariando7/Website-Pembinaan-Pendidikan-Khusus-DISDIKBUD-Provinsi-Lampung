@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Forgot | Bidang Pembinaan Pendidikan Khusus | Disdikbud Provinsi Lampung</title>
+    <title>Forgot Pass Sekolah Inklusi | Bidang Pembinaan Pendidikan Khusus | Disdikbud Provinsi Lampung</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
@@ -240,15 +240,13 @@
                 <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] lg:h-full">
             </div>
             <div class="flex items-start">
-                <x-buttitle-landing ref="/admin-home-slb" color="#FA8F21" width="[10rem]" title="Home"
+                <x-buttitle-landing ref="/ai-form-pendataan" color="#FA8F21" width="[10rem]" title="Home"
                     extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
             </div>
         </div>
         <div class="box relative w-[400px] h-[450px] m-auto flex items-center m-auto mt-28">
             <form autocomplete="off" class="">
-                <h2 class="mb-5">selamat datang
-di Dashboard SLB Bidang 
-Pembinaan Pendidikan Khusus</h2>
+                <h2 class="mb-5">Selamat datang di Portal Pendataan Sekolah Inklusi DISDIKBUD Provinsi Lampung</h2>
                 <h2 class="mb-3 font-bold">Lupa Password</h2>
                 <h3 class="text-center text-sm text-white">Masukkan Email</h3>
                 <div class="inputBox relative w-[300px] mt-5">
@@ -256,11 +254,11 @@ Pembinaan Pendidikan Khusus</h2>
                     <span>Email</span>
                     <i></i>
                 </div>
-                <input type="submit" value="Login"
+                <input type="submit" value="Kirim"
                     class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
                 <div class="links">
                     <div class="text-white text-[0.75em] text-decoration">Kembali ke
-                        <a href="/login" class="hover:text-white text-[0.75em]">Sign In
+                        <a href="/login-si" class="hover:text-white text-[0.75em]">Sign In
                         </a>
                     </div>
                 </div>
