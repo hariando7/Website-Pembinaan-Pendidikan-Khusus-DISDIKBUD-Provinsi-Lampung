@@ -108,6 +108,13 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/ai-edit-pendataan', 'aieditpendataan');
     Route::get('/ai-lihat-pendataan', 'ailihatpendataan');
     // Akhir Admin Sekolah Inklusi
+    
+    // awal sa kelola notofikasi
+    Route::get('/sa-kelola-notifikasi', 'sakelolanotifikasi');
+    Route::get('/sa-kelola-notifikasi-slb', 'sakelolanotifikasislb');
+    Route::get('/sa-kelola-notifikasi-si', 'sakelolanotifikasisi');
+
+    // akhir sa kelola notifikasi
 });
 
 // Route::get('/slb', function () {

@@ -31,6 +31,17 @@
             stroke: #297785;
             /* stroke saat elemen dalam keadaan hover */
         }
+
+        /* kelola notifikasi */
+        .icon-kelola-notifikasi {
+            transition: stroke 0.3s;
+            /* Efek transisi pada perubahan warna stroke */
+        }
+
+        .group:hover .icon-kelola-notifikasi {
+            stroke: #297785;
+            /* stroke saat elemen dalam keadaan hover */
+        }
     </style>
 
     <aside id="default-sidebar"
@@ -67,7 +78,7 @@
                     <li x-data="{ isSubMenuOpen: false }" class="absolute flex items-center justify-center inset-x-0 mt-[90px]">
                         @php
                             // path halaman aktif
-                            $activePagePath2 = ['sa-dashboard-slb', 'sa-kelola-pengumuman-slb', 'sa-guru-slb', 'sa-kebutuhan-guru-slb', 'sa-peserta-didik-slb', 'sa-sarpras-slb', 'sa-tendik-slb', 'sa-statistik-slb', 'sa-statistik-guru', 'sa-statistik-kebutuhan-guru', 'sa-statistik-peserta-didik', 'sa-statistik-sarpras', 'sa-statistik-tendik']; // halaman aktif
+                            $activePagePath2 = ['sa-dashboard-slb', 'sa-kelola-notifikasi-slb', 'sa-guru-slb', 'sa-kebutuhan-guru-slb', 'sa-peserta-didik-slb', 'sa-sarpras-slb', 'sa-tendik-slb', 'sa-statistik-slb', 'sa-statistik-guru', 'sa-statistik-kebutuhan-guru', 'sa-statistik-peserta-didik', 'sa-statistik-sarpras', 'sa-statistik-tendik']; // halaman aktif
                         @endphp
                         <a type="button" href="/sa-dashboard-slb"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -204,6 +215,71 @@
         @else
             bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">Laporan
                                 Pendataan</a>
+                        </div>
+                    </li>
+                    <li class="absolute w-full -inset-x-1 bottom-0">
+                        <a type="button" id="logOut" href="/login"
+                            class="gap-3 w-52 py-1 mb-5 flex items-center justify-center m-auto rounded-md bg-[#FF0000] hover:bg-[#D51717] text-white p-2 pt-2 pb-2">
+                            Logout
+                        </a>
+                    </li>
+                    {{-- Kelola notifikasi --}}
+                    <li x-data="{ isSubMenuOpen: false }"
+                        class="absolute flex items-center justify-center inset-x-0 mt-[230px]">
+                        @php
+                            // path halaman aktif
+                            $activePagePath4 = ['sa-kelola-notifikasi', 'sa-kelola-notifikasi-slb', 'sa-kelola-notifikasi-si']; // path halaman aktif
+                        @endphp
+                        <a href="/sa-kelola-notifikasi" type="button"
+                            class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
+        @if (in_array(Request::path(), $activePagePath4)) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+        @else
+            text-white rounded-lg hover:bg-white hover:text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">
+                            <div class="text-start justify-center items-center flex">
+                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none"
+                                    class="icon-kelola-notifikasi" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_361_8765)">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M24.5805 0.291993C24.393 0.104522 24.1387 -0.000793457 23.8735 -0.000793457C23.6083 -0.000793457 23.354 0.104522 23.1665 0.291993L19.1665 4.29199C19.0264 4.43173 18.9309 4.60989 18.8921 4.80392C18.8533 4.99795 18.873 5.19913 18.9486 5.38199C19.0241 5.56486 19.1523 5.72119 19.3168 5.8312C19.4812 5.94121 19.6746 5.99995 19.8725 5.99999H27.8725C28.0705 6.00035 28.2642 5.94189 28.429 5.83203C28.5938 5.72218 28.7222 5.56587 28.7981 5.38292C28.8739 5.19997 28.8937 4.99863 28.855 4.80441C28.8162 4.61019 28.7207 4.43185 28.5805 4.29199L24.5805 0.291993ZM19.8725 9.99999C19.6745 9.99964 19.4808 10.0581 19.316 10.168C19.1512 10.2778 19.0228 10.4341 18.9469 10.6171C18.8711 10.8 18.8513 11.0014 18.89 11.1956C18.9288 11.3898 19.0243 11.5681 19.1645 11.708L23.1645 15.708C23.2574 15.8011 23.3678 15.875 23.4892 15.9254C23.6107 15.9758 23.741 16.0018 23.8725 16.0018C24.004 16.0018 24.1343 15.9758 24.2558 15.9254C24.3773 15.875 24.4876 15.8011 24.5805 15.708L28.5805 11.708C28.7207 11.5681 28.8162 11.3898 28.855 11.1956C28.8937 11.0014 28.8739 10.8 28.7981 10.6171C28.7222 10.4341 28.5938 10.2778 28.429 10.168C28.2642 10.0581 28.0705 9.99964 27.8725 9.99999H19.8725ZM9.58651 8.51999C9.58651 7.59624 9.95347 6.71033 10.6067 6.05714C11.2598 5.40395 12.1458 5.03699 13.0695 5.03699C13.9933 5.03699 14.8792 5.40395 15.5324 6.05714C16.1856 6.71033 16.5525 7.59624 16.5525 8.51999C16.5525 9.44374 16.1856 10.3297 15.5324 10.9828C14.8792 11.636 13.9933 12.003 13.0695 12.003C12.1458 12.003 11.2598 11.636 10.6067 10.9828C9.95347 10.3297 9.58651 9.44374 9.58651 8.51999ZM15.0725 14.97C15.0725 14.4396 14.8618 13.9309 14.4867 13.5558C14.1116 13.1807 13.6029 12.97 13.0725 12.97C12.5421 12.97 12.0334 13.1807 11.6583 13.5558C11.2832 13.9309 11.0725 14.4396 11.0725 14.97V19.934C11.0725 20.4644 11.2832 20.9731 11.6583 21.3482C12.0334 21.7233 12.5421 21.934 13.0725 21.934H16.8625V25.89C16.8625 26.4204 17.0732 26.9291 17.4483 27.3042C17.8234 27.6793 18.3321 27.89 18.8625 27.89C19.3929 27.89 19.9016 27.6793 20.2767 27.3042C20.6518 26.9291 20.8625 26.4204 20.8625 25.89V21.864C20.862 20.822 20.4477 19.8229 19.7107 19.0864C18.9738 18.3498 17.9745 17.936 16.9325 17.936H15.0725V14.97ZM9.74851 14.72C9.74851 15.1178 9.59047 15.4993 9.30917 15.7807C9.02786 16.062 8.64633 16.22 8.24851 16.22C7.56175 16.221 6.88527 16.3869 6.27595 16.7037C5.66663 17.0205 5.14226 17.479 4.74695 18.0406C4.35163 18.6021 4.09691 19.2504 4.0042 19.9309C3.91149 20.6113 3.98351 21.3041 4.21419 21.951C4.44487 22.5978 4.82748 23.1799 5.32984 23.6481C5.83221 24.1164 6.43965 24.4572 7.10111 24.6419C7.76256 24.8266 8.4587 24.8498 9.13098 24.7096C9.80327 24.5693 10.4321 24.2698 10.9645 23.836C11.2727 23.5843 11.6682 23.4653 12.0641 23.5053C12.46 23.5452 12.8238 23.7408 13.0755 24.049C13.3272 24.3572 13.4462 24.7527 13.4062 25.1486C13.3663 25.5445 13.1707 25.9083 12.8625 26.16C11.9578 26.8976 10.8892 27.4072 9.7466 27.6459C8.60398 27.8846 7.42074 27.8455 6.2964 27.5317C5.17207 27.218 4.13951 26.6388 3.28558 25.843C2.43165 25.0471 1.78132 24.0579 1.38928 22.9584C0.997233 21.8589 0.874947 20.6813 1.0327 19.5248C1.19046 18.3682 1.62365 17.2664 2.29583 16.3121C2.96801 15.3577 3.85952 14.5788 4.8954 14.0407C5.93128 13.5026 7.08122 13.2212 8.24851 13.22C8.64633 13.22 9.02786 13.378 9.30917 13.6593C9.59047 13.9406 9.74851 14.3222 9.74851 14.72Z"
+                                            fill="currentColor" stroke="currentColor" stroke-linecap="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_361_8765">
+                                            <rect width="28" height="28" fill="currentColor"
+                                                stroke="currentColor" stroke-linecap="round"
+                                                transform="translate(0.87207)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="text-start justify-center items-center flex font-bold">Kelola <br> notifikasi
+                            </div>
+                        </a>
+                        <div
+                            class="absolute justify-end flex ml-32 icon-slb @if (in_array(Request::path(), $activePagePath4)) text-[#297785] hover:text-[#297785] @else text-white dark:hover:text-white @endif">
+                            <svg type="button" @click.prevent="isSubMenuOpen = !isSubMenuOpen"
+                                class="w-5 h-5 ms-2.5 m-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </div>
+                        <!-- Submenu -->
+                        <div x-show="isSubMenuOpen" @click.away="isSubMenuOpen = false"
+                            class="absolute mt-2 bg-white rounded-md shadow-lg right-6 top-14 z-20">
+                            @php
+                                // path halaman aktif
+                                $kelolanotifikasi = ['sa-kelola-notifikasi', 'sa-kelola-notofikasi-slb', 'sa-kelola-notifikasi-si']; // halaman aktif
+                            @endphp
+                            <a href="/sa-kelola-notifikasi-slb"
+                                class="block px-4 py-2 text-sm @if (in_array(Request::path(), $kelolanotifikasi)) rounded-b-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+        @else
+            bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">SLB</a>
+                            <a href="/sa-kelola notifikasi-si"
+                                class="block px-4 py-2 text-sm @if (in_array(Request::path(), $lihatpendataan)) rounded-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+        @else
+            bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">Sekolah
+                                Inklusi</a>
                         </div>
                     </li>
                     <li class="absolute w-full -inset-x-1 bottom-0">

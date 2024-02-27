@@ -244,7 +244,7 @@
                     extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
             </div>
         </div>
-        <div class="box relative w-[400px] h-[500px] m-auto flex items-center m-auto mt-20">
+        <div class="box relative w-[400px] h-[500px] m-auto flex items-center m-auto mt-52 lg:mt-20">
             <form autocomplete="off" class="">
                 <h2 class="mb-5">Selamat Datang Di Portal Pendataan Sekolah Inklusi DISDIKBUD Provinsi Lampung</h2>
                 <h2 class="mb-3 font-bold">Login Sekolah</h2>

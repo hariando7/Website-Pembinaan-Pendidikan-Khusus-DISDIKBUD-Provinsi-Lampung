@@ -204,4 +204,18 @@ class GeneralPage extends Controller
         return view('pages/dashboard/admin-sekolah-inklusi/cek-status-pendataan-si/lihat/lihat-pendataan-si');
     }
     // Akhir Admin Sekolah Inklusi
+
+    // Awal sa kelola notifikasi    
+    function sakelolanotifikasi () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/kelola-notifikasi');
+    }
+    function sakelolanotifikasislb () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/slb/kelola-notifikasi-slb');
+    }
+    function sakelolanotifikasisi () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/sekolah-inklusi/kelola-notifikasi-si');
+    }
+
+    // Akhir sa kelola notifikasi
+    
 }
