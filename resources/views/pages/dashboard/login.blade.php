@@ -231,8 +231,7 @@
 </head>
 
 <body>
-    <div class="relative w-full min-h-screen bg-cover bg-no-repeat bg-center"
-        style="background-image: url('{{ asset('assets/landing/disdikbud.svg') }}');">
+    <div class="relative w-full min-h-screen bg-cover bg-no-repeat bg-center bg-[url({{ 'assets/landing/disdikbud.svg' }})]">
         <div class="absolute inset-0 bg-[#000000]/[0.10] bg-blend-overlay"></div>
         <div class="flex justify-between pl-10 pr-10 pt-10 absolute w-full">
             <div class="">

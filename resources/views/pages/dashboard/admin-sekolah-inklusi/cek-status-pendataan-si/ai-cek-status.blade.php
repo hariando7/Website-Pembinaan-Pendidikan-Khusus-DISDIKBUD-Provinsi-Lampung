@@ -57,18 +57,16 @@
                                                 stroke="#9E9E9E" stroke-width="1.5" stroke-linecap="round"
                                                 stroke-linejoin="round" />
                                         </svg>
-
                                     </div>
                                     <input type="text" id="simple-search"
-                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black dark:placeholder-gray-400 dark:focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="searchTable()" required />
-
+                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
+                                        placeholder="Search..." oninput="searchTable()" required /> 
                                 </div>
                             </form>
                         </div>
                         <div class="basis-[10%]">
                             <button type="button"
-                                class="text-white bg-white hover:bg-white border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
+                                class="text-white bg-white hover:bg-white border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] hover:bg-[#D87815] w-full gap-2 text-center">
                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -82,7 +80,7 @@
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
                             <thead
-                                class="text-xs text-gray-700 uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
+                                class="text-xs text-white uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
                                 <tr>
                                     <th scope="col" class="px-3 py-2">
                                         No
@@ -108,7 +106,7 @@
                                 </tr>
                             <tbody>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-3 py-2">
                                         1
                                     </td>
@@ -142,7 +140,6 @@
                                                             d="M10.4202 3.64941C9.69917 3.64941 8.99429 3.86324 8.39473 4.26385C7.79518 4.66446 7.32788 5.23386 7.05194 5.90005C6.77599 6.56624 6.70379 7.29929 6.84447 8.00652C6.98514 8.71374 7.33238 9.36336 7.84226 9.87324C8.35214 10.3831 9.00176 10.7304 9.70898 10.871C10.4162 11.0117 11.1493 10.9395 11.8154 10.6636C12.4816 10.3876 13.051 9.92032 13.4516 9.32076C13.8523 8.72121 14.0661 8.01633 14.0661 7.29525C14.0661 6.32831 13.682 5.40098 12.9982 4.71725C12.3145 4.03353 11.3872 3.64941 10.4202 3.64941ZM10.4202 8.85775C10.1112 8.85775 9.80912 8.76611 9.55217 8.59442C9.29522 8.42273 9.09495 8.1787 8.97669 7.89319C8.85843 7.60768 8.82748 7.29351 8.88777 6.99042C8.94806 6.68732 9.09688 6.40891 9.3154 6.19039C9.53391 5.97187 9.81233 5.82306 10.1154 5.76277C10.4185 5.70248 10.7327 5.73342 11.0182 5.85169C11.3037 5.96995 11.5477 6.17022 11.7194 6.42717C11.8911 6.68412 11.9827 6.98621 11.9827 7.29525C11.9827 7.70965 11.8181 8.10708 11.5251 8.4001C11.2321 8.69313 10.8347 8.85775 10.4202 8.85775Z"
                                                             fill="white" />
                                                     </svg>
-
                                                 </div>
                                             </a>
                                             <a href="/ai-edit-pendataan" title="Edit">

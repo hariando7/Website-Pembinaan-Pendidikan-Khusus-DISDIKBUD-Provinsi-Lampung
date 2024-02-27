@@ -207,9 +207,9 @@ Provinsi Lampung"
                             class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                             <div>
                                 <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
-                                    class="inline-flex items-center text-black bg-white border border-[#2F8386] focus:outline-none hover:bg-[#2F8386] focus:ring-4 focus:ring-[#2F8386] font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-white dark:text-black hover:text-white dark:border-[#2F8386] dark:hover:bg-[#2F8386] dark:hover:border-[#2F8386] dark:focus:ring-[#2F8386]"
+                                    class="inline-flex items-center text-black bg-white border border-[#2F8386] focus:outline-none hover:bg-[#2F8386] focus:ring-4 focus:ring-[#2F8386] font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-white dark:text-black hover:text-white dark:border-[#2F8386] dark:hover:bg-[#2F8386] dark:hover:border-[#2F8386] hover:border-[#2F8386] dark:focus:ring-[#2F8386]"
                                     type="button">
-                                    <svg class="w-3 h-3 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true"
+                                    <svg class="w-3 h-3 text-gray-400 dark:text-gray-400 me-3" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path
                                             d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z" />
@@ -223,30 +223,30 @@ Provinsi Lampung"
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div id="dropdownRadio"
-                                    class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                                    class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 bg-gray-700 dark:divide-gray-600 divide-gray-600"
                                     data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top"
                                     style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
-                                    <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
+                                    <ul class="p-3 space-y-1 text-sm text-gray-200 dark:text-gray-200"
                                         aria-labelledby="dropdownRadioButton">
                                         <li>
                                             <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                                class="flex items-center p-2 rounded hover:bg-gray-600 dark:hover:bg-gray-600">
                                                 <input id="filter-radio-example-1" type="radio" value=""
                                                     name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
                                                 <label for="filter-radio-example-1"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last
+                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
                                                     day</label>
                                             </div>
                                         </li>
                                         <li>
                                             <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                                class="flex items-center p-2 rounded hover:bg-gray-600 dark:hover:bg-gray-600">
                                                 <input checked="" id="filter-radio-example-2" type="radio"
                                                     value="" name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
                                                 <label for="filter-radio-example-2"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last
+                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
                                                     7 days</label>
                                             </div>
                                         </li>
@@ -255,9 +255,9 @@ Provinsi Lampung"
                                                 class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                                 <input id="filter-radio-example-3" type="radio" value=""
                                                     name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
                                                 <label for="filter-radio-example-3"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last
+                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
                                                     30 days</label>
                                             </div>
                                         </li>
@@ -266,9 +266,9 @@ Provinsi Lampung"
                                                 class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                                 <input id="filter-radio-example-4" type="radio" value=""
                                                     name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
                                                 <label for="filter-radio-example-4"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last
+                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
                                                     month</label>
                                             </div>
                                         </li>
@@ -277,9 +277,9 @@ Provinsi Lampung"
                                                 class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                                 <input id="filter-radio-example-5" type="radio" value=""
                                                     name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
                                                 <label for="filter-radio-example-5"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last
+                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
                                                     year</label>
                                             </div>
                                         </li>
@@ -290,7 +290,7 @@ Provinsi Lampung"
                             <div class="relative">
                                 <div
                                     class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    <svg class="w-5 h-5 text-gray-400 dark:text-gray-400" aria-hidden="true"
                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
                                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -304,7 +304,7 @@ Provinsi Lampung"
                         </div>
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
                             <thead
-                                class="text-xs text-gray-700 uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
+                                class="text-xs text-gray-700 uppercase bg-[#2F8386] dark:bg-[#2F8386] text-white dark:text-white">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
                                         No
@@ -331,7 +331,7 @@ Provinsi Lampung"
                             </thead>
                             <tbody>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -352,12 +352,12 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -378,12 +378,12 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -404,12 +404,12 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -430,12 +430,12 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -456,39 +456,12 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -509,12 +482,12 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -535,12 +508,12 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -561,12 +534,12 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-6 py-4">
                                         1
                                     </td>
@@ -587,7 +560,33 @@ Provinsi Lampung"
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Link
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
+                                            Website</a>
+                                    </td>
+                                </tr>
+                                <tr
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    <td class="px-6 py-4">
+                                        1
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        lorem
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        lorem
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        lorem
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        lorem
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        lorem
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="#"
+                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
                                             Website</a>
                                     </td>
                                 </tr>

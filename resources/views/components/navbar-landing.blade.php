@@ -3,7 +3,7 @@
          <img src="{{ asset('assets/landing/prov-lampung.png') }}" alt="">
          <div class="flex items-center">
              <button data-collapse-toggle="navbar-user" type="button"
-                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden dark:text-gray-400 bg-white"
+                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden dark:text-gray-400 bg-white"
                  aria-controls="navbar-user" aria-expanded="false" id="navbar-toggle">
                  <span class="sr-only">Open main menu</span>
                  <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"

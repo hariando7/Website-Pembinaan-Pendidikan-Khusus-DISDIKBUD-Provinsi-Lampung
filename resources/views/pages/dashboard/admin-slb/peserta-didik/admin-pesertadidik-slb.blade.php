@@ -57,18 +57,16 @@
                                                 stroke="#9E9E9E" stroke-width="1.5" stroke-linecap="round"
                                                 stroke-linejoin="round" />
                                         </svg>
-
                                     </div>
                                     <input type="text" id="simple-search"
-                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black dark:placeholder-gray-400 dark:focus:ring-[#FA8F21]"
+                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
                                         placeholder="Search..." oninput="searchTable()" required />
-
                                 </div>
                             </form>
                         </div>
                         <div class="basis-[10%]">
                             <button type="button"
-                                class="text-white bg-white hover:bg-white border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
+                                class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -82,7 +80,7 @@
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
                             <thead
-                                class="text-xs text-gray-700 uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
+                                class="text-xs text-white uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
                                 <tr>
                                     <th scope="col" class="px-3 py-2">
                                         No
@@ -114,7 +112,7 @@
                                 </tr>
                             <tbody>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
                                     <td class="px-3 py-2">
                                         1
                                     </td>

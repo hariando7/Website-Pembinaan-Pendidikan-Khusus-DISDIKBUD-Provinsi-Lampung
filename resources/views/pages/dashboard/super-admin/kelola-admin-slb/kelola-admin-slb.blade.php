@@ -59,11 +59,11 @@
                                     </button>
                                     <div id="dropdown"
                                         class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#FA8F21] top-full mt-1">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                        <ul class="py-2 text-sm text-gray-200 dark:text-gray-200"
                                             aria-labelledby="dropdown-button">
                                             <li>
                                                 <a href="#" onclick="filterGender('All')"
-                                                    class="block px-4 py-2 hover:bg-[#D87815] dark:hover:bg-[#D87815] dark:hover:text-white">Bina
+                                                    class="block px-4 py-2 hover:bg-[#D87815] dark:hover:bg-[#D87815] dark:hover:text-white hover:text-white">Bina
                                                     Insani</a>
                                             </li>
                                         </ul>
@@ -72,7 +72,7 @@
                             </form>
                         </div>
                         <div class="basis-[70%]">
-                            <form class="flex items-center mx-auto my-auto">
+                        <form class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
@@ -84,14 +84,14 @@
                                         </svg>
                                     </div>
                                     <input type="text" id="simple-search"
-                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black dark:placeholder-gray-400 dark:focus:ring-[#FA8F21]"
+                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
                                         placeholder="Search..." oninput="searchTable()" required />
                                 </div>
                             </form>
                         </div>
                         <div class="basis-[10%]">
-                            <button type="button"
-                                class="text-white bg-white hover:bg-white border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
+                        <button type="button"
+                                class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -105,7 +105,7 @@
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
                             <thead
-                                class="text-xs text-gray-700 uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
+                                class="text-xs text-white uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
                                 <tr>
                                     <th scope="col" class="px-3 py-2">
                                         No
@@ -128,7 +128,7 @@
                                 </tr>
                             <tbody>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                     <td class="px-3 py-2">
                                         1
                                     </td>
@@ -183,23 +183,23 @@
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">1</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">2</a>
                                     </li>
                                     <li>
                                         <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">3</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">4</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold ">5</a>
                                     </li>
                                     <li>
                                         <a href="#"

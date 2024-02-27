@@ -108,9 +108,9 @@
             </div>
         </div>
         <div class="w-[60%] text-center text-white text-sm lg:text-base">
-            <div class="italic">@ 2024 All Rights Reserved.</div>
             <div class="font-bold">Made with ♡ Dinas Pendidikan Kebudayaan Provinsi Lampung</div>
             <div class="font-bold">Bidang Pembinaan Pendidikan Khusus</div>
+            <div class="italic">@ 2024 All Rights Reserved.</div>
         </div>
         <div class="flex gap-2">
             <div class="">

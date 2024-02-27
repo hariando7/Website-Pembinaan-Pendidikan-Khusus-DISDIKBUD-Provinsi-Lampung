@@ -13,8 +13,7 @@
 
     <!-- Slick Carousel CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -232,16 +231,14 @@
 </head>
 
 <body>
-    <div class="relative w-full min-h-screen bg-cover bg-no-repeat bg-center"
-        style="background-image: url('{{ asset('assets/landing/disdikbud.svg') }}');">
+    <div class="relative w-full min-h-screen bg-cover bg-no-repeat bg-center bg-[url({{ 'assets/landing/disdikbud.svg' }})]">
         <div class="absolute inset-0 bg-[#000000]/[0.10] bg-blend-overlay"></div>
         <div class="flex justify-between pl-10 pr-10 pt-10 absolute w-full">
             <div class="">
                 <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] lg:h-full">
             </div>
             <div class="flex items-start">
-                <x-buttitle-landing ref="/admin-home-slb" color="#FA8F21" width="[10rem]" title="Home"
-                    extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
+                <x-buttitle-landing ref="/admin-home-slb" color="#FA8F21" width="[10rem]" title="Home" extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
             </div>
         </div>
         <div class="box relative w-[400px] h-[450px] m-auto flex items-center m-auto mt-28">
@@ -254,8 +251,7 @@
                     <span>OTP</span>
                     <i></i>
                 </div>
-                <input type="submit" value="Verifikasi"
-                    class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
+                <input type="submit" value="Verifikasi" class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
                 <div class="links">
                     <div class="text-white text-[0.75em] text-decoration">Kembali ke
                         <a href="/login" class="hover:text-white text-[0.75em]">Sign In
