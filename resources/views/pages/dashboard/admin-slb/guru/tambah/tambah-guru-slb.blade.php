@@ -48,7 +48,7 @@
                             <label htmlFor="name">Nama Guru</label>
                             <input type="text" id="name"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Peserta Didik" required />
+                                placeholder="Masukkan Nama Guru" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jeniskelamin">Jenis Kelamin (JK)</label>
@@ -61,32 +61,26 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="namasekolah">Nama Sekolah</label>
-                            <input type="text" id="namasekolah"
+                            <label htmlFor="">NIP</label>
+                            <input type="text" id=""
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Sekolah" required />
-                        </div>
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jenisketunaan">NIP</label>
-                            <input type="text" id="jenisketunaan"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jenis Ketunaan" required />
+                                placeholder="Masukkan NIP" required />
                         </div>
                     </div>
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="kelas">PNS/NON PNS</label>
-                            <input type="text" id="kelas"
+                            <label htmlFor="">PNS/NON PNS</label>
+                            <input type="text" id=""
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Kelas" required />
+                                placeholder="Masukkan PNS/NON PNS" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="romble">Sertifikasi/Non Sertifikasi</label>
+                            <label htmlFor="romble">Sertifikasi/Non Sertifikasi/NON</label>
                             <input type="text" id="romble"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Romble" required />
+                                placeholder="Masukkan Sertifikasi" required />
                         </div>
                     </div>
                 </div>
@@ -95,7 +89,7 @@
                         <label htmlFor="kelas">PNS/NON PNS</label>
                         <input type="text" id="kelas"
                             class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                            placeholder="Masukkan Kelas" required />
+                            placeholder="Masukkan Mengajar Bidang Studi" required />
                     </div>
                 </div>
                 <div class="flex justify-end mt-4">
