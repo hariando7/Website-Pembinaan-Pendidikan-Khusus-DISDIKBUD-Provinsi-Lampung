@@ -2,56 +2,46 @@
         /* peserta didik slb */
         .icon-peserta-didik-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-peserta-didik-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* guru slb */
         .icon-guru-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-guru-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* tendik slb */
         .icon-tendik-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-tendik-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* sarpras slb */
         .icon-sarpras-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-sarpras-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* kebutuhan guru slb */
         .icon-kebutuhan-guru-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-kebutuhan-guru-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
     </style>
 
@@ -59,14 +49,18 @@
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"aria-label="Sidebar">
         <div class="h-full px-4 py-4 overflow-y-auto bg-[#297785]">
             <a href="/admin-home-slb">
-                <img src="assets/landing/prov-lampung2.svg" alt=""
+                <img src="/assets/landing/prov-lampung2.svg" alt=""
                     class="w-[50%] h-[50%] m-auto items-center lg:w-[70px] lg:h-[100px] mb-5 lg:mb-0">
             </a>
             <div class="flex items-center justify-center m-auto text-white">
                 <ul class=''>
                     {{-- peserta didik slb --}}
                     @php
-                        $activePagePath = ['admin-pesertadidik-slb', 'admin-tambah-pesertadidik-slb', 'admin-edit-pesertadidik-slb']; // halaman aktif
+                        $activePagePath = [
+                            'admin-pesertadidik-slb',
+                            'admin-pesertadidik-slb/tambah',
+                            'admin-pesertadidik-slb/edit',
+                        ]; // halaman aktif
                     @endphp
                     <li class="absolute flex items-center justify-center inset-x-0 mt-5">
                         <a href="/admin-pesertadidik-slb" type="button"
@@ -94,7 +88,7 @@
                     <li class="absolute flex items-center justify-center inset-x-0 mt-[90px]">
                         @php
                             // path halaman aktif
-                            $activePagePath2 = ['admin-guru-slb', 'admin-tambah-guru-slb', 'admin-edit-guru-slb']; // halaman aktif
+                            $activePagePath2 = ['admin-guru-slb', 'admin-guru-slb/tambah', 'admin-guru-slb/edit']; // halaman aktif
                         @endphp
                         <a href="/admin-guru-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -116,7 +110,7 @@
                     <li class="absolute flex items-center justify-center inset-x-0 mt-[160px]">
                         @php
                             // path halaman aktif
-                            $activePagePath3 = ['admin-tendik-slb', 'admin-tambah-tendik-slb', 'admin-edit-tendik-slb']; // path halaman aktif
+                            $activePagePath3 = ['admin-tendik-slb', 'admin-tendik-slb/tambah', 'admin-tendik-slb/edit']; // path halaman aktif
                         @endphp
                         <a href="/admin-tendik-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -147,7 +141,11 @@
                     <li class="absolute flex items-center justify-center inset-x-0 mt-[230px]">
                         @php
                             // path halaman aktif
-                            $activePagePath4 = ['admin-sarpras-slb', 'admin-tambah-sarpras-slb', 'admin-edit-sarpras-slb']; // path halaman aktif
+                            $activePagePath4 = [
+                                'admin-sarpras-slb',
+                                'admin-sarpras-slb/tambah',
+                                'admin-sarpras-slb/edit',
+                            ]; // path halaman aktif
                         @endphp
                         <a href="/admin-sarpras-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -216,7 +214,11 @@
                     <li class="absolute flex items-center justify-center inset-x-0 mt-[300px]">
                         @php
                             // path halaman aktif
-                            $activePagePath5 = ['admin-kebutuhan-guru-slb', 'admin-tambah-kebutuhan-guru-slb', 'admin-edit-kebutuhan-guru-slb']; // path halaman aktif
+                            $activePagePath5 = [
+                                'admin-kebutuhan-guru-slb',
+                                'admin-kebutuhan-guru-slb/tambah',
+                                'admin-kebutuhan-guru-slb/edit',
+                            ]; // path halaman aktif
                         @endphp
                         <a href="/admin-kebutuhan-guru-slb" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium

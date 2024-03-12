@@ -8,7 +8,7 @@
     <title>Home | Bidang Pembinaan Pendidikan Khusus | Disdikbud Provinsi Lampung</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
 
     <!-- Slick Carousel CSS -->
@@ -29,7 +29,7 @@
         <x-hero-landing title="Dinas Pendidikan dan Kebudayaan 
 Provinsi Lampung"
             desc="Bidang Pembinaan Pendidikan Khusus" ref="#section2"
-            imgPath="{{ asset('assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
+            imgPath="{{ asset('/assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
         <div id="section1" class="w-full justify-center items-start bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
             <div class="lg:w-full lg:flex p-5 lg:p-20">
                 <img src="assets/landing/disabilitas.png" alt=""

@@ -8,7 +8,7 @@
     <title>Edit Peserta Didik SLB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -26,7 +26,8 @@
             </div>
             <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black">
                 {{-- isi konten disini --}}
-                <div class=''>
+                {{-- isi konten disini --}}
+                {{-- <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="name">No</label>
@@ -41,7 +42,7 @@
                                 placeholder="2023/2024" required />
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
@@ -60,14 +61,14 @@
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
+                        {{-- <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="namasekolah">Nama Sekolah</label>
                             <input type="text" id="namasekolah"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Nama Sekolah" required />
-                        </div>
+                        </div> --}}
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jenisketunaan">Jenus Ketunaan</label>
+                            <label htmlFor="jenisketunaan">Jenis Ketunaan</label>
                             <input type="text" id="jenisketunaan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jenis Ketunaan" required />

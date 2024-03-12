@@ -1,6 +1,6 @@
  <nav class="bg-[#2F8386]/[0.66] w-full fixed z-50">
      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 z-[99]">
-         <img src="{{ asset('assets/landing/prov-lampung.png') }}" alt="">
+         <img src="{{ asset('/assets/landing/prov-lampung.png') }}" alt="">
          <div class="flex items-center">
              <button data-collapse-toggle="navbar-user" type="button"
                  class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden dark:text-gray-400 bg-white"
@@ -21,17 +21,16 @@
                          class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('/') ? '' : 'font-thin' }} ">Home</a>
                  </li>
                  <li>
-                     <a href="/slb"
-                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('slb') ? '' : 'font-thin' }}">SLB</a>
+                     <a href="/sekolah-luar-biasa"
+                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('sekolah-luar-biasa') ? '' : 'font-thin' }}">SLB</a>
                  </li>
                  <li>
-                     <a href="/portal-sekolah-inklusi"
-                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('portal-sekolah-inklusi') ? '' : 'font-thin' }}">Sekolah
-                         Inklusi</a>
+                     <a href="/karya-slb"
+                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('karya-slb') ? '' : 'font-thin' }}">Karya SLB</a>
                  </li>
                  <li>
-                     <a href="/tentang"
-                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('tentang') ? '' : 'font-thin' }}">Tentang</a>
+                     <a href="/tentang-bidang-pembinaan-pendidikan-khusus"
+                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:text-white sm:text-black {{ request()->is('tentang-bidang-pembinaan-pendidikan-khusus') ? '' : 'font-thin' }}">Tentang</a>
                  </li>
                  <li>
                      <a href="/login"
