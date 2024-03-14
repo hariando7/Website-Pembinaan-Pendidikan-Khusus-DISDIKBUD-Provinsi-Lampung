@@ -1,6 +1,6 @@
  <nav class="bg-[#2F8386]/[0.66] w-full fixed z-50">
      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 z-[99]">
-         <img src="{{ asset('/assets/landing/prov-lampung.png') }}" alt="">
+         <img src="{{ asset('/assets/landing/prov-lampung2.svg') }}" alt="" class="w-[50px] h-[50px]">
          <div class="flex items-center">
              <button data-collapse-toggle="navbar-user" type="button"
                  class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden dark:text-gray-400 bg-white"

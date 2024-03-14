@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Super Admin Laporan Pendataan Sekolah Inklusi</title>
+    <title>Sekolah Inklusi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
@@ -25,6 +25,25 @@
             background-color: transparent;
         }
     </style>
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: white;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: white;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
+        }
+    </style>
 </head>
 
 <body class="bg-white z-10">
@@ -40,7 +59,7 @@
                         title="+ Tambah Guru" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div> --}}
             </div>
-            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1">
+            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1" id="moving-border">
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar">
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">

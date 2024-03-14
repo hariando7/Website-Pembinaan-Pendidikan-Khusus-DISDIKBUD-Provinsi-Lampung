@@ -263,7 +263,7 @@ Provinsi Lampung"
                             Kebudayaan Provinsi
                             Lampung
                         </h2>
-                        <x-buttitle-landing ref="/login-si" color="#FA8F21" width="[10rem]" title="Selengkapnya"
+                        <x-buttitle-landing ref="/pendataan-sekolah-inklusi" color="#FA8F21" width="[10rem]" title="Selengkapnya"
                             extendClass="text-white text-center m-auto mt-2 lg:mt-6 py-2 lg:py-3" />
                     </form>
                 </div>

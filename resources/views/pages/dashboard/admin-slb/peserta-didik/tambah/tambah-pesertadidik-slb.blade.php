@@ -10,6 +10,25 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: white;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: white;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
+        }
+    </style>
 </head>
 
 <body class="bg-white z-10">
@@ -24,24 +43,8 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black">
+            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black" id="moving-border">
                 {{-- isi konten disini --}}
-                {{-- <div class=''>
-                    <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="name">No</label>
-                            <input type="text" id="name"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="1" required />
-                        </div>
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="tahunpelajaran">Tahun Pelajaran</label>
-                            <input type="text" id="tahunpelajaran"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="2023/2024" required />
-                        </div>
-                    </div>
-                </div> --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">

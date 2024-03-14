@@ -90,6 +90,16 @@ class GeneralPage extends Controller
     function adminedittendikslb () {
         return view('pages/dashboard/admin-slb/tendik/edit/edit-tendik-slb');
     } 
+    // Tendik
+    function adminkaryaslb () {
+        return view('pages/dashboard/admin-slb/karya/admin-karya-slb');
+    }
+    function admintambahkaryaslb () {
+        return view('pages/dashboard/admin-slb/karya/tambah/tambah-karya-slb');
+    }
+    function admineditkaryaslb () {
+        return view('pages/dashboard/admin-slb/karya/edit/edit-karya-slb');
+    } 
     // Akhir Admin Home SLB
 
     // Awal Super Admin
@@ -126,6 +136,10 @@ class GeneralPage extends Controller
     function sastatistiktendik () {
         return view('pages/dashboard/super-admin/slb/statistik-slb/sa-statistik-tendik');
     }
+    function sastatistikkarya () {
+        return view('pages/dashboard/super-admin/slb/statistik-slb/sa-statistik-karya');
+    }
+
     // Data Guru SLB
     function saguruslb () {
         return view('pages/dashboard/super-admin/slb/guru/sa-guru-slb');
@@ -146,6 +160,10 @@ class GeneralPage extends Controller
     function satendikslb () {
         return view('pages/dashboard/super-admin/slb/tendik/sa-tendik-slb');
     }
+    // Data Tendik SLB
+    function sakaryaslb () {
+        return view('pages/dashboard/super-admin/slb/karya/sa-karya-slb');
+    }
 
     // sa Sekolah Inklusi
     function sapendataansi () {
@@ -158,56 +176,35 @@ class GeneralPage extends Controller
         return view('pages/dashboard/super-admin/sekolah-inklusi/lihat/lihat-pendataan-si');
     }
     
-    // Awal sa kelola sistem    
-    function sakelolasistem () {
-        return view('pages/dashboard/super-admin/kelola-sistem/kelola-sistem');
+    // Awal sa kelola notifikasi    
+    function sakelolanotifikasi () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/kelola-notifikasi');
     }
-    function saonoffsistem () {
-        return view('pages/dashboard/super-admin/kelola-sistem/onoff/onoff-sistem');
+    function sakelolanotifikasislb () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/slb/kelola-notifikasi-slb');
     }
-    function sakelolapengumumanslb () {
-        return view('pages/dashboard/super-admin/kelola-sistem/slb/kelola-pengumuman-slb');
+    function sakelolanotifikasislbtambah () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/slb/tambah/kelola-notifikasi-slb-tambah');
     }
-    function sakelolapengumumanslbtambah () {
-        return view('pages/dashboard/super-admin/kelola-sistem/slb/tambah/kelola-pengumuman-slb-tambah');
+    function sakelolanotifikasislbedit () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/slb/edit/kelola-notifikasi-slb-edit');
     }
-    function sakelolapengumumanslbedit () {
-        return view('pages/dashboard/super-admin/kelola-sistem/slb/edit/kelola-pengumuman-slb-edit');
+    function sakelolanotifikasisi () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/sekolah-inklusi/kelola-notifikasi-si');
     }
-    function sakelolapengumumansi () {
-        return view('pages/dashboard/super-admin/kelola-sistem/sekolah-inklusi/kelola-pengumuman-si');
+    function sakelolanotifikasisitambah () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/sekolah-inklusi/tambah/tambah-notifikasi-si');
     }
-    function sakelolapengumumansitambah () {
-        return view('pages/dashboard/super-admin/kelola-sistem/sekolah-inklusi/tambah/kelola-pengumuman-si-tambah');
+    function sakelolanotifikasisiedit () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/sekolah-inklusi/edit/edit-notifikasi-si');
     }
-    function sakelolapengumumansiedit () {
-        return view('pages/dashboard/super-admin/kelola-sistem/sekolah-inklusi/edit/kelola-pengumuman-si-edit');
-    }
-    // Akhir sa kelola sistem
-    // Akhir Super Admin
-
-    // Awal Auth Admin Sekolah Inklusi
-    function loginsi () {
-        return view('pages/dashboard/admin-sekolah-inklusi/login-si');
-    }
-    function registrasisi () {
-        return view('pages/dashboard/admin-sekolah-inklusi/registrasi-si');
-    }
-    function lupapasswordsi () {
-        return view('pages/dashboard/admin-sekolah-inklusi/lupa-password-si');
-    }
-    function otpsi () {
-        return view('pages/dashboard/admin-sekolah-inklusi/otp-si');
-    }
-    function newpasswordsi () {
-        return view('pages/dashboard/admin-sekolah-inklusi/new-password-si');
-    }
-    // Akhir Auth Admin Sekolah Inklusi
+    // Akhir sa kelola notifikasi
 
     // Awal Admin Sekolah Inklusi
     function pendataansekolahinklusi () {
         return view('pages/dashboard/admin-sekolah-inklusi/pendataan-sekolah-inklusi');
     }
     // Akhir Admin Sekolah Inklusi
+    
     
 }

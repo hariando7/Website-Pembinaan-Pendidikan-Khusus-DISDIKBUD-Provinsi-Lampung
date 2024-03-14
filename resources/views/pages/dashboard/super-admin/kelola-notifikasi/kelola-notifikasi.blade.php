@@ -66,6 +66,25 @@
             /* stroke saat elemen dalam keadaan hover */
         }
     </style>
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: white;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: white;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
+        }
+    </style>
 </head>
 
 <body class="bg-white z-10">
@@ -73,33 +92,15 @@
         <x-dashboard-side-bar-sa />
         <div class="pl-[280px] h-screen pt-10 pr-5 pb-28">
             <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Kelola Sistem
+                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Kelola Notifikasi
                     SLB dan Sekolah Inklusi
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-10 font-bold text-black">
+            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-10 font-bold text-black"
+                id="moving-border">
                 {{-- isi konten disini --}}
                 <div class="flex justify-center">
-                    <a href="/sa-on-off-sistem">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 justify-center items-center flex">
-                                <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M20.8337 95.8333H79.167M32.3212 23.9875L41.1628 32.8292M41.1628 32.8292C43.507 30.485 46.6851 29.1667 50.0003 29.1667M41.1628 32.8292C38.8186 35.1734 37.5003 38.3514 37.5003 41.6667M37.5003 41.6667H25.0003M37.5003 41.6667C37.5003 44.9819 38.8186 48.16 41.1628 50.5042M41.1628 50.5042L32.3212 59.3458M41.1628 50.5042C43.507 52.8484 46.6851 54.1667 50.0003 54.1667M50.0003 54.1667V66.6667M50.0003 54.1667C53.3155 54.1667 56.4936 52.8484 58.8378 50.5042M58.8378 50.5042L67.6795 59.3458M58.8378 50.5042C61.182 48.16 62.5003 44.9819 62.5003 41.6667M75.0003 41.6667H62.5003M62.5003 41.6667C62.5003 38.3514 61.182 35.1734 58.8378 32.8292M67.6795 23.9875L58.8378 32.8292M58.8378 32.8292C56.4936 30.485 53.3155 29.1667 50.0003 29.1667M50.0003 29.1667V16.6667M4.16699 79.1667H95.8337V4.16666H4.16699V79.1667ZM33.3337 95.8333H66.667V79.1667H33.3337V95.8333Z"
-                                        stroke="white" stroke-width="2" />
-                                </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    On/Off Sistem
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="flex justify-center">
-                    <a href="/sa-kelola-pengumuman-slb">
+                    <a href="/sa-kelola-notifikasi-slb">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl pt-6 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
@@ -117,12 +118,12 @@
                             </div>
                             <div class="flex pb-4">
                                 <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Pengumuman SLB
+                                    Notifikasi SLB
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a href="/sa-kelola-pengumuman-si">
+                    <a href="/sa-kelola-notifikasi-si">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl pt-6 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
@@ -134,7 +135,7 @@
                             </div>
                             <div class="flex pb-4">
                                 <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Pengumuman Sekolah Inklusi
+                                    Notifikasi Sekolah Inklusi
                                 </div>
                             </div>
                         </div>

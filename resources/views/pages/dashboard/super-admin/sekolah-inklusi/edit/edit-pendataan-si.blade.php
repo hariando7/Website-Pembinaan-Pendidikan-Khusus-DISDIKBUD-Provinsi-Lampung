@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sekolah Inklusi | Edit</title>
+    <title>Sekolah Inklusi | Edit Data</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
@@ -23,6 +23,25 @@
 
         .hide-scrollbar::-webkit-scrollbar-thumb {
             background-color: transparent;
+        }
+    </style>
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: white;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: white;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
         }
     </style>
 </head>
@@ -50,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <div class="relative rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-5">
+            <div class="relative rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-5" id="moving-border">
                 <div
                     class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar font-bold text-black">
                     {{-- isi konten disini --}}
@@ -595,7 +614,6 @@
                                 </div>
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>

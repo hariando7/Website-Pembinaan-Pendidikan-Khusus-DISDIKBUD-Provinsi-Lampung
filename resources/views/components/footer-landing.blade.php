@@ -2,16 +2,16 @@
     <div class="">
         <div class="flex gap-4 mb-2">
             <div class="">
-                <img src="{{ asset('assets/landing/prov-lampung.png') }}" alt="" class="w-[100px] lg:w-[70px]">
+                <img src="{{ asset('assets/landing/prov-lampung2.svg') }}" alt="" class="w-[100px] lg:w-[70px]">
             </div>
             <div class="">
-                <div class="text-base lg:text-2xl font-bold text-left">DINAS PENDIDIKAN KEBUDAYAAN <br>PROVINSI LAMPUNG
+                <div class="text-black text-base lg:text-2xl font-bold text-left">DINAS PENDIDIKAN KEBUDAYAAN <br>PROVINSI LAMPUNG
                 </div>
-                <div class="text-xs text-left mt-2 text-[#717275]">Bidang Pembinaan Pendidikan Khusus</div>
+                <div class="text-xs text-left mt-2 text-[#717275]">Bidang Pembinaan Pendidikan Khusus Sekolah Luar Biasa (SLB)</div>
             </div>
         </div>
         <div class="bg-[#C4DDDE] w-full lg:w-[80%] items-center m-auto justify-center mb-5">
-            <a href="URL_HALAMAN_TUJUAN"
+            <a href="https://disdikbud.lampungprov.go.id/"  target="_blank"
                 class="text-center inline-block w-full bg-[#C4DDDE] overflow-hidden relative group rounded-[100px]">
                 <div
                     class="flex items-center justify-center m-auto border-2 border-[#FA8F21] rounded-[100px] text-[#717275]">

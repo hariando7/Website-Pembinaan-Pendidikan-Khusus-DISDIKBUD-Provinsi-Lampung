@@ -1,25 +1,25 @@
 <div class="bg-white rounded-box p-3 lg:p-5">
     <div class="carousel gap-2 lg:gap-5 lg:ml-2">
         <div class="carousel-item">
-            <img src="assets/landing/prov-lampung.png" alt="SLB" class="w-[95px] lg:w-[200px]" />
+            <img src="assets/landing/prov-lampung2.svg" alt="SLB" class="w-[95px] lg:w-[200px]" />
         </div>
         <div class="carousel-item">
-            <img src="assets/landing/prov-lampung.png" alt="SLB" class="w-[95px] lg:w-[200px]" />
+            <img src="assets/landing/prov-lampung2.svg" alt="SLB" class="w-[95px] lg:w-[200px]" />
         </div>
         <div class="carousel-item">
-            <img src="assets/landing/prov-lampung.png" alt="SLB" class="w-[95px] lg:w-[200px]" />
+            <img src="assets/landing/prov-lampung2.svg" alt="SLB" class="w-[95px] lg:w-[200px]" />
         </div>
         <div class="carousel-item">
-            <img src="assets/landing/prov-lampung.png" alt="SLB" class="w-[95px] lg:w-[200px]" />
+            <img src="assets/landing/prov-lampung2.svg" alt="SLB" class="w-[95px] lg:w-[200px]" />
         </div>
         <div class="carousel-item">
-            <img src="assets/landing/prov-lampung.png" alt="SLB" class="w-[95px] lg:w-[200px]" />
+            <img src="assets/landing/prov-lampung2.svg" alt="SLB" class="w-[95px] lg:w-[200px]" />
         </div>
         <div class="carousel-item">
-            <img src="assets/landing/prov-lampung.png" alt="SLB" class="w-[95px] lg:w-[200px]" />
+            <img src="assets/landing/prov-lampung2.svg" alt="SLB" class="w-[95px] lg:w-[200px]" />
         </div>
         <div class="carousel-item">
-            <img src="assets/landing/prov-lampung.png" alt="SLB" class="w-[95px] lg:w-[200px]" />
+            <img src="assets/landing/prov-lampung2.svg" alt="SLB" class="w-[95px] lg:w-[200px]" />
         </div>
     </div>
 </div>

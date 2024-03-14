@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kelola Sistem | Kelola Pengumuman SLB</title>
+    <title>Kelola Sistem | Kelola notifikasi SLB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
@@ -26,6 +26,25 @@
             background-color: transparent;
         }
     </style>
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: white;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: white;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
+        }
+    </style>
 </head>
 
 <body class="bg-white z-10">
@@ -34,15 +53,15 @@
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
             <div class="flex justify-between pb-2">
                 <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Kelola
-                    Pengumuman SLB Provinsi Lampung
+                    notifikasi SLB Provinsi Lampung
                 </div>
                 <div class="flex justify-end gap-5">
-                    <x-buttitle-landing ref="/sa-kelola-pengumuman-slb/tambah" color="#FA8F21" width="[13rem]"
-                        title="+ Tambah Pengumuman"
+                    <x-buttitle-landing ref="/sa-kelola-notifikasi-slb/tambah" color="#FA8F21" width="[13rem]"
+                        title="+ Tambah notifikasi"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pl-5 pt-5 pr-5 pb-3">
+            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pl-5 pt-5 pr-5 pb-3" id="moving-border">
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto hide-scrollbar">
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">
@@ -88,10 +107,10 @@
                                         Tanggal
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Nama Pengumuman
+                                        Nama notifikasi
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Informasi Detail Pengumuman
+                                        Informasi Detail notifikasi
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Aksi
@@ -114,7 +133,7 @@
                                     </td>
                                     <td class="px-3 py-2">
                                         <div class="flex justify-items-center m-auto text-center gap-2">
-                                            <a href="/sa-kelola-pengumuman-slb/edit" title="Edit">
+                                            <a href="/sa-kelola-notifikasi-slb/edit" title="Edit">
                                                 <div
                                                     class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
                                                     <svg width="23" height="20" viewBox="0 0 23 20"

@@ -47,7 +47,7 @@
     <aside id="default-sidebar"
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"aria-label="Sidebar">
         <div class="h-full px-4 py-4 overflow-y-auto bg-[#297785]">
-            <a href="/sa-kelola-sistem">
+            <a href="/sa-kelola-notifikasi">
                 <img src="/assets/landing/prov-lampung2.svg" alt=""
                     class="w-[50%] h-[50%] m-auto items-center lg:w-[70px] lg:h-[100px] mb-5 lg:mb-0">
             </a>
@@ -58,17 +58,16 @@
                         @php
                             // path halaman aktif
                             $activePagePath4 = [
-                                'sa-kelola-sistem',
-                                'sa-on-off-sistem',
-                                'sa-kelola-pengumuman-slb',
-                                'sa-kelola-pengumuman-slb/tambah',
-                                'sa-kelola-pengumuman-slb/edit',
-                                'sa-kelola-pengumuman-si',
-                                'sa-kelola-pengumuman-si/tambah',
-                                'sa-kelola-pengumuman-si/edit',
+                                'sa-kelola-notifikasi',
+                                'sa-kelola-notifikasi-slb',
+                                'sa-kelola-notifikasi-slb/tambah',
+                                'sa-kelola-notifikasi-slb/edit',
+                                'sa-kelola-notifikasi-si',
+                                'sa-kelola-notifikasi-si/tambah',
+                                'sa-kelola-notifikasi-si/edit',
                             ]; // path halaman aktif
                         @endphp
-                        <a href="/sa-kelola-sistem" type="button"
+                        <a href="/sa-kelola-notifikasi" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
         @if (in_array(Request::path(), $activePagePath4)) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
@@ -89,7 +88,7 @@
                                     </defs>
                                 </svg>
                             </div>
-                            <div class="text-start justify-center items-center flex font-bold">Kelola <br> Sistem
+                            <div class="text-start justify-center items-center flex font-bold">Kelola <br> Notifikasi
                             </div>
                         </a>
                         <div
@@ -106,30 +105,24 @@
                             class="absolute mt-2 bg-white rounded-md shadow-lg right-6 top-14 z-20">
                             @php
                                 // path halaman aktif
-                                $onoff = ['sa-on-off-sistem']; // halaman aktif
-                                $kelolapengumumanslb = [
-                                    'sa-kelola-pengumuman-slb',
-                                    'sa-kelola-pengumuman-slb/tambah',
-                                    'sa-kelola-pengumuman-slb/edit',
+                                $kelolanotifikasislb = [
+                                    'sa-kelola-notifikasi-slb',
+                                    'sa-kelola-notifikasi-slb/tambah',
+                                    'sa-kelola-notifikasi-slb/edit',
                                 ];
-                                $kelolapengumumansi = [
-                                    'sa-kelola-pengumuman-si',
-                                    'sa-kelola-pengumuman-si/tambah',
-                                    'sa-kelola-pengumuman-si/edit',
+                                $kelolanotifikasisi = [
+                                    'sa-kelola-notifikasi-si',
+                                    'sa-kelola-notifikasi-si/tambah',
+                                    'sa-kelola-notifikasi-si/edit',
                                 ];
                                 // halaman aktif
                             @endphp
-                            <a href="/sa-on-off-sistem"
-                                class="block px-4 py-2 text-sm @if (in_array(Request::path(), $onoff)) rounded-b-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
-        @else
-            bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">On/Off
-                                Sistem</a>
-                            <a href="/sa-kelola-pengumuman-slb"
-                                class="block px-4 py-2 text-sm @if (in_array(Request::path(), $kelolapengumumanslb)) rounded-b-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+                            <a href="/sa-kelola-notifikasi-slb"
+                                class="block px-4 py-2 text-sm @if (in_array(Request::path(), $kelolanotifikasislb)) rounded-b-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
             bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">SLB</a>
-                            <a href="/sa-kelola-pengumuman-si"
-                                class="block px-4 py-2 text-sm @if (in_array(Request::path(), $kelolapengumumansi)) rounded-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+                            <a href="/sa-kelola-notifikasi-si"
+                                class="block px-4 py-2 text-sm @if (in_array(Request::path(), $kelolanotifikasisi)) rounded-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
             bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">Sekolah
                                 Inklusi</a>
@@ -162,18 +155,19 @@
                             // path halaman aktif
                             $activePagePath2 = [
                                 'sa-dashboard-slb',
-                                'sa-kelola-notifikasi-slb',
                                 'sa-guru-slb',
                                 'sa-kebutuhan-guru-slb',
                                 'sa-peserta-didik-slb',
                                 'sa-sarpras-slb',
                                 'sa-tendik-slb',
+                                'sa-karya-slb',
                                 'sa-statistik-slb',
                                 'sa-statistik-guru',
                                 'sa-statistik-kebutuhan-guru',
                                 'sa-statistik-peserta-didik',
                                 'sa-statistik-sarpras',
                                 'sa-statistik-tendik',
+                                'sa-statistik-karya',
                             ]; // halaman aktif
                         @endphp
                         <a type="button" href="/sa-dashboard-slb"
@@ -215,12 +209,14 @@
                                     'sa-statistik-peserta-didik',
                                     'sa-statistik-sarpras',
                                     'sa-statistik-tendik',
+                                    'sa-statistik-karya',
                                 ]; // halaman aktif
                                 $pesertadidik = ['sa-peserta-didik-slb'];
                                 $guru = ['sa-guru-slb'];
                                 $tendik = ['sa-tendik-slb'];
                                 $sarpras = ['sa-sarpras-slb'];
                                 $kebutuhanguru = ['sa-kebutuhan-guru-slb'];
+                                $karyaslb = ['sa-karya-slb'];
                             @endphp
                             <a href="/sa-statistik-slb"
                                 class="block px-4 py-2 text-sm @if (in_array(Request::path(), $statistikslb)) rounded-b-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
@@ -252,6 +248,11 @@
         @else
             bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">Kebutuhan
                                 Guru SLB</a>
+                            <a href="/sa-karya-slb"
+                                class="block px-4 py-2 text-sm @if (in_array(Request::path(), $karyaslb)) rounded-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
+        @else
+            bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">Karya
+                                SLB</a>
                         </div>
                     </li>
                     {{-- sekolah inklusi slb --}}
@@ -272,7 +273,8 @@
                                         stroke="currentColor" stroke-linecap="round" fill="currentcolor" />
                                 </svg>
                             </div>
-                            <div class="text-start justify-center items-center flex font-bold">Sekolah <br> Inklusi</div>
+                            <div class="text-start justify-center items-center flex font-bold">Sekolah <br> Inklusi
+                            </div>
                         </a>
                     </li>
                     <li class="absolute w-full -inset-x-1 bottom-0">

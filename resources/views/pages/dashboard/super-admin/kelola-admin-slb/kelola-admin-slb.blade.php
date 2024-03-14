@@ -26,6 +26,25 @@
             background-color: transparent;
         }
     </style>
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: white;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: white;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
+        }
+    </style>
 </head>
 
 <body class="bg-white z-10">
@@ -41,7 +60,7 @@
                         title="+ Tambah Admin" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pl-5 pt-5 pr-5 pb-3">
+            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pl-5 pt-5 pr-5 pb-3" id="moving-border">
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto hide-scrollbar">
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">

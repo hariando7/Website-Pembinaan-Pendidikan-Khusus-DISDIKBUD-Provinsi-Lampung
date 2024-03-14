@@ -38,11 +38,14 @@ Provinsi Lampung"
                     <h1 class="text-2xl lg:text-5xl font-bold text-black pb-5 lg:pb-10 text-center lg:text-left">Apa itu
                         Disabilitas ?</h1>
                     <p class="text-base lg:text-lg font-thin text-black text-justify">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam est autem, numquam ipsam
-                        ratione veniam, nobis maiores placeat, earum repellendus harum quisquam. Odio, consequatur.
-                        Placeat alias voluptatum nesciunt quia totam delectus incidunt vitae inventore sapiente tempore
-                        nostrum maxime, quo ducimus. Ab tempora unde placeat qui nesciunt temporibus asperiores ullam.
-                        Ipsa.
+                        Disabilitas adalah keterbatasan pada tubuh maupun pikiran yang menyebabkan pengidapnya kesulitan
+                        atau mengalami keterbatasan dalam melakukan aktivitas atau berinteraksi dengan lingkungan di
+                        sekitarnya Menurut WHO, diperkirakan terdapat 1,3 miliar orang atau sekitar 16% dari populasi
+                        global yang mengalami disabilitas.
+
+                        Disabilitas adalah kondisi ketika tubuh serta pikiran mengalami kesulitan atau keterbatasan
+                        dalam menjalani aktivitas tertentu. Sementara itu, difabel adalah istilah atau sebutan bagi
+                        penyandang disabilitas.
                     </p>
                 </div>
             </div>
@@ -57,11 +60,28 @@ Provinsi Lampung"
                     <h1 class="text-2xl lg:text-5xl font-bold text-black pb-5 lg:pb-10">Jenis Disabilitas, Penyebab, dan
                         Penanganan</h1>
                     <p class="text-base lg:text-lg font-thin text-black text-justify">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam est autem, numquam ipsam
-                        ratione veniam, nobis maiores placeat, earum repellendus harum quisquam. Odio, consequatur.
-                        Placeat alias voluptatum nesciunt quia totam delectus incidunt vitae inventore sapiente tempore
-                        nostrum maxime, quo ducimus. Ab tempora unde placeat qui nesciunt temporibus asperiores ullam.
-                        Ipsa.
+                        A. Jenis Disabilitas
+                        Menurut Undang-Undang RI No. 8 Tahun 2016 tentang Penyandang Disabilitas, disabilitas terbagi
+                        menjadi beberapa jenis, termasuk disabilitas fisik (gangguan gerakan atau keterbatasan anggota
+                        tubuh), disabilitas mental atau kognitif (gangguan perkembangan, kejiwaan, atau belajar),
+                        disabilitas sensorik (gangguan indra seperti pendengaran atau penglihatan), disabilitas kronis
+                        atau medis (kondisi kesehatan jangka panjang yang membatasi aktivitas sehari-hari), dan
+                        disabilitas pembelajaran (kesulitan memahami atau menggunakan informasi dalam pendidikan
+                        formal). <br> <br>
+                        B. Penyebab Disabilitas
+                        Faktor penyebab disabilitas melibatkan kelainan bawaan lahir (seperti down syndrome dan Duchenne
+                        muscular dystrophy), cedera (seperti cedera tulang belakang dan cedera otak traumatis), penyakit
+                        kronis (seperti diabetes, stroke, dan penyakit kardiovaskular), serta gangguan seperti autisme,
+                        ADHD, dan gangguan mental lainnya sejak masa kanak-kanak.<br> <br>
+                        C. Penangangan Disabilitas
+                        Penanganan disabilitas bervariasi sesuai dengan jenisnya. Pada disabilitas fisik, penyandangnya
+                        dapat memanfaatkan alat bantu seperti kursi roda, dengan pentingnya meminta izin sebelum
+                        memberikan bantuan. Disabilitas intelektual memerlukan waktu, kesabaran, dan instruksi dasar
+                        dengan bahasa yang sederhana, serta perlu dihindari lingkungan yang dapat mengganggu
+                        konsentrasi. Menghadapi disabilitas mental membutuhkan kesabaran dan keterbukaan pikiran, serta
+                        perlu dihindari situasi yang memperburuk emosi. Interaksi dengan penyandang disabilitas sensorik
+                        memerlukan keahlian khusus, seperti berkomunikasi melalui bahasa isyarat atau menulis pesan di
+                        atas kertas untuk tuna rungu atau tuna wicara.
                     </p>
                 </div>
             </div>
@@ -72,17 +92,20 @@ Provinsi Lampung"
         </div>
         <div id="section3" class="w-full justify-center items-start bg-[#C4DDDE]">
             <div class="lg:w-full lg:flex lg:flex-row-reverse p-5 lg:p-20 pt-10 pb-10">
-                <img src="assets/landing/prov-lampung.png" alt=""
+                <img src="assets/landing/prov-lampung2.svg" alt=""
                     class="w-[40%] h-[40%] m-auto items-center lg:w-[80%] lg:h-[80%] mb-5 lg:mb-0">
                 <div class="">
-                    <h1 class="text-2xl lg:text-5xl text-center lg:text-left font-bold text-black pb-5 lg:pb-10">SLB Dan
-                        Sekolah Inklusi</h1>
+                    <h1 class="text-2xl lg:text-5xl text-center lg:text-left font-bold text-black pb-5 lg:pb-10">Sekolah
+                        Luar Biasa</h1>
                     <p class="text-base lg:text-lg font-thin text-black text-justify lg:w-[90%]">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam est autem, numquam ipsam
-                        ratione veniam, nobis maiores placeat, earum repellendus harum quisquam. Odio, consequatur.
-                        Placeat alias voluptatum nesciunt quia totam delectus incidunt vitae inventore sapiente tempore
-                        nostrum maxime, quo ducimus. Ab tempora unde placeat qui nesciunt temporibus asperiores ullam.
-                        Ipsa.
+                        Sekolah Luar Biasa (SLB) adalah lembaga pendidikan yang merupakan bagian integral dari sistem
+                        pendidikan nasional dan ditujukan khusus bagi peserta didik yang mengalami kesulitan dalam
+                        proses pembelajaran akibat kelainan fisik, emosional, atau mental sosial. Meskipun menghadapi
+                        tantangan, peserta didik di SLB tetap memiliki potensi kecerdasan dan bakat istimewa. SLB
+                        berperan sebagai bagian dari lembaga pendidikan yang dapat mengakomodasi dan menyelenggarakan
+                        pendidikan khusus untuk anak-anak dengan kebutuhan khusus. Jenis kebutuhan tersebut mencakup
+                        berbagai kondisi, seperti tunanetra, tunarungu, tunawicara, tunadaksa, tunalaras, tunaganda, dan
+                        anak terbelakangan.
                     </p>
                 </div>
             </div>
@@ -99,8 +122,8 @@ Provinsi Lampung"
                     </h1>
                     <p
                         class="text-sm md:text-base font-thin text-white text-justify md:text-center mt-4 m-2 md:m-8 pl-0 md:pl-24 md:pr-24">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s,
+                        Sekolah Luar Biasa Dibawah Naungan Dinas Pendidikan Kebudayaan Provinsi Lampung <br>
+                        Bidang Pembinaan Pendidikan Khusus
                     </p>
                     <x-carousel-home />
                 </div>

@@ -62,18 +62,21 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/admin-tendik-slb', 'admintendikslb');
     Route::get('/admin-tendik-slb/tambah', 'admintambahtendikslb');
     Route::get('/admin-tendik-slb/edit', 'adminedittendikslb');
+    // Karya
+    Route::get('/admin-karya-slb', 'adminkaryaslb');
+    Route::get('/admin-karya-slb/tambah', 'admintambahkaryaslb');
+    Route::get('/admin-karya-slb/edit', 'admineditkaryaslb');
     // Akhir Admin Home SLB
 
     // Awal Super Admin
     // Awal sa kelola sistem    
-    Route::get('/sa-kelola-sistem', 'sakelolasistem');
-    Route::get('/sa-on-off-sistem', 'saonoffsistem');
-    Route::get('/sa-kelola-pengumuman-slb', 'sakelolapengumumanslb');
-    Route::get('/sa-kelola-pengumuman-slb/tambah', 'sakelolapengumumanslbtambah');
-    Route::get('/sa-kelola-pengumuman-slb/edit', 'sakelolapengumumanslbedit');
-    Route::get('/sa-kelola-pengumuman-si', 'sakelolapengumumansi');
-    Route::get('/sa-kelola-pengumuman-si/tambah', 'sakelolapengumumansitambah');
-    Route::get('/sa-kelola-pengumuman-si/edit', 'sakelolapengumumansiedit');
+    Route::get('/sa-kelola-notifikasi', 'sakelolanotifikasi');
+    Route::get('/sa-kelola-notifikasi-slb', 'sakelolanotifikasislb');
+    Route::get('/sa-kelola-notifikasi-slb/tambah', 'sakelolanotifikasislbtambah');
+    Route::get('/sa-kelola-notifikasi-slb/edit', 'sakelolanotifikasislbedit');
+    Route::get('/sa-kelola-notifikasi-si', 'sakelolanotifikasisi');
+    Route::get('/sa-kelola-notifikasi-si/tambah', 'sakelolanotifikasisitambah');
+    Route::get('/sa-kelola-notifikasi-si/edit', 'sakelolanotifikasisiedit');
     // akhir sa kelola notifikasi
 
     // Kelola Admin SLB
@@ -90,7 +93,9 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/sa-statistik-peserta-didik', 'sastatistikpesertadidik');
     Route::get('/sa-statistik-sarpras', 'sastatistiksarpras');
     Route::get('/sa-statistik-tendik', 'sastatistiktendik');
+    Route::get('/sa-statistik-karya', 'sastatistikkarya');
 
+    // Awal Super admin data SLB
     // Data Guru SLB
     Route::get('/sa-guru-slb', 'saguruslb');
     // Data Kebutuhan Guru
@@ -101,11 +106,15 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/sa-sarpras-slb', 'sasarprasslb');
     // Data Tendik SLB
     Route::get('/sa-tendik-slb', 'satendikslb');
+    // Data Karya SLB
+    Route::get('/sa-karya-slb', 'sakaryaslb');
+    // Akhir Super Admin data SLB
 
     // Sekolah Inklusi
     Route::get('/sa-pendataan-si', 'sapendataansi');
     Route::get('/sa-pendataan-si/edit', 'sapendataansiedit');
     Route::get('/sa-pendataan-si/lihat', 'sapendataansilihat');
+
 });
 
 // Route::get('/slb', function () {

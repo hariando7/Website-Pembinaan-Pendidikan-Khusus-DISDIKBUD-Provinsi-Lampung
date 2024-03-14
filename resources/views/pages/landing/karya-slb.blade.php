@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sekolah Inklusi | Bidang Pembinaan Pendidikan Khusus | Disdikbud Provinsi Lampung</title>
+    <title>Kara | Bidang Pembinaan Pendidikan Khusus | Disdikbud Provinsi Lampung</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
@@ -179,6 +179,26 @@
             opacity: 0.8;
         }
     </style>
+
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: white;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: white;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
+        }
+    </style>
 </head>
 
 <body>
@@ -191,7 +211,7 @@ Provinsi Lampung"
             <div class="lg:w-full lg:flex p-5 lg:p-20">
                 <div class="lg:pl-16">
                     <div class="text-2xl lg:text-5xl font-bold text-black pb-5 lg:pb-10 text-center lg:text-center">
-                        Alamat Sekolah Inklusi Provinsi Lampung</div>
+                        Karya Sekolah Luar Biasa</div>
                     <div class="text-base lg:text-lg font-thin text-black text-justify">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         the industry's standard dummy text ever since the 1500s,
@@ -201,25 +221,37 @@ Provinsi Lampung"
         </div>
         <div id="section2" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 pt-10 lg:pt-0">
             <div class="lg:w-full lg:flex p-5 lg:pl-20 lg:pr-20 lg:pb-20">
-                <div class="w-full p-10 p-1 ring-4 ring-[#297785] dark:ring-[#297785]">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="w-full rounded shadow-lg border-solid border-4 border-[#297785]" id="moving-border">
+                    <div class="relative overflow-x-auto sm:rounded-lg p-5">
                         <div
                             class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                             <div>
                                 <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
                                     class="inline-flex items-center text-black bg-white border border-[#2F8386] focus:outline-none hover:bg-[#2F8386] focus:ring-4 focus:ring-[#2F8386] font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-white dark:text-black hover:text-white dark:border-[#2F8386] dark:hover:bg-[#2F8386] dark:hover:border-[#2F8386] hover:border-[#2F8386] dark:focus:ring-[#2F8386]"
                                     type="button">
-                                    <svg class="w-3 h-3 text-gray-400 dark:text-gray-400 me-3" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z" />
-                                    </svg>
-                                    Last 30 days
-                                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 1 4 4 4-4" />
-                                    </svg>
+                                    <div class="flex gap-2">
+                                        <div class="flex justify-center items-center m-auto">
+                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M24.5002 11.6666H22.1668V4.66659H23.3335V2.33325H4.66683V4.66659H5.8335V11.6666H3.50016C3.19074 11.6666 2.894 11.7895 2.6752 12.0083C2.45641 12.2271 2.3335 12.5238 2.3335 12.8333V23.3333H25.6668V12.8333C25.6668 12.5238 25.5439 12.2271 25.3251 12.0083C25.1063 11.7895 24.8096 11.6666 24.5002 11.6666ZM16.3335 20.9999V16.3333H11.6668V20.9999H8.16683V4.66659H19.8335V20.9999H16.3335Z"
+                                                    fill="#B7B7B7" />
+                                                <path
+                                                    d="M10.5 7H12.8333V9.33333H10.5V7ZM15.1667 7H17.5V9.33333H15.1667V7ZM10.5 11.6667H12.8333V14H10.5V11.6667ZM15.1667 11.6667H17.5V14H15.1667V11.6667Z"
+                                                    fill="#B7B7B7" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex justify-center items-center m-auto">
+                                            Pilih Sekolah
+                                        </div>
+                                        <div class="flex justify-center items-center m-auto">
+                                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div id="dropdownRadio"
@@ -298,305 +330,68 @@ Provinsi Lampung"
                                     </svg>
                                 </div>
                                 <input type="text" id="table-search"
-                                    class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-80 bg-white focus:ring-[#2F8386] focus:border-[#2F8386] dark:bg-white dark:border-[#2F8386] dark:placeholder-[#2F8386] dark:text-black dark:focus:ring-[#2F8386] dark:focus:border-[#2F8386]"
-                                    placeholder="Search for items">
+                                    class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-[750px] bg-white focus:ring-[#2F8386] focus:border-[#2F8386] dark:bg-white dark:border-[#2F8386] dark:placeholder-[#2F8386] dark:text-black dark:focus:ring-[#2F8386] dark:focus:border-[#2F8386]"
+                                    placeholder="Search...">
                             </div>
                         </div>
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-[#2F8386] dark:bg-[#2F8386] text-white dark:text-white">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        No
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Nama Sekolah
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Kab/Kota
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Kecamatan
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Alamat
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Jenis Ketunaan
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Website Sekolah
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        {{-- Isi Content --}}
+                        <div class="grid grid-cols-3 gap-8">
+                            @for ($i = 1; $i <= 9; $i++)
+                                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
+                                    <img class="w-full" src="/assets/landing/test.png"
+                                        alt="Gambar {{ $i }}">
+                                    <div class="px-6 py-4">
+                                        <div class="font-bold text-xl mb-2">Judul {{ $i }}</div>
+                                        <p class="text-gray-700 text-base">
+                                            Deskripsi singkat tentang konten ini. Anda dapat menulis deskripsi yang
+                                            lebih panjang di sini.
+                                        </p>
+                                    </div>
+                                </div>
+                            @endfor
+                        </div>
+                        <div class="relative flex justify-between mt-5">
+                            <div class="font-bold text-black">Jumlah :</div>
+                            <div class="">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="inline-flex -space-x-px text-sm gap-2">
+                                        <li>
+                                            <a href="#"
+                                                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" aria-current="page"
+                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">4</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold ">5</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="section3"
+        {{-- <div id="section3"
             class="bg-[url({{ 'assets/landing/disdikbud.png' }})] w-full h-[500px] lg:min-h-screen bg-cover bg-no-repeat bg-[#000000]/[0.10] bg-blend-overlay flex justify-center items-center"
             style="background-size: 100% 100%;">
             <div class="lg:w-1/2 lg:p-5 relative">
@@ -613,7 +408,7 @@ Provinsi Lampung"
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </x-layout-landing>
 </body>
 
