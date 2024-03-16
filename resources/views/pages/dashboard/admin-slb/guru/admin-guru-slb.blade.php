@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Guru SLB</title>
+    <title>Admin | Guru SLB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-slb />
+                    <x-notifikasi-slb title="Notifikasi Dinas" />
                     <div class="">
                         <x-buttitle-landing ref="/admin-guru-slb/tambah" color="#FA8F21" width="[13rem]"
                             title="+ Tambah Guru"
@@ -124,143 +124,171 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $perPage = 10;
-                                    $dummyData = [
-                                        [
-                                            '2022/2023',
-                                            'Dummyyyyyyyyyyy 1',
-                                            'P',
-                                            '121212121212',
-                                            'PNS',
-                                            'Sertifikasi',
-                                            'loremloremlorem lorem',
-                                        ],
-                                        // ... (Data dummy tetap sama) ...
-                                    ];
-                                    $totalPages = ceil(count($dummyData) / $perPage);
-                                    $currentPage = request('page', 1);
-                                    $startIndex = ($currentPage - 1) * $perPage;
-                                    $slicedData = array_slice($dummyData, $startIndex, $perPage);
-                                @endphp
-                                @foreach ($slicedData as $index => $data)
-                                    <tr
-                                        class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                        <td class="px-3 py-2">{{ $index + 1 + $startIndex }}</td>
-                                        @foreach ($data as $item)
-                                            <td class="px-3 py-2">{{ $item }}</td>
-                                        @endforeach
-                                        <td class="px-3 py-2">
-                                            <div class="flex justify-items-center m-auto text-center gap-2">
-                                                <a href="/admin-guru-slb/edit" title="Edit">
-                                                    <div
-                                                        class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
-                                                        <x-svg-edit />
-                                                    </div>
-                                                </a>
-                                                <div class="div">
-                                                    <button data-modal-toggle="popup-modal-delete"
-                                                        class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer"
-                                                        title="Delete" type="button">
-                                                        <x-svg-delete />
-                                                    </button>
-                                                    <div id="popup-modal-delete" tabindex="-1" aria-hidden="true"
-                                                        class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
-                                                        <div class="relative p-4 w-full max-w-md max-h-full">
-                                                            <div class="relative bg-[#297785] rounded-lg shadow">
-                                                                <button type="button"
-                                                                    class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                                    data-modal-hide="popup-modal-delete">
-                                                                    <svg class="w-3 h-3" aria-hidden="true"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        fill="white" viewBox="0 0 14 14">
-                                                                        <path stroke="white" stroke-linecap="round"
-                                                                            stroke-linejoin="round" stroke-width="2"
-                                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                                    </svg>
-                                                                    <span class="sr-only">Close modal</span>
-                                                                </button>
-                                                                <div class="p-4 md:p-5 text-center">
-                                                                    <svg class="mx-auto mb-4 text-white w-12 h-12"
-                                                                        aria-hidden="true"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        fill="none" viewBox="0 0 20 20">
-                                                                        <path stroke="currentColor"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round" stroke-width="2"
-                                                                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                    </svg>
-                                                                    <h3 class="mb-5 text-lg font-normal text-white ">
-                                                                        Anda Yakin Ingin Menghapus Data Ini?</h3>
-                                                                    <button data-modal-hide="popup-modal-delete"
-                                                                        type="button"
-                                                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                                        Ya
-                                                                    </button>
-                                                                    <button data-modal-hide="popup-modal-delete"
-                                                                        type="button"
-                                                                        class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
-                                                                </div>
-                                                            </div>
+                                <?php
+                                $dummyData = [
+                                    [
+                                        'tahun' => '2024-03-13 23.59',
+                                        'namaGuru' => 'John Doe',
+                                        'jenisKelamin' => 'Laki-laki',
+                                        'NIP' => '1234567890',
+                                        'statusPNS' => 'PNS',
+                                        'sertifikasi' => 'Sertifikasi',
+                                        'bidangStudi' => 'Matematika',
+                                    ],
+                                    [
+                                        'tahun' => '2024-03-13 23.59',
+                                        'namaGuru' => 'Jane Doeeeeeeeeeeeeeeeee',
+                                        'jenisKelamin' => 'Perempuan',
+                                        'NIP' => '0987654321',
+                                        'statusPNS' => 'Non-PNS',
+                                        'sertifikasi' => 'Non-Sertifikasi',
+                                        'bidangStudi' => 'Bahasa Inggris',
+                                    ],
+                                ];
+                                ?>
+                                <?php foreach ($dummyData as $index => $data): ?>
+                                <tr
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
+                                    <td class="px-3 py-2"><?= $index + 1 ?></td>
+                                    <td class="px-3 py-2"><?= $data['tahun'] ?></td>
+                                    <td class="px-3 py-2">
+                                        <?php
+                                        $namaGuru = $data['namaGuru'];
+                                        echo strlen($namaGuru) > 15 ? substr($namaGuru, 0, 15) . '...' : $namaGuru;
+                                        ?>
+                                    </td>
+                                    <td class="px-3 py-2"><?= $data['jenisKelamin'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['NIP'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['statusPNS'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['sertifikasi'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['bidangStudi'] ?></td>
+                                    <td class="px-3 py-2">
+                                        <div class="flex justify-items-center m-auto text-center gap-2">
+                                            <a href="/admin-guru-slb/edit" title="Edit">
+                                                <div
+                                                    class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
+                                                    <x-svg-edit />
+                                                </div>
+                                            </a>
+                                            <div class="div">
+                                                <button
+                                                    class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
+                                                    title="Delete" type="button" data-index="<?= $index ?>">
+                                                    <x-svg-delete />
+                                                </button>
+                                            </div>
+                                            <?php endforeach; ?>
+                                            <!-- Modal -->
+                                            <div id="popup-modal" tabindex="-1" aria-hidden="true"
+                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                                <div class="relative p-4 w-full max-w-md max-h-full">
+                                                    <div class="relative bg-[#297785] rounded-lg shadow">
+                                                        <button type="button"
+                                                            class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                            data-modal-hide="popup-modal-delete">
+                                                            <svg class="w-3 h-3" aria-hidden="true"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="white"
+                                                                viewBox="0 0 14 14">
+                                                                <path stroke="white" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="2"
+                                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="p-4 md:p-5 text-center">
+                                                            <svg class="mx-auto mb-4 text-white w-12 h-12"
+                                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none" viewBox="0 0 20 20">
+                                                                <path stroke="currentColor" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="2"
+                                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                            </svg>
+                                                            <h3 class="mb-5 text-lg font-normal text-white ">
+                                                                Anda Yakin Ingin Menghapus Data Ini?</h3>
+                                                            <button data-modal-hide="popup-modal-ya" type="button"
+                                                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                                Ya
+                                                            </button>
+                                                            <button data-modal-hide="popup-modal-tidak"
+                                                                aria-hidden="true" type="button"
+                                                                class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <script>
-                                                    const modal = document.getElementById('popup-modal-delete');
-
-                                                    const toggleButton = document.querySelector('[data-modal-toggle="popup-modal-delete"]');
-                                                    toggleButton.addEventListener('click', () => {
-                                                        modal.classList.remove('hidden');
-                                                        modal.setAttribute('aria-hidden', 'false');
-                                                        modal.setAttribute('tabindex', '0');
-                                                    });
-
-                                                    const closeButton = document.querySelector('[data-modal-hide="popup-modal-delete"]');
-                                                    closeButton.addEventListener('click', () => {
-                                                        modal.classList.add('hidden');
-                                                        modal.setAttribute('aria-hidden', 'true');
-                                                        modal.setAttribute('tabindex', '-1');
-                                                    });
-
-                                                    const confirmButtons = document.querySelectorAll('[data-modal-hide="popup-modal-delete"]');
-                                                    confirmButtons.forEach(button => {
-                                                        button.addEventListener('click', () => {
-                                                            modal.classList.add('hidden');
-                                                            modal.setAttribute('aria-hidden', 'true');
-                                                            modal.setAttribute('tabindex', '-1');
+                                            </div>
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function() {
+                                                    const deleteButtons = document.querySelectorAll('.delete-button');
+                                                    deleteButtons.forEach(button => {
+                                                        button.addEventListener('click', function() {
+                                                            const index = this.dataset.index;
+                                                            const modal = document.getElementById('popup-modal');
+                                                            modal.classList.remove('hidden');
+                                                            modal.setAttribute('aria-hidden', 'false');
+                                                            modal.setAttribute('tabindex', '0');
+                                                            const modalTidak = document.getElementById('popup-modal');
+                                                            modalTidak.classList.remove('hidden');
+                                                            modalTidak.setAttribute('aria-hidden', 'false');
+                                                            modalTidak.setAttribute('tabindex', '0');
+                                                            const closeButton = modal.querySelector(
+                                                                '[data-modal-hide="popup-modal-delete"]');
+                                                            closeButton.addEventListener('click', () => {
+                                                                modal.classList.add('hidden');
+                                                                modal.setAttribute('aria-hidden', 'true');
+                                                                modal.setAttribute('tabindex', '-1');
+                                                            });
+                                                            const closeButtonTidak = modalTidak.querySelector(
+                                                                '[data-modal-hide="popup-modal-tidak"]');
+                                                            closeButtonTidak.addEventListener('click', () => {
+                                                                modalTidak.classList.add('hidden');
+                                                                modalTidak.setAttribute('aria-hidden', 'true');
+                                                                modalTidak.setAttribute('tabindex', '-1');
+                                                            });
                                                         });
                                                     });
-                                                </script>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                });
+                                            </script>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah : {{ count($dummyData) }}</div>
+                        <div class="font-bold text-black">Jumlah :</div>
                         <div class="">
-                            <ul class="inline-flex -space-x-px text-sm gap-2">
-                                @php
-                                    $currentPage = request('page', 1);
-                                    $totalPages = ceil(count($dummyData) / $perPage);
-                                @endphp
-                                <li>
-                                    <a href="{{ $currentPage > 1 ? '?page=' . ($currentPage - 1) : '#' }}"
-                                        class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] @if ($currentPage == 1) cursor-not-allowed opacity-50 @else hover:text-[#D87815] @endif dark:text-[#FA8F21] font-bold">Previous</a>
-                                </li>
-                                @for ($i = 1; $i <= $totalPages; $i++)
+                            <nav aria-label="Page navigation example">
+                                <ul class="inline-flex -space-x-px text-sm gap-2">
                                     <li>
-                                        <a href="{{ $i != $currentPage ? '?page=' . $i : '#' }}"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight @if ($i == $currentPage) text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-black dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] font-bold @else text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold @endif">{{ $i }}</a>
+                                        <a href="#"
+                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
                                     </li>
-                                @endfor
-                                <li>
-                                    <a href="{{ $currentPage < $totalPages ? '?page=' . ($currentPage + 1) : '#' }}"
-                                        class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] @if ($currentPage == $totalPages) cursor-not-allowed opacity-50 @else hover:text-[#D87815] @endif dark:text-[#FA8F21] font-bold">Next</a>
-                                </li>
-                            </ul>
+                                    <li>
+                                        <a href="#"
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" aria-current="page"
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>

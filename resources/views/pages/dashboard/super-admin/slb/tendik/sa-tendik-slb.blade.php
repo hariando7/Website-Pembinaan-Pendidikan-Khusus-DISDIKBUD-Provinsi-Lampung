@@ -60,7 +60,8 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1" id="moving-border">
+            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1"
+                id="moving-border">
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar">
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">
@@ -125,7 +126,6 @@
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
                             <thead class="text-xs text-white uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
                                 <tr>
-                                <tr>
                                     <th scope="col" class="px-3 py-2">
                                         No
                                     </th>
@@ -139,14 +139,10 @@
                                         JK
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Nama Sekolah
-                                    </th>
-                                    <th scope="col" class="px-3 py-2">
                                         NIP
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        PNS/
-                                        NON
+                                        PNS/NON
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Bidang Tugas/Pekerjaan
@@ -154,33 +150,51 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $dummyDataTendik = [
+                                    [
+                                        'tahun' => 2023,
+                                        'namaTendik' => 'John Doe',
+                                        'jenisKelamin' => 'Laki-laki',
+                                        'nip' => '1234567890',
+                                        'status' => 'PNS',
+                                        'bidangTugas' => 'Guru',
+                                    ],
+                                    [
+                                        'tahun' => 2022,
+                                        'namaTendik' => 'Jane Doe',
+                                        'jenisKelamin' => 'Perempuan',
+                                        'nip' => '0987654321',
+                                        'status' => 'NON',
+                                        'bidangTugas' => 'Staf Tata Usaha',
+                                    ],
+                                    [
+                                        'tahun' => 2023,
+                                        'namaTendik' => 'Michael Smith',
+                                        'jenisKelamin' => 'Laki-laki',
+                                        'nip' => '9876543210',
+                                        'status' => 'PNS',
+                                        'bidangTugas' => 'Kepala Sekolah',
+                                    ],
+                                ];
+                                ?>
+                                <?php foreach ($dummyDataTendik as $index => $data): ?>
                                 <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
+                                    <td class="px-3 py-2"><?= $index + 1 ?></td>
+                                    <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
-                                        1
+                                        <?php
+                                        $namaTendik = $data['namaTendik'];
+                                        echo strlen($namaTendik) > 15 ? substr($namaTendik, 0, 15) . '...' : $namaTendik;
+                                        ?>
                                     </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
+                                    <td class="px-3 py-2"><?= $data['jenisKelamin'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['nip'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['status'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['bidangTugas'] ?></td>
                                 </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

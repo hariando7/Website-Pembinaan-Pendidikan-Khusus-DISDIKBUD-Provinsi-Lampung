@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Sarpras SLB</title>
+    <title>Admin | Sarpras SLB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-slb />
+                    <x-notifikasi-slb title="Notifikasi Dinas"/>
                     <x-buttitle-landing ref="/admin-sarpras-slb/tambah" color="#FA8F21" width="[13rem]"
                         title="+ Tambah Sarpras" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
@@ -116,111 +116,124 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $dummyData = [
+                                    [
+                                        'tahun' => '2023',
+                                        'gedungRuang' => 'Gedung A',
+                                        'jumlahVol' => '100',
+                                        'totalLuas' => '500',
+                                        'kondisi' => 'Baik',
+                                        'catatan' => 'Tidak ada catatan',
+                                    ],
+                                    [
+                                        'tahun' => '2022',
+                                        'gedungRuang' => 'Gedung B',
+                                        'jumlahVol' => '50',
+                                        'totalLuas' => '300',
+                                        'kondisi' => 'Sedang',
+                                        'catatan' => 'Perlu perbaikan',
+                                    ],
+                                ];
+                                ?>
+                                <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
+                                    <td class="px-3 py-2"><?= $index + 1 ?></td>
+                                    <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
-                                        1
+                                        <?php
+                                        $gedungRuang = $data['gedungRuang'];
+                                        echo strlen($gedungRuang) > 15 ? substr($gedungRuang, 0, 15) . '...' : $gedungRuang;
+                                        ?>
                                     </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
-                                    <td class="px-3 py-2">
-                                        data 1
-                                    </td>
+                                    <td class="px-3 py-2"><?= $data['jumlahVol'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['totalLuas'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['kondisi'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['catatan'] ?></td>
                                     <td class="px-3 py-2">
                                         <div class="flex justify-items-center m-auto text-center gap-2">
-                                            <a href="/admin-pesertadidik-slb/edit" title="Edit">
+                                            <a href="/admin-sarpras-slb/edit" title="Edit">
                                                 <div
                                                     class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
-                                                    <svg width="23" height="20" viewBox="0 0 23 20"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M15.7125 13.4736L16.9624 12.2238C17.1576 12.0285 17.4974 12.1652 17.4974 12.4464V18.1253C17.4974 19.1603 16.6577 20 15.6227 20H1.87473C0.839721 20 0 19.1603 0 18.1253V4.37729C0 3.34228 0.839721 2.50256 1.87473 2.50256H12.5568C12.8341 2.50256 12.9747 2.83845 12.7794 3.03764L11.5296 4.28746C11.471 4.34604 11.3929 4.37729 11.3069 4.37729H1.87473V18.1253H15.6227V13.6923C15.6227 13.6103 15.654 13.5322 15.7125 13.4736ZM21.8288 5.59195L11.5725 15.8483L8.04179 16.2388C7.0185 16.3521 6.14754 15.4889 6.2608 14.4578L6.65137 10.9271L16.9077 0.6708C17.8021 -0.2236 19.2472 -0.2236 20.1377 0.6708L21.8249 2.35805C22.7193 3.25245 22.7193 4.70146 21.8288 5.59195ZM17.97 6.79881L15.7008 4.52961L8.44408 11.7903L8.15896 14.3407L10.7094 14.0556L17.97 6.79881ZM20.5009 3.68598L18.8137 1.99873C18.6535 1.8386 18.3918 1.8386 18.2356 1.99873L17.0288 3.20559L19.298 5.47478L20.5048 4.26793C20.661 4.10389 20.661 3.84612 20.5009 3.68598Z"
-                                                            fill="white" />
-                                                    </svg>
+                                                    <x-svg-edit />
                                                 </div>
                                             </a>
                                             <div class="div">
-                                                <button data-modal-toggle="popup-modal-delete"
-                                                    class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer"
-                                                    title="Delete" type="button">
+                                                <button
+                                                    class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
+                                                    title="Delete" type="button" data-index="<?= $index ?>">
                                                     <x-svg-delete />
                                                 </button>
-                                                <div id="popup-modal-delete" tabindex="-1" aria-hidden="true"
-                                                    class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
-                                                    <div class="relative p-4 w-full max-w-md max-h-full">
-                                                        <div class="relative bg-[#297785] rounded-lg shadow">
-                                                            <button type="button"
-                                                                class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                                data-modal-hide="popup-modal-delete">
-                                                                <svg class="w-3 h-3" aria-hidden="true"
-                                                                    xmlns="http://www.w3.org/2000/svg" fill="white"
-                                                                    viewBox="0 0 14 14">
-                                                                    <path stroke="white" stroke-linecap="round"
-                                                                        stroke-linejoin="round" stroke-width="2"
-                                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                                </svg>
-                                                                <span class="sr-only">Close modal</span>
+                                            </div>
+                                            <?php endforeach; ?>
+                                            <!-- Modal -->
+                                            <div id="popup-modal" tabindex="-1" aria-hidden="true"
+                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                                <div class="relative p-4 w-full max-w-md max-h-full">
+                                                    <div class="relative bg-[#297785] rounded-lg shadow">
+                                                        <button type="button"
+                                                            class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                            data-modal-hide="popup-modal-delete">
+                                                            <svg class="w-3 h-3" aria-hidden="true"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="white"
+                                                                viewBox="0 0 14 14">
+                                                                <path stroke="white" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="2"
+                                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="p-4 md:p-5 text-center">
+                                                            <svg class="mx-auto mb-4 text-white w-12 h-12"
+                                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none" viewBox="0 0 20 20">
+                                                                <path stroke="currentColor" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="2"
+                                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                            </svg>
+                                                            <h3 class="mb-5 text-lg font-normal text-white ">
+                                                                Anda Yakin Ingin Menghapus Data Ini?</h3>
+                                                            <button data-modal-hide="popup-modal-ya" type="button"
+                                                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                                Ya
                                                             </button>
-                                                            <div class="p-4 md:p-5 text-center">
-                                                                <svg class="mx-auto mb-4 text-white w-12 h-12"
-                                                                    aria-hidden="true"
-                                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                    viewBox="0 0 20 20">
-                                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                                        stroke-linejoin="round" stroke-width="2"
-                                                                        d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                </svg>
-                                                                <h3 class="mb-5 text-lg font-normal text-white ">
-                                                                    Anda Yakin Ingin Menghapus Data Ini?</h3>
-                                                                <button data-modal-hide="popup-modal-delete"
-                                                                    type="button"
-                                                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                                    Ya
-                                                                </button>
-                                                                <button data-modal-hide="popup-modal-delete"
-                                                                    type="button"
-                                                                    class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
-                                                            </div>
+                                                            <button data-modal-hide="popup-modal-tidak"
+                                                                aria-hidden="true" type="button"
+                                                                class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <script>
-                                                const modal = document.getElementById('popup-modal-delete');
-
-                                                const toggleButton = document.querySelector('[data-modal-toggle="popup-modal-delete"]');
-                                                toggleButton.addEventListener('click', () => {
-                                                    modal.classList.remove('hidden');
-                                                    modal.setAttribute('aria-hidden', 'false');
-                                                    modal.setAttribute('tabindex', '0');
-                                                });
-
-                                                const closeButton = document.querySelector('[data-modal-hide="popup-modal-delete"]');
-                                                closeButton.addEventListener('click', () => {
-                                                    modal.classList.add('hidden');
-                                                    modal.setAttribute('aria-hidden', 'true');
-                                                    modal.setAttribute('tabindex', '-1');
-                                                });
-
-                                                const confirmButtons = document.querySelectorAll('[data-modal-hide="popup-modal-delete"]');
-                                                confirmButtons.forEach(button => {
-                                                    button.addEventListener('click', () => {
-                                                        modal.classList.add('hidden');
-                                                        modal.setAttribute('aria-hidden', 'true');
-                                                        modal.setAttribute('tabindex', '-1');
+                                                document.addEventListener('DOMContentLoaded', function() {
+                                                    const deleteButtons = document.querySelectorAll('.delete-button');
+                                                    deleteButtons.forEach(button => {
+                                                        button.addEventListener('click', function() {
+                                                            const index = this.dataset.index;
+                                                            const modal = document.getElementById('popup-modal');
+                                                            modal.classList.remove('hidden');
+                                                            modal.setAttribute('aria-hidden', 'false');
+                                                            modal.setAttribute('tabindex', '0');
+                                                            const modalTidak = document.getElementById('popup-modal');
+                                                            modalTidak.classList.remove('hidden');
+                                                            modalTidak.setAttribute('aria-hidden', 'false');
+                                                            modalTidak.setAttribute('tabindex', '0');
+                                                            const closeButton = modal.querySelector(
+                                                                '[data-modal-hide="popup-modal-delete"]');
+                                                            closeButton.addEventListener('click', () => {
+                                                                modal.classList.add('hidden');
+                                                                modal.setAttribute('aria-hidden', 'true');
+                                                                modal.setAttribute('tabindex', '-1');
+                                                            });
+                                                            const closeButtonTidak = modalTidak.querySelector(
+                                                                '[data-modal-hide="popup-modal-tidak"]');
+                                                            closeButtonTidak.addEventListener('click', () => {
+                                                                modalTidak.classList.add('hidden');
+                                                                modalTidak.setAttribute('aria-hidden', 'true');
+                                                                modalTidak.setAttribute('tabindex', '-1');
+                                                            });
+                                                        });
                                                     });
                                                 });
                                             </script>

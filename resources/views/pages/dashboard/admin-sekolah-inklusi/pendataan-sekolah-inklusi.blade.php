@@ -248,8 +248,9 @@
                 <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] lg:h-full">
             </a>
             <div class="flex items-start">
-                <x-buttitle-landing ref="/ai-form-pendataan" color="#FA8F21" width="[8rem]" title="Notifikasi"
-                    extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
+                {{-- <x-buttitle-landing ref="/ai-form-pendataan" color="#FA8F21" width="[8rem]" title="Notifikasi"
+                    extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" /> --}}
+                <x-notifikasi-sekolah-inklusi />
             </div>
         </div>
         <div class="box relative w-[845px] h-[820px] m-auto flex items-center m-auto mt-52 lg:mt-5 lg:mb-5">

@@ -14,56 +14,46 @@
         /* peserta didik slb */
         .icon-peserta-didik-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-peserta-didik-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* guru slb */
         .icon-guru-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-guru-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* tendik slb */
         .icon-tendik-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-tendik-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* sarpras slb */
         .icon-sarpras-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-sarpras-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* kebutuhan guru slb */
         .icon-kebutuhan-guru-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-kebutuhan-guru-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
     </style>
     <style>
@@ -92,7 +82,7 @@
         <x-dashboard-side-bar-sa />
         <div class="pl-[280px] h-screen pt-10 pr-5 pb-28">
             <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">SLB Provinsi
+                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Sekolah Luar Biasa Provinsi
                     Lampung
                 </div>
                 <div class="flex justify-end gap-5">

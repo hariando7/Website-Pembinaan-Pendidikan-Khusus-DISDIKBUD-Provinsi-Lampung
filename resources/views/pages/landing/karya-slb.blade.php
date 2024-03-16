@@ -209,12 +209,13 @@ Provinsi Lampung"
             imgPath="{{ asset('assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
         <div id="section1" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 pt-10 lg:pt-0">
             <div class="lg:w-full lg:flex p-5 lg:p-20">
-                <div class="lg:pl-16">
+                <div class="">
                     <div class="text-2xl lg:text-5xl font-bold text-black pb-5 lg:pb-10 text-center lg:text-center">
                         Karya Sekolah Luar Biasa</div>
                     <div class="text-base lg:text-lg font-thin text-black text-justify">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s,
+                        SLB vokasi mengacu pada kurikulum SLB yang lebih menekankan pada pendidikan keterampilan.
+                        Tujuannya adalah agar setelah lulus dari sekolah, ABK atau PDPD memiliki modal untuk lebih
+                        mandiri, sehingga di masa depan tidak menjadi beban bagi keluarga atau masyarakat di sekitarnya.
                     </div>
                 </div>
             </div>
@@ -322,12 +323,7 @@ Provinsi Lampung"
                             <div class="relative">
                                 <div
                                     class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-400 dark:text-gray-400" aria-hidden="true"
-                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
+                                    <x-svg-search />
                                 </div>
                                 <input type="text" id="table-search"
                                     class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-[750px] bg-white focus:ring-[#2F8386] focus:border-[#2F8386] dark:bg-white dark:border-[#2F8386] dark:placeholder-[#2F8386] dark:text-black dark:focus:ring-[#2F8386] dark:focus:border-[#2F8386]"
@@ -391,24 +387,6 @@ Provinsi Lampung"
                 </div>
             </div>
         </div>
-        {{-- <div id="section3"
-            class="bg-[url({{ 'assets/landing/disdikbud.png' }})] w-full h-[500px] lg:min-h-screen bg-cover bg-no-repeat bg-[#000000]/[0.10] bg-blend-overlay flex justify-center items-center"
-            style="background-size: 100% 100%;">
-            <div class="lg:w-1/2 lg:p-5 relative">
-                <div class="absolute inset-0 bg-white opacity-20 rounded-lg"></div>
-                <div
-                    class="box relative w-[350px] h-[250px] lg:w-[600px] lg:h-[300px] m-auto flex items-center m-auto">
-                    <form autocomplete="off" class="">
-                        <h2 class="mb-5 text-md lg:text-2xl">Portal Pendataan Sekolah Inklusi Dinas Pendidikan dan
-                            Kebudayaan Provinsi
-                            Lampung
-                        </h2>
-                        <x-buttitle-landing ref="/login-si" color="#FA8F21" width="[10rem]" title="Selengkapnya"
-                            extendClass="text-white text-center m-auto mt-2 lg:mt-6 py-2 lg:py-3" />
-                    </form>
-                </div>
-            </div>
-        </div> --}}
     </x-layout-landing>
 </body>
 

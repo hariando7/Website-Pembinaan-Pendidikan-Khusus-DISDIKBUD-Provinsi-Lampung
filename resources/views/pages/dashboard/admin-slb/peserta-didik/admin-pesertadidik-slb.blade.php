@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Peserta Didik SLB</title>
+    <title>Admin | Peserta Didik SLB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
@@ -19,7 +19,6 @@
 
         .hide-scrollbar::-webkit-scrollbar {
             width: 6px;
-            /* Atur lebar scrollbar sesuai keinginan */
         }
 
         .hide-scrollbar::-webkit-scrollbar-thumb {
@@ -57,7 +56,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-slb />
+                    <x-notifikasi-slb title="Notifikasi Dinas"/>
                     <div class="justify-end flex right-0">
                         <x-buttitle-landing ref="/admin-pesertadidik-slb/tambah" color="#FA8F21" width="[13rem]"
                             title="+ Tambah Peserta Didik"

@@ -113,6 +113,9 @@ class GeneralPage extends Controller
     function editadminslb () {
         return view('pages/dashboard/super-admin/kelola-admin-slb/edit/edit-admin-slb');
     }
+    function lihatadminslb () {
+        return view('pages/dashboard/super-admin/kelola-admin-slb/lihat/lihat-admin-slb');
+    }
     // SLB Dashboard
     function sadashboardslb () {
         return view('pages/dashboard/super-admin/slb/sa-dashboard-slb');
@@ -205,6 +208,5 @@ class GeneralPage extends Controller
         return view('pages/dashboard/admin-sekolah-inklusi/pendataan-sekolah-inklusi');
     }
     // Akhir Admin Sekolah Inklusi
-    
     
 }

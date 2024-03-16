@@ -83,6 +83,7 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/kelola-admin-slb', 'kelolaadminslb');
     Route::get('/kelola-admin-slb/tambah', 'tambahadminslb');
     Route::get('/kelola-admin-slb/edit', 'editadminslb');
+    Route::get('/kelola-admin-slb/lihat', 'lihatadminslb');
 
     // SLB Dashboard
     Route::get('/sa-dashboard-slb', 'sadashboardslb');
@@ -114,6 +115,7 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/sa-pendataan-si', 'sapendataansi');
     Route::get('/sa-pendataan-si/edit', 'sapendataansiedit');
     Route::get('/sa-pendataan-si/lihat', 'sapendataansilihat');
+
 
 });
 

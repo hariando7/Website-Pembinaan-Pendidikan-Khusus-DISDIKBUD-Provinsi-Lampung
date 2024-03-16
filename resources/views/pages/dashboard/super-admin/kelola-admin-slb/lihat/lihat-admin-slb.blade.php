@@ -5,15 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kelola Admin SLB | Tambah</title>
+    <title>Kelola Admin SLB | Lihat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <!-- Other meta tags and CSS links -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-Qw6AaRkX3kZnwzI+HMC2+dmfzDE32T+8bG5tZX1Pm+mv6AF3y0nKiYxP1o3gRrY7sDKPfA1r95qDQvUNgeGuFg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @keyframes moving-border {
             0% {
@@ -40,7 +36,7 @@
         <x-dashboard-side-bar-sa />
         <div class="pl-[280px] h-full pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Tambah Admin SLB Provinsi Lampung
+                <div class="text-[#297785] font-bold text-[32px]">Lihat Admin SLB Provinsi Lampung
                 </div>
                 <div class="">
                     <x-buttitle-landing ref="/kelola-admin-slb" color="#FA8F21" width="[7rem]" title="Kembali"
@@ -56,13 +52,13 @@
                             <label htmlFor="email_sekolah">Email Sekolah</label>
                             <input type="email" id="email_sekolah"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Email Aktif Sekolah" required />
+                                placeholder="contoh@sekolah.com" value="binainsani@gmail.com" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4 relative">
                             <label htmlFor="password">Password</label>
                             <input type="password" id="password"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 pl-2 pr-10 w-full"
-                                placeholder="Masukkan Password" required />
+                                placeholder="********" value="binainsani123" required />
                             <x-icon-password />
                         </div>
                     </div>
@@ -73,13 +69,13 @@
                             <label htmlFor="nama_sekolah">Nama Sekolah</label>
                             <input type="text" id="nama_sekolah"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Sekolah" required />
+                                placeholder="SMA Negeri 1" value="SLB Bina Insani" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="npsn">NPSN</label>
                             <input type="text" id="npsn"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan NPSN Sekolah" required />
+                                placeholder="12345678" value="45678890" required />
                         </div>
                     </div>
                 </div>
@@ -141,15 +137,25 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="alamat">Alamat</label>
-                            <input type="text" id="alamat"
+                            <input type="text" id="alamat" value="Jln. Drs Warsito"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Alamat Sekolah" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
-                            <input type="text" id="jenis_ketunaan"
+                            <input type="text" id="jenis_ketunaan" value="Tunan Wicara, Tuna Grahita, Tuna Daksa"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />
+                        </div>
+                    </div>
+                </div>
+                <div class=''>
+                    <div class="gap-x-2">
+                        <div class="flex flex-col flex-1 mb-4">
+                            <label htmlFor="link_website">Link Website Sekolah</label>
+                            <input type="url" id="link_website" value="www.website.com"
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                placeholder="Masukkan Link Website Sekolah" required />
                         </div>
                     </div>
                 </div>
@@ -162,12 +168,6 @@
                                 placeholder="Masukkan Link Website Sekolah" required />
                         </div>
                     </div>
-                </div>
-                <div class="flex justify-end mt-4">
-                    <button type="submit"
-                        class="flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
-                        + Simpan
-                    </button>
                 </div>
             </div>
         </div>

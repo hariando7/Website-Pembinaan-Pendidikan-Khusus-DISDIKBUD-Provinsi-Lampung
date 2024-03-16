@@ -238,11 +238,11 @@
                 <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] lg:h-full">
             </div>
             <div class="flex items-start">
-                <x-buttitle-landing ref="/kelola-admin-slb" color="#FA8F21" width="[10rem]" title="Home"
+                <x-buttitle-landing ref="/admin-pesertadidik-slb" color="#FA8F21" width="[10rem]" title="Home"
                     extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
             </div>
         </div>
-        <div class="box relative w-[400px] h-[500px] m-auto flex items-center m-auto mt-20">
+        <div class="box relative w-[400px] h-[500px] m-auto flex items-center m-auto mt-10">
             <form autocomplete="off" class="">
                 <h2 class="mb-5">selamat datang
                     di Dashboard SLB Bidang

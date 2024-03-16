@@ -58,18 +58,80 @@
                     <x-buttitle-landing ref="/sa-pendataan-si" color="#FA8F21" width="[8rem]" title="kembali"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
-                <div class="flex justify-center items-center">
-                    <div class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer" title="Delete">
-                        <svg width="18" height="21" viewBox="0 0 18 21" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10.4688 16.25H11.4062C11.5306 16.25 11.6498 16.2006 11.7377 16.1127C11.8256 16.0248 11.875 15.9056 11.875 15.7812V7.34375C11.875 7.21943 11.8256 7.1002 11.7377 7.01229C11.6498 6.92439 11.5306 6.875 11.4062 6.875H10.4688C10.3444 6.875 10.2252 6.92439 10.1373 7.01229C10.0494 7.1002 10 7.21943 10 7.34375V15.7812C10 15.9056 10.0494 16.0248 10.1373 16.1127C10.2252 16.2006 10.3444 16.25 10.4688 16.25ZM16.875 3.125H13.6559L12.3277 0.910156C12.1611 0.632428 11.9253 0.402614 11.6434 0.243108C11.3615 0.0836025 11.043 -0.000154039 10.7191 2.12674e-07H6.78086C6.45709 -1.90925e-05 6.13883 0.0838016 5.85707 0.243301C5.57531 0.4028 5.33965 0.632542 5.17305 0.910156L3.84414 3.125H0.625C0.45924 3.125 0.300269 3.19085 0.183058 3.30806C0.065848 3.42527 0 3.58424 0 3.75L0 4.375C0 4.54076 0.065848 4.69973 0.183058 4.81694C0.300269 4.93415 0.45924 5 0.625 5H1.25V18.125C1.25 18.6223 1.44754 19.0992 1.79917 19.4508C2.15081 19.8025 2.62772 20 3.125 20H14.375C14.8723 20 15.3492 19.8025 15.7008 19.4508C16.0525 19.0992 16.25 18.6223 16.25 18.125V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375V3.75C17.5 3.58424 17.4342 3.42527 17.3169 3.30806C17.1997 3.19085 17.0408 3.125 16.875 3.125ZM6.7125 1.98867C6.73339 1.9539 6.76294 1.92515 6.79827 1.90523C6.8336 1.8853 6.8735 1.87489 6.91406 1.875H10.5859C10.6264 1.87495 10.6662 1.8854 10.7015 1.90532C10.7368 1.92524 10.7663 1.95396 10.7871 1.98867L11.4691 3.125H6.03086L6.7125 1.98867ZM14.375 18.125H3.125V5H14.375V18.125ZM6.09375 16.25H7.03125C7.15557 16.25 7.2748 16.2006 7.36271 16.1127C7.45061 16.0248 7.5 15.9056 7.5 15.7812V7.34375C7.5 7.21943 7.45061 7.1002 7.36271 7.01229C7.2748 6.92439 7.15557 6.875 7.03125 6.875H6.09375C5.96943 6.875 5.8502 6.92439 5.76229 7.01229C5.67439 7.1002 5.625 7.21943 5.625 7.34375V15.7812C5.625 15.9056 5.67439 16.0248 5.76229 16.1127C5.8502 16.2006 5.96943 16.25 6.09375 16.25Z"
-                                fill="white" />
-                        </svg>
+                <div class="div">
+                    <button class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
+                        title="Delete" type="button" data-index="">
+                        <x-svg-delete />
+                    </button>
+                </div>
+                <!-- Modal -->
+                <div id="popup-modal" tabindex="-1" aria-hidden="true"
+                    class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-[#297785] rounded-lg shadow">
+                            <button type="button"
+                                class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                data-modal-hide="popup-modal-delete">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="white" viewBox="0 0 14 14">
+                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 md:p-5 text-center">
+                                <svg class="mx-auto mb-4 text-white w-12 h-12" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <h3 class="mb-5 text-lg font-normal text-white ">
+                                    Anda Yakin Ingin Menghapus Data Ini?</h3>
+                                <button data-modal-hide="popup-modal-ya" type="button"
+                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                    Ya
+                                </button>
+                                <button data-modal-hide="popup-modal-tidak" aria-hidden="true" type="button"
+                                    class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const deleteButtons = document.querySelectorAll('.delete-button');
+                        deleteButtons.forEach(button => {
+                            button.addEventListener('click', function() {
+                                const index = this.dataset.index;
+                                const modal = document.getElementById('popup-modal');
+                                modal.classList.remove('hidden');
+                                modal.setAttribute('aria-hidden', 'false');
+                                modal.setAttribute('tabindex', '0');
+                                const modalTidak = document.getElementById('popup-modal');
+                                modalTidak.classList.remove('hidden');
+                                modalTidak.setAttribute('aria-hidden', 'false');
+                                modalTidak.setAttribute('tabindex', '0');
+                                const closeButton = modal.querySelector(
+                                    '[data-modal-hide="popup-modal-delete"]');
+                                closeButton.addEventListener('click', () => {
+                                    modal.classList.add('hidden');
+                                    modal.setAttribute('aria-hidden', 'true');
+                                    modal.setAttribute('tabindex', '-1');
+                                });
+                                const closeButtonTidak = modalTidak.querySelector(
+                                    '[data-modal-hide="popup-modal-tidak"]');
+                                closeButtonTidak.addEventListener('click', () => {
+                                    modalTidak.classList.add('hidden');
+                                    modalTidak.setAttribute('aria-hidden', 'true');
+                                    modalTidak.setAttribute('tabindex', '-1');
+                                });
+                            });
+                        });
+                    });
+                </script>
             </div>
-            <div class="relative rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-5" id="moving-border">
+            <div class="relative rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-5"
+                id="moving-border">
                 <div
                     class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar font-bold text-black">
                     {{-- isi konten disini --}}
