@@ -280,7 +280,7 @@
                         </li>
                     </div>
                     <li class="absolute w-full -inset-x-0 bottom-0">
-                        <a type="button" id="logOut" href="/login"
+                        <a type="button" id="logOut" href="/logout"
                             class="gap-3 w-52 py-1 mb-5 flex items-center justify-center m-auto rounded-md bg-[#FF0000] hover:bg-[#D51717] text-white p-2 pt-2 pb-2">
                             Logout
                         </a>

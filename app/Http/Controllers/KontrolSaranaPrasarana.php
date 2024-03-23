@@ -106,17 +106,17 @@ class KontrolSaranaPrasarana extends Controller
 
         if ($saranaPrasarana){
             if ($saranaPrasarana -> sekolah === $pengguna -> sekolah) {
-                if ($validasi['nama']) {
-                    $saranaPrasarana -> nama = $validasi['nama'];
+                if ($req['nama']) {
+                    $saranaPrasarana -> nama = $req['nama'];
                 }
-                if ($validasi['jumlah']) {
-                    $saranaPrasarana -> jumlah = $validasi['jumlah'];
+                if ($req['jumlah']) {
+                    $saranaPrasarana -> jumlah = $req['jumlah'];
                 }
-                if ($validasi['kondisi']) {
-                    $saranaPrasarana -> kondisi = $validasi['kondisi'];
+                if ($req['kondisi']) {
+                    $saranaPrasarana -> kondisi = $req['kondisi'];
                 }
-                if ($validasi['keterangan']) {
-                    $saranaPrasarana -> keterangan = $validasi['keterangan'];
+                if ($req['keterangan']) {
+                    $saranaPrasarana -> keterangan = $req['keterangan'];
                 }
 
                 if ($req -> hasFile('daftarGambar')) {

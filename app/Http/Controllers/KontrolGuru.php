@@ -90,23 +90,23 @@ class KontrolGuru extends Controller
 
         if ($guru){
             if ($guru -> sekolah === $pengguna -> sekolah) {
-                if ($validasi['nama']) {
-                    $guru -> nama = $validasi['nama'];
+                if ($req['nama']) {
+                    $guru -> nama = $req['nama'];
                 }
-                if ($validasi['jenisKelamin']) {
-                    $guru -> jenisKelamin = $validasi['jenisKelamin'];
+                if ($req['jenisKelamin']) {
+                    $guru -> jenisKelamin = $req['jenisKelamin'];
                 }
-                if ($validasi['nip']) {
-                    $guru -> nip = $validasi['nip'];
+                if ($req['nip']) {
+                    $guru -> nip = $req['nip'];
                 }
-                if ($validasi['statusPNS']) {
-                    $guru -> statusPNS = $validasi['statusPNS'];
+                if ($req['statusPNS']) {
+                    $guru -> statusPNS = $req['statusPNS'];
                 }
-                if ($validasi['sertifikasi']) {
-                    $guru -> sertifikasi = $validasi['sertifikasi'];
+                if ($req['sertifikasi']) {
+                    $guru -> sertifikasi = $req['sertifikasi'];
                 }
-                if ($validasi['bidangStudi']) {
-                    $guru -> bidangStudi = $validasi['bidangStudi'];
+                if ($req['bidangStudi']) {
+                    $guru -> bidangStudi = $req['bidangStudi'];
                 }
 
                 $guru -> save();

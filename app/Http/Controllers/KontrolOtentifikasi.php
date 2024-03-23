@@ -24,10 +24,13 @@ class KontrolOtentifikasi extends Controller
         if (Auth::attempt($validasi) && $pengguna && Hash::check($validasi['password'], $pengguna -> password)) {
             $req -> session() -> regenerate();
 
-            return 'true';
+            if ($pengguna -> akses === 'superAdmin') {
+                return redirect('/sa-kelola-notifikasi');
+            }
+            return redirect('/admin-home-slb');
         }
 
-        return 'false';
+        return redirect('/login');
     }
 
     public function lupaPassword (Request $req) {

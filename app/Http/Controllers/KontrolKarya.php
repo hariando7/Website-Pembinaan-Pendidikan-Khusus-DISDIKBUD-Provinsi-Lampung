@@ -88,16 +88,16 @@ class KontrolKarya extends Controller
 
         if ($karya){
             if ($karya -> sekolah === $pengguna -> sekolah) {
-                if ($validasi['nama']) {
-                    $karya -> nama = $validasi['nama'];
+                if ($req['nama']) {
+                    $karya -> nama = $req['nama'];
                 }
-                if ($validasi['deskripsi']) {
-                    $karya -> deskripsi = $validasi['deskripsi'];
+                if ($req['deskripsi']) {
+                    $karya -> deskripsi = $req['deskripsi'];
                 }
                 if ($req -> file('gambar')) {
                     Storage::delete($karya -> gambar);
-                    $validasi['gambar'] = $req -> file('gambar') -> store('karya');
-                    $karya -> gambar = $validasi['gambar'];
+                    $req['gambar'] = $req -> file('gambar') -> store('karya');
+                    $karya -> gambar = $req['gambar'];
                 }
 
                 $karya -> save();

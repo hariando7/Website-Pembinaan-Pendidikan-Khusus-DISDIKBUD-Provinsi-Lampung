@@ -88,20 +88,20 @@ class KontrolKebutuhanGuru extends Controller
         
         if ($kebutuhanGuru){
             if ($kebutuhanGuru -> sekolah === $pengguna -> sekolah) {
-                if ($validasi['mataPelajaran']) {
-                    $kebutuhanGuru -> mataPelajaran = $validasi['mataPelajaran'];
+                if ($req['mataPelajaran']) {
+                    $kebutuhanGuru -> mataPelajaran = $req['mataPelajaran'];
                 }
-                if ($validasi['jumlahDibutuhkan']) {
-                    $kebutuhanGuru -> jumlahDibutuhkan = $validasi['jumlahDibutuhkan'];
+                if ($req['jumlahDibutuhkan']) {
+                    $kebutuhanGuru -> jumlahDibutuhkan = $req['jumlahDibutuhkan'];
                 }
-                if ($validasi['jumlahSaatIni']) {
-                    $kebutuhanGuru -> jumlahSaatIni = $validasi['jumlahSaatIni'];
+                if ($req['jumlahSaatIni']) {
+                    $kebutuhanGuru -> jumlahSaatIni = $req['jumlahSaatIni'];
                 }
-                if ($validasi['lebihKurang']) {
-                    $kebutuhanGuru -> lebihKurang = $validasi['lebihKurang'];
+                if ($req['lebihKurang']) {
+                    $kebutuhanGuru -> lebihKurang = $req['lebihKurang'];
                 }
-                if ($validasi['keterangan']) {
-                    $kebutuhanGuru -> keterangan = $validasi['keterangan'];
+                if ($req['keterangan']) {
+                    $kebutuhanGuru -> keterangan = $req['keterangan'];
                 }
 
                 $kebutuhanGuru -> save();

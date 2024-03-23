@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GeneralPage;
+use App\Http\Controllers\KontrolOtentifikasi;
+use App\Http\Controllers\KontrolPengguna;
+use App\Http\Controllers\KontrolPesertaDidik;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +33,7 @@ Route::controller(GeneralPage::class) -> group(function () {
     // Akhir Landing Page
 
     // Awal Auth Admin SLB dan SA
-    Route::get('/login', 'login');
+    Route::get('/login', 'login') -> name('login');
     Route::get('/lupa-password', 'lupapassword');
     Route::get('/otp', 'otp');
     Route::get('/new-password', 'newpassword');
@@ -41,7 +44,7 @@ Route::controller(GeneralPage::class) -> group(function () {
     // Akhir Auth Sekolah Inklusi
 
     // Awal Admin Home SLB
-    Route::get('/admin-home-slb', 'adminhomeslb');
+    Route::get('/admin-home-slb', 'adminhomeslb') -> middleware('admin');
     // Guru
     Route::get('/admin-guru-slb', 'adminguruslb');
     Route::get('/admin-guru-slb/tambah', 'admintambahguruslb');
@@ -51,9 +54,9 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/admin-kebutuhan-guru-slb/tambah', 'admintambahkebutuhanguruslb');
     Route::get('admin-kebutuhan-guru-slb/edit', 'admineditkebutuhanguruslb');
     // Peserta Didik
-    Route::get('/admin-pesertadidik-slb', 'adminpesertadidikslb');
+    // Route::get('/admin-pesertadidik-slb', 'adminpesertadidikslb');
     Route::get('/admin-pesertadidik-slb/tambah', 'admintambahpesertadidikslb');
-    Route::get('/admin-pesertadidik-slb/edit', 'admineditpesertadidikslb');
+    // Route::get('/admin-pesertadidik-slb/edit', 'admineditpesertadidikslb');
     // Sarpras
     Route::get('/admin-sarpras-slb', 'adminsarprasslb');
     Route::get('/admin-sarpras-slb/tambah', 'admintambahsarprasslb');
@@ -80,7 +83,7 @@ Route::controller(GeneralPage::class) -> group(function () {
     // akhir sa kelola notifikasi
 
     // Kelola Admin SLB
-    Route::get('/kelola-admin-slb', 'kelolaadminslb');
+    // Route::get('/kelola-admin-slb', 'kelolaadminslb');
     Route::get('/kelola-admin-slb/tambah', 'tambahadminslb');
     Route::get('/kelola-admin-slb/edit', 'editadminslb');
     Route::get('/kelola-admin-slb/lihat', 'lihatadminslb');
@@ -116,6 +119,32 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/sa-pendataan-si/edit', 'sapendataansiedit');
     Route::get('/sa-pendataan-si/lihat', 'sapendataansilihat');
     // Akhir Super Admin Sekolah Inklusi
+});
+
+Route::get('/home', function () {
+    return redirect('/login');
+});
+
+Route::controller(KontrolOtentifikasi::class) -> group(function () {
+    Route::post('/login', 'otentifikasi');
+    Route::get('/logout', 'keluar');
+});
+
+Route::controller(KontrolPengguna::class) -> group(function () {
+    Route::middleware('superAdmin') -> group(function () {
+        Route::get('/kelola-admin-slb', 'daftarPenggunaSuperAdmin');
+        Route::post('/kelola-admin-slb/tambah', 'tambah');
+    });
+});
+
+Route::controller(KontrolPesertaDidik::class) -> group(function () {
+    Route::middleware('admin') -> group(function () {
+        Route::get('/admin-pesertadidik-slb', 'daftarPesertaDidikAdmin');
+        Route::post('/admin-pesertadidik-slb/tambah', 'tambah');
+        Route::get('/admin-pesertadidik-slb/delete/{id}', 'hapus');
+        Route::get('/admin-pesertadidik-slb/edit/{id}', 'tampilanEdit');
+        Route::put('/admin-pesertadidik-slb/edit/{id}', 'ubah');
+    });
 });
 
 // Route::get('/slb', function () {

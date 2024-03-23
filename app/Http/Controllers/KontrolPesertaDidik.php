@@ -12,6 +12,17 @@ use App\Models\PesertaDidik;
 
 class KontrolPesertaDidik extends Controller
 {
+    // $dummyData = [
+    //     [
+    //         'id' => 1,
+    //         'tahun' => '2023',
+    //         'namaSiswa' => 'Rizkyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    //         'jenisKelamin' => 'Laki-laki',
+    //         'jenisKetunaan' => 'Tuna Rungu',
+    //         'kelas' => 'XII-A',
+    //         'romble' => '1A',
+    //     ],
+    // ];
     public function daftarPesertaDidikSuperAdmin (Request $req) {
         $pesertaDidik = $this -> daftarPesertaDidik($req);
 
@@ -21,7 +32,23 @@ class KontrolPesertaDidik extends Controller
     public function daftarPesertaDidikAdmin (Request $req) {
         $pesertaDidik = $this -> daftarPesertaDidik($req);
 
-        return json_encode($pesertaDidik);
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data -> id,
+                'tahun' => $data -> created_at,
+                'namaSiswa' => $data -> nama,
+                'jenisKelamin' => $data -> jenisKelamin,
+                'jenisKetunaan' => $data -> jenisKetunaan,
+                'kelas' => $data -> kelas,
+                'romble' => $data -> rombel,
+            ];
+        }, $pesertaDidik -> items());
+
+        // return json_encode($pesertaDidik);
+        return view('pages/dashboard/admin-slb/peserta-didik/admin-pesertadidik-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $pesertaDidik
+        ]);
     }
 
     public function daftarPesertaDidik (Request $req) {
@@ -75,7 +102,15 @@ class KontrolPesertaDidik extends Controller
 
         PesertaDidik::create($validasi);
         
-        return 'true';
+        return redirect('/admin-pesertadidik-slb');
+    }
+
+    public function tampilanEdit ($id) {
+        $pesertaDidik = PesertaDidik::find($id);
+        return view('pages/dashboard/admin-slb/peserta-didik/edit/edit-pesertadidik-slb', [
+            'id' => $id,
+            'DATA' => $pesertaDidik
+        ]);
     }
 
     public function ubah (Request $req) {
@@ -84,33 +119,35 @@ class KontrolPesertaDidik extends Controller
             'id' => 'required',
         ]);
 
+        // dd($validasi);
+
         $pesertaDidik = PesertaDidik::find($validasi['id']);
 
         if ($pesertaDidik){
             if ($pesertaDidik -> sekolah === $pengguna -> sekolah) {
-                if ($validasi['nama']) {
-                    $pesertaDidik -> nama = $validasi['nama'];
+                if ($req['nama']) {
+                    $pesertaDidik -> nama = $req['nama'];
                 }
-                if ($validasi['jenisKelamin']) {
-                    $pesertaDidik -> jenisKelamin = $validasi['jenisKelamin'];
+                if ($req['jenisKelamin']) {
+                    $pesertaDidik -> jenisKelamin = $req['jenisKelamin'];
                 }
-                if ($validasi['jenisKetunaan']) {
-                    $pesertaDidik -> jenisKetunaan = $validasi['jenisKetunaan'];
+                if ($req['jenisKetunaan']) {
+                    $pesertaDidik -> jenisKetunaan = $req['jenisKetunaan'];
                 }
-                if ($validasi['kelas']) {
-                    $pesertaDidik -> kelas = $validasi['kelas'];
+                if ($req['kelas']) {
+                    $pesertaDidik -> kelas = $req['kelas'];
                 }
-                if ($validasi['rombel']) {
-                    $pesertaDidik -> rombel = $validasi['rombel'];
+                if ($req['rombel']) {
+                    $pesertaDidik -> rombel = $req['rombel'];
                 }
 
                 $pesertaDidik -> save();
 
-                return 'true';
+                return redirect('/admin-pesertadidik-slb');
             }
         }
 
-        return 'false';
+        return back();
     }
 
     public function hapus ($id) {
@@ -122,10 +159,10 @@ class KontrolPesertaDidik extends Controller
             if ($pesertaDidik -> sekolah === $pengguna -> sekolah) {
                 PesertaDidik::find($id) -> delete();
 
-                return 'true';
+                return redirect('/admin-pesertadidik-slb');
             }
         }
 
-        return 'false';
+        return back();
     }
 }

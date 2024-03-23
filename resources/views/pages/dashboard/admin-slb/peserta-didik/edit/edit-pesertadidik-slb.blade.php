@@ -117,22 +117,25 @@
                     </script>
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="id" value="{{ $id }}" required>
                 {{-- isi konten disini --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="name">Nama Peserta Didik</label>
-                            <input type="text" id="name"
+                            <input type="text" name="nama" id="name"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Peserta Didik" required />
+                                placeholder="Masukkan Nama Peserta Didik" value="{{ $DATA['nama'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jeniskelamin">Jenis Kelamin (JK)</label>
-                            <input type="text" id="jeniskelamin"
+                            <input type="text" name="jenisKelamin" id="jeniskelamin"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jenis Kelamin" required />
+                                placeholder="Masukkan Jenis Kelamin" value="{{ $DATA['jenisKelamin'] }}" required />
                         </div>
                     </div>
                 </div>
@@ -146,9 +149,9 @@
                         </div> --}}
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">Jenis Ketunaan</label>
-                            <input type="text" id="jenisketunaan"
+                            <input type="text" name="jenisKetunaan" id="jenisketunaan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jenis Ketunaan" required />
+                                placeholder="Masukkan Jenis Ketunaan" value="{{ $DATA['jenisKetunaan'] }}" required />
                         </div>
                     </div>
                 </div>
@@ -156,15 +159,15 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="kelas">Kelas</label>
-                            <input type="text" id="kelas"
+                            <input type="text" name="kelas" id="kelas"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Kelas" required />
+                                placeholder="Masukkan Kelas" value="{{ $DATA['kelas'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="romble">Romble</label>
-                            <input type="text" id="romble"
+                            <input type="text" name="rombel" id="romble"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Romble" required />
+                                placeholder="Masukkan Romble" value="{{ $DATA['rombel'] }}" required />
                         </div>
                     </div>
                 </div>
@@ -185,7 +188,7 @@
                         </div>
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

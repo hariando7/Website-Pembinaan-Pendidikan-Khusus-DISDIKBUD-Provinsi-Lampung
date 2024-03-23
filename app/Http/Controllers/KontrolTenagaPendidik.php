@@ -88,20 +88,20 @@ class KontrolTenagaPendidik extends Controller
 
         if ($tenagaPendidik){
             if ($tenagaPendidik -> sekolah === $pengguna -> sekolah) {
-                if ($validasi['nama']) {
-                    $tenagaPendidik -> nama = $validasi['nama'];
+                if ($req['nama']) {
+                    $tenagaPendidik -> nama = $req['nama'];
                 }
-                if ($validasi['jenisKelamin']) {
-                    $tenagaPendidik -> jenisKelamin = $validasi['jenisKelamin'];
+                if ($req['jenisKelamin']) {
+                    $tenagaPendidik -> jenisKelamin = $req['jenisKelamin'];
                 }
-                if ($validasi['nip']) {
-                    $tenagaPendidik -> nip = $validasi['nip'];
+                if ($req['nip']) {
+                    $tenagaPendidik -> nip = $req['nip'];
                 }
-                if ($validasi['statusPNS']) {
-                    $tenagaPendidik -> statusPNS = $validasi['statusPNS'];
+                if ($req['statusPNS']) {
+                    $tenagaPendidik -> statusPNS = $req['statusPNS'];
                 }
-                if ($validasi['bidangPekerjaan']) {
-                    $tenagaPendidik -> bidangPekerjaan = $validasi['bidangPekerjaan'];
+                if ($req['bidangPekerjaan']) {
+                    $tenagaPendidik -> bidangPekerjaan = $req['bidangPekerjaan'];
                 }
 
                 $tenagaPendidik -> save();

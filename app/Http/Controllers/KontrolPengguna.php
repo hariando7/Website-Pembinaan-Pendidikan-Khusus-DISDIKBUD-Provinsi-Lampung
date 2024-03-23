@@ -15,8 +15,21 @@ class KontrolPengguna extends Controller
 {
     public function daftarPenggunaSuperAdmin (Request $req) {
         $admin = $this -> daftarPengguna($req);
+        $sekolah = Sekolah::all();
 
-        return json_encode($admin);
+        $dummyData = array_map(function ($data) use ($sekolah) {
+            $temp = $sekolah -> find($data -> sekolah);
+            return [
+                'nama_sekolah' => $temp -> nama,
+                'npsn' => $temp -> npsn,
+                'email' => $data -> email
+            ];
+        }, $admin -> items());
+
+        return view('pages/dashboard/super-admin/kelola-admin-slb/kelola-admin-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $admin
+        ]);
     }
 
     public function daftarPengguna (Request $req) {
@@ -29,7 +42,7 @@ class KontrolPengguna extends Controller
                 $query -> where('email', 'LIKE', '%' . $req -> pencarian . '%');
             }
         }) -> latest() -> paginate(10);
-
+        
         return $admin;
     }
 
@@ -52,6 +65,8 @@ class KontrolPengguna extends Controller
             // 'linkWebsiteSekolah' => 'required'
         ]);
 
+        // dd($req);
+
         $sekolah = Sekolah::firstWhere('nama', $validasi['nama']);
         if (!$sekolah) {
             Sekolah::create($req -> except(['email', 'password']));
@@ -65,7 +80,7 @@ class KontrolPengguna extends Controller
             'akses' => 'admin'
         ]);
 
-        return 'true';
+        return redirect('/kelola-admin-slb');
     }
 
     public function ubah (Request $req) {
@@ -83,26 +98,26 @@ class KontrolPengguna extends Controller
             
             $sekolah = Sekolah::find($admin -> sekolah);
 
-            if ($validasi['nama']) {
-                $sekolah -> nama = $validasi['nama'];
+            if ($req['nama']) {
+                $sekolah -> nama = $req['nama'];
             }
-            if ($validasi['npsn']) {
-                $sekolah -> npsn = $validasi['npsn'];
+            if ($req['npsn']) {
+                $sekolah -> npsn = $req['npsn'];
             }
-            if ($validasi['kota']) {
-                $sekolah -> kota = $validasi['kota'];
+            if ($req['kota']) {
+                $sekolah -> kota = $req['kota'];
             }
-            if ($validasi['kecamatan']) {
-                $sekolah -> kecamatan = $validasi['kecamatan'];
+            if ($req['kecamatan']) {
+                $sekolah -> kecamatan = $req['kecamatan'];
             }
-            if ($validasi['alamat']) {
-                $sekolah -> alamat = $validasi['alamat'];
+            if ($req['alamat']) {
+                $sekolah -> alamat = $req['alamat'];
             }
-            if ($validasi['jenisKetunaan']) {
-                $sekolah -> jenisKetunaan = $validasi['jenisKetunaan'];
+            if ($req['jenisKetunaan']) {
+                $sekolah -> jenisKetunaan = $req['jenisKetunaan'];
             }
-            if ($validasi['linkWebsiteSekolah']) {
-                $sekolah -> linkWebsiteSekolah = $validasi['linkWebsiteSekolah'];
+            if ($req['linkWebsiteSekolah']) {
+                $sekolah -> linkWebsiteSekolah = $req['linkWebsiteSekolah'];
             }
             $sekolah -> save();
 

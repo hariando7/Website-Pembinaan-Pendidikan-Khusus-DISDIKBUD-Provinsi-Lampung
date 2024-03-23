@@ -135,28 +135,29 @@
                                 </tr>
                             <tbody>
                                 <?php
-                                $dummyData = [
-                                    [
-                                        'nama_sekolah' => 'Sekolah A',
-                                        'npsn' => '12345678',
-                                        'email' => 'sekolahA@gmail.com',
-                                        'password' => 'passwordA',
-                                    ],
-                                    [
-                                        'nama_sekolah' => 'Sekolah B',
-                                        'npsn' => '87654321',
-                                        'email' => 'sekolahB@gmail.com',
-                                        'password' => 'passwordB',
-                                    ],
-                                ];
-                                ?> @foreach ($dummyData as $index => $data)
+                                // $dummyData = [
+                                //     [
+                                //         'nama_sekolah' => 'Sekolah A',
+                                //         'npsn' => '12345678',
+                                //         'email' => 'sekolahA@gmail.com',
+                                //         'password' => 'passwordA',
+                                //     ],
+                                //     [
+                                //         'nama_sekolah' => 'Sekolah B',
+                                //         'npsn' => '87654321',
+                                //         'email' => 'sekolahB@gmail.com',
+                                //         'password' => 'passwordB',
+                                //     ],
+                                // ];
+                                ?>
+                                @foreach ($dummyData as $index => $data)
                                     <tr
                                         class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
                                         <td class="px-3 py-2">{{ $index + 1 }}</td>
                                         <td class="px-3 py-2">{{ $data['nama_sekolah'] }}</td>
                                         <td class="px-3 py-2">{{ $data['npsn'] }}</td>
                                         <td class="px-3 py-2">{{ $data['email'] }}</td>
-                                        <td class="px-3 py-2">{{ $data['password'] }}</td>
+                                        <td class="px-3 py-2">{{ $data['email'] }}</td>
                                         <td class="px-3 py-2">
                                             <div class="flex justify-items-center m-auto text-center gap-2">
                                                 <a href="/kelola-admin-slb/lihat" title="lihat">
@@ -257,8 +258,9 @@
                             </tbody>
                         </table>
                     </div>
+                    {{ $DATA -> links() }}
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah :</div>
+                        <div class="font-bold text-black">Jumlah : {{ $DATA -> count() }}</div>
                         <div class="">
                             <nav aria-label="Page navigation example">
                                 <ul class="inline-flex -space-x-px text-sm gap-2">

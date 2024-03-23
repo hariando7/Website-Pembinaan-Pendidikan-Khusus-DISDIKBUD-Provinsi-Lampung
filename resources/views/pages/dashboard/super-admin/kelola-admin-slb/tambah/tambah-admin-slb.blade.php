@@ -47,20 +47,21 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
+                @csrf
                 {{-- isi konten disini --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="email_sekolah">Email Sekolah</label>
-                            <input type="email" id="email_sekolah"
+                            <input type="email" name="email" id="email_sekolah"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Email Aktif Sekolah" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4 relative">
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password"
+                            <input type="password" name="password" id="password"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 pl-2 pr-10 w-full"
                                 placeholder="Masukkan Password" required />
                             <x-icon-password />
@@ -71,13 +72,13 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="nama_sekolah">Nama Sekolah</label>
-                            <input type="text" id="nama_sekolah"
+                            <input type="text" name="nama" id="nama_sekolah"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Nama Sekolah" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="npsn">NPSN</label>
-                            <input type="text" id="npsn"
+                            <input type="text" name="npsn" id="npsn"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan NPSN Sekolah" required />
                         </div>
@@ -87,7 +88,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="kabkota">Kab/Kota</label>
-                            <select id="kabkota" name="kabkota"
+                            <select id="kabkota" name="kota"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required onchange="populateKecamatan(this.value)">
                                 <option value="" disabled selected>Pilih Kab/Kota</option>
@@ -141,13 +142,13 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="alamat">Alamat</label>
-                            <input type="text" id="alamat"
+                            <input type="text" name="alamat" id="alamat"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Alamat Sekolah" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
-                            <input type="text" id="jenis_ketunaan"
+                            <input type="text" name="jenisKetunaan" id="jenis_ketunaan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />
                         </div>
@@ -157,7 +158,7 @@
                     <div class="gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="link_website">Link Website Sekolah</label>
-                            <input type="url" id="link_website"
+                            <input type="url" name="linkWebsiteSekolah" id="link_website"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Link Website Sekolah" required />
                         </div>
@@ -169,7 +170,7 @@
                         + Simpan
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>
