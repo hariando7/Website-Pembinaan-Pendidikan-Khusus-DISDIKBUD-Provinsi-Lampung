@@ -203,9 +203,8 @@
 
 <body>
     <x-layout-landing>
-        <x-hero-landing title="Dinas Pendidikan dan Kebudayaan 
-Provinsi Lampung"
-            desc="Bidang Pembinaan Pendidikan Khusus" ref="#section2"
+        <x-hero-landing title="Bidang Pembinaan Pendidikan Khusus"
+            desc="Dinas Pendidikan dan Kebudayaan Provinsi Lampung Jl. Drs. Warsito No. 72 Teluk Betung Bandar Lampung, 35215" ref="#section2"
             imgPath="{{ asset('assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
         <div id="section1" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 pt-10 lg:pt-0">
             <div class="lg:w-full lg:flex p-5 lg:p-20">

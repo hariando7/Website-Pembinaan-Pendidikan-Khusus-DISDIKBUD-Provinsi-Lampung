@@ -55,7 +55,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-slb title="Notifikasi Dinas"/>
+                    <x-notifikasi-slb title="Notifikasi Dinas" />
                     <x-buttitle-landing ref="/admin-tendik-slb/tambah" color="#FA8F21" width="[13rem]"
                         title="+ Tambah Tendik" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
@@ -119,7 +119,8 @@
                                 <?php
                                 $dummyDataTendik = [
                                     [
-                                        'tahun' => 2023,
+                                        'id' => 1,
+                                        'tahun' => '2023',
                                         'namaTendik' => 'John Doe',
                                         'jenisKelamin' => 'Laki-laki',
                                         'nip' => '1234567890',
@@ -127,7 +128,8 @@
                                         'bidangTugas' => 'Guru',
                                     ],
                                     [
-                                        'tahun' => 2022,
+                                        'id' => 2,
+                                        'tahun' => '2022',
                                         'namaTendik' => 'Jane Doe',
                                         'jenisKelamin' => 'Perempuan',
                                         'nip' => '0987654321',
@@ -135,7 +137,8 @@
                                         'bidangTugas' => 'Staf Tata Usaha',
                                     ],
                                     [
-                                        'tahun' => 2023,
+                                        'id' => 3,
+                                        'tahun' => '2023',
                                         'namaTendik' => 'Michael Smith',
                                         'jenisKelamin' => 'Laki-laki',
                                         'nip' => '9876543210',

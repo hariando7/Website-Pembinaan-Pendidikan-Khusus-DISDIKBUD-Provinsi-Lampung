@@ -153,7 +153,8 @@
                                 <?php
                                 $dummyDataTendik = [
                                     [
-                                        'tahun' => 2023,
+                                        'id' => 1,
+                                        'tahun' => '2023',
                                         'namaTendik' => 'John Doe',
                                         'jenisKelamin' => 'Laki-laki',
                                         'nip' => '1234567890',
@@ -161,7 +162,8 @@
                                         'bidangTugas' => 'Guru',
                                     ],
                                     [
-                                        'tahun' => 2022,
+                                        'id' => 2,
+                                        'tahun' => '2022',
                                         'namaTendik' => 'Jane Doe',
                                         'jenisKelamin' => 'Perempuan',
                                         'nip' => '0987654321',
@@ -169,7 +171,8 @@
                                         'bidangTugas' => 'Staf Tata Usaha',
                                     ],
                                     [
-                                        'tahun' => 2023,
+                                        'id' => 3,
+                                        'tahun' => '2023',
                                         'namaTendik' => 'Michael Smith',
                                         'jenisKelamin' => 'Laki-laki',
                                         'nip' => '9876543210',

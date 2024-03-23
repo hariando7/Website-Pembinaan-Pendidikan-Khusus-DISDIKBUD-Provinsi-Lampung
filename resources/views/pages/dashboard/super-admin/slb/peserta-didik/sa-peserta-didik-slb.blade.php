@@ -141,7 +141,8 @@
                                 <?php
                                 $dummyData = [
                                     [
-                                        'tahun' => 2023,
+                                        'id' => 1,
+                                        'tahun' => '2023',
                                         'namaSiswa' => 'Rizkyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                                         'jenisKelamin' => 'Laki-laki',
                                         'jenisKetunaan' => 'Tuna Rungu',
@@ -149,7 +150,8 @@
                                         'romble' => '1A',
                                     ],
                                     [
-                                        'tahun' => 2022,
+                                        'id' => 2,
+                                        'tahun' => '2022',
                                         'namaSiswa' => 'rian2',
                                         'jenisKelamin' => 'Perempuan',
                                         'jenisKetunaan' => 'Tuna Netra',
@@ -157,7 +159,8 @@
                                         'romble' => '2B',
                                     ],
                                     [
-                                        'tahun' => 2023,
+                                        'id' => 3,
+                                        'tahun' => '2023',
                                         'namaSiswa' => 'rian1',
                                         'jenisKelamin' => 'Laki-laki',
                                         'jenisKetunaan' => 'Tuna Rungu',
@@ -165,7 +168,8 @@
                                         'romble' => '1A',
                                     ],
                                     [
-                                        'tahun' => 2022,
+                                        'id' => 4,
+                                        'tahun' => '2022',
                                         'namaSiswa' => 'rian2',
                                         'jenisKelamin' => 'Perempuan',
                                         'jenisKetunaan' => 'Tuna Netra',

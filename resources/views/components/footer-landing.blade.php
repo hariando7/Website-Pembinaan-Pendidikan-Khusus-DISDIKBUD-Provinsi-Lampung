@@ -108,8 +108,8 @@
             </div>
         </div>
         <div class="w-[60%] text-center text-white text-sm lg:text-base">
-            <div class="font-bold">Made with ♡ Dinas Pendidikan Kebudayaan Provinsi Lampung</div>
-            <div class="font-bold">Bidang Pembinaan Pendidikan Khusus</div>
+            <div class="font-bold">Made with ♡ Bidang Pembinaan Pendidikan Khusus</div>
+            <div class="">Dinas Pendidikan Kebudayaan Provinsi Lampung</div>
             <div class="italic">@ 2024 All Rights Reserved.</div>
         </div>
         <div class="flex gap-2">

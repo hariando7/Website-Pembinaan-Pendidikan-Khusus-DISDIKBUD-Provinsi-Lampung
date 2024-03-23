@@ -1,7 +1,32 @@
+<style>
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .text-blink {
+        animation: blink 3s infinite;
+    }
+</style>
+
 <div class="z-30">
     <button data-modal-target="timeline-modal" data-modal-toggle="timeline-modal"
         class="text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2">
         Notifikasi Dinas
+        <span id="notificationBadge"
+            class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
+            style="display: none;">
+            <!-- Jumlah notifikasi di sini -->
+        </span>
     </button>
     <!-- Main modal -->
     <div id="timeline-modal" tabindex="-1" aria-hidden="true"
@@ -15,6 +40,9 @@
                     <h3 class="text-lg font-semibold text-white dark:text-white">
                         Notifikasi Pengisian Data
                     </h3>
+                    <h5 class="text-white">
+                        <x-time-saat-ini />
+                    </h5>
                     <button type="button"
                         class="text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-[#D87815] dark:hover:text-white"
                         data-modal-close="timeline-modal">
@@ -29,18 +57,21 @@
                 <?php
                 $notifications = [
                     [
+                        'id' => 1,
                         'title' => 'Notifikasi 1',
                         'desk' => 'Deskripsi notifikasi 1 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                         'start_time' => '12 Januari 2024, 23.59',
                         'end_time' => '15 Januari 2024, 23.59',
                     ],
                     [
+                        'id' => 2,
                         'title' => 'Notifikasi 2',
                         'desk' => 'Deskripsi notifikasi 2 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                         'start_time' => '13 Januari 2024, 23.59',
                         'end_time' => '16 Januari 2024, 23.59',
                     ],
                     [
+                        'id' => 3,
                         'title' => 'Notifikasi 3',
                         'desk' => 'Deskripsi notifikasi 3 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                         'start_time' => '14 Januari 2024, 23.59',
@@ -78,8 +109,26 @@
     </div>
 </div>
 
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Hitung jumlah notifikasi
+        const notificationsCount = <?php echo count($notifications); ?>;
+        // Perbarui badge notifikasi
+        const notificationBadge = document.getElementById('notificationBadge');
+        if (notificationBadge) {
+            notificationBadge.innerText = notificationsCount;
+            if (notificationsCount > 0) {
+                notificationBadge.style.display = 'inline-block';
+            } else {
+                notificationBadge.style.display = 'none';
+            }
+            setInterval(function() {
+                // Toggle class untuk membuat teks berkedip
+                notificationBadge.classList.toggle('text-blink');
+            }, 500); // Mengatur interval kedipan menjadi setiap 500ms (0.5 detik)
+        }
+
         const modalButtons = document.querySelectorAll('[data-modal-toggle]');
         const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
         modalButtons.forEach(button => {

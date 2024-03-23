@@ -208,5 +208,6 @@ class GeneralPage extends Controller
         return view('pages/dashboard/admin-sekolah-inklusi/pendataan-sekolah-inklusi');
     }
     // Akhir Admin Sekolah Inklusi
-    
+
+
 }

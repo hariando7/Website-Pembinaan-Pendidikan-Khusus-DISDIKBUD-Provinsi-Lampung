@@ -10,6 +10,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    </script>
+
+
     <style>
         .hide-scrollbar {
             scrollbar-width: thin;
@@ -56,7 +59,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-slb title="Notifikasi Dinas"/>
+                    <x-notifikasi-slb title="Notifikasi Dinas" />
                     <div class="justify-end flex right-0">
                         <x-buttitle-landing ref="/admin-pesertadidik-slb/tambah" color="#FA8F21" width="[13rem]"
                             title="+ Tambah Peserta Didik"
@@ -82,11 +85,55 @@
                             </form>
                         </div>
                         <div class="basis-[10%]">
-                            <button type="button"
+                            <button id="print-button" type="button" onclick="showModal()"
                                 class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
                                 <x-svg-print />
                                 Print
                             </button>
+                            <!-- Main modal -->
+                            <div id="modal-print" tabindex="-1" aria-hidden="true"
+                                class="hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50 z-50">
+                                <div class="relative p-4 w-full max-w-md max-h-full">
+                                    <!-- Modal content -->
+                                    <div class="relative rounded-lg shadow dark:bg-[#297785] bg-[#297785]">
+                                        <!-- Modal header -->
+                                        <div
+                                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-white border-white">
+                                            <div class="div">
+                                                <h3 class="text-lg font-semibold text-white dark:text-white">
+                                                    Cetak Data<br>
+                                                </h3>
+                                                <h5 class="text-white">
+                                                    <x-time-saat-ini />
+                                                </h5>
+                                            </div>
+                                            <button type="button"
+                                                class="text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-[#D87815] dark:hover:text-white"
+                                                data-modal-close="modal-print" onclick="hideModal()">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 14 14">
+                                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div
+                                            class="flex items-center justify-center m-auto text-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-5">
+                                            <button data-modal-hide="static-modal" type="button"
+                                                class="bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white">Download
+                                                Excel</button>
+                                            <!-- Button untuk cetak -->
+                                            <button id="download-pdf" onclick="printPDF()"
+                                                class="bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
+                                                Download PDF
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
@@ -122,7 +169,8 @@
                                 <?php
                                 $dummyData = [
                                     [
-                                        'tahun' => 2023,
+                                        'id' => 1,
+                                        'tahun' => '2023',
                                         'namaSiswa' => 'Rizkyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                                         'jenisKelamin' => 'Laki-laki',
                                         'jenisKetunaan' => 'Tuna Rungu',
@@ -130,7 +178,8 @@
                                         'romble' => '1A',
                                     ],
                                     [
-                                        'tahun' => 2022,
+                                        'id' => 2,
+                                        'tahun' => '2022',
                                         'namaSiswa' => 'rian2',
                                         'jenisKelamin' => 'Perempuan',
                                         'jenisKetunaan' => 'Tuna Netra',
@@ -138,7 +187,8 @@
                                         'romble' => '2B',
                                     ],
                                     [
-                                        'tahun' => 2023,
+                                        'id' => 3,
+                                        'tahun' => '2023',
                                         'namaSiswa' => 'rian1',
                                         'jenisKelamin' => 'Laki-laki',
                                         'jenisKetunaan' => 'Tuna Rungu',
@@ -146,7 +196,8 @@
                                         'romble' => '1A',
                                     ],
                                     [
-                                        'tahun' => 2022,
+                                        'id' => 4,
+                                        'tahun' => '2022',
                                         'namaSiswa' => 'rian2',
                                         'jenisKelamin' => 'Perempuan',
                                         'jenisKetunaan' => 'Tuna Netra',
@@ -303,7 +354,64 @@
             </div>
         </div>
     </div>
+    <script>
+        // Open Modal
+        function showModal() {
+            // Dapatkan modal
+            var modal = document.getElementById("modal-print");
+            // Tampilkan modal
+            modal.classList.remove("hidden");
+            modal.setAttribute("aria-hidden", "false");
+        }
+        // Close modal
+        function hideModal() {
+            // Dapatkan modal
+            var modal = document.getElementById("modal-print");
+            // Sembunyikan modal
+            modal.classList.add("hidden");
+            modal.setAttribute("aria-hidden", "true");
+        }
+        // Print PDF
+        function printPDF() {
+            printTable(<?= json_encode($dummyData) ?>);
+        }
+        // Data Table
+        function printTable(dummyData) {
+            var printWindow = window.open('', '', 'width=800,height=800,top=400,left=200');
 
+            var tableHtml = '<table class="border border-gray-200">';
+            tableHtml += '<thead class="bg-gray-50">';
+            tableHtml += '<tr>';
+            tableHtml += '<th class="px-4 py-2">ID</th>';
+            tableHtml += '<th class="px-4 py-2">Tahun</th>';
+            tableHtml += '<th class="px-4 py-2">Nama Siswa</th>';
+            tableHtml += '<th class="px-4 py-2">Jenis Kelamin</th>';
+            tableHtml += '<th class="px-4 py-2">Jenis Ketunaan</th>';
+            tableHtml += '<th class="px-4 py-2">Kelas</th>';
+            tableHtml += '<th class="px-4 py-2">Romble</th>';
+            tableHtml += '</tr>';
+            tableHtml += '</thead>';
+            tableHtml += '<tbody class="divide-y divide-gray-200">';
+            dummyData.forEach(function(data, index) {
+                tableHtml += '<tr>';
+                tableHtml += '<td class="px-4 py-2">' + (index + 1) + '</td>';
+                tableHtml += '<td class="px-4 py-2">' + data.tahun + '</td>';
+                tableHtml += '<td class="px-4 py-2">' + (data.namaSiswa.length > 15 ? data.namaSiswa.substring(0,
+                    15) + '...' : data.namaSiswa) + '</td>';
+                tableHtml += '<td class="px-4 py-2">' + data.jenisKelamin + '</td>';
+                tableHtml += '<td class="px-4 py-2">' + data.jenisKetunaan + '</td>';
+                tableHtml += '<td class="px-4 py-2">' + data.kelas + '</td>';
+                tableHtml += '<td class="px-4 py-2">' + data.romble + '</td>';
+                tableHtml += '</tr>';
+            });
+            tableHtml += '</tbody>';
+            tableHtml += '</table>';
+
+            printWindow.document.write(tableHtml);
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
 </body>
 
 </html>

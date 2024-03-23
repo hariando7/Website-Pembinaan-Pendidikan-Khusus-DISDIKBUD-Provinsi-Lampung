@@ -14,56 +14,46 @@
         /* peserta didik slb */
         .icon-peserta-didik-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-peserta-didik-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* guru slb */
         .icon-guru-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-guru-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* tendik slb */
         .icon-tendik-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-tendik-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* sarpras slb */
         .icon-sarpras-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-sarpras-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
 
         /* kebutuhan guru slb */
         .icon-kebutuhan-guru-slb {
             transition: stroke 0.3s;
-            /* Efek transisi pada perubahan warna stroke */
         }
 
         .group:hover .icon-kebutuhan-guru-slb {
             stroke: #297785;
-            /* stroke saat elemen dalam keadaan hover */
         }
     </style>
     <style>

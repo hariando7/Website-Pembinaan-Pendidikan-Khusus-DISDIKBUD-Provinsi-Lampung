@@ -183,11 +183,10 @@
 
 <body>
     <x-layout-landing>
-        <x-hero-landing title="Dinas Pendidikan dan Kebudayaan 
-Provinsi Lampung"
-            desc="Bidang Pembinaan Pendidikan Khusus" ref="#section2"
-            imgPath="{{ asset('/assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
-        <div id="section1" class="w-full justify-center items-start bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
+        <x-hero-landing title="Bidang Pembinaan Pendidikan Khusus"
+            desc="Dinas Pendidikan dan Kebudayaan Provinsi Lampung Jl. Drs. Warsito No. 72 Teluk Betung Bandar Lampung, 35215"
+            ref="#section2" imgPath="{{ asset('/assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
+        {{-- <div id="section1" class="w-full justify-center items-start bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
             <div class="lg:w-full lg:flex p-5 lg:p-20">
                 <img src="assets/landing/prov-lampung2.svg" alt=""
                     class="w-[40%] h-[40%] m-auto items-center lg:w-[25%] lg:h-[35%] mb-5 lg:mb-0">
@@ -214,6 +213,23 @@ Provinsi Lampung"
             <div class="flex items-end justify-end text-right mr-5 lg:mr-20 lg:-mt-20 lg:pb-20">
                 <x-buttitle-landing ref="https://disdikbud.lampungprov.go.id/" color="#FA8F21" width="[10rem]"
                     title="Selengkapnya" extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3" />
+            </div>
+        </div> --}}
+        <div id="section_profile">
+            <div class="hero min-h-screen bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
+                <div class="hero-content flex-col lg:flex-row lg:w-full lg:flex p-5 lg:p-20 gap-10">
+                    <div class="image-container relative">
+                        <img src="assets/landing/prov-lampung2.svg" class="rounded-lg w-[300px] h-[300px] image-zoom" />
+                    </div>
+                    <div>
+                        <h1 class="text-2xl lg:text-4xl text-center lg:text-left font-bold text-black">Sekapur Sirih
+                            Kepala Bidang Pembinaan Pendidikan Khusus Provinsi Lampung</h1>
+                        <p class="py-6 text-black">Bidang Pembinaan Pendidikan Khusus memiliki tugas melaksanakan
+                            penyusunan bahan perumusan dan pelaksanaan kebijakan di bidang pendidikan khusus.</p>
+                        <x-buttitle-landing ref="" color="#FA8F21" width="[10rem]" title="Selengkapnya"
+                            extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3" />
+                    </div>
+                </div>
             </div>
         </div>
         <div id="section2" class="w-full justify-center items-start bg-[#EEEFF4]">
@@ -287,7 +303,7 @@ Provinsi Lampung"
                 </div>
             </div>
         </div>
-        <div id="section5"
+        {{-- <div id="section5"
             class="bg-[url({{ '/assets/landing/disdikbud.png' }})] w-full h-[500px] lg:min-h-screen bg-cover bg-no-repeat bg-[#000000]/[0.50] bg-blend-overlay flex justify-center items-center"
             style="background-size: 100% 100%;">
             <div class="lg:w-1/2 lg:p-5 relative">
@@ -304,7 +320,7 @@ Provinsi Lampung"
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </x-layout-landing>
 </body>
 

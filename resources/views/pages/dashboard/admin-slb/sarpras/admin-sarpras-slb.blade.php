@@ -55,7 +55,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-slb title="Notifikasi Dinas"/>
+                    <x-notifikasi-slb title="Notifikasi Dinas" />
                     <x-buttitle-landing ref="/admin-sarpras-slb/tambah" color="#FA8F21" width="[13rem]"
                         title="+ Tambah Sarpras" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
@@ -119,6 +119,7 @@
                                 <?php
                                 $dummyData = [
                                     [
+                                        'id' => 1,
                                         'tahun' => '2023',
                                         'gedungRuang' => 'Gedung A',
                                         'jumlahVol' => '100',
@@ -127,6 +128,7 @@
                                         'catatan' => 'Tidak ada catatan',
                                     ],
                                     [
+                                        'id' => 2,
                                         'tahun' => '2022',
                                         'gedungRuang' => 'Gedung B',
                                         'jumlahVol' => '50',

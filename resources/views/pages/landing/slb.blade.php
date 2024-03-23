@@ -46,19 +46,17 @@
 
 <body>
     <x-layout-landing>
-        <x-hero-landing title="Dinas Pendidikan dan Kebudayaan 
-Provinsi Lampung"
-            desc="Bidang Pembinaan Pendidikan Khusus" ref="#section2"
-            imgPath="{{ asset('assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
+        <x-hero-landing title="Bidang Pembinaan Pendidikan Khusus"
+            desc="Dinas Pendidikan dan Kebudayaan Provinsi Lampung Jl. Drs. Warsito No. 72 Teluk Betung Bandar Lampung, 35215"
+            ref="#section2" imgPath="{{ asset('assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
         <div id="section1" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 pt-10 lg:pt-0">
             <div class="lg:w-full lg:flex p-5 lg:p-20">
-                <div class="lg:pl-16">
+                <div class="text-center lg:w-full">
                     <h1 class="text-2xl lg:text-5xl font-bold text-black pb-5 lg:pb-10 text-center lg:text-center">
                         Alamat
                         SLB Provinsi Lampung</h1>
-                    <p class="text-base lg:text-lg font-thin text-black text-justify">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s,
+                    <p class="lg:text-center text-base lg:text-lg font-thin text-black text-justify">
+                        Daftar Sekolah Luar Biasa (SLB) Provinsi Lampung
                     </p>
                 </div>
             </div>
@@ -130,266 +128,308 @@ Provinsi Lampung"
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        lorem
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <a href="#"
-                                            class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                            Website</a>
-                                    </td>
-                                </tr>
+                                <?php
+                                $dummyData = [
+                                    [
+                                        'no' => 1,
+                                        'namaSekolah' => 'SLB KURNIA PONCOWATI',
+                                        'kabkota' => 'Kab. Lampung Tengah',
+                                        'kecamatan' => 'Kec Terbanggi Besar',
+                                        'alamat' => 'https://maps.app.goo.gl/U96xNprPAqJEHy6S7',
+                                        'jenisKetunaan' => 'Lorem',
+                                        'websiteSekolah' => 'https://www.example.com/school_a',
+                                    ],
+                                    [
+                                        'no' => 2,
+                                        'namaSekolah' => 'SLB SRIKANDI BANDAR SURABAYA',
+                                        'kabkota' => 'Kab. Lampung Tengah',
+                                        'kecamatan' => 'Kec Bandar Surabaya',
+                                        'alamat' => 'https://maps.app.goo.gl/vEeUe749vnPniCCD6',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 3,
+                                        'namaSekolah' => 'SLB NEGERI KOTA GAJAH',
+                                        'kabkota' => 'Kab. Lampung Tengah',
+                                        'kecamatan' => 'Kec Kota Gajah',
+                                        'alamat' => 'https://maps.app.goo.gl/UgFdCh9Quf5X6qSb9',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 4,
+                                        'namaSekolah' => 'SLB NEGERI LAMPUNG TIMUR',
+                                        'kabkota' => 'Kab. Lampung Timur',
+                                        'kecamatan' => 'Kec. Purbolinggo',
+                                        'alamat' => 'https://maps.app.goo.gl/yHASPg6JGQzT3Lie9',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 5,
+                                        'namaSekolah' => 'SLB NEGERI SIDOMULYO',
+                                        'kabkota' => 'Kab. Lampung Selatan',
+                                        'kecamatan' => 'Kec Sidomulyo',
+                                        'alamat' => 'https://maps.app.goo.gl/v3pcda7Q16AUbpKEA',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 6,
+                                        'namaSekolah' => 'SLB PELITA BUNGA',
+                                        'kabkota' => 'Kab. Lampung Selatan',
+                                        'kecamatan' => 'Kec Jati Agung',
+                                        'alamat' => 'https://maps.app.goo.gl/eukYiiZdvCSLRJyF8',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 7,
+                                        'namaSekolah' => 'SLB IT HARAPAN BANGSA',
+                                        'kabkota' => 'Kab. Lampung Selatan',
+                                        'kecamatan' => 'Kec Candipuro',
+                                        'alamat' => 'https://maps.app.goo.gl/eC7bVu7Dt3572pS58',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 8,
+                                        'namaSekolah' => 'SLB Dharma Bhakti Dharma Pertiwi',
+                                        'kabkota' => 'Kota Bandar Lampung',
+                                        'kecamatan' => 'Kec Kemiling',
+                                        'alamat' => 'https://maps.app.goo.gl/aT6korBQueW2DmDE7',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 9,
+                                        'namaSekolah' => 'SLBIT Baitul Jannah',
+                                        'kabkota' => 'Kota Bandar Lampung',
+                                        'kecamatan' => 'Kec Kemiling',
+                                        'alamat' => 'https://maps.app.goo.gl/ZeFedtUxFv7uzMFt5',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 10,
+                                        'namaSekolah' => 'SLBN PKK PROVINSI LAMPUNG',
+                                        'kabkota' => 'Kota Bandar Lampung',
+                                        'kecamatan' => 'Kec Sukarame',
+                                        'alamat' => 'https://maps.app.goo.gl/hUtjxVEZexj4JXCs9',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 11,
+                                        'namaSekolah' => 'SLB INSAN PRIMA BESTARI',
+                                        'kabkota' => 'Kota Bandar Lampung',
+                                        'kecamatan' => 'Kec Sukarame',
+                                        'alamat' => 'https://maps.app.goo.gl/B2GzKpx9AYyyGmU29',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 12,
+                                        'namaSekolah' => 'SLB A Bina Insani',
+                                        'kabkota' => 'Kota Bandar Lampung',
+                                        'kecamatan' => 'Kec Rajabasa',
+                                        'alamat' => 'https://maps.app.goo.gl/axfL1qDmMyPVkZFu6',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 13,
+                                        'namaSekolah' => 'SLB Pelita Kasih',
+                                        'kabkota' => 'Kota Bandar Lampung',
+                                        'kecamatan' => 'Kec Sukabumi',
+                                        'alamat' => 'https://maps.app.goo.gl/VbAC85rWgesC4vkL8',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 14,
+                                        'namaSekolah' => 'SLB YAMET SCHOOL CENDANA LAMPUNG',
+                                        'kabkota' => 'Kota Bandar Lampung',
+                                        'kecamatan' => 'Kec Labuhan Ratu',
+                                        'alamat' => 'https://maps.app.goo.gl/TPDcWQ4TvcqbG3C7A',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 15,
+                                        'namaSekolah' => 'SLB GROWING HOPE',
+                                        'kabkota' => 'Kota Bandar Lampung',
+                                        'kecamatan' => 'Kec Way Halim',
+                                        'alamat' => 'https://maps.app.goo.gl/o9BWTeiL3jH7MhuG9',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 16,
+                                        'namaSekolah' => 'SLB NEGERI TANGGAMUS',
+                                        'kabkota' => 'Kab. Tanggamus',
+                                        'kecamatan' => 'Kec Kota Agung Timur',
+                                        'alamat' => 'https://maps.app.goo.gl/hgUgbE8awtSNQTzK9',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 17,
+                                        'namaSekolah' => 'SLBN SUKAMAJU LAMPUNG UTARA',
+                                        'kabkota' => 'Kab. Lampung Utara',
+                                        'kecamatan' => 'Kec Abung Semuli',
+                                        'alamat' => 'https://maps.app.goo.gl/tPNMeCSPViGjd1Eo8',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 18,
+                                        'namaSekolah' => 'SLB N Baradatu',
+                                        'kabkota' => 'Kab. Way Kanan',
+                                        'kecamatan' => 'Kec Baradatu',
+                                        'alamat' => 'https://maps.app.goo.gl/1Eh5WpfPFmAVWT6N7',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 19,
+                                        'namaSekolah' => 'SLB SINAR HAFIZAH',
+                                        'kabkota' => 'Kab. Pesawaran',
+                                        'kecamatan' => 'Kec Gedung Tataan',
+                                        'alamat' => 'https://maps.app.goo.gl/naPRGkKoxkLrnDVn6',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 20,
+                                        'namaSekolah' => 'SLB NEGERI TULANG BAWANG',
+                                        'kabkota' => 'Kab. Tulang Bawang',
+                                        'kecamatan' => 'Kec Menggala',
+                                        'alamat' => 'https://maps.app.goo.gl/daj9Gy1xXQFsNNAVA',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 21,
+                                        'namaSekolah' => 'SLB NEGERI PRINGSEWU',
+                                        'kabkota' => 'Kab. Pringsewu',
+                                        'kecamatan' => 'Kec Pringsewu',
+                                        'alamat' => 'https://maps.app.goo.gl/odfaCtxMLxjUG35i6',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 22,
+                                        'namaSekolah' => 'SLB PUTRA BAKTI',
+                                        'kabkota' => 'Kab. Pringsewu',
+                                        'kecamatan' => 'Kec Pagelaran',
+                                        'alamat' => 'https://maps.app.goo.gl/HVzzoc4mFcoz5u6x6',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 23,
+                                        'namaSekolah' => 'SLB Negeri Tulang Bawang Barat',
+                                        'kabkota' => 'Kab. Tulang Bawang Barat',
+                                        'kecamatan' => 'Kec Tulang Bawang Barat',
+                                        'alamat' => 'https://maps.app.goo.gl/H3teATofasyyAsbi6',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 24,
+                                        'namaSekolah' => 'SLB Negeri Mesuji',
+                                        'kabkota' => 'Kab. Mesuji',
+                                        'kecamatan' => 'Kec Tanjung Raya',
+                                        'alamat' => 'https://maps.app.goo.gl/FREnLxPz5h7saB5z6',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 25,
+                                        'namaSekolah' => 'SLB NEGERI PESISIR BARAT',
+                                        'kabkota' => 'Kab. Pesisir Barat',
+                                        'kecamatan' => 'Kec Pesisir Selatan',
+                                        'alamat' => 'https://maps.app.goo.gl/c753TewRG5HHwBxf9',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 26,
+                                        'namaSekolah' => 'SLB HARAPAN IBU',
+                                        'kabkota' => 'Kota Metro',
+                                        'kecamatan' => 'Kec Metro Pusat',
+                                        'alamat' => 'Jalan DEF No. 456',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 27,
+                                        'namaSekolah' => 'SLB WIYATA DHARMA',
+                                        'kabkota' => 'Kota Metro',
+                                        'kecamatan' => 'Kec Metro Pusat',
+                                        'alamat' => 'https://maps.app.goo.gl/wqaHtcVaz7b3rii89',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 28,
+                                        'namaSekolah' => 'SLB CATUR BINA BANGSA',
+                                        'kabkota' => 'Kota Metro',
+                                        'kecamatan' => 'Kec Metro Barat',
+                                        'alamat' => 'https://maps.app.goo.gl/tWbHatRthqqemBF36',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 29,
+                                        'namaSekolah' => 'SLB INSAN MADANI METRO',
+                                        'kabkota' => 'Kota Metro',
+                                        'kecamatan' => 'Kec Metro Barat',
+                                        'alamat' => 'https://maps.app.goo.gl/U3Vq7Uy4LTCtjmuF9',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 30,
+                                        'namaSekolah' => 'SLB N METRO',
+                                        'kabkota' => 'Kota Metro',
+                                        'kecamatan' => 'Kec Metro Selatan',
+                                        'alamat' => 'https://maps.app.goo.gl/xtNAA8m8LQPvHX8s9',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                    [
+                                        'no' => 31,
+                                        'namaSekolah' => 'Sekolah B',
+                                        'kabkota' => 'Kota Metro',
+                                        'kecamatan' => 'Kec Metro Selatan',
+                                        'alamat' => 'Jalan DEF No. 456',
+                                        'jenisKetunaan' => 'Ipsum',
+                                        'websiteSekolah' => 'https://www.example.com/school_b',
+                                    ],
+                                ];
+                                ?>
+                                @foreach ($dummyData as $data)
+                                    <tr
+                                        class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                        <td class="px-6 py-4">{{ $data['no'] }}</td>
+                                        <td class="px-6 py-4">{{ $data['namaSekolah'] }}</td>
+                                        <td class="px-6 py-4">{{ $data['kabkota'] }}</td>
+                                        <td class="px-6 py-4">{{ $data['kecamatan'] }}</td>
+                                        <td class="px-6 py-4">
+                                            <a class="font-medium text-blue-500 dark:text-blue-500 hover:underline"
+                                                href="{{ $data['alamat'] }}">GoogleMaps</a>
+                                        </td>
+                                        <td class="px-6 py-4">{{ $data['jenisKetunaan'] }}</td>
+                                        <td class="px-6 py-4">
+                                            <a href="{{ $data['websiteSekolah'] }}"
+                                                class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
+                                                Website</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -18,7 +18,7 @@
     }
 </style>
 
-<div class="z-30">
+{{-- <div class="z-30">
     <button data-modal-target="timeline-modal" data-modal-toggle="timeline-modal"
         class="text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2">
         {{ $title }}
@@ -27,7 +27,12 @@
             style="display: none;">
             <!-- Jumlah notifikasi di sini -->
         </span>
-
+    </button> --}}
+    
+    <button id="print-button" type="button" data-modal-target="timeline-modal" data-modal-toggle="timeline-modal"
+        class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
+        <x-svg-print />
+        Print
     </button>
     <!-- Main modal -->
     <div id="timeline-modal" tabindex="-1" aria-hidden="true"

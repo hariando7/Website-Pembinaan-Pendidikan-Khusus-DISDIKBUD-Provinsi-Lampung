@@ -176,7 +176,6 @@
                     </a>
                 </div>
                 <div class="flex justify-center">
-
                     <a href="/admin-sarpras-slb">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl p-3 pl-4 justify-center items-center flex">

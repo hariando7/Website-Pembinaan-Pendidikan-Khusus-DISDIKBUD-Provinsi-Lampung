@@ -147,6 +147,7 @@
                                 <?php
                                 $dummyData = [
                                     [
+                                        'id' => 1,
                                         'tahun' => '2024-03-13 23.59',
                                         'namaGuru' => 'John Doe',
                                         'jenisKelamin' => 'Laki-laki',
@@ -156,8 +157,9 @@
                                         'bidangStudi' => 'Matematika',
                                     ],
                                     [
+                                        'id' => 2,
                                         'tahun' => '2024-03-13 23.59',
-                                        'namaGuru' => 'Jane Doe',
+                                        'namaGuru' => 'Jane Doeeeeeeeeeeeeeeeee',
                                         'jenisKelamin' => 'Perempuan',
                                         'NIP' => '0987654321',
                                         'statusPNS' => 'Non-PNS',

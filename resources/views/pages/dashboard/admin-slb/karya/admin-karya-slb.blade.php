@@ -117,12 +117,14 @@
                                 <?php
                                 $dummyData = [
                                     [
+                                        'id' => 1,
                                         'tahun' => '2023',
                                         'judulKarya' => 'Karya 1',
                                         'gambar' => 'gambar1.jpg',
                                         'deskripsi' => 'Deskripsi karya 1',
                                     ],
                                     [
+                                        'id' => 2,
                                         'tahun' => '2022',
                                         'judulKarya' => 'Pembuatan Karya Daun Segi',
                                         'gambar' => 'gambar2.jpg',

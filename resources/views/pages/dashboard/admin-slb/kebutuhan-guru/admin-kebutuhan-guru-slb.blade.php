@@ -121,6 +121,7 @@
                                 <?php
                                 $dummyData = [
                                     [
+                                        'id' => 1,
                                         'tahun' => '2023',
                                         'guruMapel' => 'Guru 1',
                                         'jumlahDibutuhkan' => '10',
@@ -129,6 +130,7 @@
                                         'keterangan' => 'Kurang',
                                     ],
                                     [
+                                        'id' => 2,
                                         'tahun' => '2022',
                                         'guruMapel' => 'Guru 2 la la la la la',
                                         'jumlahDibutuhkan' => '15',

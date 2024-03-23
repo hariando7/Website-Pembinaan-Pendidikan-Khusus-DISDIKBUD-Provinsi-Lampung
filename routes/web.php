@@ -111,12 +111,11 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/sa-karya-slb', 'sakaryaslb');
     // Akhir Super Admin data SLB
 
-    // Sekolah Inklusi
+    // Awal Super Admin Sekolah Inklusi
     Route::get('/sa-pendataan-si', 'sapendataansi');
     Route::get('/sa-pendataan-si/edit', 'sapendataansiedit');
     Route::get('/sa-pendataan-si/lihat', 'sapendataansilihat');
-
-
+    // Akhir Super Admin Sekolah Inklusi
 });
 
 // Route::get('/slb', function () {
