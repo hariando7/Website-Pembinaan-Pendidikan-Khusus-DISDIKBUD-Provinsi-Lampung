@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 use App\Models\Sekolah;
 use App\Models\PesertaDidik;
+use Carbon\Carbon;
 
 class KontrolPesertaDidik extends Controller
 {
@@ -25,24 +26,42 @@ class KontrolPesertaDidik extends Controller
     // ];
     public function daftarPesertaDidikSuperAdmin (Request $req) {
         $pesertaDidik = $this -> daftarPesertaDidik($req);
-
-        return json_encode($pesertaDidik);
+        
+    $dummyData = array_map(function ($data) {
+        return [
+            'id' => $data->id,
+            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+            'namaSiswa' => $data->nama,
+            'jenisKelamin' => $data->jenisKelamin,
+            'jenisKetunaan' => $data->jenisKetunaan,
+            'kelas' => $data->kelas,
+            'romble' => $data->rombel,
+        ];
+    }, $pesertaDidik->items());
+        
+        // return json_encode($pesertaDidik);
+        return view('pages/dashboard/super-admin/slb/peserta-didik/sa-peserta-didik-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $pesertaDidik
+        ]);
     }
 
     public function daftarPesertaDidikAdmin (Request $req) {
         $pesertaDidik = $this -> daftarPesertaDidik($req);
 
-        $dummyData = array_map(function ($data) {
-            return [
-                'id' => $data -> id,
-                'tahun' => $data -> created_at,
-                'namaSiswa' => $data -> nama,
-                'jenisKelamin' => $data -> jenisKelamin,
-                'jenisKetunaan' => $data -> jenisKetunaan,
-                'kelas' => $data -> kelas,
-                'romble' => $data -> rombel,
-            ];
-        }, $pesertaDidik -> items());
+    $dummyData = array_map(function ($data) {
+        return [
+            'id' => $data->id,
+            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+            'namaSiswa' => $data->nama,
+            'jenisKelamin' => $data->jenisKelamin,
+            'jenisKetunaan' => $data->jenisKetunaan,
+            'kelas' => $data->kelas,
+            'romble' => $data->rombel,
+        ];
+    }, $pesertaDidik->items());
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/peserta-didik/admin-pesertadidik-slb', [

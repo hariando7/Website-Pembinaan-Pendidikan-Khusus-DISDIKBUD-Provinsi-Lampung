@@ -9,19 +9,65 @@ use Illuminate\Database\Eloquent\Builder;
 
 use App\Models\Sekolah;
 use App\Models\TenagaPendidik;
+use Carbon\Carbon;
 
 class KontrolTenagaPendidik extends Controller
 {
+    // $dummyData = [
+    //     [
+    //         'id' => 1,
+    //         'tahun' => '2023',
+    //         'namaTendik' => 'John Doe',
+    //         'jenisKelamin' => 'Laki-laki',
+    //         'nip' => '1234567890',
+    //         'status' => 'PNS',
+    //         'bidangTugas' => 'Guru',
+    //     ],
+    // ];
     public function daftarTenagaPendidikSuperAdmin (Request $req) {
         $tenagaPendidik = $this -> daftarTenagaPendidik($req);
 
-        return json_encode($tenagaPendidik);
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data -> id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                // 'tahun' => $data -> created_at,
+                'namaTendik' => $data -> nama,
+                'jenisKelamin' => $data -> jenisKelamin,
+                'nip' => $data -> nip,
+                'status' => $data -> statusPNS,
+                'bidangTugas' => $data -> bidangPekerjaan,
+            ];
+        }, $tenagaPendidik -> items());
+
+        // return json_encode($tenagaPendidik);
+        return view('pages/dashboard/super-admin/slb/tendik/sa-tendik-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $tenagaPendidik
+        ]);
     }
 
     public function daftarTenagaPendidikAdmin (Request $req) {
         $tenagaPendidik = $this -> daftarTenagaPendidik($req);
 
-        return json_encode($tenagaPendidik);
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data -> id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                // 'tahun' => $data -> created_at,
+                'namaTendik' => $data -> nama,
+                'jenisKelamin' => $data -> jenisKelamin,
+                'nip' => $data -> nip,
+                'status' => $data -> statusPNS,
+                'bidangTugas' => $data -> bidangPekerjaan,
+            ];
+        }, $tenagaPendidik -> items());
+
+        // return json_encode($tenagaPendidik);
+        return view('pages/dashboard/admin-slb/tendik/admin-tendik-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $tenagaPendidik
+        ]);
     }
 
     public function daftarTenagaPendidik (Request $req) {
@@ -75,7 +121,16 @@ class KontrolTenagaPendidik extends Controller
 
         TenagaPendidik::create($validasi);
         
-        return 'true';
+        // return 'true';
+        return redirect('/admin-tendik-slb');
+    }
+
+    public function tampilanEdit ($id) {
+        $tenagaPendidik = TenagaPendidik::find($id);
+        return view('pages/dashboard/admin-slb/tendik/edit/edit-tendik-slb', [
+            'id' => $id,
+            'DATA' => $tenagaPendidik
+        ]);
     }
 
     public function ubah (Request $req) {
@@ -106,11 +161,13 @@ class KontrolTenagaPendidik extends Controller
 
                 $tenagaPendidik -> save();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-tendik-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 
     public function hapus ($id) {
@@ -122,10 +179,12 @@ class KontrolTenagaPendidik extends Controller
             if ($tenagaPendidik -> sekolah === $pengguna -> sekolah) {
                 TenagaPendidik::find($id) -> delete();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-tendik-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 }

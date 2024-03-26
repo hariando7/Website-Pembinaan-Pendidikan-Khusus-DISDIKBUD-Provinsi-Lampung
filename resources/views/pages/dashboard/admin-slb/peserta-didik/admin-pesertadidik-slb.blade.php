@@ -80,9 +80,10 @@
                                     </div>
                                     <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="cekKosong(this)" value="{{ isset($_GET['pencarian'])? $_GET['pencarian'] : '' }}" />
+                                        placeholder="Search..." oninput="cekKosong(this)"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
-                                        function cekKosong (e) {
+                                        function cekKosong(e) {
                                             if (e.value === '') {
                                                 window.location.href = window.location.origin + window.location.pathname;
                                             }
@@ -130,11 +131,11 @@
                                         <div
                                             class="flex items-center justify-center m-auto text-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-5">
                                             <button data-modal-hide="static-modal" type="button"
-                                                class="bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white">Download
+                                                class="btn border-none bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white">Download
                                                 Excel</button>
                                             <!-- Button untuk cetak -->
                                             <button id="download-pdf" onclick="printPDF()"
-                                                class="bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
+                                                class="btn border-none bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
                                                 Download PDF
                                             </button>
                                         </div>
@@ -184,39 +185,12 @@
                                 //         'kelas' => 'XII-A',
                                 //         'romble' => '1A',
                                 //     ],
-                                //     [
-                                //         'id' => 2,
-                                //         'tahun' => '2022',
-                                //         'namaSiswa' => 'rian2',
-                                //         'jenisKelamin' => 'Perempuan',
-                                //         'jenisKetunaan' => 'Tuna Netra',
-                                //         'kelas' => 'XI-B',
-                                //         'romble' => '2B',
-                                //     ],
-                                //     [
-                                //         'id' => 3,
-                                //         'tahun' => '2023',
-                                //         'namaSiswa' => 'rian1',
-                                //         'jenisKelamin' => 'Laki-laki',
-                                //         'jenisKetunaan' => 'Tuna Rungu',
-                                //         'kelas' => 'XII-A',
-                                //         'romble' => '1A',
-                                //     ],
-                                //     [
-                                //         'id' => 4,
-                                //         'tahun' => '2022',
-                                //         'namaSiswa' => 'rian2',
-                                //         'jenisKelamin' => 'Perempuan',
-                                //         'jenisKetunaan' => 'Tuna Netra',
-                                //         'kelas' => 'XI-B',
-                                //         'romble' => '2B',
-                                //     ],
                                 // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
-                                    <td class="px-3 py-2">{{ (($DATA -> currentPage() - 1) * 10) + $index + 1 }}</td>
+                                    <td class="px-3 py-2">{{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}</td>
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php
@@ -272,12 +246,12 @@
                                                             <h3 class="mb-5 text-lg font-normal text-white ">
                                                                 Anda Yakin Ingin Menghapus Data Ini?</h3>
                                                             <button data-modal-hide="popup-modal-ya" type="button"
-                                                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                                class="btn border-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                                                 Ya
                                                             </button>
                                                             <button data-modal-hide="popup-modal-tidak"
                                                                 aria-hidden="true" type="button"
-                                                                class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
+                                                                class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -308,7 +282,9 @@
                                                             const closeButtonYa = modal.querySelector(
                                                                 '[data-modal-hide="popup-modal-ya"]');
                                                             closeButtonYa.addEventListener('click', () => {
-                                                                window.location.href = window.location.origin + '/admin-pesertadidik-slb/delete/' + button.getAttribute('data-index');
+                                                                window.location.href = window.location.origin +
+                                                                    '/admin-pesertadidik-slb/delete/' + button.getAttribute(
+                                                                        'data-index');
                                                             });
 
                                                             const closeButtonTidak = modalTidak.querySelector(
@@ -329,10 +305,10 @@
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah : {{ $DATA -> count() }}</div>
-                        {{ $DATA -> links() }}
+                        {{-- <div class="font-bold text-black">Jumlah : {{ $DATA->count() }}</div> --}}
+                        <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
                         <div class="">
-                            <nav aria-label="Page navigation example">
+                            {{-- <nav aria-label="Page navigation example">
                                 <ul class="inline-flex -space-x-px text-sm gap-2">
                                     <li>
                                         <a href="#"
@@ -363,7 +339,8 @@
                                             class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> --}}
+                            {{ $DATA->links() }}
                         </div>
                     </div>
                 </div>

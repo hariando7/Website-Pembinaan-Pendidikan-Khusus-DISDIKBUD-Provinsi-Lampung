@@ -33,7 +33,7 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-slb />
+        <x-dashboard-side-bar-slb id="{{ $id }}" />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
                 <div class="text-[#297785] font-bold text-[32px]">Tambah Kebutuhan Guru SLB
@@ -88,6 +88,7 @@
                             const deleteButtons = document.querySelectorAll('.delete-button');
                             deleteButtons.forEach(button => {
                                 button.addEventListener('click', function() {
+                                    // console.log(button.getAttribute('data-index'));
                                     const index = this.dataset.index;
                                     const modal = document.getElementById('popup-modal');
                                     modal.classList.remove('hidden');
@@ -104,6 +105,15 @@
                                         modal.setAttribute('aria-hidden', 'true');
                                         modal.setAttribute('tabindex', '-1');
                                     });
+
+                                    const closeButtonYa = modal.querySelector(
+                                        '[data-modal-hide="popup-modal-ya"]');
+                                    closeButtonYa.addEventListener('click', () => {
+                                        window.location.href = window.location.origin +
+                                            '/admin-kebutuhan-guru-slb/delete/' + document.getElementById(
+                                                'id').value;
+                                    });
+
                                     const closeButtonTidak = modalTidak.querySelector(
                                         '[data-modal-hide="popup-modal-tidak"]');
                                     closeButtonTidak.addEventListener('click', () => {
@@ -117,38 +127,20 @@
                     </script>
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST"
+                class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
                 {{-- isi konten disini --}}
-                {{-- <div class=''>
-                    <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="name">No</label>
-                            <input type="text" id="name"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="1" required />
-                        </div>
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="tahun">Tahun</label>
-                            <input type="text" id="tahun"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="2023/2024" required />
-                        </div>
-                    </div>
-                </div> --}}
+                @csrf
+                @method('PUT')
+                <input type="hidden" id="id" name="id" value="{{ $id }}" required>
                 <div class=''>
                     <div class="flex gap-x-2">
-                        {{-- <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="name">Nama Sekolah</label>
-                            <input type="text" id="name"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Sekolah" required />
-                        </div> --}}
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jeniskelamin">Guru Mata Pelajaran</label>
-                            <input type="text" id="jeniskelamin"
+                            <label htmlFor="mataPelajaran">Guru Mata Pelajaran</label>
+                            <input type="text" id="mataPelajaran" name="mataPelajaran"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Guru Mata Pelajaran" required />
+                                placeholder="Masukkan Guru Mata Pelajaran" value="{{ $DATA['mataPelajaran'] }}" required />
                         </div>
                     </div>
                 </div>
@@ -156,15 +148,15 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="namasekolah">Jumlah Dibutuhkan</label>
-                            <input type="text" id="namasekolah"
+                            <input type="number" id="namasekolah" name="jumlahDibutuhkan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jumlah Dibutuhkan" required />
+                                placeholder="Masukkan Jumlah Dibutuhkan" value="{{ $DATA['jumlahDibutuhkan'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">Jumlah Yang Ada</label>
-                            <input type="text" id="jenisketunaan"
+                            <input type="number" id="jenisketunaan" name="jumlahSaatIni"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jumlah Yang Ada" required />
+                                placeholder="Masukkan Jumlah Yang Ada" value="{{ $DATA['jumlahSaatIni'] }}" required />
                         </div>
                     </div>
                 </div>
@@ -172,21 +164,21 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="kelas">Lebih (+)/ Kurang (-)</label>
-                            <input type="text" id="kelas"
+                            <input type="numer" id="kelas" name="lebihKurang"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Lebih/Kurang" required />
+                                placeholder="Masukkan Lebih/Kurang" value="{{ $DATA['lebihKurang'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="romble">Keterangan</label>
-                            <input type="text" id="romble"
+                            <input type="text" id="romble" name="keterangan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Keterangan" required />
+                                placeholder="Masukkan Keterangan" value="{{ $DATA['keterangan'] }}" required />
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-end mt-4">
                     <button type="submit"
-                        class="flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
+                        class="btn border-none flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
                         <div class="flex gap-2">
                             <div class="pt-1">
                                 <svg width="20" height="14" viewBox="0 0 20 14" fill="none"
@@ -201,7 +193,7 @@
                         </div>
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

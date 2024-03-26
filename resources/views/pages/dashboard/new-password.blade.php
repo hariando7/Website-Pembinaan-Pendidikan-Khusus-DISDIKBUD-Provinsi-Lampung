@@ -305,7 +305,7 @@
                     <span>Ulangi Password Baru</span>
                     <i></i>
                 </div>
-                <input type="submit" value="Simpan" class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
+                <input type="submit" value="Simpan" class="btn border-none text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
                 <div class="links mt-5">
                     <div class="text-white text-[0.75em] text-decoration">Kembali ke
                         <a href="/login" class="hover:text-white text-[0.75em]">Sign In

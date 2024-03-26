@@ -204,8 +204,8 @@
 <body>
     <x-layout-landing>
         <x-hero-landing title="Bidang Pembinaan Pendidikan Khusus"
-            desc="Dinas Pendidikan dan Kebudayaan Provinsi Lampung Jl. Drs. Warsito No. 72 Teluk Betung Bandar Lampung, 35215" ref="#section2"
-            imgPath="{{ asset('assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
+            desc="Dinas Pendidikan dan Kebudayaan Provinsi Lampung Jl. Drs. Warsito No. 72 Teluk Betung Bandar Lampung, 35215"
+            ref="#section2" imgPath="{{ asset('assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
         <div id="section1" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 pt-10 lg:pt-0">
             <div class="lg:w-full lg:flex p-5 lg:p-20">
                 <div class="">
@@ -219,122 +219,67 @@
                 </div>
             </div>
         </div>
-        <div id="section2" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 pt-10 lg:pt-0">
+        <div id="section2" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 lg:pt-0">
             <div class="lg:w-full lg:flex p-5 lg:pl-20 lg:pr-20 lg:pb-20">
                 <div class="w-full rounded shadow-lg border-solid border-4 border-[#297785]" id="moving-border">
                     <div class="relative overflow-x-auto sm:rounded-lg p-5">
-                        <div
-                            class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-                            <div>
-                                <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
-                                    class="inline-flex items-center text-black bg-white border border-[#2F8386] focus:outline-none hover:bg-[#2F8386] focus:ring-4 focus:ring-[#2F8386] font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-white dark:text-black hover:text-white dark:border-[#2F8386] dark:hover:bg-[#2F8386] dark:hover:border-[#2F8386] hover:border-[#2F8386] dark:focus:ring-[#2F8386]"
-                                    type="button">
-                                    <div class="flex gap-2">
-                                        <div class="flex justify-center items-center m-auto">
+                        <div class="lg:flex justify-between lg:mb-5">
+                            <div class="sm:flex flex sm:justify-center justify-center sm:items-center items-center">
+                                <div class="dropdown dropdown-hover">
+                                    <div tabindex="0" role="button"
+                                        class="bg-white text-black hover:bg-[#297785] hover:text-white flex gap-2 btn m-1 border-solid border-1 border-[#297785] hover:border-[#297785]">
+                                        <div class="div">
                                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M24.5002 11.6666H22.1668V4.66659H23.3335V2.33325H4.66683V4.66659H5.8335V11.6666H3.50016C3.19074 11.6666 2.894 11.7895 2.6752 12.0083C2.45641 12.2271 2.3335 12.5238 2.3335 12.8333V23.3333H25.6668V12.8333C25.6668 12.5238 25.5439 12.2271 25.3251 12.0083C25.1063 11.7895 24.8096 11.6666 24.5002 11.6666ZM16.3335 20.9999V16.3333H11.6668V20.9999H8.16683V4.66659H19.8335V20.9999H16.3335Z"
-                                                    fill="#B7B7B7" />
+                                                    fill="currentColor" />
                                                 <path
                                                     d="M10.5 7H12.8333V9.33333H10.5V7ZM15.1667 7H17.5V9.33333H15.1667V7ZM10.5 11.6667H12.8333V14H10.5V11.6667ZM15.1667 11.6667H17.5V14H15.1667V11.6667Z"
-                                                    fill="#B7B7B7" />
+                                                    fill="currentColor" />
                                             </svg>
                                         </div>
-                                        <div class="flex justify-center items-center m-auto">
+                                        <div class="div">
                                             Pilih Sekolah
                                         </div>
-                                        <div class="flex justify-center items-center m-auto">
-                                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                                            </svg>
-                                        </div>
                                     </div>
-                                </button>
-                                <!-- Dropdown menu -->
-                                <div id="dropdownRadio"
-                                    class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 bg-gray-700 dark:divide-gray-600 divide-gray-600"
-                                    data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top"
-                                    style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
-                                    <ul class="p-3 space-y-1 text-sm text-gray-200 dark:text-gray-200"
-                                        aria-labelledby="dropdownRadioButton">
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-600 dark:hover:bg-gray-600">
-                                                <input id="filter-radio-example-1" type="radio" value=""
-                                                    name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
-                                                <label for="filter-radio-example-1"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
-                                                    day</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-600 dark:hover:bg-gray-600">
-                                                <input checked="" id="filter-radio-example-2" type="radio"
-                                                    value="" name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
-                                                <label for="filter-radio-example-2"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
-                                                    7 days</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="filter-radio-example-3" type="radio" value=""
-                                                    name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
-                                                <label for="filter-radio-example-3"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
-                                                    30 days</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="filter-radio-example-4" type="radio" value=""
-                                                    name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
-                                                <label for="filter-radio-example-4"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
-                                                    month</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="filter-radio-example-5" type="radio" value=""
-                                                    name="filter-radio"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 bg-gray-700 dark:border-gray-600 border-gray-600">
-                                                <label for="filter-radio-example-5"
-                                                    class="w-full ms-2 text-sm font-medium text-gray-300 rounded dark:text-gray-300">Last
-                                                    year</label>
-                                            </div>
-                                        </li>
+                                    <ul tabindex="0"
+                                        class="dropdown-content z-[1] menu p-2 shadow bg-white text-black rounded-box w-52">
+                                        <li class="hover:bg-[#297785] hover:text-white"><a>Item 1</a></li>
+                                        <li class="hover:bg-[#297785] hover:text-white"><a>Item 2</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <label for="table-search" class="sr-only">Search</label>
-                            <div class="relative">
-                                <div
-                                    class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                                    <x-svg-search />
-                                </div>
-                                <input type="text" id="table-search"
-                                    class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-[750px] bg-white focus:ring-[#2F8386] focus:border-[#2F8386] dark:bg-white dark:border-[#2F8386] dark:placeholder-[#2F8386] dark:text-black dark:focus:ring-[#2F8386] dark:focus:border-[#2F8386]"
-                                    placeholder="Search...">
+                            <div class="mt-2 lg:mt-0 mb-5 lg:mb-0">
+                                <label
+                                    class="input input-bordered flex items-center gap-2 bg-white border-solid border-1 border-[#297785] hover:border-[#297785]">
+                                    <input type="text"
+                                        class="grow border-none focus:ring-white focus:border-white text-black"
+                                        placeholder="Search Karya SLB" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="black"
+                                        class="w-4 h-4 opacity-70">
+                                        <path fill-rule="evenodd"
+                                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </label>
+                                {{-- <label for="table-search" class="sr-only">Search</label>
+                                <div class="relative">
+                                    <div
+                                        class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
+                                        <x-svg-search />
+                                    </div>
+                                    <input type="text" id="table-search"
+                                        class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-full lg:w-[750px] bg-white focus:ring-[#2F8386] focus:border-[#2F8386]"
+                                        placeholder="Search...">
+                                </div> --}}
                             </div>
                         </div>
                         {{-- Isi Content --}}
-                        <div class="grid grid-cols-3 gap-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             @for ($i = 1; $i <= 9; $i++)
                                 <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-                                    <img class="w-full" src="/assets/landing/test.png"
-                                        alt="Gambar {{ $i }}">
+                                    <img class="w-full" src="/assets/landing/test.png" alt="Gambar {{ $i }}">
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2">Judul {{ $i }}</div>
                                         <p class="text-gray-700 text-base">
@@ -347,40 +292,6 @@
                         </div>
                         <div class="relative flex justify-between mt-5">
                             <div class="font-bold text-black">Jumlah :</div>
-                            <div class="">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="inline-flex -space-x-px text-sm gap-2">
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" aria-current="page"
-                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">3</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">4</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold ">5</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -73,9 +73,17 @@
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <x-svg-search />
                                     </div>
-                                    <input type="text" id="simple-search"
+                                    <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="searchTable()" required />
+                                        placeholder="Search..." oninput="cekKosong(this)"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
+                                    <script>
+                                        function cekKosong(e) {
+                                            if (e.value === '') {
+                                                window.location.href = window.location.origin + window.location.pathname;
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </form>
                         </div>
@@ -119,26 +127,17 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $dummyData = [
-                                    [
-                                        'id' => 1,
-                                        'tahun' => '2023',
-                                        'guruMapel' => 'Guru 1',
-                                        'jumlahDibutuhkan' => '10',
-                                        'jumlahYangAda' => '8',
-                                        'lebihKurang' => '8',
-                                        'keterangan' => 'Kurang',
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'tahun' => '2022',
-                                        'guruMapel' => 'Guru 2 la la la la la',
-                                        'jumlahDibutuhkan' => '15',
-                                        'jumlahYangAda' => '20',
-                                        'lebihKurang' => '8',
-                                        'keterangan' => 'Lebih',
-                                    ],
-                                ];
+                                // $dummyData = [
+                                //     [
+                                //         'id' => 1,
+                                //         'tahun' => '2023',
+                                //         'mataPelajaran' => 'Guru 1',
+                                //         'jumlahDibutuhkan' => '10',
+                                //         'jumlahYangAda' => '8',
+                                //         'lebihKurang' => '8',
+                                //         'keterangan' => 'Kurang',
+                                //     ],
+                                // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
@@ -147,8 +146,8 @@
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php
-                                        $guruMapel = $data['guruMapel'];
-                                        echo strlen($guruMapel) > 15 ? substr($guruMapel, 0, 15) . '...' : $guruMapel;
+                                        $mataPelajaran = $data['mataPelajaran'];
+                                        echo strlen($mataPelajaran) > 15 ? substr($mataPelajaran, 0, 15) . '...' : $mataPelajaran;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jumlahDibutuhkan'] ?></td>
@@ -157,7 +156,7 @@
                                     <td class="px-3 py-2"><?= $data['keterangan'] ?></td>
                                     <td class="px-3 py-2">
                                         <div class="flex justify-items-center m-auto text-center gap-2">
-                                            <a href="/admin-kebutuhan-guru-slb/edit" title="Edit">
+                                            <a href="/admin-kebutuhan-guru-slb/edit/{{ $data['id'] }}" title="Edit">
                                                 <div
                                                     class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
                                                     <x-svg-edit />
@@ -166,14 +165,14 @@
                                             <div class="div">
                                                 <button
                                                     class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
-                                                    title="Delete" type="button" data-index="<?= $index ?>">
+                                                    title="Delete" type="button" data-index="<?= $data['id'] ?>">
                                                     <x-svg-delete />
                                                 </button>
                                             </div>
                                             <?php endforeach; ?>
                                             <!-- Modal -->
                                             <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
                                                 <div class="relative p-4 w-full max-w-md max-h-full">
                                                     <div class="relative bg-[#297785] rounded-lg shadow">
                                                         <button type="button"
@@ -214,6 +213,7 @@
                                                     const deleteButtons = document.querySelectorAll('.delete-button');
                                                     deleteButtons.forEach(button => {
                                                         button.addEventListener('click', function() {
+                                                            // console.log(button.getAttribute('data-index'));
                                                             const index = this.dataset.index;
                                                             const modal = document.getElementById('popup-modal');
                                                             modal.classList.remove('hidden');
@@ -230,6 +230,15 @@
                                                                 modal.setAttribute('aria-hidden', 'true');
                                                                 modal.setAttribute('tabindex', '-1');
                                                             });
+
+                                                            const closeButtonYa = modal.querySelector(
+                                                                '[data-modal-hide="popup-modal-ya"]');
+                                                            closeButtonYa.addEventListener('click', () => {
+                                                                window.location.href = window.location.origin +
+                                                                    '/admin-kebutuhan-guru-slb/delete/' + button.getAttribute(
+                                                                        'data-index');
+                                                            });
+
                                                             const closeButtonTidak = modalTidak.querySelector(
                                                                 '[data-modal-hide="popup-modal-tidak"]');
                                                             closeButtonTidak.addEventListener('click', () => {
@@ -248,8 +257,9 @@
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah :</div>
-                        <div class="">
+                        <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
+                        {{ $DATA->links() }}
+                        {{-- <div class="">
                             <nav aria-label="Page navigation example">
                                 <ul class="inline-flex -space-x-px text-sm gap-2">
                                     <li>
@@ -282,7 +292,7 @@
                                     </li>
                                 </ul>
                             </nav>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

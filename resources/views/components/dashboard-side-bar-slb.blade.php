@@ -67,12 +67,12 @@
                     <div class="overflow-y-auto h-[500px] hide-scrollbar">
                         {{-- peserta didik slb --}}
                         @php
-                            $activePagePath = [
-                                'admin-pesertadidik-slb',
-                                'admin-pesertadidik-slb/tambah',
-                                'admin-pesertadidik-slb/edit',
-                            ]; // halaman aktif
+                            $activePagePath = ['admin-pesertadidik-slb', 'admin-pesertadidik-slb/tambah']; // halaman aktif
+                            if (isset($id)) {
+                                array_push($activePagePath, 'admin-pesertadidik-slb/edit/' . $id);
+                            }
                         @endphp
+                        {{-- @dd($id) --}}
                         <li class="flex items-center justify-center inset-x-0 mt-2">
                             <a href="/admin-pesertadidik-slb" type="button"
                                 class="group w-[90%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -99,7 +99,10 @@
                         <li class="flex items-center justify-center inset-x-0 mt-2">
                             @php
                                 // path halaman aktif
-                                $activePagePath2 = ['admin-guru-slb', 'admin-guru-slb/tambah', 'admin-guru-slb/edit']; // halaman aktif
+                                $activePagePath2 = ['admin-guru-slb', 'admin-guru-slb/tambah']; // halaman aktif
+                                if (isset($id)) {
+                                    array_push($activePagePath2, 'admin-guru-slb/edit/' . $id);
+                                }
                             @endphp
                             <a href="/admin-guru-slb" type="button"
                                 class="group w-[90%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -121,11 +124,10 @@
                         <li class="flex items-center justify-center inset-x-0 mt-2">
                             @php
                                 // path halaman aktif
-                                $activePagePath3 = [
-                                    'admin-tendik-slb',
-                                    'admin-tendik-slb/tambah',
-                                    'admin-tendik-slb/edit',
-                                ]; // path halaman aktif
+                                $activePagePath3 = ['admin-tendik-slb', 'admin-tendik-slb/tambah']; // path halaman aktif
+                                if (isset($id)) {
+                                    array_push($activePagePath3, 'admin-tendik-slb/edit' . $id);
+                                }
                             @endphp
                             <a href="/admin-tendik-slb" type="button"
                                 class="group w-[90%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -233,8 +235,10 @@
                                 $activePagePath5 = [
                                     'admin-kebutuhan-guru-slb',
                                     'admin-kebutuhan-guru-slb/tambah',
-                                    'admin-kebutuhan-guru-slb/edit',
                                 ]; // path halaman aktif
+                                if (isset($id)) {
+                                    array_push($activePagePath5, 'admin-kebutuhan-guru-slb/edit/' . $id);
+                                }
                             @endphp
                             <a href="/admin-kebutuhan-guru-slb" type="button"
                                 class="group w-[90%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -281,7 +285,7 @@
                     </div>
                     <li class="absolute w-full -inset-x-0 bottom-0">
                         <a type="button" id="logOut" href="/logout"
-                            class="gap-3 w-52 py-1 mb-5 flex items-center justify-center m-auto rounded-md bg-[#FF0000] hover:bg-[#D51717] text-white p-2 pt-2 pb-2">
+                            class="btn border-none gap-3 w-52 py-1 mb-5 flex items-center justify-center m-auto rounded-md bg-[#FF0000] hover:bg-[#D51717] text-white p-2 pt-2 pb-2">
                             Logout
                         </a>
                     </li>

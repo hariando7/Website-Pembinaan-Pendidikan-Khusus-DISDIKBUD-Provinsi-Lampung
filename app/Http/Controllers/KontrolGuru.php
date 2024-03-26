@@ -9,19 +9,68 @@ use Illuminate\Database\Eloquent\Builder;
 
 use App\Models\Sekolah;
 use App\Models\Guru;
+use Carbon\Carbon;
 
 class KontrolGuru extends Controller
 {
+        // $dummyData = [
+        //                             [
+        //         'id' => 1,
+        //         'tahun' => '2024-03-13 23.59',
+        //         'namaGuru' => 'John Doe',
+        //         'jenisKelamin' => 'Laki-laki',
+        //         'NIP' => '1234567890',
+        //         'statusPNS' => 'PNS',
+        //         'sertifikasi' => 'Sertifikasi',
+        //         'bidangStudi' => 'Matematika',
+        //     ],
+        // ];
     public function daftarGuruSuperAdmin (Request $req) {
         $guru = $this -> daftarGuru($req);
 
-        return json_encode($guru);
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data -> id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                // 'tahun' => $data -> created_at,
+                'namaGuru' => $data -> nama,
+                'jenisKelamin' => $data -> jenisKelamin,
+                'NIP' => $data -> nip,
+                'statusPNS' => $data -> statusPNS,
+                'sertifikasi' => $data -> sertifikasi,
+                'bidangStudi' => $data -> bidangStudi,
+            ];
+        }, $guru -> items());
+
+        // return json_encode($guru);
+        return view('pages/dashboard/super-admin/slb/guru/sa-guru-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $guru
+        ]);
     }
 
     public function daftarGuruAdmin (Request $req) {
         $guru = $this -> daftarGuru($req);
 
-        return json_encode($guru);
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data -> id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                // 'tahun' => $data -> created_at,
+                'namaGuru' => $data -> nama,
+                'jenisKelamin' => $data -> jenisKelamin,
+                'NIP' => $data -> nip,
+                'statusPNS' => $data -> statusPNS,
+                'sertifikasi' => $data -> sertifikasi,
+                'bidangStudi' => $data -> bidangStudi,
+            ];
+        }, $guru -> items());
+
+        // return json_encode($guru);
+        return view('pages/dashboard/admin-slb/guru/admin-guru-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $guru
+        ]);
     }
 
     public function daftarGuru (Request $req) {
@@ -77,7 +126,16 @@ class KontrolGuru extends Controller
 
         Guru::create($validasi);
         
-        return 'true';
+        // return 'true';
+        return redirect('/admin-guru-slb');
+    }
+
+    public function tampilanEdit ($id) {
+        $guru = Guru::find($id);
+        return view('pages/dashboard/admin-slb/guru/edit/edit-guru-slb', [
+            'id' => $id,
+            'DATA' => $guru
+        ]);
     }
 
     public function ubah (Request $req) {
@@ -111,26 +169,28 @@ class KontrolGuru extends Controller
 
                 $guru -> save();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-guru-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 
     public function hapus ($id) {
         $pengguna = Auth::user();
-
         $guru = Guru::find($id);
 
         if ($guru) {
             if ($guru -> sekolah === $pengguna -> sekolah) {
                 Guru::find($id) -> delete();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-guru-slb');
             }
         }
 
-        return 'false';
+        return back();
     }
 }

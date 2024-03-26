@@ -9,19 +9,65 @@ use Illuminate\Database\Eloquent\Builder;
 
 use App\Models\Sekolah;
 use App\Models\KebutuhanGuru;
+use Carbon\Carbon;
 
 class KontrolKebutuhanGuru extends Controller
 {
+    // $dummyData = [
+    //                                 [
+    //                                     'id' => 1,
+    //                                     'tahun' => '2023',
+    //                                     'guruMapel' => 'Guru 1',
+    //                                     'jumlahDibutuhkan' => '10',
+    //                                     'jumlahYangAda' => '8',
+    //                                     'lebihKurang' => '8',
+    //                                     'keterangan' => 'Kurang',
+    //                                 ],
+    //                             ];
     public function daftarKebutuhanGuruSuperAdmin (Request $req) {
         $kebutuhanGuru = $this -> daftarKebutuhanGuru($req);
 
-        return json_encode($kebutuhanGuru);
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data -> id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                // 'tahun' => $data -> created_at,
+                'mataPelajaran' => $data -> mataPelajaran,
+                'jumlahDibutuhkan' => $data -> jumlahDibutuhkan,
+                'jumlahYangAda' => $data -> jumlahSaatIni,
+                'lebihKurang' => $data -> lebihKurang,
+                'keterangan' => $data -> keterangan,
+            ];
+        }, $kebutuhanGuru -> items());
+
+        // return json_encode($kebutuhanGuru);
+        return view('pages/dashboard/super-admin/slb/kebutuhan-guru/sa-kebutuhan-guru-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $kebutuhanGuru
+        ]);
     }
 
     public function daftarKebutuhanGuruAdmin (Request $req) {
         $kebutuhanGuru = $this -> daftarKebutuhanGuru($req);
 
-        return json_encode($kebutuhanGuru);
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data -> id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                // 'tahun' => $data -> created_at,
+                'mataPelajaran' => $data -> mataPelajaran,
+                'jumlahDibutuhkan' => $data -> jumlahDibutuhkan,
+                'jumlahYangAda' => $data -> jumlahSaatIni,
+                'lebihKurang' => $data -> lebihKurang,
+                'keterangan' => $data -> keterangan,
+            ];
+        }, $kebutuhanGuru -> items());
+
+        // return json_encode($kebutuhanGuru);
+        return view('pages/dashboard/admin-slb/kebutuhan-guru/admin-kebutuhan-guru-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $kebutuhanGuru
+        ]);
     }
 
     public function daftarKebutuhanGuru (Request $req) {
@@ -75,7 +121,16 @@ class KontrolKebutuhanGuru extends Controller
         
         KebutuhanGuru::create($validasi);
         
-        return 'true';
+        // return 'true';
+        return redirect('/admin-kebutuhan-guru-slb');
+    }
+    
+    public function tampilanEdit ($id) {
+        $kebutuhanGuru = KebutuhanGuru::find($id);
+        return view('pages/dashboard/admin-slb/kebutuhan-guru/edit/edit-kebutuhan-guru-slb', [
+            'id' => $id,
+            'DATA' => $kebutuhanGuru
+        ]);
     }
     
     public function ubah (Request $req) {
@@ -106,11 +161,13 @@ class KontrolKebutuhanGuru extends Controller
 
                 $kebutuhanGuru -> save();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-kebutuhan-guru-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 
     public function hapus ($id) {
@@ -122,10 +179,12 @@ class KontrolKebutuhanGuru extends Controller
             if ($kebutuhanGuru -> sekolah === $pengguna -> sekolah) {
                 KebutuhanGuru::find($id) -> delete();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-kebutuhan-guru-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 }

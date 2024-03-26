@@ -43,7 +43,9 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black" id="moving-border">
+            <form method="POST"
+                class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+                id="moving-border">
                 @csrf
                 {{-- isi konten disini --}}
                 <div class=''>
@@ -55,26 +57,31 @@
                                 placeholder="Masukkan Nama Peserta Didik" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jeniskelamin">Jenis Kelamin (JK)</label>
-                            <input type="text" name="jenisKelamin" id="jeniskelamin"
+                            <label for="jeniskelamin">Jenis Kelamin (JK)</label>
+                            <select name="jenisKelamin" id="jeniskelamin"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jenis Kelamin" required />
+                                required>
+                                <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
-                        {{-- <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="namasekolah">Nama Sekolah</label>
-                            <input type="text" id="namasekolah"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Sekolah" required />
-                        </div> --}}
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">Jenis Ketunaan</label>
-                            <input type="text" name="jenisKetunaan" id="jenisketunaan"
+                            <select name="jenisKetunaan" id="jenisketunaan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jenis Ketunaan" required />
+                                required>
+                                <option value="" disabled selected>Pilih Jenis Ketunaan</option>
+                                <option value="Tunanetra">Tunanetra</option>
+                                <option value="Tunarungu">Tunarungu</option>
+                                <option value="Tuna Laras">Tuna Laras</option>
+                                <option value="Tunadaksa">Tunadaksa</option>
+                                <option value="Tunagrahita">Tunagrahita</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -96,7 +103,7 @@
                 </div>
                 <div class="flex justify-end mt-4">
                     <button type="submit"
-                        class="flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
+                        class="btn border-none flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
                         + Simpan
                     </button>
                 </div>

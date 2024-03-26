@@ -6,6 +6,10 @@ use App\Http\Controllers\GeneralPage;
 use App\Http\Controllers\KontrolOtentifikasi;
 use App\Http\Controllers\KontrolPengguna;
 use App\Http\Controllers\KontrolPesertaDidik;
+use App\Http\Controllers\KontrolGuru;
+use App\Http\Controllers\KontrolTenagaPendidik;
+use App\Http\Controllers\KontrolKebutuhanGuru;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,13 +50,13 @@ Route::controller(GeneralPage::class) -> group(function () {
     // Awal Admin Home SLB
     Route::get('/admin-home-slb', 'adminhomeslb') -> middleware('admin');
     // Guru
-    Route::get('/admin-guru-slb', 'adminguruslb');
+    // Route::get('/admin-guru-slb', 'adminguruslb');
     Route::get('/admin-guru-slb/tambah', 'admintambahguruslb');
-    Route::get('/admin-guru-slb/edit', 'admineditguruslb');
+    // Route::get('/admin-guru-slb/edit', 'admineditguruslb');
     // Kebutuhan guru
-    Route::get('/admin-kebutuhan-guru-slb', 'adminkebutuhanguruslb');
+    // Route::get('/admin-kebutuhan-guru-slb', 'adminkebutuhanguruslb');
     Route::get('/admin-kebutuhan-guru-slb/tambah', 'admintambahkebutuhanguruslb');
-    Route::get('admin-kebutuhan-guru-slb/edit', 'admineditkebutuhanguruslb');
+    // Route::get('admin-kebutuhan-guru-slb/edit', 'admineditkebutuhanguruslb');
     // Peserta Didik
     // Route::get('/admin-pesertadidik-slb', 'adminpesertadidikslb');
     Route::get('/admin-pesertadidik-slb/tambah', 'admintambahpesertadidikslb');
@@ -62,9 +66,9 @@ Route::controller(GeneralPage::class) -> group(function () {
     Route::get('/admin-sarpras-slb/tambah', 'admintambahsarprasslb');
     Route::get('/admin-sarpras-slb/edit', 'admineditsarprasslb');
     // Tendik
-    Route::get('/admin-tendik-slb', 'admintendikslb');
+    // Route::get('/admin-tendik-slb', 'admintendikslb');
     Route::get('/admin-tendik-slb/tambah', 'admintambahtendikslb');
-    Route::get('/admin-tendik-slb/edit', 'adminedittendikslb');
+    // Route::get('/admin-tendik-slb/edit', 'adminedittendikslb');
     // Karya
     Route::get('/admin-karya-slb', 'adminkaryaslb');
     Route::get('/admin-karya-slb/tambah', 'admintambahkaryaslb');
@@ -101,15 +105,15 @@ Route::controller(GeneralPage::class) -> group(function () {
 
     // Awal Super admin data SLB
     // Data Guru SLB
-    Route::get('/sa-guru-slb', 'saguruslb');
+    // Route::get('/sa-guru-slb', 'saguruslb');
     // Data Kebutuhan Guru
-    Route::get('/sa-kebutuhan-guru-slb', 'sakebutuhanguruslb');
+    // Route::get('/sa-kebutuhan-guru-slb', 'sakebutuhanguruslb');
     // Data Peserta Didik SLB
-    Route::get('/sa-peserta-didik-slb', 'sapesertadidikslb');
+    // Route::get('/sa-peserta-didik-slb', 'sapesertadidikslb');
     // Data Sarpras SLB
     Route::get('/sa-sarpras-slb', 'sasarprasslb');
     // Data Tendik SLB
-    Route::get('/sa-tendik-slb', 'satendikslb');
+    // Route::get('/sa-tendik-slb', 'satendikslb');
     // Data Karya SLB
     Route::get('/sa-karya-slb', 'sakaryaslb');
     // Akhir Super Admin data SLB
@@ -147,6 +151,64 @@ Route::controller(KontrolPesertaDidik::class) -> group(function () {
     });
 });
 
+Route::controller(KontrolGuru::class) -> group(function () {
+    Route::middleware('admin') -> group(function () {
+        Route::get('/admin-guru-slb', 'daftarGuruAdmin');
+        Route::post('/admin-guru-slb/tambah', 'tambah');
+        Route::get('/admin-guru-slb/delete/{id}', 'hapus');
+        Route::get('/admin-guru-slb/edit/{id}', 'tampilanEdit');
+        Route::put('/admin-guru-slb/edit/{id}', 'ubah');
+    });
+});
+
+Route::controller(KontrolTenagaPendidik::class) -> group(function () {
+    Route::middleware('admin') -> group(function () {
+        Route::get('/admin-tendik-slb', 'daftarTenagaPendidikAdmin');
+        Route::post('/admin-tendik-slb/tambah', 'tambah');
+        Route::get('/admin-tendik-slb/delete/{id}', 'hapus');
+        Route::get('/admin-tendik-slb/edit/{id}', 'tampilanEdit');
+        Route::put('/admin-tendik-slb/edit/{id}', 'ubah');
+    });
+});
+
+Route::controller(KontrolKebutuhanGuru::class) -> group(function () {
+    Route::middleware('admin') -> group(function () {
+        Route::get('/admin-kebutuhan-guru-slb', 'daftarKebutuhanGuruAdmin');
+        Route::post('/admin-kebutuhan-guru-slb/tambah', 'tambah');
+        Route::get('/admin-kebutuhan-guru-slb/delete/{id}', 'hapus');
+        Route::get('/admin-kebutuhan-guru-slb/edit/{id}', 'tampilanEdit');
+        Route::put('/admin-kebutuhan-guru-slb/edit/{id}', 'ubah');
+    });
+});
+
+
+
+
+Route::controller(KontrolPesertaDidik::class) -> group(function () {
+    Route::middleware('superAdmin') -> group(function () {
+        Route::get('/sa-peserta-didik-slb', 'daftarPesertaDidikSuperAdmin');
+    });
+});
+Route::controller(KontrolGuru::class) -> group(function () {
+    Route::middleware('superAdmin') -> group(function () {
+        Route::get('/sa-guru-slb', 'daftarGuruSuperAdmin');
+    });
+});
+Route::controller(KontrolTenagaPendidik::class) -> group(function () {
+    Route::middleware('superAdmin') -> group(function () {
+        Route::get('/sa-tendik-slb', 'daftarTenagaPendidikSuperAdmin');
+    });
+});
+Route::controller(KontrolKebutuhanGuru::class) -> group(function () {
+    Route::middleware('superAdmin') -> group(function () {
+        Route::get('/sa-kebutuhan-guru-slb', 'daftarKebutuhanGuruSuperAdmin');
+    });
+});
+
+
+
+
 // Route::get('/slb', function () {
 //     return view('pages/landing/slb');
 // });
+Route::get('/play-sound/{text}', 'SoundController@playSound')->name('play-sound');

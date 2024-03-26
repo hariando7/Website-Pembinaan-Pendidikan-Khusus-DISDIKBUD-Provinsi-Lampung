@@ -10,6 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
     <!-- Slick Carousel CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -186,35 +188,6 @@
         <x-hero-landing title="Bidang Pembinaan Pendidikan Khusus"
             desc="Dinas Pendidikan dan Kebudayaan Provinsi Lampung Jl. Drs. Warsito No. 72 Teluk Betung Bandar Lampung, 35215"
             ref="#section2" imgPath="{{ asset('/assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
-        {{-- <div id="section1" class="w-full justify-center items-start bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
-            <div class="lg:w-full lg:flex p-5 lg:p-20">
-                <img src="assets/landing/prov-lampung2.svg" alt=""
-                    class="w-[40%] h-[40%] m-auto items-center lg:w-[25%] lg:h-[35%] mb-5 lg:mb-0">
-                <div class="lg:pl-16">
-                    <div class="text-2xl lg:text-3xl font-bold text-black pb-5 lg:pb-5 text-center lg:text-left">
-                        Dinas Pendidikan dan Kebudayaan Provinsi Lampung</div>
-                    <div class="text-base lg:text-lg font-thin text-black text-justify">
-                        <div class="mx-auto max-w-3xl my-8">
-                            <p class="mb-4">Dinas Pendidikan dan Kebudayaan Provinsi Lampung berdiri pada tanggal 2
-                                Mei 1945, dengan dasar Peraturan Pemerintahan No. 65 Tahun 1951 tentang pelaksanaan
-                                penyerahan sebagian dari pada urusan pemerintah pusat dalam lapangan, pendidikan,
-                                pengajar, dan kebudayaan kepada Provinsi.</p>
-                        </div>
-                        <div class="mx-auto max-w-3xl my-8">
-                            <p class="mb-4">Dinas memiliki tugas menyelenggarakan sebagian urusan pemerintahan
-                                provinsi di bidang pendidikan dan kebudayaan berdasarkan asas otonomi yang menjadi
-                                kewenangan, tugas dekonsentrasi, dan tugas pembantuan yang diberikan pemerintah kepada
-                                Gubernur serta tugas lain sesuai dengan kebijakan yang ditetapkan oleh Gubernur
-                                berdasarkan peraturan perundang-undangan yang berlaku.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-end justify-end text-right mr-5 lg:mr-20 lg:-mt-20 lg:pb-20">
-                <x-buttitle-landing ref="https://disdikbud.lampungprov.go.id/" color="#FA8F21" width="[10rem]"
-                    title="Selengkapnya" extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3" />
-            </div>
-        </div> --}}
         <div id="section_profile">
             <div class="hero min-h-screen bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
                 <div class="hero-content flex-col lg:flex-row lg:w-full lg:flex p-5 lg:p-20 gap-10">
@@ -232,47 +205,108 @@
                 </div>
             </div>
         </div>
-        <div id="section2" class="w-full justify-center items-start bg-[#EEEFF4]">
+        <div id="section2" class="w-full justify-center items-start bg-white">
             <div class="w-full p-5 lg:p-20 pt-10 pb-10">
                 <div class="text-center items-center">
-                    <div class="text-2xl lg:text-3xl font-bold text-black pb-5">Bidang Pembinaan Pendidikan
-                        Khusus</div>
-                    <div class="text-base lg:text-lg font-thin text-black text-justify">
-                        <div class="mx-auto max-w-4xl my-8">
-                            <p class="mb-4">Berdasarkan peraturan Gubernur Lampung nomor 30 tahun 2019 Pasal 14
-                                dijelaskan bahwa:</p>
-                            <ol class="list-decimal pl-6 mb-4">
-                                <li>Bidang Pembinaan Pendidikan Khusus memiliki tugas melaksanakan penyusunan bahan
-                                    perumusan dan pelaksanaan kebijakan di bidang pendidikan khusus.</li>
-                                <li>Untuk menyelenggarakan tugas sebagaimana dimaksud pada ayat (1), Bidang Pembinaan
-                                    Pendidikan Khusus memiliki fungsi:</li>
-                                <ol class="list-decimal pl-6">
-                                    <li>Penyusunan bahan perumusan dan koordinasi pelaksanaan kebijakan di bidang
+                    <h1 class="text-2xl lg:text-4xl font-bold text-black pb-5 lg:pb-10">Bidang Pembinaan Pendidikan
+                        Khusus</h1>
+                    <h4 class="text-md lg:text-xl text-black pb-5 lg:pb-10">Berdasarkan peraturan Gubernur Lampung Nomor
+                        59 Tahun 2021 Tentang Susunan Organisasi, Tugas Dan Fungsi, Serta Tata Kerja Perangkat Daerah
+                        dijelaskan bahwa:</h4>
+                    <div id="accordion-nested-parent" data-accordion="collapse">
+                        <h2 id="accordion-collapse-heading-1">
+                            <button type="button"
+                                class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black border border-b-0 border-[#C4DDDE] rounded-t-xl focus:ring-4 focus:ring-[#C4DDDE] hover:bg-[#2F8386]/[0.66] gap-3"
+                                data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
+                                aria-controls="accordion-collapse-body-1">
+                                <span class="">Pasal 115 ayat 1</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="#C4DDDE" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-collapse-body-1" class="hidden"
+                            aria-labelledby="accordion-collapse-heading-1">
+                            <div class="p-5 border border-b-0 border-[#C4DDDE] text-black">
+                                <p class="mb-2 text-left">Bidang Pembinaan Pendidikan Khusus mempunyai tugas
+                                    melaksanakan
+                                    penyusunan bahan perumusan dan pelaksanaan kebijakan di bidang pendidikan khusus</p>
+                            </div>
+                        </div>
+                        <h2 id="accordion-collapse-heading-2">
+                            <button type="button"
+                                class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-black border border-b-0 border-[#C4DDDE] focus:ring-4 focus:ring-[#C4DDDE] hover:bg-[#C4DDDE] gap-3    "
+                                data-accordion-target="#accordion-collapse-body-2" aria-expanded="false"
+                                aria-controls="accordion-collapse-body-2">
+                                <span>Pasal 115 ayat 2</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="#C4DDDE" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-collapse-body-2" class="hidden"
+                            aria-labelledby="accordion-collapse-heading-2">
+                            <div class="p-5 border border-[#C4DDDE] text-left">
+                                <p class="mb-2 text-black">Untuk menyelenggarakan tugas sebagaimana dimaksud pada ayat
+                                    (1), Bidang
+                                    Pembinaan Pendidikan Khusus mempunyai fungsi:</p>
+                                <ol class="mb-2 text-black" type="a">
+                                    <li>(a.) penyusunan bahan perumusan dan koordinasi pelaksanaan kebijakan di bidang
                                         kurikulum dan penilaian, kelembagaan dan sarana prasarana, serta peserta didik
-                                        dan pembangunan karakter pendidikan khusus.</li>
-                                    <li>Pembinaan pelaksanaan kebijakan di bidang kurikulum dan penilaian, kelembagaan
+                                        dan pembangunan karakter pendidikan khusus;</li>
+                                    <li>(b.) pembinaan pelaksanaan kebijakan di bidang kurikulum dan penilaian,
+                                        kelembagaan
                                         dan sarana prasarana, serta peserta didik dan pembangunan karakter pendidikan
-                                        khusus.</li>
-                                    <li>Penyusunan bahan penetapan kurikulum muatan lokal pendidikan khusus.</li>
-                                    <li>Penyusunan bahan penerbitan izin pendirian, penataan, dan penutupan satuan
-                                        pendidikan khusus.</li>
-                                    <li>Penyusunan bahan pembinaan pelaksanaan kurikulum dan penilaian, kelembagaan dan
+                                        khusus;</li>
+                                    <li>(c.) penyusunan bahan penetapan kurikulum muatan lokal pendidikan khusus;</li>
+                                    <li>(d.) penyusunan bahan penerbitan izin pendirian, penataan, dan penutupan satuan
+                                        pendidikan khusus;</li>
+                                    <li>(e.) penyusunan bahan pembinaan pelaksanaan kurikulum dan penilaian, kelembagaan
+                                        dan
                                         sarana prasarana, serta peserta didik dan pembangunan karakter pendidikan
-                                        khusus.</li>
-                                    <li>Pelaksanaan pemantauan dan evaluasi di bidang kurikulum dan penilaian,
+                                        khusus;</li>
+                                    <li>(f.) pelaksanaan pemantauan dan evaluasi di bidang kurikulum dan penilaian,
                                         kelembagaan dan sarana prasarana, serta peserta didik dan pembangunan karakter
-                                        pendidikan khusus.</li>
-                                    <li>Pelaporan di bidang kurikulum dan penilaian, kelembagaan dan sarana prasarana,
-                                        serta peserta didik dan pembangunan karakter pendidikan khusus.</li>
-                                    <li>Pelaksanaan fungsi lain yang diberikan oleh atasan.</li>
+                                        pendidikan khusus;</li>
+                                    <li>(g.) pelaporan di bidang kurikulum dan penilaian, kelembagaan dan sarana
+                                        prasarana,
+                                        serta peserta didik dan pembangunan karakter pendidikan khusus; dan</li>
+                                    <li>(h.) pelaksanaan fungsi lain yang diberikan oleh atasan.</li>
                                 </ol>
-                            </ol>
+                            </div>
+                        </div>
+                        <h2 id="accordion-collapse-heading-3">
+                            <button type="button"
+                                class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-black border border-b-0 border-[#C4DDDE] focus:ring-4 focus:ring-[#C4DDDE] hover:bg-[#C4DDDE] gap-3    "
+                                data-accordion-target="#accordion-collapse-body-3" aria-expanded="false"
+                                aria-controls="accordion-collapse-body-2">
+                                <span>Pasal 115 ayat 1</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="#C4DDDE" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-collapse-body-3" class="hidden"
+                            aria-labelledby="accordion-collapse-heading-3">
+                            <div class="p-5 border border-[#C4DDDE]">
+                                <p class="mb-2 text-black">Bidang Pembinaan Pendidikan Khusus dipimpin oleh seorang
+                                    Kepala Bidang
+                                    yang berada di bawah dan bertanggungjawab kepada Kepala Dinas
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex items-center justify-center text-center pb-5 lg:mr-20 lg:-mt-20 lg:pb-20">
-                <x-buttitle-landing ref="https://drive.google.com/file/d/1AV_l9oi2m_jN1ooSWIFBpOxbWi50XDMH/preview"
+                <x-buttitle-landing
+                    ref="https://drive.google.com/file/d/13DNkClGHYWfuzN4LpMGIg9LgwJzpcb2J/view?usp=sharing"
                     color="#FA8F21" width="[10rem]" title="Selengkapnya"
                     extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3" />
             </div>
@@ -281,25 +315,20 @@
             <div class="lg:w-full p-5 lg:p-20 pt-10 pb-10">
                 <div class="text-center items-center">
                     <div class="text-2xl lg:text-3xl text-center lg:text-center font-bold text-black pb-5 lg:pb-10">
-                        Struktur Bidang
-                        Pembinaan Pendidikan Khusus</div>
-                    <img src="assets/landing/strukturDinas.svg" alt="">
+                        Struktur Dinas Pendidikan Dan Kebudayaan Provinsi Lampung</div>
+                    <img src="assets/landing/strukturDinas.svg" class="flex justify-center items-center m-auto"
+                        alt="">
                 </div>
             </div>
         </div>
-        <div id="section4">
-            <div class="w-full flex flex-col justify-center items-center pt-20 pb-20 bg-white">
-                <div class="w-[80%] bg-[#2E707B] p-10 rounded-lg">
-                    <h1 class="lg:text-5xl md:text-4xl sm:text-3xl font-bold text-white text-center">SLB PROVINSI
-                        LAMPUNG
-                    </h1>
-                    <p
-                        class="text-sm md:text-base font-thin text-white text-justify md:text-center mt-4 m-2 md:m-8 pl-0 md:pl-24 md:pr-24">
-                        Sekolah Luar Biasa Dinas Pendidikan Kebudayaan Provinsi Lampung <br>
-                        Bidang Pembinaan Pendidikan Khusus <span><a href="/sekolah-luar-biasa"
-                                target="_blank">Selengkapnya</a></span>
-                    </p>
-                    <x-carousel-home />
+        <div id="section4" class="w-full justify-center items-start bg-white">
+            <div class="lg:w-full p-5 lg:p-20 pt-10 pb-10">
+                <div class="text-center items-center">
+                    <div class="text-2xl lg:text-3xl text-center lg:text-center font-bold text-black pb-5 lg:pb-10">
+                        Struktur Bidang
+                        Pembinaan Pendidikan Khusus</div>
+                    <img src="assets/landing/strukturDinas.svg" class="flex justify-center items-center m-auto"
+                        alt="">
                 </div>
             </div>
         </div>

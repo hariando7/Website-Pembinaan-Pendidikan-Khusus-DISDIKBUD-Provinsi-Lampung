@@ -145,28 +145,28 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $dummyData = [
-                                    [
-                                        'id' => 1,
-                                        'tahun' => '2024-03-13 23.59',
-                                        'namaGuru' => 'John Doe',
-                                        'jenisKelamin' => 'Laki-laki',
-                                        'NIP' => '1234567890',
-                                        'statusPNS' => 'PNS',
-                                        'sertifikasi' => 'Sertifikasi',
-                                        'bidangStudi' => 'Matematika',
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'tahun' => '2024-03-13 23.59',
-                                        'namaGuru' => 'Jane Doeeeeeeeeeeeeeeeee',
-                                        'jenisKelamin' => 'Perempuan',
-                                        'NIP' => '0987654321',
-                                        'statusPNS' => 'Non-PNS',
-                                        'sertifikasi' => 'Non-Sertifikasi',
-                                        'bidangStudi' => 'Bahasa Inggris',
-                                    ],
-                                ];
+                                // $dummyData = [
+                                //     [
+                                //         'id' => 1,
+                                //         'tahun' => '2024-03-13 23.59',
+                                //         'namaGuru' => 'John Doe',
+                                //         'jenisKelamin' => 'Laki-laki',
+                                //         'NIP' => '1234567890',
+                                //         'statusPNS' => 'PNS',
+                                //         'sertifikasi' => 'Sertifikasi',
+                                //         'bidangStudi' => 'Matematika',
+                                //     ],
+                                //     [
+                                //         'id' => 2,
+                                //         'tahun' => '2024-03-13 23.59',
+                                //         'namaGuru' => 'Jane Doeeeeeeeeeeeeeeeee',
+                                //         'jenisKelamin' => 'Perempuan',
+                                //         'NIP' => '0987654321',
+                                //         'statusPNS' => 'Non-PNS',
+                                //         'sertifikasi' => 'Non-Sertifikasi',
+                                //         'bidangStudi' => 'Bahasa Inggris',
+                                //     ],
+                                // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
@@ -190,9 +190,9 @@
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah :</div>
+                        <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
                         <div class="">
-                            <nav aria-label="Page navigation example">
+                            {{-- <nav aria-label="Page navigation example">
                                 <ul class="inline-flex -space-x-px text-sm gap-2">
                                     <li>
                                         <a href="#"
@@ -200,30 +200,31 @@
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">1</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">2</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
                                     </li>
                                     <li>
                                         <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">3</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">4</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold ">5</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
                                     </li>
                                     <li>
                                         <a href="#"
                                             class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> --}}
+                            {{ $DATA->links() }}
                         </div>
                     </div>
                 </div>

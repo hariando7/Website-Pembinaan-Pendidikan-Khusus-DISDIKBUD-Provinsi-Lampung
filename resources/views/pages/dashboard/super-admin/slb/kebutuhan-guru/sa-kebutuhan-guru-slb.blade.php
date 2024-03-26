@@ -140,26 +140,26 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $dummyData = [
-                                    [
-                                        'id' => 1,
-                                        'tahun' => '2023',
-                                        'guruMapel' => 'Guru 1',
-                                        'jumlahDibutuhkan' => '10',
-                                        'jumlahYangAda' => '8',
-                                        'lebihKurang' => '8',
-                                        'keterangan' => 'Kurang',
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'tahun' => '2022',
-                                        'guruMapel' => 'Guru 2 la la la la la',
-                                        'jumlahDibutuhkan' => '15',
-                                        'jumlahYangAda' => '20',
-                                        'lebihKurang' => '8',
-                                        'keterangan' => 'Lebih',
-                                    ],
-                                ];
+                                // $dummyData = [
+                                //     [
+                                //         'id' => 1,
+                                //         'tahun' => '2023',
+                                //         'guruMapel' => 'Guru 1',
+                                //         'jumlahDibutuhkan' => '10',
+                                //         'jumlahYangAda' => '8',
+                                //         'lebihKurang' => '8',
+                                //         'keterangan' => 'Kurang',
+                                //     ],
+                                //     [
+                                //         'id' => 2,
+                                //         'tahun' => '2022',
+                                //         'guruMapel' => 'Guru 2 la la la la la',
+                                //         'jumlahDibutuhkan' => '15',
+                                //         'jumlahYangAda' => '20',
+                                //         'lebihKurang' => '8',
+                                //         'keterangan' => 'Lebih',
+                                //     ],
+                                // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
@@ -168,8 +168,8 @@
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php
-                                        $guruMapel = $data['guruMapel'];
-                                        echo strlen($guruMapel) > 15 ? substr($guruMapel, 0, 15) . '...' : $guruMapel;
+                                        $mataPelajaran = $data['mataPelajaran'];
+                                        echo strlen($mataPelajaran) > 15 ? substr($mataPelajaran, 0, 15) . '...' : $mataPelajaran;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jumlahDibutuhkan'] ?></td>
@@ -182,9 +182,9 @@
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah :</div>
+                        <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
                         <div class="">
-                            <nav aria-label="Page navigation example">
+                            {{-- <nav aria-label="Page navigation example">
                                 <ul class="inline-flex -space-x-px text-sm gap-2">
                                     <li>
                                         <a href="#"
@@ -192,30 +192,31 @@
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">1</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">2</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
                                     </li>
                                     <li>
                                         <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">3</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">4</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold ">5</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
                                     </li>
                                     <li>
                                         <a href="#"
                                             class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> --}}
+                            {{ $DATA->links() }}
                         </div>
                     </div>
                 </div>

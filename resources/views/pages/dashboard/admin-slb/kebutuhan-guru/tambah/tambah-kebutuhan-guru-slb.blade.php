@@ -43,35 +43,14 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black" id="moving-border">
+            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black" id="moving-border">
                 {{-- isi konten disini --}}
-                {{-- <div class=''>
-                    <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="name">No</label>
-                            <input type="text" id="name"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="1" required />
-                        </div>
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="tahun">Tahun</label>
-                            <input type="text" id="tahun"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="2023/2024" required />
-                        </div>
-                    </div>
-                </div> --}}
+                @csrf
                 <div class=''>
                     <div class="flex gap-x-2">
-                        {{-- <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="name">Nama Sekolah</label>
-                            <input type="text" id="name"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Sekolah" required />
-                        </div> --}}
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jeniskelamin">Guru Mata Pelajaran</label>
-                            <input type="text" id="jeniskelamin"
+                            <label htmlFor="mataPelajaran">Guru Mata Pelajaran</label>
+                            <input type="text" id="mataPelajaran" name="mataPelajaran"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Guru Mata Pelajaran" required />
                         </div>
@@ -80,14 +59,14 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="namasekolah">Jumlah Dibutuhkan</label>
-                            <input type="text" id="namasekolah"
+                            <label htmlFor="jumlahDibutuhkan">Jumlah Dibutuhkan</label>
+                            <input type="number" id="jumlahDibutuhkan" name="jumlahDibutuhkan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jumlah Dibutuhkan" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jenisketunaan">Jumlah Yang Ada</label>
-                            <input type="text" id="jenisketunaan"
+                            <label htmlFor="jumlahSaatIni">Jumlah Yang Ada</label>
+                            <input type="number" id="jumlahSaatIni" name="jumlahSaatIni"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jumlah Yang Ada" required />
                         </div>
@@ -96,14 +75,14 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="kelas">Lebih (+)/ Kurang (-)</label>
-                            <input type="text" id="kelas"
+                            <label htmlFor="lebihKurang">Lebih (+)/ Kurang (-)</label>
+                            <input type="number" id="lebihKurang" name="lebihKurang"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Lebih/Kurang" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="romble">Keterangan</label>
-                            <input type="text" id="romble"
+                            <label htmlFor="keterangan">Keterangan</label>
+                            <input type="text" id="keterangan" name="keterangan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Keterangan" required />
                         </div>
@@ -111,11 +90,11 @@
                 </div>
                 <div class="flex justify-end mt-4">
                     <button type="submit"
-                        class="flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
+                        class="btn border-none flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
                         + Simpan
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

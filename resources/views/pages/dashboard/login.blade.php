@@ -289,7 +289,7 @@
                     {{-- <a href="/registrasi-si" class="hover:text-white">Signup</a> --}}
                 </div>
                 <input type="submit" value="Login"
-                    class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
+                    class="btn border-none text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
             </form>
         </div>
     </div>

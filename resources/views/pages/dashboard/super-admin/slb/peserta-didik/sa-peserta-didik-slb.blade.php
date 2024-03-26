@@ -55,7 +55,7 @@
                     SLB Provinsi Lampung
                 </div>
                 <div class="">
-                    <x-buttitle-landing ref="/sa-statistik-pserta-didik" color="#FA8F21" width="[13rem]"
+                    <x-buttitle-landing ref="/sa-statistik-peserta-didik" color="#FA8F21" width="[13rem]"
                         title="Statistik Peserta Didik SLB"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
@@ -139,49 +139,22 @@
                                 </tr>
                             <tbody>
                                 <?php
-                                $dummyData = [
-                                    [
-                                        'id' => 1,
-                                        'tahun' => '2023',
-                                        'namaSiswa' => 'Rizkyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-                                        'jenisKelamin' => 'Laki-laki',
-                                        'jenisKetunaan' => 'Tuna Rungu',
-                                        'kelas' => 'XII-A',
-                                        'romble' => '1A',
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'tahun' => '2022',
-                                        'namaSiswa' => 'rian2',
-                                        'jenisKelamin' => 'Perempuan',
-                                        'jenisKetunaan' => 'Tuna Netra',
-                                        'kelas' => 'XI-B',
-                                        'romble' => '2B',
-                                    ],
-                                    [
-                                        'id' => 3,
-                                        'tahun' => '2023',
-                                        'namaSiswa' => 'rian1',
-                                        'jenisKelamin' => 'Laki-laki',
-                                        'jenisKetunaan' => 'Tuna Rungu',
-                                        'kelas' => 'XII-A',
-                                        'romble' => '1A',
-                                    ],
-                                    [
-                                        'id' => 4,
-                                        'tahun' => '2022',
-                                        'namaSiswa' => 'rian2',
-                                        'jenisKelamin' => 'Perempuan',
-                                        'jenisKetunaan' => 'Tuna Netra',
-                                        'kelas' => 'XI-B',
-                                        'romble' => '2B',
-                                    ],
-                                ];
+                                // $dummyData = [
+                                //     [
+                                //         'id' => 1,
+                                //         'tahun' => '2023',
+                                //         'namaSiswa' => 'Rizkyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+                                //         'jenisKelamin' => 'Laki-laki',
+                                //         'jenisKetunaan' => 'Tuna Rungu',
+                                //         'kelas' => 'XII-A',
+                                //         'romble' => '1A',
+                                //     ],
+                                // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
-                                    <td class="px-3 py-2"><?= $index + 1 ?></td>
+                                    <td class="px-3 py-2">{{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}</td>
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php
@@ -199,9 +172,9 @@
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah :</div>
+                        <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
                         <div class="">
-                            <nav aria-label="Page navigation example">
+                            {{-- <nav aria-label="Page navigation example">
                                 <ul class="inline-flex -space-x-px text-sm gap-2">
                                     <li>
                                         <a href="#"
@@ -209,30 +182,31 @@
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">1</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">2</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
                                     </li>
                                     <li>
                                         <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">3</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">4</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold ">5</a>
+                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
                                     </li>
                                     <li>
                                         <a href="#"
                                             class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> --}}
+                            {{ $DATA->links() }}
                         </div>
                     </div>
                 </div>

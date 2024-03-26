@@ -253,10 +253,10 @@
                     <span>Email</span>
                     <i></i>
                 </div>
-                <input type="submit" value="Login" class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
+                <input type="submit" value="Login" class="btn border-none text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
                 <div class="links">
                     <div class="text-white text-[0.75em] text-decoration">Kembali ke
-                        <a href="/login" class="hover:text-white text-[0.75em]">Sign In
+                        <a href="/login" class=" hover:text-white text-[0.75em]">Sign In
                         </a>
                     </div>
                 </div>
