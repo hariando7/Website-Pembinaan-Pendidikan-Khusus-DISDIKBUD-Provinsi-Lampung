@@ -95,14 +95,15 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
-                id="moving-border">
+            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+                id="moving-border" enctype="multipart/form-data">
+                @csrf
                 {{-- isi konten disini --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jusulKarya">Judul Karya</label>
-                            <input type="text" id="jusulKarya"
+                            <input type="text" name="nama" id="jusulKarya"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Judul Karya SLB" required />
                         </div>
@@ -112,7 +113,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="deskripsi">Deskripsi</label>
-                            <input type="text" id="deskripsi"
+                            <input type="text" name="deskripsi" id="deskripsi"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Deskripsi Karya" required />
                         </div>
@@ -122,7 +123,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="gambarKarya">Gambar Karya</label>
-                            <input type="file" id="gambarKarya" accept="image/png, image/jpeg, image/jpg"
+                            <input type="file" name="gambar" id="gambarKarya" accept="image/png, image/jpeg, image/jpg"
                                 class="custom-file-input" onchange="previewImage(event)" required />
                             <img id="preview" src="" alt="Preview Gambar" class="mt-5"
                                 style="max-width: 300px; max-height: 300px;">
@@ -155,7 +156,7 @@
                         + Simpan
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

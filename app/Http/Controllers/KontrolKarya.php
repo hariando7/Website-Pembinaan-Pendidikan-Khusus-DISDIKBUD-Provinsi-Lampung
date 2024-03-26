@@ -75,7 +75,7 @@ class KontrolKarya extends Controller
 
         Karya::create($validasi);
         
-        return 'true';
+        return redirect('/admin-karya-slb');
     }
 
     public function ubah (Request $req) {

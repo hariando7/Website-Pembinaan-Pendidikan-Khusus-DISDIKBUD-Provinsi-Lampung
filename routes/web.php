@@ -9,6 +9,7 @@ use App\Http\Controllers\KontrolPesertaDidik;
 use App\Http\Controllers\KontrolGuru;
 use App\Http\Controllers\KontrolTenagaPendidik;
 use App\Http\Controllers\KontrolKebutuhanGuru;
+use App\Http\Controllers\KontrolKarya;
 
 
 /*
@@ -59,7 +60,7 @@ Route::controller(GeneralPage::class) -> group(function () {
     // Route::get('admin-kebutuhan-guru-slb/edit', 'admineditkebutuhanguruslb');
     // Peserta Didik
     // Route::get('/admin-pesertadidik-slb', 'adminpesertadidikslb');
-    Route::get('/admin-pesertadidik-slb/tambah', 'admintambahpesertadidikslb');
+    Route::get('/admin-pesertadidik-slb/tambah', 'admintambahpesertadidikslb') -> middleware('admin');
     // Route::get('/admin-pesertadidik-slb/edit', 'admineditpesertadidikslb');
     // Sarpras
     Route::get('/admin-sarpras-slb', 'adminsarprasslb');
@@ -178,6 +179,12 @@ Route::controller(KontrolKebutuhanGuru::class) -> group(function () {
         Route::get('/admin-kebutuhan-guru-slb/delete/{id}', 'hapus');
         Route::get('/admin-kebutuhan-guru-slb/edit/{id}', 'tampilanEdit');
         Route::put('/admin-kebutuhan-guru-slb/edit/{id}', 'ubah');
+    });
+});
+
+Route::controller(KontrolKarya::class) -> group(function () {
+    Route::middleware('admin') -> group(function () {
+        Route::post('/admin-karya-slb/tambah', 'tambah');
     });
 });
 
