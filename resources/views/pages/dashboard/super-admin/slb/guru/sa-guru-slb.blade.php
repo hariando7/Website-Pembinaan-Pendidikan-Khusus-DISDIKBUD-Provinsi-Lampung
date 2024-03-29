@@ -97,9 +97,17 @@
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <x-svg-search />
                                     </div>
-                                    <input type="text" id="simple-search"
+                                    <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="searchTable()" required />
+                                        placeholder="Search..." oninput="cekKosong(this)"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
+                                    <script>
+                                        function cekKosong(e) {
+                                            if (e.value === '') {
+                                                window.location.href = window.location.origin + window.location.pathname;
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </form>
                         </div>
@@ -120,6 +128,9 @@
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Tahun
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
+                                        Nama Sekolah
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Nama Guru
@@ -156,22 +167,13 @@
                                 //         'sertifikasi' => 'Sertifikasi',
                                 //         'bidangStudi' => 'Matematika',
                                 //     ],
-                                //     [
-                                //         'id' => 2,
-                                //         'tahun' => '2024-03-13 23.59',
-                                //         'namaGuru' => 'Jane Doeeeeeeeeeeeeeeeee',
-                                //         'jenisKelamin' => 'Perempuan',
-                                //         'NIP' => '0987654321',
-                                //         'statusPNS' => 'Non-PNS',
-                                //         'sertifikasi' => 'Non-Sertifikasi',
-                                //         'bidangStudi' => 'Bahasa Inggris',
-                                //     ],
                                 // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
                                     <td class="px-3 py-2"><?= $index + 1 ?></td>
+                                    <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php

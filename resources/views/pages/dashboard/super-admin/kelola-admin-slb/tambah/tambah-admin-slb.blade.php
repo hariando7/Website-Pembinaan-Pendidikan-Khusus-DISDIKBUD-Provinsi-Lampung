@@ -38,7 +38,7 @@
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-full pt-2 pr-5 pb-28">
+        <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
                 <div class="text-[#297785] font-bold text-[32px]">Tambah Admin SLB Provinsi Lampung
                 </div>
@@ -51,6 +51,15 @@
                 id="moving-border">
                 @csrf
                 {{-- isi konten disini --}}
+                                            {{-- 'email' => 'required|email|unique:pengguna',
+            'password' => 'required',
+            'nama' => 'required',
+            'npsn' => 'required',
+            'kota' => 'required',
+            'kecamatan' => 'required',
+            'alamat' => 'required',
+            'jenisKetunaan' => 'required',
+            'linkWebsiteSekolah' => 'required' --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">

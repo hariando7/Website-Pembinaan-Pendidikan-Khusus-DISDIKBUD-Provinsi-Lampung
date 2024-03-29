@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('sekolah');
             $table->string('nama') -> nullable();
             $table->string('jumlah') -> nullable();
-            $table->string('kodisi') -> nullable();
+            $table->string('kondisi') -> nullable();
             $table->string('keterangan') -> nullable();
             $table->timestamps();
         });

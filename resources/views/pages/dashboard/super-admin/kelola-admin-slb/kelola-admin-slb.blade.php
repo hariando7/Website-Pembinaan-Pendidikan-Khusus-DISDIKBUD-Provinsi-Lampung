@@ -126,9 +126,9 @@
                                     <th scope="col" class="px-3 py-2">
                                         Email
                                     </th>
-                                    <th scope="col" class="px-3 py-2">
+                                    {{-- <th scope="col" class="px-3 py-2">
                                         Password
-                                    </th>
+                                    </th> --}}
                                     <th scope="col" class="px-3 py-2">
                                         Aksi
                                     </th>
@@ -137,27 +137,22 @@
                                 <?php
                                 // $dummyData = [
                                 //     [
+                                //         'id' => 1,
                                 //         'nama_sekolah' => 'Sekolah A',
                                 //         'npsn' => '12345678',
                                 //         'email' => 'sekolahA@gmail.com',
                                 //         'password' => 'passwordA',
-                                //     ],
-                                //     [
-                                //         'nama_sekolah' => 'Sekolah B',
-                                //         'npsn' => '87654321',
-                                //         'email' => 'sekolahB@gmail.com',
-                                //         'password' => 'passwordB',
                                 //     ],
                                 // ];
                                 ?>
                                 @foreach ($dummyData as $index => $data)
                                     <tr
                                         class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
-                                        <td class="px-3 py-2">{{ $index + 1 }}</td>
+                                        <td class="px-3 py-2">{{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}</td>
                                         <td class="px-3 py-2">{{ $data['nama_sekolah'] }}</td>
                                         <td class="px-3 py-2">{{ $data['npsn'] }}</td>
                                         <td class="px-3 py-2">{{ $data['email'] }}</td>
-                                        <td class="px-3 py-2">{{ $data['email'] }}</td>
+                                        {{-- <td class="px-3 py-2">{{ $data['email'] }}</td> --}}
                                         <td class="px-3 py-2">
                                             <div class="flex justify-items-center m-auto text-center gap-2">
                                                 <a href="/kelola-admin-slb/lihat" title="lihat">
@@ -166,7 +161,7 @@
                                                         <x-svg-lihat />
                                                     </div>
                                                 </a>
-                                                <a href="/kelola-admin-slb/edit" title="Edit">
+                                                <a href="/kelola-admin-slb/edit/{{ $data['id'] }}" title="Edit">
                                                     <div
                                                         class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
                                                         <x-svg-edit />
@@ -175,14 +170,14 @@
                                                 <div class="div">
                                                     <button
                                                         class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
-                                                        title="Delete" type="button" data-index="<?= $index ?>">
+                                                        title="Delete" type="button" data-index="<?= $data['id'] ?>">
                                                         <x-svg-delete />
                                                     </button>
                                                 </div>
                                                 <?php endforeach; ?>
                                                 <!-- Modal -->
                                                 <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                    class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                                    class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
                                                     <div class="relative p-4 w-full max-w-md max-h-full">
                                                         <div class="relative bg-[#297785] rounded-lg shadow">
                                                             <button type="button"
@@ -225,6 +220,7 @@
                                                         const deleteButtons = document.querySelectorAll('.delete-button');
                                                         deleteButtons.forEach(button => {
                                                             button.addEventListener('click', function() {
+                                                                // console.log(button.getAttribute('data-index'));
                                                                 const index = this.dataset.index;
                                                                 const modal = document.getElementById('popup-modal');
                                                                 modal.classList.remove('hidden');
@@ -241,6 +237,15 @@
                                                                     modal.setAttribute('aria-hidden', 'true');
                                                                     modal.setAttribute('tabindex', '-1');
                                                                 });
+
+                                                                const closeButtonYa = modal.querySelector(
+                                                                    '[data-modal-hide="popup-modal-ya"]');
+                                                                closeButtonYa.addEventListener('click', () => {
+                                                                    window.location.href = window.location.origin +
+                                                                        '/kelola-admin-slb/delete/' + button.getAttribute(
+                                                                            'data-index');
+                                                                });
+
                                                                 const closeButtonTidak = modalTidak.querySelector(
                                                                     '[data-modal-hide="popup-modal-tidak"]');
                                                                 closeButtonTidak.addEventListener('click', () => {
@@ -258,43 +263,9 @@
                             </tbody>
                         </table>
                     </div>
-                    {{ $DATA -> links() }}
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah : {{ $DATA -> count() }}</div>
-                        <div class="">
-                            <nav aria-label="Page navigation example">
-                                <ul class="inline-flex -space-x-px text-sm gap-2">
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold ">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                        <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
+                        {{ $DATA->links() }}
                     </div>
                 </div>
             </div>

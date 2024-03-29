@@ -137,6 +137,7 @@
                             const deleteButtons = document.querySelectorAll('.delete-button');
                             deleteButtons.forEach(button => {
                                 button.addEventListener('click', function() {
+                                    // console.log(button.getAttribute('data-index'));
                                     const index = this.dataset.index;
                                     const modal = document.getElementById('popup-modal');
                                     modal.classList.remove('hidden');
@@ -153,6 +154,15 @@
                                         modal.setAttribute('aria-hidden', 'true');
                                         modal.setAttribute('tabindex', '-1');
                                     });
+
+                                    const closeButtonYa = modal.querySelector(
+                                        '[data-modal-hide="popup-modal-ya"]');
+                                    closeButtonYa.addEventListener('click', () => {
+                                        window.location.href = window.location.origin +
+                                            '/admin-karya-slb/delete/' + document.getElementById(
+                                                'id').value;
+                                    });
+
                                     const closeButtonTidak = modalTidak.querySelector(
                                         '[data-modal-hide="popup-modal-tidak"]');
                                     closeButtonTidak.addEventListener('click', () => {
@@ -166,14 +176,18 @@
                     </script>
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
-                id="moving-border">
+            <form method="POST"
+                class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+                enctype="multipart/form-data" id="moving-border">
+                @csrf
+                @method('PUT')
+                <input type="hidden" id="id" name="id" value="{{ $id }}" required>
                 {{-- isi konten disini --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jusulKarya">Judul Karya</label>
-                            <input type="text" id="jusulKarya" value="Tenun Rajut dari kertas"
+                            <input type="text" id="jusulKarya" name="nama" value="{{ $DATA['nama'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Judul Karya SLB" required />
                         </div>
@@ -183,7 +197,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="deskripsi">Deskripsi</label>
-                            <input type="text" id="deskripsi" value="ini adalah hasil karya dari SLB A"
+                            <input name="deskripsi" type="text" id="deskripsi" value="{{ $DATA['deskripsi'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Deskripsi Karya" required />
                         </div>
@@ -193,9 +207,10 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="gambarKarya">Gambar Karya</label>
-                            <input type="file" id="gambarKarya" accept="image/png, image/jpeg, image/jpg"
-                                value="gambar.png" class="custom-file-input" onchange="previewImage(event)" required />
-                            <img id="preview" src="" alt="Preview Gambar" class="mt-5"
+                            <input value="" name="gambar" type="file" id="gambarKarya"
+                                accept="image/png, image/jpeg, image/jpg"
+                                class="custom-file-input" onchange="previewImage(event)" />
+                            <img id="preview" src="{{ url(asset('storage/' . $DATA['gambar'])) }}" alt="Preview Gambar" class="mt-5"
                                 style="max-width: 300px; max-height: 300px;">
                             <span id="deleteIcon" style="display: none; cursor: pointer;"><i
                                     class="fas fa-times-circle">Hapus Gambar</i></span>
@@ -237,7 +252,7 @@
                         </div>
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

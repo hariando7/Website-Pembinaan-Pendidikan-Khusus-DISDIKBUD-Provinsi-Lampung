@@ -95,17 +95,19 @@
                             <form class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M13.9997 14.5002L11.009 11.5042L13.9997 14.5002ZM12.6663 7.50016C12.6663 9.00306 12.0693 10.4444 11.0066 11.5071C9.94391 12.5698 8.50257 13.1668 6.99967 13.1668C5.49678 13.1668 4.05544 12.5698 2.99274 11.5071C1.93003 10.4444 1.33301 9.00306 1.33301 7.50016C1.33301 5.99727 1.93003 4.55593 2.99274 3.49322C4.05544 2.43052 5.49678 1.8335 6.99967 1.8335C8.50257 1.8335 9.94391 2.43052 11.0066 3.49322C12.0693 4.55593 12.6663 5.99727 12.6663 7.50016V7.50016Z"
-                                                stroke="#9E9E9E" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
+                                        <x-svg-search />
                                     </div>
-                                    <input type="text" id="simple-search"
+                                    <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="searchTable()" required />
+                                        placeholder="Search..." oninput="cekKosong(this)"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
+                                    <script>
+                                        function cekKosong(e) {
+                                            if (e.value === '') {
+                                                window.location.href = window.location.origin + window.location.pathname;
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </form>
                         </div>
@@ -131,6 +133,9 @@
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Tahun
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
+                                        Nama Sekolah
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Nama tendik
@@ -167,6 +172,7 @@
                                 <tr
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
                                     <td class="px-3 py-2"><?= $index + 1 ?></td>
+                                    <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php

@@ -97,9 +97,17 @@
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <x-svg-search />
                                     </div>
-                                    <input type="text" id="simple-search"
+                                    <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="searchTable()" required />
+                                        placeholder="Search..." oninput="cekKosong(this)"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
+                                    <script>
+                                        function cekKosong(e) {
+                                            if (e.value === '') {
+                                                window.location.href = window.location.origin + window.location.pathname;
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </form>
                         </div>
@@ -122,6 +130,9 @@
                                         Tahun
                                     </th>
                                     <th scope="col" class="px-3 py-2">
+                                        Nama Sekolah
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
                                         Gedung/Ruang
                                     </th>
                                     <th scope="col" class="px-3 py-2">
@@ -140,31 +151,23 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $dummyData = [
-                                    [
-                                        'id' => 1,
-                                        'tahun' => '2023',
-                                        'gedungRuang' => 'Gedung A',
-                                        'jumlahVol' => '100',
-                                        'totalLuas' => '500',
-                                        'kondisi' => 'Baik',
-                                        'catatan' => 'Tidak ada catatan',
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'tahun' => '2022',
-                                        'gedungRuang' => 'Gedung B',
-                                        'jumlahVol' => '50',
-                                        'totalLuas' => '300',
-                                        'kondisi' => 'Sedang',
-                                        'catatan' => 'Perlu perbaikan',
-                                    ],
-                                ];
+                                // $dummyData = [
+                                //     [
+                                //         'id' => 1,
+                                //         'tahun' => '2023',
+                                //         'gedungRuang' => 'Gedung A',
+                                //         'jumlahVol' => '100',
+                                //         'totalLuas' => '500',
+                                //         'kondisi' => 'Baik',
+                                //         'catatan' => 'Tidak ada catatan',
+                                //     ],
+                                // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
-                                    <td class="px-3 py-2"><?= $index + 1 ?></td>
+                                    <td class="px-3 py-2">{{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}</td>
+                                    <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php
@@ -173,7 +176,11 @@
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jumlahVol'] ?></td>
-                                    <td class="px-3 py-2"><?= $data['totalLuas'] ?></td>
+                                    {{-- <td class="px-3 py-2">
+                                        <img src="{{ url(asset('storage/' . $data['daftarGambar'])) }}" alt="">
+                                        @dd($data['gambar'])
+                                    </td> --}}
+                                    <td class="px-3 py-2"><?= $data['kondisi'] ?></td>
                                     <td class="px-3 py-2"><?= $data['kondisi'] ?></td>
                                     <td class="px-3 py-2"><?= $data['catatan'] ?></td>
                                 </tr>
@@ -182,40 +189,10 @@
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah :</div>
+                        {{-- <div class="font-bold text-black">Jumlah : {{ $DATA->count() }}</div> --}}
+                        <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
                         <div class="">
-                            <nav aria-label="Page navigation example">
-                                <ul class="inline-flex -space-x-px text-sm gap-2">
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white hover:text-white font-bold ">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            {{ $DATA->links() }}
                         </div>
                     </div>
                 </div>

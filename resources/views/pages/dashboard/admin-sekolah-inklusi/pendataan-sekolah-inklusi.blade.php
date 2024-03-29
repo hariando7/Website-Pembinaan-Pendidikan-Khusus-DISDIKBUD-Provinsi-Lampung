@@ -245,24 +245,25 @@
         <div class="absolute inset-0 bg-[#000000]/[0.50] bg-blend-overlay"></div>
         <div class="flex justify-between pl-10 pr-10 pt-10 absolute w-full">
             <a class="" href="/">
-                <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] lg:h-full">
+                <img src="assets/landing/prov-lampung2.svg" alt="" class="w-[40px] lg:w-[100px] lg:h-full">
             </a>
             <div class="flex items-start">
-                {{-- <x-buttitle-landing ref="/ai-form-pendataan" color="#FA8F21" width="[8rem]" title="Notifikasi"
-                    extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" /> --}}
                 <x-notifikasi-sekolah-inklusi />
             </div>
         </div>
-        <div class="box relative w-[845px] h-[820px] m-auto flex items-center m-auto mt-52 lg:mt-5 lg:mb-5">
-            <form autocomplete="off" class="">
-                <h2 class="mb-5 font-bold text-[22px]">Selamat Datang di Portal <br>
+        <div
+            class="box relative w-[300px] h-[500px] lg:w-[845px] lg:h-[820px] m-auto flex items-center m-auto mt-32 lg:mt-5 lg:mb-5">
+            <!-- Konten div Anda -->
+            <form autocomplete="off" class="overflow-y-auto lg:overflow-hidden"> @csrf
+                <h2 class="mb-5 font-bold lg:text-[22px] text-[12px]">
+                    Selamat Datang di Portal <br>
                     Pendataan Sekolah Inklusi <br>
                     Dinas Pendidikan Dan Kebudayaan Provinsi Lampung</h2>
                 <div class="">
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input class="relative" type="text" required="required">
+                                <input name="nama" class="relative" type="text" required="required">
                                 <span>Nama Sekolah</span>
                                 <i></i>
                             </div>
@@ -270,10 +271,10 @@
                     </div>
                 </div>
                 <div class="">
-                    <div class="flex gap-x-2">
+                    <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input class="relative" type="text" required="required">
+                                <input name="npsn" class="relative" type="text" required="required">
                                 <span>NPSN</span>
                                 <i></i>
                             </div>
@@ -293,18 +294,17 @@
                     </div>
                 </div>
                 <div class="">
-                    <div class="flex gap-x-2">
+                    <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input class="relative" type="text" required="required">
+                                <input name="alamatSekolah" class="relative" type="text" required="required">
                                 <span>Alamat Sekolah</span>
                                 <i></i>
                             </div>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <select id="statusSekolah" name="statusSekolah" type="select" id="statusSekolah"
-                                    required>
+                                <select id="statusSekolah" name="kota" type="select" id="statusSekolah" required>
                                     <option value="pilih" hidden class="text-black">Pilih Kab/Kota</option>
                                     <option value="" class="text-black">Kab. Lampung Tengah</option>
                                     <option value="" class="text-black">Kab. Lampung Timur</option>
@@ -329,28 +329,28 @@
                     </div>
                 </div>
                 <div class="">
-                    <div class="flex gap-x-2">
+                    <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input class="relative" type="number" required="required">
+                                <input name="jumlahPDBK" class="relative" type="number" required="required">
                                 <span>Jumlah PDBK</span>
                                 <i></i>
                             </div>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input class="relative" type="text" required="required">
-                                <span>Nama Pembimbing PDBK</span>
+                                <input name="namaPembimbing" class="relative" type="text" required="required">
+                                <span class="">Nama Pembimbing PDBK</span>
                                 <i></i>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="">
-                    <div class="flex gap-x-2">
+                    <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <select id="statusSekolah" name="statusSekolah" type="select" id="statusSekolah"
+                                <select id="jenisKelamin" name="jenisKelamin" type="select" id="jenisKelamin"
                                     required>
                                     <option value="pilih" hidden class="text-black">Pilih Jenis Kelamin</option>
                                     <option value="l" class="text-black">Laki-Laki</option>
@@ -362,7 +362,7 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input class="relative" type="text" required="required">
+                                <input name="pangkat" class="relative" type="text" required="required">
                                 <span>Pangkat/Golongan (Jika ASN)</span>
                                 <i></i>
                             </div>
@@ -370,17 +370,17 @@
                     </div>
                 </div>
                 <div class="">
-                    <div class="flex gap-x-2">
+                    <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input class="relative" type="text" required="required">
+                                <input name="alamatTinggal" class="relative" type="text" required="required">
                                 <span>Alamat Tinggal</span>
                                 <i></i>
                             </div>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input class="relative" type="text" required="required">
+                                <input name="nomorHP" class="relative" type="text" required="required">
                                 <span>No HP </span>
                                 <i></i>
                             </div>

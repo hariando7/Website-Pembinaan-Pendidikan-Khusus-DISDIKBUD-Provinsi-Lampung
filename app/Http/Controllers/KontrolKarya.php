@@ -10,19 +10,59 @@ use Illuminate\Database\Eloquent\Builder;
 
 use App\Models\Sekolah;
 use App\Models\Karya;
+use Carbon\Carbon;
 
 class KontrolKarya extends Controller
 {
+    // $dummyData = [
+    //                                 [
+    //                                     'id' => 1,
+    //                                     'tahun' => '2023',
+    //                                     'judulKarya' => 'Karya 1',
+    //                                     'gambar' => 'gambar1.jpg',
+    //                                     'deskripsi' => 'Deskripsi karya 1',
+    //                                 ],
+    //                             ];
     public function daftarKaryaSuperAdmin (Request $req) {
         $karya = $this -> daftarKarya($req);
 
-        return json_encode($karya);
+        $dummyData = array_map(function ($data) {
+        return [
+            'id' => $data->id,
+            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+            'judulKarya' => $data->nama,
+            'gambar' => $data->gambar,
+            'deskripsi' => $data->deskripsi,
+        ];
+    }, $karya->items());
+
+        // return json_encode($pesertaDidik);
+        return view('pages/dashboard/super-admin/slb/karya/sa-karya-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $karya
+        ]);
     }
 
     public function daftarKaryaAdmin (Request $req) {
         $karya = $this -> daftarKarya($req);
 
-        return json_encode($karya);
+        $dummyData = array_map(function ($data) {
+        return [
+            'id' => $data->id,
+            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+            'judulKarya' => $data->nama,
+            'gambar' => $data->gambar,
+            'deskripsi' => $data->deskripsi,
+        ];
+    }, $karya->items());
+
+        // return json_encode($pesertaDidik);
+        return view('pages/dashboard/admin-slb/karya/admin-karya-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $karya
+        ]);
     }
 
     public function daftarKarya (Request $req) {
@@ -78,6 +118,14 @@ class KontrolKarya extends Controller
         return redirect('/admin-karya-slb');
     }
 
+    public function tampilanEdit ($id) {
+        $karya = Karya::find($id);
+        return view('pages/dashboard/admin-slb/karya/edit/edit-karya-slb', [
+            'id' => $id,
+            'DATA' => $karya
+        ]);
+    }
+
     public function ubah (Request $req) {
         $pengguna = Auth::user();
         $validasi = $req -> validate ([
@@ -96,17 +144,18 @@ class KontrolKarya extends Controller
                 }
                 if ($req -> file('gambar')) {
                     Storage::delete($karya -> gambar);
-                    $req['gambar'] = $req -> file('gambar') -> store('karya');
-                    $karya -> gambar = $req['gambar'];
+                    $karya -> gambar = $req -> file('gambar') -> store('karya');
                 }
 
                 $karya -> save();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-karya-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 
     public function hapus ($id) {
@@ -121,10 +170,12 @@ class KontrolKarya extends Controller
                 }
                 Karya::find($id) -> delete();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-karya-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 }

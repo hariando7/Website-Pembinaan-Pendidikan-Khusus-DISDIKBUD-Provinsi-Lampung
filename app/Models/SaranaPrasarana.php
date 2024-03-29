@@ -16,7 +16,7 @@ class SaranaPrasarana extends Model
         'sekolah',
         'nama',
         'jumlah',
-        'kodisi',
+        'kondisi',
         'keterangan'
     ];
 }

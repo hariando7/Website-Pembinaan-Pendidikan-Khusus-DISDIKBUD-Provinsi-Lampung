@@ -11,19 +11,64 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Sekolah;
 use App\Models\SaranaPrasarana;
 use App\Models\GambarSaranaPrasarana;
+use Carbon\Carbon;
 
 class KontrolSaranaPrasarana extends Controller
 {
+    // $dummyData = [
+    //                                 [
+    //                                     'id' => 1,
+    //                                     'tahun' => '2023',
+    //                                     'gedungRuang' => 'Gedung A',
+    //                                     'jumlahVol' => '100',
+    //                                     // 'totalLuas' => '500',
+    //                                     'kondisi' => 'Baik',
+    //                                     'catatan' => 'Tidak ada catatan',
+    //                                 ],
+    //                             ];
+    
     public function daftarSaranaPrasaranaSuperAdmin (Request $req) {
         $saranaPrasarana = $this -> daftarSaranaPrasarana($req);
 
-        return json_encode($saranaPrasarana);
+        $dummyData = array_map(function ($data) {
+        return [
+            'id' => $data->id,
+            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+            'gedungRuang' => $data->nama,
+            'jumlahVol' => $data->jumlah,
+            'kondisi' => $data->kondisi,
+            'catatan' => $data->keterangan,
+        ];
+    }, $saranaPrasarana->items());
+
+        // return json_encode($pesertaDidik);
+        return view('pages/dashboard/super-admin/slb/sarpras/sa-sarpras-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $saranaPrasarana
+        ]);
     }
 
     public function daftarSaranaPrasaranaAdmin (Request $req) {
         $saranaPrasarana = $this -> daftarSaranaPrasarana($req);
 
-        return json_encode($saranaPrasarana);
+        $dummyData = array_map(function ($data) {
+        return [
+            'id' => $data->id,
+            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+            'gedungRuang' => $data->nama,
+            'jumlahVol' => $data->jumlah,
+            'kondisi' => $data->kondisi,
+            'catatan' => $data->keterangan,
+        ];
+    }, $saranaPrasarana->items());
+
+        // return json_encode($pesertaDidik);
+        return view('pages/dashboard/admin-slb/sarpras/admin-sarpras-slb', [
+            'dummyData' => $dummyData,
+            'DATA' => $saranaPrasarana
+        ]);
     }
 
     public function daftarSaranaPrasarana (Request $req) {
@@ -93,7 +138,17 @@ class KontrolSaranaPrasarana extends Controller
             }
         }
         
-        return 'true';
+        // return 'true';
+        return redirect('/admin-sarpras-slb');
+    }
+
+    
+    public function tampilanEdit ($id) {
+        $saranaprasarana = SaranaPrasarana::find($id);
+        return view('pages/dashboard/admin-slb/sarpras/edit/edit-sarpras-slb', [
+            'id' => $id,
+            'DATA' => $saranaprasarana
+        ]);
     }
 
     public function ubah (Request $req) {
@@ -124,6 +179,7 @@ class KontrolSaranaPrasarana extends Controller
 
                     foreach ($daftarGambar as $gambar) {
                         Storage::delete($gambar -> gambar);
+                        $saranaPrasarana -> gambar = $req -> file('daftarGambar') -> store('saranaPrasarana');
                     }
                     GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana -> id) -> delete();
 
@@ -139,11 +195,13 @@ class KontrolSaranaPrasarana extends Controller
 
                 $saranaPrasarana -> save();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-sarpras-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 
     public function hapus ($id) {
@@ -162,10 +220,12 @@ class KontrolSaranaPrasarana extends Controller
                 GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana -> id) -> delete();
                 SaranaPrasarana::find($id) -> delete();
 
-                return 'true';
+                // return 'true';
+                return redirect('/admin-sarpras-slb');
             }
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 }

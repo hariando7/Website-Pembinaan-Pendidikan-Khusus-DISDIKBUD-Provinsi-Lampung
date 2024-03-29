@@ -20,6 +20,7 @@ class KontrolPengguna extends Controller
         $dummyData = array_map(function ($data) use ($sekolah) {
             $temp = $sekolah -> find($data -> sekolah);
             return [
+                'id' => $data -> id,
                 'nama_sekolah' => $temp -> nama,
                 'npsn' => $temp -> npsn,
                 'email' => $data -> email
@@ -57,12 +58,12 @@ class KontrolPengguna extends Controller
             'email' => 'required|email|unique:pengguna',
             'password' => 'required',
             'nama' => 'required',
-            // 'npsn' => 'required',
-            // 'kota' => 'required',
-            // 'kecamatan' => 'required',
-            // 'alamat' => 'required',
-            // 'jenisKetunaan' => 'required',
-            // 'linkWebsiteSekolah' => 'required'
+            'npsn' => 'required',
+            'kota' => 'required',
+            'kecamatan' => 'required',
+            'alamat' => 'required',
+            'jenisKetunaan' => 'required',
+            'linkWebsiteSekolah' => 'required'
         ]);
 
         // dd($req);
@@ -83,11 +84,19 @@ class KontrolPengguna extends Controller
         return redirect('/kelola-admin-slb');
     }
 
+    public function tampilanEdit ($id) {
+        $admin = Sekolah::find($id);
+        return view('pages/dashboard/super-admin/kelola-admin-slb/edit/edit-admin-slb', [
+            'id' => $id,
+            'DATA' => $admin
+        ]);
+    }
+
     public function ubah (Request $req) {
         $validasi = $req -> validate ([
             'id' => 'required',
         ]);
-
+    
         $admin = User::find($validasi['id']);
 
         if ($admin){
@@ -121,27 +130,26 @@ class KontrolPengguna extends Controller
             }
             $sekolah -> save();
 
-            return 'true';
+            // return 'true';
+            return redirect('/kelola-admin-slb');
         }
 
-        return 'false';
+        // return 'false';
+        return back();
     }
 
-    public function hapus ($id) {
-        $admin = User::find($id);
+    public function hapus($id)
+    {
+        $admin = User::findOrFail($id);
 
-        if ($admin) {
-            $daftarAdmin = User::where('sekolah', $admin -> sekolah) -> get();
+        $daftarAdmin = User::where('sekolah', $admin->sekolah)->get();
 
-            if ($daftarAdmin -> length() === 1) {
-                Sekolah::find($admin -> sekolah) -> delete();
-            }
-
-            User::find($id) -> delete();
-
-            return 'true';
+        if ($daftarAdmin->count() === 1) {
+            Sekolah::findOrFail($admin->sekolah)->delete();
         }
 
-        return 'false';
+        $admin->delete();
+
+        return redirect('/kelola-admin-slb');
     }
 }
