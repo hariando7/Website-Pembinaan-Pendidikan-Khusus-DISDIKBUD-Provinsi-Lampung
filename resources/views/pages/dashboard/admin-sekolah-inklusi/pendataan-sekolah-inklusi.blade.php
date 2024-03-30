@@ -254,7 +254,8 @@
         <div
             class="box relative w-[300px] h-[500px] lg:w-[845px] lg:h-[820px] m-auto flex items-center m-auto mt-32 lg:mt-5 lg:mb-5">
             <!-- Konten div Anda -->
-            <form autocomplete="off" class="overflow-y-auto lg:overflow-hidden"> @csrf
+            <form method="POST" autocomplete="off" class="overflow-y-auto lg:overflow-hidden"> 
+                @csrf
                 <h2 class="mb-5 font-bold lg:text-[22px] text-[12px]">
                     Selamat Datang di Portal <br>
                     Pendataan Sekolah Inklusi <br>
@@ -306,21 +307,21 @@
                             <div class="inputBox relative w-full mt-5">
                                 <select id="statusSekolah" name="kota" type="select" id="statusSekolah" required>
                                     <option value="pilih" hidden class="text-black">Pilih Kab/Kota</option>
-                                    <option value="" class="text-black">Kab. Lampung Tengah</option>
-                                    <option value="" class="text-black">Kab. Lampung Timur</option>
-                                    <option value="" class="text-black">Kab. Lampung Selatan</option>
-                                    <option value="" class="text-black">Kota Bandar Lampung</option>
-                                    <option value="" class="text-black">Kab. Tanggamus</option>
-                                    <option value="" class="text-black">Kab. Lampung Utara</option>
-                                    <option value="" class="text-black">Kab. Way Kanan</option>
-                                    <option value="" class="text-black">Kab. Pesawaran</option>
-                                    <option value="" class="text-black">Kab. Tulang Bawang</option>
-                                    <option value="" class="text-black">Kab. Pringsewu</option>
-                                    <option value="" class="text-black">Kab. Lampung Barat</option>
-                                    <option value="" class="text-black">Kab. Tulang Bawang Barat</option>
-                                    <option value="" class="text-black">Kab. Mesuji</option>
-                                    <option value="" class="text-black">Kab. Pesisir Barat</option>
-                                    <option value="" class="text-black">Kota Metro</option>
+                                    <option value="Kab. Lampung Tengah" class="text-black">Kab. Lampung Tengah</option>
+                                    <option value="Kab. Lampung Timur" class="text-black">Kab. Lampung Timur</option>
+                                    <option value="Kab. Lampung Selatan" class="text-black">Kab. Lampung Selatan</option>
+                                    <option value="Kota Bandar Lampung" class="text-black">Kota Bandar Lampung</option>
+                                    <option value="Kab. Tanggamus" class="text-black">Kab. Tanggamus</option>
+                                    <option value="Kab. Lampung Utara" class="text-black">Kab. Lampung Utara</option>
+                                    <option value="Kab. Way Kanan" class="text-black">Kab. Way Kanan</option>
+                                    <option value="Kab. Pesawaran" class="text-black">Kab. Pesawaran</option>
+                                    <option value="Kab. Tulang Bawang" class="text-black">Kab. Tulang Bawang</option>
+                                    <option value="Kab. Pringsewu" class="text-black">Kab. Pringsewu</option>
+                                    <option value="Kab. Lampung Barat" class="text-black">Kab. Lampung Barat</option>
+                                    <option value="Kab. Tulang Bawang Barat" class="text-black">Kab. Tulang Bawang Barat</option>
+                                    <option value="Kab. Mesuji" class="text-black">Kab. Mesuji</option>
+                                    <option value="Kab. Pesisir Barat" class="text-black">Kab. Pesisir Barat</option>
+                                    <option value="Kota Metro" class="text-black">Kota Metro</option>
                                 </select>
                                 <span>Kab/Kota</span>
                                 <i></i>

@@ -230,7 +230,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="gambarKarya">Gambar Sarpras</label>
-                            <input multiple type="file" name="gambar" id="gambarKarya"
+                            <input multiple type="file" name="daftarGambar[]" id="gambarKarya"
                                 accept="image/png, image/jpeg, image/jpg" class="custom-file-input"
                                 onchange="previewImages(event)" />
                             <img id="preview" src="{{ url(asset('storage/' . $DATA['daftarGambar'])) }}"

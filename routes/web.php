@@ -11,6 +11,7 @@ use App\Http\Controllers\KontrolTenagaPendidik;
 use App\Http\Controllers\KontrolKebutuhanGuru;
 use App\Http\Controllers\KontrolKarya;
 use App\Http\Controllers\KontrolSaranaPrasarana;
+use App\Http\Controllers\KontrolSekolahInklusi;
 
 
 /*
@@ -129,6 +130,10 @@ Route::controller(GeneralPage::class) -> group(function () {
 
 Route::get('/home', function () {
     return redirect('/login');
+});
+
+Route::controller(KontrolSekolahInklusi::class) -> group(function () {
+    Route::post('/pendataan-sekolah-inklusi', 'tambah');
 });
 
 Route::controller(KontrolOtentifikasi::class) -> group(function () {

@@ -118,14 +118,7 @@ class KontrolSaranaPrasarana extends Controller
         $validasi['pemilik'] = $pengguna -> id;
         $validasi['sekolah'] = $pengguna -> sekolah;
 
-        SaranaPrasarana::create($validasi);
-
-        $saranaPrasarana = SaranaPrasarana::firstWhere([
-            'nama' => $validasi['nama'],
-            'jumlah' => $validasi['jumlah'],
-            'kondisi' => $validasi['kondisi'],
-            'keterangan' => $validasi['keterangan']
-        ]);
+        $saranaPrasarana = SaranaPrasarana::create($validasi);
 
         if ($req -> hasFile('daftarGambar')) {
             foreach ($req -> file('daftarGambar') as $gambar) {

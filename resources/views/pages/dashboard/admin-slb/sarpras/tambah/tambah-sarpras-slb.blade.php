@@ -142,7 +142,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="gambarKarya">Gambar Sarpras</label>
-                            <input multiple type="file" name="daftarGambar" id="gambarKarya"
+                            <input multiple type="file" name="daftarGambar[]" id="gambarKarya"
                                 accept="image/png, image/jpeg, image/jpg" class="custom-file-input"
                                 onchange="previewImages(event)" />
                             <div id="previewContainer" class="mt-5" style="display: flex; flex-wrap: wrap;"></div>
