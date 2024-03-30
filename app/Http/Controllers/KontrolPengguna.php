@@ -21,6 +21,7 @@ class KontrolPengguna extends Controller
             $temp = $sekolah -> find($data -> sekolah);
             return [
                 'id' => $data -> id,
+                'idSekolah' => $temp -> id,
                 'nama_sekolah' => $temp -> nama,
                 'npsn' => $temp -> npsn,
                 'email' => $data -> email
@@ -29,7 +30,8 @@ class KontrolPengguna extends Controller
 
         return view('pages/dashboard/super-admin/kelola-admin-slb/kelola-admin-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $admin
+            'DATA' => $admin,
+            'sekolah' => $sekolah
         ]);
     }
 
@@ -85,11 +87,51 @@ class KontrolPengguna extends Controller
     }
 
     public function tampilanEdit ($id) {
-        $admin = Sekolah::find($id);
-        return view('pages/dashboard/super-admin/kelola-admin-slb/edit/edit-admin-slb', [
-            'id' => $id,
-            'DATA' => $admin
-        ]);
+        $admin = User::find($id);
+        $sekolah = Sekolah::find($admin -> sekolah);
+
+        if ($admin && $sekolah) {
+            return view('pages/dashboard/super-admin/kelola-admin-slb/edit/edit-admin-slb', [
+                'id' => $id,
+                'DATA' => [
+                    'id' => $admin -> id,
+                    'email' => $admin -> email,
+                    'nama' => $sekolah -> nama,
+                    'npsn' => $sekolah -> npsn,
+                    'kota' => $sekolah -> kota,
+                    'kecamatan' => $sekolah -> kecamatan,
+                    'alamat' => $sekolah -> alamat,
+                    'jenisKetunaan' => $sekolah -> jenisKetunaan,
+                    'linkWebsiteSekolah' => $sekolah -> linkWebsiteSekolah
+                ]
+            ]);
+        }
+
+        return back();
+    }
+
+    public function tampilanLihat ($id) {
+        $admin = User::find($id);
+        $sekolah = Sekolah::find($admin -> sekolah);
+
+        if ($admin && $sekolah) {
+            return view('pages/dashboard/super-admin/kelola-admin-slb/lihat/lihat-admin-slb', [
+                'id' => $id,
+                'DATA' => [
+                    'id' => $admin -> id,
+                    'email' => $admin -> email,
+                    'nama' => $sekolah -> nama,
+                    'npsn' => $sekolah -> npsn,
+                    'kota' => $sekolah -> kota,
+                    'kecamatan' => $sekolah -> kecamatan,
+                    'alamat' => $sekolah -> alamat,
+                    'jenisKetunaan' => $sekolah -> jenisKetunaan,
+                    'linkWebsiteSekolah' => $sekolah -> linkWebsiteSekolah
+                ]
+            ]);
+        }
+
+        return back();
     }
 
     public function ubah (Request $req) {
@@ -100,8 +142,8 @@ class KontrolPengguna extends Controller
         $admin = User::find($validasi['id']);
 
         if ($admin){
-            if ($validasi['email']) {
-                $admin -> email = $validasi['email'];
+            if ($req['email']) {
+                $admin -> email = $req['email'];
             }
             $admin -> save();
             

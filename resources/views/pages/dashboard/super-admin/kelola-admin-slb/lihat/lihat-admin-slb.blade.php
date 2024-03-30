@@ -67,7 +67,7 @@
                             <label htmlFor="password">Password</label>
                             <input name="password" type="password" id="password"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 pl-2 pr-10 w-full"
-                                placeholder="********" value="{{ $DATA['password'] }}" required />
+                                placeholder="********" />
                             <x-icon-password />
                         </div>
                     </div>

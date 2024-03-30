@@ -60,9 +60,9 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4 relative">
                             <label htmlFor="password">Password</label>
-                            <input name="password" type="password" id="password" value="{{ $DATA['password'] }}"
+                            <input name="password" type="password" id="password"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 pl-2 pr-10 w-full"
-                                placeholder="********" value="binainsani123" required />
+                                placeholder="********" />
                             <x-icon-password />
                         </div>
                     </div>

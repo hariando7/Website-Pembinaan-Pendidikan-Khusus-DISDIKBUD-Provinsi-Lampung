@@ -96,9 +96,16 @@
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <x-svg-search />
                                     </div>
-                                    <input type="text" id="simple-search"
+                                    <input name="pencarian" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" type="text" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="searchTable()" required />
+                                        placeholder="Search..." oninput="cekKosong(this)" required />
+                                    <script>
+                                        function cekKosong(e) {
+                                            if (e.value === '') {
+                                                window.location.href = window.location.origin + window.location.pathname;
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </form>
                         </div>
@@ -155,7 +162,7 @@
                                         {{-- <td class="px-3 py-2">{{ $data['email'] }}</td> --}}
                                         <td class="px-3 py-2">
                                             <div class="flex justify-items-center m-auto text-center gap-2">
-                                                <a href="/kelola-admin-slb/lihat" title="lihat">
+                                                <a href="/kelola-admin-slb/lihat/{{ $data['id'] }}" title="lihat">
                                                     <div
                                                         class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 pt-2 rounded-md">
                                                         <x-svg-lihat />

@@ -132,8 +132,10 @@
             </div>
             <div class="relative rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-5"
                 id="moving-border">
-                <div
+                <form method="POST"
                     class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar font-bold text-black">
+                    @csrf
+                    @method('PUT')
                     {{-- isi konten disini --}}
                     <div class=''>
                         <div class="flex gap-x-2">
@@ -196,9 +198,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" id="name"
+                                <input type="text" name="nama" id="name"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Nama Sekolah" required />
+                                    placeholder="Masukkan Nama Sekolah" value="{{ $DATA['nama'] }}" required />
                             </div>
                         </div>
                     </div>
@@ -263,9 +265,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" id="name"
+                                <input type="text" name="npsn" id="name"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan NPSN" required />
+                                    placeholder="Masukkan NPSN" value="{{ $DATA['npsn'] }}" required />
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
                                 <label for="statusSekolah" class="">Status Sekolah</label>
@@ -340,9 +342,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" id="namasekolah"
+                                <input type="text" name="alamatSekolah" id="namasekolah"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Alamat Sekolah" required />
+                                    placeholder="Masukkan Alamat Sekolah" value="{{ $DATA['alamatSekolah'] }}" required />
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
                                 <label for="statusSekolah" class="">Kab/Kota</label>
@@ -374,9 +376,9 @@
                             <div class="flex flex-col flex-1 mb-4">
                                 <label for="visitors" class="">Jumlah Peserta Didik Berkebutuhan Khusus
                                     (PDBK)</label>
-                                <input type="number" id="visitors"
+                                <input type="number" name="jumlahPDBK" id="visitors"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Jumlah PDBK" required />
+                                    placeholder="Masukkan Jumlah PDBK" value="{{ $DATA['jumlahPDBK'] }}" required />
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
                                 <div class="flex gap-1">
@@ -437,7 +439,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" id="romble"
+                                <input type="text" name="namaPembimbing" value="{{ $DATA['namaPembimbing'] }}" id="romble"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Nama Pembimbing PDBK" required />
                             </div>
@@ -517,7 +519,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="text" id="romble"
+                                    <input type="text" name="pangkat" value="{{ $DATA['pangkat'] }}" id="romble"
                                         class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                         placeholder="Masukkan Pangkat/Golongan" required />
                                 </div>
@@ -587,7 +589,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="text" id="romble"
+                                    <input type="text" name="alamatTinggal" value="{{ $DATA['alamatTinggal'] }}" id="romble"
                                         class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                         placeholder="Masukkan No HP" required />
                                 </div>
@@ -653,7 +655,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="text" id="romble"
+                                    <input type="text" name="nomorHP" value="{{ $DATA['nomorHP'] }}" id="romble"
                                         class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                         placeholder="Masukkan No HP" required />
                                 </div>
@@ -677,7 +679,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
