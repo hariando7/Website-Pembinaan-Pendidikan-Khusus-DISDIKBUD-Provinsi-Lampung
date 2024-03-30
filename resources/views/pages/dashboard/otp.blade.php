@@ -242,12 +242,13 @@
             </div>
         </div>
         <div class="box relative w-[400px] h-[450px] m-auto flex items-center m-auto mt-28">
-            <form autocomplete="off" class="">
+            <form method="POST" autocomplete="off" class="">
+                @csrf
                 <h2 class="mb-5">Selamat datang di Portal Pendataan Sekolah Inklusi DISDIKBUD Provinsi Lampung</h2>
                 <h2 class="mb-3 font-bold">Verifikasi Email</h2>
                 <h3 class="text-center text-sm text-white">Masukkan Kode OTP Anda</h3>
                 <div class="inputBox relative w-[300px] mt-5">
-                    <input class="relative" type="text" required="required">
+                    <input name="otp" class="relative" type="text" required="required">
                     <span>OTP</span>
                     <i></i>
                 </div>

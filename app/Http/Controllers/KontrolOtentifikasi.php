@@ -50,10 +50,10 @@ class KontrolOtentifikasi extends Controller
             }
             Mail::to($validasi['email']) -> send(new OtpSender($temp));
 
-            return true;
+            return redirect('/otp?email=' . $validasi['email']);
         }
 
-        return false;
+        return back();
     }
 
     public function verifikasiOtp (Request $req) {
@@ -66,11 +66,11 @@ class KontrolOtentifikasi extends Controller
 
         if ($pengguna) {
             if ($pengguna -> otp === $validasi['otp']) {
-                return true;
+                return redirect('/new-password?email=' . $validasi['email'] . '&otp=' . $validasi['otp']);
             }
         }
 
-        return false;
+        return back();
     }
 
     public function ubahKataSandi (Request $req) {
@@ -89,11 +89,11 @@ class KontrolOtentifikasi extends Controller
                     'otp' => null
                 ]);
 
-                return true;
+                return redirect('/login');
             }
         }
 
-        return false;
+        return back();
     }
 
     public function keluar () {

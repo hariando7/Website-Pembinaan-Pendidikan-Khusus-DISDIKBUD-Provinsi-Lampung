@@ -242,14 +242,15 @@
             </div>
         </div>
         <div class="box relative w-[400px] h-[450px] m-auto flex items-center m-auto mt-28">
-            <form autocomplete="off" class="">
+            <form method="POST" autocomplete="off" class="">
+                @csrf
                 <h2 class="mb-5">selamat datang
                     di Dashboard SLB Bidang
                     Pembinaan Pendidikan Khusus</h2>
                 <h2 class="mb-3 font-bold">Lupa Password</h2>
                 <h3 class="text-center text-sm text-white">Masukkan Email</h3>
                 <div class="inputBox relative w-[300px] mt-5">
-                    <input class="relative" type="text" required="required">
+                    <input name="email" class="relative" type="email" required="required">
                     <span>Email</span>
                     <i></i>
                 </div>

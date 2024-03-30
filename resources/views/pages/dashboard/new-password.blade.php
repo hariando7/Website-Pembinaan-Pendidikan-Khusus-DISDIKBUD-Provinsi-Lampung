@@ -257,7 +257,8 @@
             </div>
         </div>
         <div class="box relative w-[400px] h-[520px] m-auto flex items-center m-auto mt-20">
-            <form autocomplete="off" class="">
+            <form method="POST" autocomplete="off" class="">
+                @csrf
                 <h2 class="mb-5">Selamat Datang
                     Di Dashboard SLB Bidang
                     Pembinaan Pendidikan Khusus</h2>

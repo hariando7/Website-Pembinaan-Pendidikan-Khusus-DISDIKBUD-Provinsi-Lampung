@@ -134,6 +134,9 @@ Route::get('/home', function () {
 Route::controller(KontrolOtentifikasi::class) -> group(function () {
     Route::post('/login', 'otentifikasi');
     Route::get('/logout', 'keluar');
+    Route::post('/lupa-password', 'lupaPassword');
+    Route::post('/otp', 'verifikasiOtp');
+    Route::post('/new-password', 'ubahKataSandi');
 });
 
 Route::controller(KontrolPengguna::class) -> group(function () {
