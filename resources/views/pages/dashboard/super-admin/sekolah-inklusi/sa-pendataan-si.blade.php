@@ -64,7 +64,7 @@
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar">
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">
-                        <div class="basis-[20%]">
+                        {{-- <div class="basis-[20%]">
                             <form>
                                 <div class="relative">
                                     <button id="dropdown-button" data-dropdown-toggle="dropdown"
@@ -89,14 +89,14 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                         <div class="basis-[70%]">
                             <form class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <x-svg-search />
                                     </div>
-                                    <input name="pencarian" type="text" id="simple-search"
+                                    <input name="pencarian" type="text" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
                                         placeholder="Search..." oninput="cekKosong(this)" required />
                                         <script>

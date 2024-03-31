@@ -58,7 +58,7 @@
                     <x-buttitle-landing ref="/sa-pendataan-si" color="#FA8F21" width="[8rem]" title="kembali"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
-                <div class="div">
+                {{-- <div class="div">
                     <button class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
                         title="Delete" type="button" data-index="">
                         <x-svg-delete />
@@ -96,8 +96,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <script>
+                </div> --}}
+                {{-- <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         const deleteButtons = document.querySelectorAll('.delete-button');
                         deleteButtons.forEach(button => {
@@ -128,7 +128,7 @@
                             });
                         });
                     });
-                </script>
+                </script> --}}
             </div>
             <div class="relative rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-5"
                 id="moving-border">
@@ -272,6 +272,7 @@
                                 <select id="statusSekolah" name="statusSekolah"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Status Sekolah" required>
+                                    <option value="{{ $DATA['statusSekolah'] }}">{{ $DATA['statusSekolah'] }}</option>
                                     <option value="negeri">Negeri</option>
                                     <option value="swasta">Swasta</option>
                                 </select>
@@ -345,11 +346,11 @@
                                     placeholder="Masukkan Alamat Sekolah" value="{{ $DATA['alamatSekolah'] }}" required />
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
-                                <label for="statusSekolah" class="">Kab/Kota</label>
-                                <select id="statusSekolah" name="statusSekolah"
+                                <label for="kota" class="">Kab/Kota</label>
+                                <select id="kota" name="kota"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Status Sekolah" required>
-                                    <option value="" hidden class="text-gray-500">Pilih Kab/Kota</option>
+                                    <option value="{{ $DATA['kota'] }}">{{ $DATA['kota'] }}</option>
                                     <option value="">Kab. Lampung Tengah</option>
                                     <option value="">Kab. Lampung Timur</option>
                                     <option value="">Kab. Lampung Selatan</option>
@@ -449,8 +450,7 @@
                                     <select id="jenisKelamin" name="jenisKelamin"
                                         class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                         required>
-                                        <option value="" hidden class="text-gray-500">Pilih Jenis Kelamin
-                                        </option>
+                                        <option value="{{ $DATA['jenisKelamin'] }}">{{ $DATA['jenisKelamin'] }}</option>
                                         <option value="l">Laki-Laki</option>
                                         <option value="p">Perempuan</option>
                                     </select>
@@ -659,12 +659,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-end mt-4">
+                        {{-- <div class="flex justify-end mt-4">
                             <button type="submit"
                                 class="flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
                                 + Simpan
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

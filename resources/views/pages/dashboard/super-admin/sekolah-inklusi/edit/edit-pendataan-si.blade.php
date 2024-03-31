@@ -118,6 +118,15 @@
                                     modal.setAttribute('aria-hidden', 'true');
                                     modal.setAttribute('tabindex', '-1');
                                 });
+
+                                const closeButtonYa = modal.querySelector(
+                                    '[data-modal-hide="popup-modal-ya"]');
+                                closeButtonYa.addEventListener('click', () => {
+                                    window.location.href = window.location.origin +
+                                        '/sa-pendataan-si/delete/' + document.getElementById(
+                                            'id').value;
+                                });
+
                                 const closeButtonTidak = modalTidak.querySelector(
                                     '[data-modal-hide="popup-modal-tidak"]');
                                 closeButtonTidak.addEventListener('click', () => {
@@ -136,6 +145,7 @@
                     class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar font-bold text-black">
                     @csrf
                     @method('PUT')
+                    <input type="hidden" name="id" id="id" value="{{ $id }}">
                     {{-- isi konten disini --}}
                     <div class=''>
                         <div class="flex gap-x-2">
@@ -274,6 +284,7 @@
                                 <select id="statusSekolah" name="statusSekolah"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Status Sekolah" required>
+                                    <option value="{{ $DATA['statusSekolah'] }}">{{ $DATA['statusSekolah'] }}</option>
                                     <option value="negeri">Negeri</option>
                                     <option value="swasta">Swasta</option>
                                 </select>
@@ -347,11 +358,11 @@
                                     placeholder="Masukkan Alamat Sekolah" value="{{ $DATA['alamatSekolah'] }}" required />
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
-                                <label for="statusSekolah" class="">Kab/Kota</label>
-                                <select id="statusSekolah" name="statusSekolah"
+                                <label for="kota" class="">Kab/Kota</label>
+                                <select id="kota" name="kota"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Status Sekolah" required>
-                                    <option value="" hidden class="text-gray-500">Pilih Kab/Kota</option>
+                                    <option value="{{ $DATA['kota'] }}">{{ $DATA['kota'] }}</option>
                                     <option value="">Kab. Lampung Tengah</option>
                                     <option value="">Kab. Lampung Timur</option>
                                     <option value="">Kab. Lampung Selatan</option>
@@ -451,8 +462,7 @@
                                     <select id="jenisKelamin" name="jenisKelamin"
                                         class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                         required>
-                                        <option value="" hidden class="text-gray-500">Pilih Jenis Kelamin
-                                        </option>
+                                        <option value="{{ $DATA['jenisKelamin'] }}">{{ $DATA['jenisKelamin'] }}</option>
                                         <option value="l">Laki-Laki</option>
                                         <option value="p">Perempuan</option>
                                     </select>
