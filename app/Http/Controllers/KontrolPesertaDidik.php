@@ -26,12 +26,14 @@ class KontrolPesertaDidik extends Controller
     // ];
     public function daftarPesertaDidikSuperAdmin (Request $req) {
         $pesertaDidik = $this -> daftarPesertaDidik($req);
+        $sekolah = Sekolah::all();
         
-    $dummyData = array_map(function ($data) {
+    $dummyData = array_map(function ($data) use ($sekolah) {
+        $temp = $sekolah -> find($data -> sekolah);
         return [
             'id' => $data->id,
+            'namaSekolah' => $temp-> nama,
             'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
             'namaSiswa' => $data->nama,
             'jenisKelamin' => $data->jenisKelamin,
             'jenisKetunaan' => $data->jenisKetunaan,
@@ -43,7 +45,8 @@ class KontrolPesertaDidik extends Controller
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/super-admin/slb/peserta-didik/sa-peserta-didik-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $pesertaDidik
+            'DATA' => $pesertaDidik,
+            'sekolah' => $sekolah
         ]);
     }
 
