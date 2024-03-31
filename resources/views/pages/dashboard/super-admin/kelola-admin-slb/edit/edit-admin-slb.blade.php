@@ -58,13 +58,13 @@
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="contoh@sekolah.com" value="binainsani@gmail.com" required />
                         </div>
-                        <div class="flex flex-col flex-1 mb-4 relative">
+                        {{-- <div class="flex flex-col flex-1 mb-4 relative">
                             <label htmlFor="password">Password</label>
                             <input name="password" type="password" id="password"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 pl-2 pr-10 w-full"
                                 placeholder="********" />
                             <x-icon-password />
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class=''>
@@ -88,19 +88,18 @@
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="kabkota">Kab/Kota</label>
                             <select id="kabkota" name="kota"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                value="{{ $DATA['kota'] }}" required onchange="populateKecamatan(this.value)">
-                                <option value="" disabled selected>Pilih Kab/Kota</option>
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full" required onchange="populateKecamatan(this.value)">
+                                <option value="{{ $DATA['kota'] }}" selected>{{ $DATA['kota'] }}</option>
                                 <option value="Bandar Lampung">Bandar Lampung</option>
                                 <option value="Metro">Metro</option>
                             </select>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="kecamatan">Kecamatan</label>
-                            <select id="kecamatan" name="kecamatan" value="{{ $DATA['kecamatan'] }}"
+                            <select id="kecamatan" name="kecamatan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>
-                                <option value="" disabled selected>Pilih Kecamatan</option>
+                                <option value="{{ $DATA['kecamatan'] }}" selected>{{ $DATA['kecamatan'] }}</option>
                             </select>
                         </div>
                         <script>
