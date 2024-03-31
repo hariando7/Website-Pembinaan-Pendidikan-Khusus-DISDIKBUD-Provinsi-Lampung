@@ -64,35 +64,27 @@
                 id="moving-border">
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar">
                     {{-- isi konten disini --}}
-                    <div class="flex flex-row gap-2">
+                    <form class="flex flex-row gap-2">
                         <div class="basis-[20%]">
-                            <form>
-                                <div class="relative">
-                                    <button id="dropdown-button" data-dropdown-toggle="dropdown"
-                                        class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
-                                        type="button" onclick="toggleDropdown()">Filter Nama Sekolah
-                                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="m1 1 4 4 4-4" />
-                                        </svg>
-                                    </button>
-                                    <div id="dropdown"
-                                        class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#FA8F21] top-full mt-1">
-                                        <ul class="py-2 text-sm text-gray-200 dark:text-gray-200"
-                                            aria-labelledby="dropdown-button">
-                                            <li>
-                                                <a href="#" onclick="filterGender('All')"
-                                                    class="block px-4 py-2 hover:bg-[#D87815] dark:hover:bg-[#D87815] dark:hover:text-white hover:text-white">Bina
-                                                    Insani</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </form>
+                            <select name="filterSekolah" id="filterSekolah" class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none" onchange="cariSekolah(this)" >
+                                <option value="">semua</option>
+                                @foreach ($sekolah as $data)
+                                    <option value="{{ $data -> id }}" @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data -> id) selected @endif @endif>{{ $data -> nama }}</option>
+                                @endforeach
+                            </select>
+                            <script>
+                                function cariSekolah (e) {
+                                    console.log(e.value);
+                                    if (e.value === '') {
+                                        window.location.href = window.location.origin + window.location.pathname;
+                                    } else {
+                                        e.form.submit();
+                                    }
+                                }
+                            </script>
                         </div>
                         <div class="basis-[70%]">
-                            <form class="flex items-center mx-auto my-auto">
+                            <div class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <x-svg-search />
@@ -109,7 +101,7 @@
                                         }
                                     </script>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                         <div class="basis-[10%]">
                             <button type="button"
@@ -118,7 +110,7 @@
                                 Print
                             </button>
                         </div>
-                    </div>
+                    </form>
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
                             <thead class="text-xs text-white uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
@@ -174,7 +166,7 @@
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
                                     <td class="px-3 py-2"><?= $index + 1 ?></td>
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
-                                    <td class="px-3 py-2"><?= $data['tahun'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['namaSekolah'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php
                                         $namaGuru = $data['namaGuru'];

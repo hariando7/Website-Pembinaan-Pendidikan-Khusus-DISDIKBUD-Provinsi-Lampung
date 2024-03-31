@@ -27,12 +27,14 @@ class KontrolGuru extends Controller
         // ];
     public function daftarGuruSuperAdmin (Request $req) {
         $guru = $this -> daftarGuru($req);
+        $sekolah = Sekolah::all();
 
-        $dummyData = array_map(function ($data) {
+        $dummyData = array_map(function ($data) use ($sekolah) {
+            $temp = $sekolah -> find($data -> sekolah);
             return [
                 'id' => $data -> id,
+                'namaSekolah' => $temp-> nama,
                 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-                // 'tahun' => $data -> created_at,
                 'namaGuru' => $data -> nama,
                 'jenisKelamin' => $data -> jenisKelamin,
                 'NIP' => $data -> nip,
@@ -45,7 +47,8 @@ class KontrolGuru extends Controller
         // return json_encode($guru);
         return view('pages/dashboard/super-admin/slb/guru/sa-guru-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $guru
+            'DATA' => $guru,
+            'sekolah' => $sekolah
         ]);
     }
 
