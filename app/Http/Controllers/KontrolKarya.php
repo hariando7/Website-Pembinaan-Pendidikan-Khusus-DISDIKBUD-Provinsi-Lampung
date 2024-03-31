@@ -25,12 +25,14 @@ class KontrolKarya extends Controller
     //                             ];
     public function daftarKaryaSuperAdmin (Request $req) {
         $karya = $this -> daftarKarya($req);
+        $sekolah = Sekolah::all();
 
-        $dummyData = array_map(function ($data) {
+        $dummyData = array_map(function ($data) use ($sekolah) {
+            $temp = $sekolah -> find($data -> sekolah);
         return [
             'id' => $data->id,
+            'namaSekolah' => $temp-> nama,
             'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
             'judulKarya' => $data->nama,
             'gambar' => $data->gambar,
             'deskripsi' => $data->deskripsi,
@@ -40,7 +42,8 @@ class KontrolKarya extends Controller
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/super-admin/slb/karya/sa-karya-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $karya
+            'DATA' => $karya,
+            'sekolah' => $sekolah
         ]);
     }
 
