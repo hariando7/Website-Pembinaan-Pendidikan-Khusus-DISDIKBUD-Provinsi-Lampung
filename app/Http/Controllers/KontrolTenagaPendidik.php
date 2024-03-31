@@ -26,12 +26,14 @@ class KontrolTenagaPendidik extends Controller
     // ];
     public function daftarTenagaPendidikSuperAdmin (Request $req) {
         $tenagaPendidik = $this -> daftarTenagaPendidik($req);
+        $sekolah = Sekolah::all();
 
-        $dummyData = array_map(function ($data) {
+        $dummyData = array_map(function ($data) use ($sekolah) {
+            $temp = $sekolah -> find($data -> sekolah);
             return [
                 'id' => $data -> id,
+                'namaSekolah' => $temp-> nama,
                 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-                // 'tahun' => $data -> created_at,
                 'namaTendik' => $data -> nama,
                 'jenisKelamin' => $data -> jenisKelamin,
                 'nip' => $data -> nip,
@@ -43,7 +45,8 @@ class KontrolTenagaPendidik extends Controller
         // return json_encode($tenagaPendidik);
         return view('pages/dashboard/super-admin/slb/tendik/sa-tendik-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $tenagaPendidik
+            'DATA' => $tenagaPendidik,
+            'sekolah' => $sekolah
         ]);
     }
 
