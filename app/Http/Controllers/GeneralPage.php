@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Karya;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -40,8 +41,25 @@ class GeneralPage extends Controller
             'dummyData' => $temp
         ]);
     }
-    function karyaslb () {
-        return view('pages/landing/karya-slb');
+    function karyaslb (Request $req) {
+        $sekolah = Sekolah::all();
+
+        $daftarKarya = Karya::where(function (Builder $query) use ($req) {
+            if ($req -> filterSekolah) {
+                $query -> where('sekolah', (int) $req -> filterSekolah);
+            }
+            if ($req -> pencarian) {
+                $query -> where(function (Builder $query) use ($req) {
+                    $query -> where('nama', 'LIKE', '%' . $req -> pencarian . '%')
+                        -> orWhere('deskripsi', 'LIKE', '%' . $req -> pencarian . '%');
+                });
+            }
+        }) -> latest() -> get() -> toArray();
+
+        return view('pages/landing/karya-slb', [
+            'dummyData' => $daftarKarya,
+            'sekolah' => $sekolah
+        ]);
     }
     function tentang () {
         return view('pages/landing/tentang');

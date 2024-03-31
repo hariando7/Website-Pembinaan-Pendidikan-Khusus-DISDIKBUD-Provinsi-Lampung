@@ -245,8 +245,9 @@
                                     </div>
                                     <ul tabindex="0"
                                         class="dropdown-content z-[1] menu p-2 shadow bg-white text-black rounded-box w-52">
-                                        <li class="hover:bg-[#297785] hover:text-white"><a>Item 1</a></li>
-                                        <li class="hover:bg-[#297785] hover:text-white"><a>Item 2</a></li>
+                                        @foreach ($sekolah as $data)
+                                            <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb?filterSekolah={{ $data['id'] }}">{{ $data['nama'] }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -255,7 +256,7 @@
                                     class="input input-bordered flex items-center gap-2 bg-white border-solid border-1 border-[#297785] hover:border-[#297785]">
                                     <input type="text"
                                         class="grow border-none focus:ring-white focus:border-white text-black"
-                                        placeholder="Search Karya SLB" />
+                                        placeholder="Search Karya SLB" name="pencarian" />
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="black"
                                         class="w-4 h-4 opacity-70">
                                         <path fill-rule="evenodd"
@@ -277,18 +278,17 @@
                         </div>
                         {{-- Isi Content --}}
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            @for ($i = 1; $i <= 9; $i++)
+                            @foreach ($dummyData as $index => $data)
                                 <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-                                    <img class="w-full" src="/assets/landing/test.png" alt="Gambar {{ $i }}">
+                                    <img class="w-full" src="{{ url(asset('storage/' . $data['gambar'])) }}" alt="Gambar {{ $index + 1 }}">
                                     <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">Judul {{ $i }}</div>
+                                        <div class="font-bold text-xl mb-2">{{ $data['nama'] }}</div>
                                         <p class="text-gray-700 text-base">
-                                            Deskripsi singkat tentang konten ini. Anda dapat menulis deskripsi yang
-                                            lebih panjang di sini.
+                                            {{ $data['deskripsi'] }}
                                         </p>
                                     </div>
                                 </div>
-                            @endfor
+                            @endforeach
                         </div>
                         <div class="relative flex justify-between mt-5">
                             <div class="font-bold text-black">Jumlah :</div>
