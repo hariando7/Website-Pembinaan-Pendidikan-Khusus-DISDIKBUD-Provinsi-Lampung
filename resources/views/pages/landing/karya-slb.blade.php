@@ -245,18 +245,19 @@
                                     </div>
                                     <ul tabindex="0"
                                         class="dropdown-content z-[1] menu p-2 shadow bg-white text-black rounded-box w-52">
+                                            <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb">semua</a></li>
                                         @foreach ($sekolah as $data)
                                             <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb?filterSekolah={{ $data['id'] }}">{{ $data['nama'] }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
                             </div>
-                            <div class="mt-2 lg:mt-0 mb-5 lg:mb-0">
+                            <form class="static bg-inherit mt-2 lg:mt-0 mb-5 lg:mb-0">
                                 <label
                                     class="input input-bordered flex items-center gap-2 bg-white border-solid border-1 border-[#297785] hover:border-[#297785]">
-                                    <input type="text"
+                                    <input type="text" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
                                         class="grow border-none focus:ring-white focus:border-white text-black"
-                                        placeholder="Search Karya SLB" name="pencarian" />
+                                        placeholder="Search Karya SLB" name="pencarian" oninput="cekKosong(this)" />
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="black"
                                         class="w-4 h-4 opacity-70">
                                         <path fill-rule="evenodd"
@@ -264,6 +265,13 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </label>
+                                <script>
+                                    function cekKosong(e) {
+                                        if (e.value === '') {
+                                            window.location.href = window.location.origin + window.location.pathname;
+                                        }
+                                    }
+                                </script>
                                 {{-- <label for="table-search" class="sr-only">Search</label>
                                 <div class="relative">
                                     <div
@@ -274,7 +282,7 @@
                                         class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-full lg:w-[750px] bg-white focus:ring-[#2F8386] focus:border-[#2F8386]"
                                         placeholder="Search...">
                                 </div> --}}
-                            </div>
+                            </form>
                         </div>
                         {{-- Isi Content --}}
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -291,7 +299,7 @@
                             @endforeach
                         </div>
                         <div class="relative flex justify-between mt-5">
-                            <div class="font-bold text-black">Jumlah :</div>
+                            <div class="font-bold text-black">Jumlah : {{ count($dummyData) }}</div>
                         </div>
                     </div>
                 </div>
