@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+
+use App\Models\Sekolah;
 
 class GeneralPage extends Controller
 {
@@ -10,8 +13,32 @@ class GeneralPage extends Controller
     function home () {
         return view('pages/landing/home');
     }
-    function slb () {
-        return view('pages/landing/slb');
+    function slb (Request $req) {
+        $daftarSekolah = Sekolah::where(function (Builder $query) use ($req) {
+            if ($req -> pencarian) {
+                $query -> where(function (Builder $query) use ($req) {
+                    $query -> where('nama', 'LIKE', '%' . $req -> pencarian . '%')
+                        -> orWhere('kota', 'LIKE', '%' . $req -> pencarian . '%')
+                        -> orWhere('kecamatan', 'LIKE', '%' . $req -> pencarian . '%')
+                        -> orWhere('jenisKetunaan', 'LIKE', '%' . $req -> pencarian . '%');
+                });
+            }
+        }) -> latest() -> get() -> toArray();
+
+        $temp = array_map(function ($data) {
+            return [
+                'namaSekolah' => $data["nama"],
+                'kabkota' => $data["kota"],
+                'kecamatan' => $data["kecamatan"],
+                'alamat' => $data["alamat"],
+                'jenisKetunaan' => $data["jenisKetunaan"],
+                'websiteSekolah' => $data["linkWebsiteSekolah"]
+            ];
+        }, $daftarSekolah);
+
+        return view('pages/landing/slb', [
+            'dummyData' => $temp
+        ]);
     }
     function karyaslb () {
         return view('pages/landing/karya-slb');
