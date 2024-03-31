@@ -154,7 +154,7 @@
                                         @dd($data['gambar'])
                                     </td> --}}
                                     <td class="px-3 py-2"><?= $data['kondisi'] ?></td>
-                                    <td class="px-3 py-2"><?= $data['kondisi'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['gambar'] ?></td>
                                     <td class="px-3 py-2"><?= $data['catatan'] ?></td>
                                     <td class="px-3 py-2">
                                         <div class="flex justify-items-center m-auto text-center gap-2">

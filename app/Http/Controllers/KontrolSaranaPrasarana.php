@@ -31,16 +31,15 @@ class KontrolSaranaPrasarana extends Controller
         $saranaPrasarana = $this -> daftarSaranaPrasarana($req);
 
         $dummyData = array_map(function ($data) {
-        return [
-            'id' => $data->id,
-            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
-            'gedungRuang' => $data->nama,
-            'jumlahVol' => $data->jumlah,
-            'kondisi' => $data->kondisi,
-            'catatan' => $data->keterangan,
-        ];
-    }, $saranaPrasarana->items());
+            return [
+                'id' => $data->id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'gedungRuang' => $data->nama,
+                'jumlahVol' => $data->jumlah,
+                'kondisi' => $data->kondisi,
+                'catatan' => $data->keterangan,
+            ];
+        }, $saranaPrasarana->items());
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/super-admin/slb/sarpras/sa-sarpras-slb', [
@@ -48,21 +47,22 @@ class KontrolSaranaPrasarana extends Controller
             'DATA' => $saranaPrasarana
         ]);
     }
-
+    
     public function daftarSaranaPrasaranaAdmin (Request $req) {
         $saranaPrasarana = $this -> daftarSaranaPrasarana($req);
 
         $dummyData = array_map(function ($data) {
-        return [
-            'id' => $data->id,
-            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
-            'gedungRuang' => $data->nama,
-            'jumlahVol' => $data->jumlah,
-            'kondisi' => $data->kondisi,
-            'catatan' => $data->keterangan,
-        ];
-    }, $saranaPrasarana->items());
+            $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $data -> id) -> get();
+            return [
+                'id' => $data->id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'gedungRuang' => $data->nama,
+                'jumlahVol' => $data->jumlah,
+                'kondisi' => $data->kondisi,
+                'catatan' => $data->keterangan,
+                'gambar' => $daftarGambar->count()
+            ];
+        }, $saranaPrasarana->items());
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/sarpras/admin-sarpras-slb', [
@@ -138,9 +138,11 @@ class KontrolSaranaPrasarana extends Controller
     
     public function tampilanEdit ($id) {
         $saranaprasarana = SaranaPrasarana::find($id);
+        $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $id) -> get();
         return view('pages/dashboard/admin-slb/sarpras/edit/edit-sarpras-slb', [
             'id' => $id,
-            'DATA' => $saranaprasarana
+            'DATA' => $saranaprasarana,
+            'daftarGambar' => $daftarGambar
         ]);
     }
 

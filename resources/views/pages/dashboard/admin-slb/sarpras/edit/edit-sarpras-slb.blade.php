@@ -233,8 +233,12 @@
                             <input multiple type="file" name="daftarGambar[]" id="gambarKarya"
                                 accept="image/png, image/jpeg, image/jpg" class="custom-file-input"
                                 onchange="previewImages(event)" />
-                            <img id="preview" src="{{ url(asset('storage/' . $DATA['daftarGambar'])) }}"
-                                alt="Preview Gambar" class="mt-5" style="max-width: 300px; max-height: 300px;">
+
+                            @foreach ($daftarGambar as $gambar)
+                                <img id="preview" src="{{ url(asset('storage/' . $gambar -> gambar)) }}"
+                                    alt="Preview Gambar" class="mt-5" style="max-width: 300px; max-height: 300px;">
+                            @endforeach
+                            
                             <div id="previewContainer" class="mt-5" style="display: flex; flex-wrap: wrap;"></div>
                             <span id="deleteIcon" style="display: none; cursor: pointer;"><i
                                     class="fas fa-times-circle">Hapus Gambar</i></span>
