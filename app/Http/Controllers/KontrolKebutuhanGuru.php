@@ -26,12 +26,14 @@ class KontrolKebutuhanGuru extends Controller
     //                             ];
     public function daftarKebutuhanGuruSuperAdmin (Request $req) {
         $kebutuhanGuru = $this -> daftarKebutuhanGuru($req);
+        $sekolah = Sekolah::all();
 
-        $dummyData = array_map(function ($data) {
+        $dummyData = array_map(function ($data) use ($sekolah) {
+            $temp = $sekolah -> find($data -> sekolah);
             return [
                 'id' => $data -> id,
+                'namaSekolah' => $temp-> nama,
                 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-                // 'tahun' => $data -> created_at,
                 'mataPelajaran' => $data -> mataPelajaran,
                 'jumlahDibutuhkan' => $data -> jumlahDibutuhkan,
                 'jumlahYangAda' => $data -> jumlahSaatIni,
@@ -43,7 +45,8 @@ class KontrolKebutuhanGuru extends Controller
         // return json_encode($kebutuhanGuru);
         return view('pages/dashboard/super-admin/slb/kebutuhan-guru/sa-kebutuhan-guru-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $kebutuhanGuru
+            'DATA' => $kebutuhanGuru,
+            'sekolah' => $sekolah
         ]);
     }
 
