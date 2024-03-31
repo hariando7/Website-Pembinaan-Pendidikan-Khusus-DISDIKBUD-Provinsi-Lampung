@@ -33,7 +33,7 @@ use App\Http\Controllers\KontrolSekolahInklusi;
 
 Route::controller(GeneralPage::class) -> group(function () {
     // Awal Landing Page
-    Route::get('/', 'home');
+    Route::get('/', [KontrolKarya::class, 'home']);
     Route::get('/sekolah-luar-biasa', 'slb');
     Route::get('/karya-slb', 'karyaslb');
     Route::get('/tentang-bidang-pembinaan-pendidikan-khusus', 'tentang');

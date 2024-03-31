@@ -88,6 +88,28 @@ class KontrolKarya extends Controller
         return $karya;
     }
 
+    public function home () {
+        $daftarSekolah = Sekolah::all();
+        $daftarKarya = [];
+        $count = 0;
+
+        foreach ($daftarSekolah as $sekolah) {
+            $karya = Karya::firstWhere('sekolah', $sekolah -> id);
+
+            if ($karya) {
+                array_push($daftarKarya, $karya);
+                $count += 1;
+            }
+            if ($count > 5) {
+                break;
+            }
+        }
+
+        return view('pages/landing/home', [
+            'karya' => $daftarKarya
+        ]);
+    }
+
     public function lihatSatu ($id) {
         $pengguna = Auth::user();
         $karya = Karya::find($id);
