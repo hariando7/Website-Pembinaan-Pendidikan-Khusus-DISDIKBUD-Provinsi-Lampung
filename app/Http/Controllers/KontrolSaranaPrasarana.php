@@ -29,10 +29,13 @@ class KontrolSaranaPrasarana extends Controller
     
     public function daftarSaranaPrasaranaSuperAdmin (Request $req) {
         $saranaPrasarana = $this -> daftarSaranaPrasarana($req);
+        $sekolah = Sekolah::all();
 
-        $dummyData = array_map(function ($data) {
+        $dummyData = array_map(function ($data) use ($sekolah) {
+            $temp = $sekolah -> find($data -> sekolah);
             return [
                 'id' => $data->id,
+                'namaSekolah' => $temp-> nama,
                 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
                 'gedungRuang' => $data->nama,
                 'jumlahVol' => $data->jumlah,
@@ -44,7 +47,8 @@ class KontrolSaranaPrasarana extends Controller
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/super-admin/slb/sarpras/sa-sarpras-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $saranaPrasarana
+            'DATA' => $saranaPrasarana,
+            'sekolah' => $sekolah
         ]);
     }
     
