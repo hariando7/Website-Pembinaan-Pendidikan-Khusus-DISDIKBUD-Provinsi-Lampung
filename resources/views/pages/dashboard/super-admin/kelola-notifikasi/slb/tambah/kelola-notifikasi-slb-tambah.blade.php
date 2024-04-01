@@ -60,7 +60,7 @@
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
-                            <label for="notificationDateTime">Tanggal dan Waktu Mulai Notifikasi</label>
+                            <label for="notificationDateTime">Tanggal dan Waktu Selesai Notifikasi</label>
                             <input name="tanggalAkhir" type="datetime-local" id="notificationDateTime"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
@@ -116,7 +116,7 @@
                 </div>
                 <div class="flex justify-end mt-4">
                     <button type="submit"
-                        class="flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
+                        class="btn border-none flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
                         + Simpan
                     </button>
                 </div>

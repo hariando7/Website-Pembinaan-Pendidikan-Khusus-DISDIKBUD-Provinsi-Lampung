@@ -50,9 +50,13 @@
     <div>
         <x-dashboard-side-bar-sa />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
-            <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Kelola
+            <div class="flex justify-between pb-2 gap-2">
+                <div class="text-center items-center justify-center text-[#297785] font-bold text-[26px]">Kelola
                     Notifikasi Sekolah Inklusi Provinsi Lampung
+                </div>
+                <div class="flex justify-end gap-5">
+                    <!-- Modal toggle -->
+                    <x-notifikasi-sekolah-inklusi title="Cek Notifikasi" />
                 </div>
                 <div class="flex justify-end gap-5">
                     <x-buttitle-landing ref="/sa-kelola-notifikasi-si/tambah" color="#FA8F21" width="[13rem]"
@@ -242,8 +246,8 @@
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah : {{ $dummyData -> total() }}</div>
-                        {{ $dummyData -> links() }}
+                        <div class="font-bold text-black">Jumlah : {{ $dummyData->total() }}</div>
+                        {{ $dummyData->links() }}
                         {{-- <div class="">
                             <nav aria-label="Page navigation example">
                                 <ul class="inline-flex -space-x-px text-sm gap-2">

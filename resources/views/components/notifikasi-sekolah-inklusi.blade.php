@@ -20,7 +20,7 @@
 
 <div class="z-30">
     <button data-modal-target="timeline-modal" data-modal-toggle="timeline-modal"
-        class="text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2">
+        class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2">
         Notifikasi Dinas
         <span id="notificationBadge"
             class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
@@ -30,19 +30,21 @@
     </button>
     <!-- Main modal -->
     <div id="timeline-modal" tabindex="-1" aria-hidden="true"
-        class="hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+        class="hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
         <div class="relative p-4 w-full max-w-3xl max-h-full">
             <!-- Modal content -->
             <div class="relative rounded-lg shadow dark:bg-[#297785] bg-[#297785]">
                 <!-- Modal header -->
                 <div
                     class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-white border-white">
-                    <h3 class="text-lg font-semibold text-white dark:text-white">
-                        Notifikasi Pengisian Data
-                    </h3>
-                    <h5 class="text-white">
-                        <x-time-saat-ini />
-                    </h5>
+                    <div class="div">
+                        <h3 class="text-lg font-semibold text-white dark:text-white">
+                            Notifikasi Pengisian Data <br>
+                        </h3>
+                        <h5 class="text-white">
+                            <x-time-saat-ini />
+                        </h5>
+                    </div>
                     <button type="button"
                         class="text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-[#D87815] dark:hover:text-white"
                         data-modal-close="timeline-modal">

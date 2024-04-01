@@ -22,7 +22,7 @@
     <button data-modal-target="timeline-modal" data-modal-toggle="timeline-modal"
         class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2">
         {{-- {{ $title }} --}}
-        Pengumuman SLB
+        Notifikasi SLB
         <span id="notificationBadge"
             class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
             style="display: none;">

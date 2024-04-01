@@ -10,6 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <style>
         .hide-scrollbar {
             scrollbar-width: thin;
@@ -66,14 +68,18 @@
                     {{-- isi konten disini --}}
                     <form class="flex flex-row gap-2">
                         <div class="basis-[20%]">
-                            <select name="filterSekolah" id="filterSekolah" class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none" onchange="cariSekolah(this)" >
+                            <select name="filterSekolah" id="filterSekolah"
+                                class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
+                                onchange="cariSekolah(this)">
                                 <option value="">semua</option>
                                 @foreach ($sekolah as $data)
-                                    <option value="{{ $data -> id }}" @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data -> id) selected @endif @endif>{{ $data -> nama }}</option>
+                                    <option value="{{ $data->id }}"
+                                        @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data->id) selected @endif
+                                        @endif>{{ $data->nama }}</option>
                                 @endforeach
                             </select>
                             <script>
-                                function cariSekolah (e) {
+                                function cariSekolah(e) {
                                     console.log(e.value);
                                     if (e.value === '') {
                                         window.location.href = window.location.origin + window.location.pathname;
@@ -134,6 +140,9 @@
                                         Kondisi
                                     </th>
                                     <th scope="col" class="px-3 py-2">
+                                        Gambar
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
                                         Catatan
                                     </th>
                                 </tr>
@@ -170,6 +179,151 @@
                                         @dd($data['gambar'])
                                     </td> --}}
                                     <td class="px-3 py-2"><?= $data['kondisi'] ?></td>
+                                    <td class="px-3 py-2">
+                                        <div class="div">
+                                            <button
+                                                class="font-medium text-blue-500 dark:text-blue-500 hover:underline delete-button"
+                                                title="Delete" type="button" data-index="<?= $data['id'] ?>">
+                                                Klik Disini
+                                            </button>
+                                        </div>
+                                        <!-- Modal -->
+                                        <div id="popup-modal" tabindex="-1" aria-hidden="true"
+                                            class="z-30 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
+                                            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                                                <div class="relative bg-[#297785] rounded-lg shadow">
+                                                
+                                                    <button type="button"
+                                                        class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                        data-modal-hide="popup-modal-delete">
+                                                        <svg class="w-3 h-3" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="white"
+                                                            viewBox="0 0 14 14">
+                                                            <path stroke="white" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                        </svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="p-4 md:p-5 text-center">
+                                                        {{-- konten disini --}}
+                                                        <div class="grid grid-cols-1 gap-5">
+                                                            <div class="w-full rounded overflow-hidden">
+                                                                <div id="default-carousel" class="relative w-full z-0"
+                                                                    data-carousel="slide">
+                                                                    <!-- Carousel wrapper -->
+                                                                    <div
+                                                                        class="m-5 relative h-56 overflow-hidden rounded-lg md:h-96">
+                                                                        <!-- Item 1 -->
+                                                                        <div class="hidden duration-700 ease-in-out"
+                                                                            data-carousel-item>
+                                                                            <img src="{{ url(asset('storage/assets/a1.jpg')) }}"
+                                                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                                                alt="...">
+                                                                        </div>
+                                                                        <!-- Item 2 -->
+                                                                        <div class="hidden duration-700 ease-in-out"
+                                                                            data-carousel-item>
+                                                                            <img src="{{ url(asset('storage/assets/b1.jpg')) }}"
+                                                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                                                alt="...">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Slider indicators -->
+                                                                    <div
+                                                                        class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                                                                        <button type="button"
+                                                                            class="w-3 h-3 rounded-full"
+                                                                            aria-current="true" aria-label="Slide 1"
+                                                                            data-carousel-slide-to="0"></button>
+                                                                        <button type="button"
+                                                                            class="w-3 h-3 rounded-full"
+                                                                            aria-current="false" aria-label="Slide 2"
+                                                                            data-carousel-slide-to="1"></button>
+                                                                        <button type="button"
+                                                                            class="w-3 h-3 rounded-full"
+                                                                            aria-current="false" aria-label="Slide 3"
+                                                                            data-carousel-slide-to="2"></button>
+                                                                        <button type="button"
+                                                                            class="w-3 h-3 rounded-full"
+                                                                            aria-current="false" aria-label="Slide 4"
+                                                                            data-carousel-slide-to="3"></button>
+                                                                        <button type="button"
+                                                                            class="w-3 h-3 rounded-full"
+                                                                            aria-current="false" aria-label="Slide 5"
+                                                                            data-carousel-slide-to="4"></button>
+                                                                    </div>
+                                                                    <!-- Slider controls -->
+                                                                    <button type="button"
+                                                                        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                                        data-carousel-prev>
+                                                                        <span
+                                                                            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                                                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                                                                aria-hidden="true"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                fill="none" viewBox="0 0 6 10">
+                                                                                <path stroke="currentColor"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="M5 1 1 5l4 4" />
+                                                                            </svg>
+                                                                            <span class="sr-only">Previous</span>
+                                                                        </span>
+                                                                    </button>
+                                                                    <button type="button"
+                                                                        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                                        data-carousel-next>
+                                                                        <span
+                                                                            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                                                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                                                                aria-hidden="true"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                fill="none" viewBox="0 0 6 10">
+                                                                                <path stroke="currentColor"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="m1 9 4-4-4-4" />
+                                                                            </svg>
+                                                                            <span class="sr-only">Next</span>
+                                                                        </span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function() {
+                                                const deleteButtons = document.querySelectorAll('.delete-button');
+                                                deleteButtons.forEach(button => {
+                                                    button.addEventListener('click', function() {
+                                                        // console.log(button.getAttribute('data-index'));
+                                                        const index = this.dataset.index;
+                                                        const modal = document.getElementById('popup-modal');
+                                                        modal.classList.remove('hidden');
+                                                        modal.setAttribute('aria-hidden', 'false');
+                                                        modal.setAttribute('tabindex', '0');
+                                                        const modalTidak = document.getElementById('popup-modal');
+                                                        modalTidak.classList.remove('hidden');
+                                                        modalTidak.setAttribute('aria-hidden', 'false');
+                                                        modalTidak.setAttribute('tabindex', '0');
+                                                        const closeButton = modal.querySelector(
+                                                            '[data-modal-hide="popup-modal-delete"]');
+                                                        closeButton.addEventListener('click', () => {
+                                                            modal.classList.add('hidden');
+                                                            modal.setAttribute('aria-hidden', 'true');
+                                                            modal.setAttribute('tabindex', '-1');
+                                                        });
+                                                    });
+                                                });
+                                            });
+                                        </script>
+                                    </td>
                                     <td class="px-3 py-2"><?= $data['catatan'] ?></td>
                                 </tr>
                                 <?php endforeach; ?>

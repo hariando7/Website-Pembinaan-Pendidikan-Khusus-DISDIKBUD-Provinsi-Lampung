@@ -66,14 +66,18 @@
                     {{-- isi konten disini --}}
                     <form class="flex flex-row gap-2">
                         <div class="basis-[20%]">
-                            <select name="filterSekolah" id="filterSekolah" class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none" onchange="cariSekolah(this)" >
+                            <select name="filterSekolah" id="filterSekolah"
+                                class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
+                                onchange="cariSekolah(this)">
                                 <option value="">semua</option>
                                 @foreach ($sekolah as $data)
-                                    <option value="{{ $data -> id }}" @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data -> id) selected @endif @endif>{{ $data -> nama }}</option>
+                                    <option value="{{ $data->id }}"
+                                        @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data->id) selected @endif
+                                        @endif>{{ $data->nama }}</option>
                                 @endforeach
                             </select>
                             <script>
-                                function cariSekolah (e) {
+                                function cariSekolah(e) {
                                     console.log(e.value);
                                     if (e.value === '') {
                                         window.location.href = window.location.origin + window.location.pathname;
@@ -160,8 +164,23 @@
                                         ?>
                                     </td>
                                     <td class="px-3 py-2">
-                                        <img src="{{ url(asset('storage/' . $data['gambar'])) }}" alt="">
                                         {{-- @dd($data['gambar']) --}}
+                                        <div class="grid grid-cols-1 gap-5">
+                                            <div class="w-full rounded overflow-hidden">
+                                                <div id="default-carousel" class="relative w-full z-0"
+                                                    data-carousel="slide">
+                                                    <!-- Carousel wrapper -->
+                                                    <div class="relative h-[300px] w-[300px] overflow-hidden rounded-lg">
+                                                        <!-- Item 1 -->
+                                                        <div class="duration-700 ease-in-out" data-carousel-item>
+                                                            <img src="{{ url(asset('storage/' . $data['gambar'])) }}"
+                                                                alt=""
+                                                                class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['deskripsi'] ?></td>
                                 </tr>
