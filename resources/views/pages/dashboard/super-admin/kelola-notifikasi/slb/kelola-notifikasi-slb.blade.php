@@ -57,7 +57,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-slb title="Cek Notifikasi"/>
+                    <x-notifikasi-slb title="Cek Notifikasi" :notifications="$pengumuman" />
                 </div>
                 <div class="flex justify-end gap-5">
                     <x-buttitle-landing ref="/sa-kelola-notifikasi-slb/tambah" color="#FA8F21" width="[13rem]"

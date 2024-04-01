@@ -56,7 +56,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-sekolah-inklusi title="Cek Notifikasi" />
+                    <x-notifikasi-sekolah-inklusi title="Cek Notifikasi" :notifications="$pengumuman" />
                 </div>
                 <div class="flex justify-end gap-5">
                     <x-buttitle-landing ref="/sa-kelola-notifikasi-si/tambah" color="#FA8F21" width="[13rem]"
@@ -77,7 +77,14 @@
                                     </div>
                                     <input name="pencarian" type="text" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." required />
+                                        placeholder="Search..." oninput="cekKosong(this)" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" required />
+                                        <script>
+                                            function cekKosong(e) {
+                                                if (e.value === '') {
+                                                    window.location.href = window.location.origin + window.location.pathname;
+                                                }
+                                            }
+                                        </script>
                                 </div>
                             </form>
                         </div>

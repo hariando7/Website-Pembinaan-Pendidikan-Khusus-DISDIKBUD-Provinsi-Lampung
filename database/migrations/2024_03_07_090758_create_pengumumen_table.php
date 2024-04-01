@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('pengumuman', function (Blueprint $table) {
             $table->id();
             $table->string('sistem');
-            $table->string('tanggalMulai');
-            $table->string('tanggalAkhir');
+            $table->dateTimeTz('tanggalMulai');
+            $table->dateTimeTz('tanggalAkhir');
             $table->string('nama');
             $table->string('detail');
             $table->string('kirimEmail')->nullable();

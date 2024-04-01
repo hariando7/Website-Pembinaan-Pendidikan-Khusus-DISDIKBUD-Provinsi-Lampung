@@ -32,9 +32,10 @@ use App\Http\Controllers\KontrolPengumuman;
 
 // Route::get('/', [GeneralPage::class, 'home']);
 
+Route::get('/', [KontrolKarya::class, 'home']);
+
 Route::controller(GeneralPage::class) -> group(function () {
     // Awal Landing Page
-    Route::get('/', [KontrolKarya::class, 'home']);
     Route::get('/sekolah-luar-biasa', 'slb');
     Route::get('/karya-slb', 'karyaslb');
     Route::get('/tentang-bidang-pembinaan-pendidikan-khusus', 'tentang');

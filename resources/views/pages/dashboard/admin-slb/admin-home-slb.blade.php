@@ -97,7 +97,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
-                    <x-notifikasi-slb />
+                    <x-notifikasi-slb :notifications="$pengumuman" />
                 </div>
             </div>
             <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-10 font-bold text-black" id="moving-border">

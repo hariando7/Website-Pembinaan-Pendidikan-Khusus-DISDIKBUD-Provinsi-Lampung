@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -69,10 +70,16 @@ class KontrolGuru extends Controller
             ];
         }, $guru -> items());
 
+        $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
+        $notif = Pengumuman::where('sistem', 'slb')
+                        -> where('tanggalMulai', '<', $time)
+                        -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+
         // return json_encode($guru);
         return view('pages/dashboard/admin-slb/guru/admin-guru-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $guru
+            'DATA' => $guru,
+            'pengumuman' => $notif
         ]);
     }
 

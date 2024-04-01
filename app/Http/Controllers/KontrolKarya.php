@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -61,10 +62,16 @@ class KontrolKarya extends Controller
         ];
     }, $karya->items());
 
+    $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
+    $notif = Pengumuman::where('sistem', 'slb')
+                    -> where('tanggalMulai', '<', $time)
+                    -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/karya/admin-karya-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $karya
+            'DATA' => $karya,
+            'pengumuman' => $notif
         ]);
     }
 

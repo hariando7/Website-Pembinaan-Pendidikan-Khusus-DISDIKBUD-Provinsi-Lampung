@@ -31,8 +31,14 @@ class KontrolPengumuman extends Controller
     public function daftarSLB (Request $req) {
         $pengumuman = $this -> daftarPengumuman($req, 'slb');
 
+        $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
+        $notif = Pengumuman::where('sistem', 'slb')
+                        -> where('tanggalMulai', '<', $time)
+                        -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+
         return view('pages/dashboard/super-admin/kelola-notifikasi/slb/kelola-notifikasi-slb', [
-            'dummyData' => $pengumuman
+            'dummyData' => $pengumuman,
+            'pengumuman' => $notif
         ]);
     }
 
@@ -46,10 +52,10 @@ class KontrolPengumuman extends Controller
             'tanggalAkhir' => 'required',
             'nama' => 'required',
             'detail' => 'required',
-            'kirimEmail' => 'required'
         ]);
 
         $validate['sistem'] = 'slb';
+        $validate['kirimEmail'] = isset($req['kirimEmail']) ? 'yes' : 'no';
 
         Pengumuman::create($validate);
 
@@ -84,9 +90,8 @@ class KontrolPengumuman extends Controller
             if ($req['detail']) {
                 $pengumuman -> detail = $req['detail'];
             }
-            if ($req['kirimEmail']) {
-                $pengumuman -> kirimEmail = $req['kirimEmail'];
-            }
+
+            $pengumuman -> kirimEmail = isset($req['kirimEmail']) ? 'yes' : 'no';
 
             $pengumuman -> save();
 
@@ -105,8 +110,14 @@ class KontrolPengumuman extends Controller
     public function daftarSI (Request $req) {
         $pengumuman = $this -> daftarPengumuman($req, 'si');
 
+        $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
+        $notif = Pengumuman::where('sistem', 'si')
+                        -> where('tanggalMulai', '<', $time)
+                        -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+
         return view('pages/dashboard/super-admin/kelola-notifikasi/sekolah-inklusi/kelola-notifikasi-si', [
-            'dummyData' => $pengumuman
+            'dummyData' => $pengumuman,
+            'pengumuman' => $notif
         ]);
     }
 

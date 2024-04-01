@@ -248,7 +248,7 @@
                 <img src="assets/landing/prov-lampung2.svg" alt="" class="w-[40px] lg:w-[100px] lg:h-full">
             </a>
             <div class="flex items-start">
-                <x-notifikasi-sekolah-inklusi />
+                <x-notifikasi-sekolah-inklusi :notifications="$pengumuman" />
             </div>
         </div>
         <div

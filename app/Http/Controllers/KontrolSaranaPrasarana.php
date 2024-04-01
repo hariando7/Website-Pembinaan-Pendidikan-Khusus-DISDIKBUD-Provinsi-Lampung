@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -68,10 +69,16 @@ class KontrolSaranaPrasarana extends Controller
             ];
         }, $saranaPrasarana->items());
 
+        $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
+    $notif = Pengumuman::where('sistem', 'slb')
+                    -> where('tanggalMulai', '<', $time)
+                    -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/sarpras/admin-sarpras-slb', [
             'dummyData' => $dummyData,
-            'DATA' => $saranaPrasarana
+            'DATA' => $saranaPrasarana,
+            'pengumuman' => $notif
         ]);
     }
 

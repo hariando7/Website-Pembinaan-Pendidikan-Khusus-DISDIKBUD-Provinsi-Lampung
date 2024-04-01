@@ -57,29 +57,29 @@
                     </button>
                 </div>
                 <?php
-                $notifications = [
-                    [
-                        'id' => 1,
-                        'title' => 'Notifikasi 1',
-                        'desk' => 'Deskripsi notifikasi 1 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                        'start_time' => '12 Januari 2024, 23.59',
-                        'end_time' => '15 Januari 2024, 23.59',
-                    ],
-                    [
-                        'id' => 2,
-                        'title' => 'Notifikasi 2',
-                        'desk' => 'Deskripsi notifikasi 2 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                        'start_time' => '13 Januari 2024, 23.59',
-                        'end_time' => '16 Januari 2024, 23.59',
-                    ],
-                    [
-                        'id' => 3,
-                        'title' => 'Notifikasi 3',
-                        'desk' => 'Deskripsi notifikasi 3 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                        'start_time' => '14 Januari 2024, 23.59',
-                        'end_time' => '17 Januari 2024, 23.59',
-                    ],
-                ];
+                // $notifications = [
+                //     [
+                //         'id' => 1,
+                //         'title' => 'Notifikasi 1',
+                //         'desk' => 'Deskripsi notifikasi 1 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                //         'start_time' => '12 Januari 2024, 23.59',
+                //         'end_time' => '15 Januari 2024, 23.59',
+                //     ],
+                //     [
+                //         'id' => 2,
+                //         'title' => 'Notifikasi 2',
+                //         'desk' => 'Deskripsi notifikasi 2 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                //         'start_time' => '13 Januari 2024, 23.59',
+                //         'end_time' => '16 Januari 2024, 23.59',
+                //     ],
+                //     [
+                //         'id' => 3,
+                //         'title' => 'Notifikasi 3',
+                //         'desk' => 'Deskripsi notifikasi 3 lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                //         'start_time' => '14 Januari 2024, 23.59',
+                //         'end_time' => '17 Januari 2024, 23.59',
+                //     ],
+                // ];
                 ?>
                 <div class="p-4 md:p-5 lg:p-5">
                     <div class="overflow-y-auto h-[200px] hide-scrollbar">
@@ -89,17 +89,17 @@
                                 <div>
                                     {{-- Judul Notifikasi --}}
                                     <h3 class="text-lg font-semibold text-white dark:text-white">
-                                        <?= $notification['title'] ?>
+                                        <?= $notification['nama'] ?>
                                     </h3>
                                     {{-- Deskripsi Notifikasi --}}
                                     <p class="text-sm text-white">
-                                        <?= $notification['desk'] ?>
+                                        <?= $notification['detail'] ?>
                                     </p>
                                 </div>
                                 {{-- Waktu notifikasi --}}
                                 <div class="text-right font-bold">
-                                    <p class="text-sm text-white">Mulai: <?= $notification['start_time'] ?></p>
-                                    <p class="text-sm text-white">Akhir: <?= $notification['end_time'] ?></p>
+                                    <p class="text-sm text-white">Mulai: <?= $notification['tanggalMulai'] ?></p>
+                                    <p class="text-sm text-white">Akhir: <?= $notification['tanggalAkhir'] ?></p>
                                 </div>
                             </div>
                             <?php endforeach; ?>

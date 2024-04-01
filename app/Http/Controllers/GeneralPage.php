@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Karya;
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -10,6 +11,14 @@ use App\Models\Sekolah;
 
 class GeneralPage extends Controller
 {
+    function pengumumanSLB () {
+        $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
+        $notif = Pengumuman::where('sistem', 'slb')
+                        -> where('tanggalMulai', '<', $time)
+                        -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+
+        return $notif;
+    }
     // Awal Landing page
     function home () {
         return view('pages/landing/home');
@@ -83,7 +92,11 @@ class GeneralPage extends Controller
 
     // Awal Admin Home SLB
     function adminhomeslb () {
-        return view('pages/dashboard/admin-slb/admin-home-slb');
+        $notif = $this -> pengumumanSLB();
+
+        return view('pages/dashboard/admin-slb/admin-home-slb', [
+            'pengumuman' => $notif
+        ]);
     }
     // Guru
     function adminguruslb () {
@@ -250,7 +263,14 @@ class GeneralPage extends Controller
 
     // Awal Admin Sekolah Inklusi
     function pendataansekolahinklusi () {
-        return view('pages/dashboard/admin-sekolah-inklusi/pendataan-sekolah-inklusi');
+        $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
+        $notif = Pengumuman::where('sistem', 'si')
+                        -> where('tanggalMulai', '<', $time)
+                        -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+
+        return view('pages/dashboard/admin-sekolah-inklusi/pendataan-sekolah-inklusi', [
+            'pengumuman' => $notif
+        ]);
     }
     // Akhir Admin Sekolah Inklusi
 
