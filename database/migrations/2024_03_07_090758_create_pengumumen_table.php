@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('pengumuman', function (Blueprint $table) {
             $table->id();
-            $table->integer('pemilik');
             $table->string('sistem');
             $table->string('tanggalMulai');
             $table->string('tanggalAkhir');

@@ -47,20 +47,22 @@
                     <x-time-saat-ini />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
+                @csrf
+                @method('PUT')
                 {{-- isi konten disini --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Mulai Notifikasi</label>
-                            <input type="datetime-local" id="notificationDateTime1" value="2024-03-15T12:00"
+                            <input name="{{ $DATA['tanggalMulai'] }}" type="datetime-local" id="notificationDateTime1" value="{{ $DATA['tanggalMulai'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Selesai Notifikasi</label>
-                            <input type="datetime-local" id="notificationDateTime2" value="2024-03-15T13:00"
+                            <input name="tanggalAkhir" type="datetime-local" id="notificationDateTime2" value="{{ $DATA['tanggalAkhir'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
@@ -70,7 +72,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationName">Nama Notifikasi</label>
-                            <input type="text" id="notificationName" value="Pemberitahuan Penting"
+                            <input name="nama" type="text" id="notificationName" value="{{ $DATA['nama'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Nama Notifikasi" required />
                         </div>
@@ -80,8 +82,8 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDescription">Deskripsi Notifikasi</label>
-                            <input type="text" id="notificationDescription"
-                                value="Ini adalah pemberitahuan tentang hal penting yang perlu diperhatikan."
+                            <input name="detail" type="text" id="notificationDescription"
+                                value="{{ $DATA['detail'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Detail Notifikasi" required />
                         </div>
@@ -92,7 +94,7 @@
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="sendToAdminEmail">Send To Email Admin SLB</label>
                             <label class="inline-flex items-center me-5 cursor-pointer">
-                                <input type="checkbox" id="emailCheckbox" class="sr-only peer" checked>
+                                <input name="kirimEmail" type="checkbox" id="emailCheckbox" class="sr-only peer" checked>
                                 <div
                                     class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
                                 </div>
@@ -131,7 +133,7 @@
                         </div>
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

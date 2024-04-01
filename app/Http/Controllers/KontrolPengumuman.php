@@ -1,0 +1,174 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Pengumuman;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+
+class KontrolPengumuman extends Controller
+{
+    public function index () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/kelola-notifikasi');    
+    }
+
+    public function daftarPengumuman (Request $req, $sistem) {
+        $pengumuman = Pengumuman::where(function (Builder $query) use ($req, $sistem) {
+            $query -> where('sistem', $sistem);
+            if ($req -> pencarian) {
+                $query -> where(function (Builder $query) use ($req) {
+                    $query -> where('tanggalMulai', 'LIKE', '%' . $req -> pencarian . '%')
+                        -> orWhere('tanggalAkhir', 'LIKE', '%' . $req -> pencarian . '%')
+                        -> orWhere('nama', 'LIKE', '%' . $req -> pencarian . '%')
+                        -> orWhere('detail', 'LIKE', '%' . $req -> pencarian . '%');
+                });
+            }
+        }) -> latest() -> paginate(10);
+
+        return $pengumuman;
+    }
+
+    public function daftarSLB (Request $req) {
+        $pengumuman = $this -> daftarPengumuman($req, 'slb');
+
+        return view('pages/dashboard/super-admin/kelola-notifikasi/slb/kelola-notifikasi-slb', [
+            'dummyData' => $pengumuman
+        ]);
+    }
+
+    public function tampilanTambahSLB () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/slb/tambah/kelola-notifikasi-slb-tambah');
+    }
+
+    public function tambahSLB (Request $req) {
+        $validate = $req -> validate([
+            'tanggalMulai' => 'required',
+            'tanggalAkhir' => 'required',
+            'nama' => 'required',
+            'detail' => 'required',
+            'kirimEmail' => 'required'
+        ]);
+
+        $validate['sistem'] = 'slb';
+
+        Pengumuman::create($validate);
+
+        return redirect('/sa-kelola-notifikasi-slb');
+    }
+
+    public function tampilanEditSLB ($id) {
+        $pengumuman = Pengumuman::find($id);
+
+        if ($pengumuman) {
+            return view('pages/dashboard/super-admin/kelola-notifikasi/slb/edit/kelola-notifikasi-slb-edit', [
+                'DATA' => $pengumuman
+            ]);
+        }
+
+        return back();
+    }
+
+    public function editSLB (Request $req, $id) {
+        $pengumuman = Pengumuman::find($id);
+
+        if ($pengumuman) {
+            if ($req['tanggalMulai']) {
+                $pengumuman -> tanggalMulai = $req['tanggalMulai'];
+            }
+            if ($req['tanggalAkhir']) {
+                $pengumuman -> tanggalAkhir = $req['tanggalAkhir'];
+            }
+            if ($req['nama']) {
+                $pengumuman -> nama = $req['nama'];
+            }
+            if ($req['detail']) {
+                $pengumuman -> detail = $req['detail'];
+            }
+            if ($req['kirimEmail']) {
+                $pengumuman -> kirimEmail = $req['kirimEmail'];
+            }
+
+            $pengumuman -> save();
+
+            return redirect('/sa-kelola-notifikasi-slb');
+        }
+    }
+
+    public function hapusSLB ($id) {
+        if (Pengumuman::find($id)) {
+            Pengumuman::find($id) -> delete();
+        }
+
+        return redirect('/sa-kelola-notifikasi-slb');
+    }
+
+    public function daftarSI (Request $req) {
+        $pengumuman = $this -> daftarPengumuman($req, 'si');
+
+        return view('pages/dashboard/super-admin/kelola-notifikasi/sekolah-inklusi/kelola-notifikasi-si', [
+            'dummyData' => $pengumuman
+        ]);
+    }
+
+    public function tampilanTambahSI () {
+        return view('pages/dashboard/super-admin/kelola-notifikasi/sekolah-inklusi/tambah/tambah-notifikasi-si');
+    }
+
+    public function tambahSI (Request $req) {
+        $validate = $req -> validate([
+            'tanggalMulai' => 'required',
+            'tanggalAkhir' => 'required',
+            'nama' => 'required',
+            'detail' => 'required'
+        ]);
+
+        $validate['sistem'] = 'si';
+
+        Pengumuman::create($validate);
+
+        return redirect('/sa-kelola-notifikasi-si');
+    }
+
+    public function tampilanEditSI ($id) {
+        $pengumuman = Pengumuman::find($id);
+
+        if ($pengumuman) {
+            return view('pages/dashboard/super-admin/kelola-notifikasi/sekolah-inklusi/edit/edit-notifikasi-si', [
+                'DATA' => $pengumuman
+            ]);    
+        }
+
+        return back();
+    }
+
+    public function editSI (Request $req, $id) {
+        $pengumuman = Pengumuman::find($id);
+
+        if ($pengumuman) {
+            if ($req['tanggalMulai']) {
+                $pengumuman -> tanggalMulai = $req['tanggalMulai'];
+            }
+            if ($req['tanggalAkhir']) {
+                $pengumuman -> tanggalAkhir = $req['tanggalAkhir'];
+            }
+            if ($req['nama']) {
+                $pengumuman -> nama = $req['nama'];
+            }
+            if ($req['detail']) {
+                $pengumuman -> detail = $req['detail'];
+            }
+
+            $pengumuman -> save();
+
+            return redirect('/sa-kelola-notifikasi-si');
+        }
+    }
+
+    public function hapusSI ($id) {
+        if (Pengumuman::find($id)) {
+            Pengumuman::find($id) -> delete();
+        }
+
+        return redirect('/sa-kelola-notifikasi-si');
+    }
+}

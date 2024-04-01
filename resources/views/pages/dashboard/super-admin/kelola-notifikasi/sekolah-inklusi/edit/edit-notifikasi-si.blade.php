@@ -47,20 +47,22 @@
                     <x-time-saat-ini />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
+                @csrf
+                @method('PUT')
                 {{-- isi konten disini --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Mulai Notifikasi</label>
-                            <input type="datetime-local" id="notificationDateTime1" value="2024-03-15T12:00"
+                            <input type="datetime-local" id="notificationDateTime1" name="tanggalMulai" value="{{ $DATA['tanggalMulai'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Selesai Notifikasi</label>
-                            <input type="datetime-local" id="notificationDateTime2" value="2024-03-15T13:00"
+                            <input type="datetime-local" id="notificationDateTime2" name="tanggalAkhir" value="{{ $DATA['tanggalAkhir'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
@@ -70,7 +72,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationName">Nama Notifikasi</label>
-                            <input type="text" id="notificationName" value="Pemberitahuan Penting"
+                            <input type="text" id="notificationName" name="nama" value="{{ $DATA['nama'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Nama Notifikasi" required />
                         </div>
@@ -80,8 +82,8 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDescription">Deskripsi Notifikasi</label>
-                            <input type="text" id="notificationDescription"
-                                value="Ini adalah pemberitahuan tentang hal penting yang perlu diperhatikan."
+                            <input type="text" id="notificationDescription" name="detail"
+                                value="{{ $DATA['detail'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Detail Notifikasi" required />
                         </div>
@@ -104,7 +106,7 @@
                         </div>
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

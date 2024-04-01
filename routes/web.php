@@ -12,6 +12,7 @@ use App\Http\Controllers\KontrolKebutuhanGuru;
 use App\Http\Controllers\KontrolKarya;
 use App\Http\Controllers\KontrolSaranaPrasarana;
 use App\Http\Controllers\KontrolSekolahInklusi;
+use App\Http\Controllers\KontrolPengumuman;
 
 
 /*
@@ -88,16 +89,6 @@ Route::controller(GeneralPage::class) -> group(function () {
 
     // Awal Super Admin
     Route::middleware('superAdmin') -> group(function () {
-        // Awal sa kelola sistem    
-        Route::get('/sa-kelola-notifikasi', 'sakelolanotifikasi');
-        Route::get('/sa-kelola-notifikasi-slb', 'sakelolanotifikasislb');
-        Route::get('/sa-kelola-notifikasi-slb/tambah', 'sakelolanotifikasislbtambah');
-        Route::get('/sa-kelola-notifikasi-slb/edit', 'sakelolanotifikasislbedit');
-        Route::get('/sa-kelola-notifikasi-si', 'sakelolanotifikasisi');
-        Route::get('/sa-kelola-notifikasi-si/tambah', 'sakelolanotifikasisitambah');
-        Route::get('/sa-kelola-notifikasi-si/edit', 'sakelolanotifikasisiedit');
-        // akhir sa kelola notifikasi
-    
         // Kelola Admin SLB
         // Route::get('/kelola-admin-slb', 'kelolaadminslb');
         Route::get('/kelola-admin-slb/tambah', 'tambahadminslb') -> middleware('superAdmin');
@@ -136,6 +127,26 @@ Route::controller(GeneralPage::class) -> group(function () {
 
 Route::get('/home', function () {
     return redirect('/login');
+});
+
+Route::controller(KontrolPengumuman::class) -> group(function () {
+    Route::middleware('superAdmin') -> group(function () {
+        // Awal sa kelola sistem    
+        Route::get('/sa-kelola-notifikasi', 'index');
+        Route::get('/sa-kelola-notifikasi-slb', 'daftarSLB');
+        Route::get('/sa-kelola-notifikasi-slb/tambah', 'tampilanTambahSLB');
+        Route::post('/sa-kelola-notifikasi-slb/tambah', 'tambahSLB');
+        Route::get('/sa-kelola-notifikasi-slb/edit/{id}', 'tampilanEditSLB');
+        Route::put('/sa-kelola-notifikasi-slb/edit/{id}', 'editSLB');
+        Route::get('/sa-kelola-notifikasi-slb/delete/{id}', 'hapusSLB');
+        Route::get('/sa-kelola-notifikasi-si', 'daftarSI');
+        Route::get('/sa-kelola-notifikasi-si/tambah', 'tampilanTambahSI');
+        Route::post('/sa-kelola-notifikasi-si/tambah', 'tambahSI');
+        Route::get('/sa-kelola-notifikasi-si/edit/{id}', 'tampilanEditSI');
+        Route::put('/sa-kelola-notifikasi-si/edit/{id}', 'editSI');
+        Route::get('/sa-kelola-notifikasi-si/delete/{id}', 'hapusSI');
+        // akhir sa kelola notifikasi
+    });
 });
 
 Route::controller(KontrolSekolahInklusi::class) -> group(function () {

@@ -47,20 +47,21 @@
                     <x-time-saat-ini />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
+                @csrf
                 {{-- isi konten disini --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Mulai Notifikasi</label>
-                            <input type="datetime-local" id="notificationDateTime"
+                            <input name="tanggalMulai" type="datetime-local" id="notificationDateTime"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Mulai Notifikasi</label>
-                            <input type="datetime-local" id="notificationDateTime"
+                            <input name="tanggalAkhir" type="datetime-local" id="notificationDateTime"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
@@ -70,7 +71,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">Nama Notifikasi</label>
-                            <input type="text" id="jenisketunaan"
+                            <input name="nama" type="text" id="jenisketunaan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Nama Notifikasi" required />
                         </div>
@@ -80,7 +81,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">Deskripsi Notifikasi</label>
-                            <input type="text" id="jenisketunaan"
+                            <input name="detail" type="text" id="jenisketunaan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Detial Notifikasi" required />
                         </div>
@@ -92,7 +93,7 @@
                         + Simpan
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

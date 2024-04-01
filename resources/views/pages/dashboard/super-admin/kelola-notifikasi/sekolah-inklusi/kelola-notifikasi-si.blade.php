@@ -71,9 +71,9 @@
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <x-svg-search />
                                     </div>
-                                    <input type="text" id="simple-search"
+                                    <input name="pencarian" type="text" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="searchTable()" required />
+                                        placeholder="Search..." required />
                                 </div>
                             </form>
                         </div>
@@ -111,38 +111,38 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $dummyData = [
-                                    [
-                                        'tanggal_mulai' => '2024-03-15',
-                                        'tanggal_akhir' => '2024-03-20',
-                                        'nama_notifikasi' => 'Notifikasi 1',
-                                        'deskripsi_notifikasi' => 'Deskripsi notifikasi 1',
-                                    ],
-                                    [
-                                        'tanggal_mulai' => '2024-03-18',
-                                        'tanggal_akhir' => '2024-03-25',
-                                        'nama_notifikasi' => 'Notifikasi 2',
-                                        'deskripsi_notifikasi' => 'Deskripsi notifikasi 2',
-                                    ],
-                                    [
-                                        'tanggal_mulai' => '2024-03-22',
-                                        'tanggal_akhir' => '2024-03-28',
-                                        'nama_notifikasi' => 'Notifikasi 3',
-                                        'deskripsi_notifikasi' => 'Deskripsi notifikasi 3',
-                                    ],
-                                ];
+                                // $dummyData = [
+                                //     [
+                                //         'tanggal_mulai' => '2024-03-15',
+                                //         'tanggal_akhir' => '2024-03-20',
+                                //         'nama_notifikasi' => 'Notifikasi 1',
+                                //         'deskripsi_notifikasi' => 'Deskripsi notifikasi 1',
+                                //     ],
+                                //     [
+                                //         'tanggal_mulai' => '2024-03-18',
+                                //         'tanggal_akhir' => '2024-03-25',
+                                //         'nama_notifikasi' => 'Notifikasi 2',
+                                //         'deskripsi_notifikasi' => 'Deskripsi notifikasi 2',
+                                //     ],
+                                //     [
+                                //         'tanggal_mulai' => '2024-03-22',
+                                //         'tanggal_akhir' => '2024-03-28',
+                                //         'nama_notifikasi' => 'Notifikasi 3',
+                                //         'deskripsi_notifikasi' => 'Deskripsi notifikasi 3',
+                                //     ],
+                                // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
                                     <td class="px-3 py-2"><?= $index + 1 ?></td>
-                                    <td class="px-3 py-2"><?= $data['tanggal_mulai'] ?></td>
-                                    <td class="px-3 py-2"><?= $data['tanggal_akhir'] ?></td>
-                                    <td class="px-3 py-2"><?= $data['nama_notifikasi'] ?></td>
-                                    <td class="px-3 py-2"><?= $data['deskripsi_notifikasi'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['tanggalMulai'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['tanggalAkhir'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['nama'] ?></td>
+                                    <td class="px-3 py-2"><?= $data['detail'] ?></td>
                                     <td class="px-3 py-2">
                                         <div class="flex justify-items-center m-auto text-center gap-2">
-                                            <a href="/sa-kelola-notifikasi-si/edit" title="Edit">
+                                            <a href="/sa-kelola-notifikasi-si/edit/{{ $data['id'] }}" title="Edit">
                                                 <div
                                                     class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
                                                     <x-svg-edit />
@@ -151,7 +151,7 @@
                                             <div class="div">
                                                 <button
                                                     class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
-                                                    title="Delete" type="button" data-index="<?= $index ?>">
+                                                    title="Delete" type="button" data-index="<?= $data['id'] ?>">
                                                     <x-svg-delete />
                                                 </button>
                                             </div>
@@ -215,6 +215,15 @@
                                                                 modal.setAttribute('aria-hidden', 'true');
                                                                 modal.setAttribute('tabindex', '-1');
                                                             });
+
+                                                            const closeButtonYa = modal.querySelector(
+                                                                '[data-modal-hide="popup-modal-ya"]');
+                                                            closeButtonYa.addEventListener('click', () => {
+                                                                window.location.href = window.location.origin +
+                                                                    '/sa-kelola-notifikasi-si/delete/' + button.getAttribute(
+                                                                        'data-index');
+                                                            });
+
                                                             const closeButtonTidak = modalTidak.querySelector(
                                                                 '[data-modal-hide="popup-modal-tidak"]');
                                                             closeButtonTidak.addEventListener('click', () => {
@@ -233,8 +242,9 @@
                         </table>
                     </div>
                     <div class="relative flex justify-between mt-5">
-                        <div class="font-bold text-black">Jumlah :</div>
-                        <div class="">
+                        <div class="font-bold text-black">Jumlah : {{ $dummyData -> total() }}</div>
+                        {{ $dummyData -> links() }}
+                        {{-- <div class="">
                             <nav aria-label="Page navigation example">
                                 <ul class="inline-flex -space-x-px text-sm gap-2">
                                     <li>
@@ -267,7 +277,7 @@
                                     </li>
                                 </ul>
                             </nav>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
