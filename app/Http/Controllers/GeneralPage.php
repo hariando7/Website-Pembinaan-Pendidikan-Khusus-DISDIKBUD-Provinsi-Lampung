@@ -24,7 +24,12 @@ class GeneralPage extends Controller
         return view('pages/landing/home');
     }
     function slb (Request $req) {
+        $sekolah = Sekolah::all();
+
         $daftarSekolah = Sekolah::where(function (Builder $query) use ($req) {
+            if ($req -> filterSekolah) {
+                $query -> where('id', $req -> filterSekolah);
+            }
             if ($req -> pencarian) {
                 $query -> where(function (Builder $query) use ($req) {
                     $query -> where('nama', 'LIKE', '%' . $req -> pencarian . '%')
@@ -47,7 +52,8 @@ class GeneralPage extends Controller
         }, $daftarSekolah);
 
         return view('pages/landing/slb', [
-            'dummyData' => $temp
+            'dummyData' => $temp,
+            'sekolah' => $sekolah
         ]);
     }
     function karyaslb (Request $req) {

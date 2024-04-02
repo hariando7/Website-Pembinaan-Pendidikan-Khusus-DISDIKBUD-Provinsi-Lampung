@@ -183,12 +183,15 @@
                                         <div class="div">
                                             <button
                                                 class="font-medium text-blue-500 dark:text-blue-500 hover:underline delete-button"
-                                                title="Delete" type="button" data-index="<?= $data['id'] ?>">
+                                                title="Delete" type="button" data-index="<?= $index ?>">
                                                 Klik Disini
                                             </button>
                                         </div>
                                         <!-- Modal -->
-                                        <div id="popup-modal" tabindex="-1" aria-hidden="true"
+                                        @php
+                                            $temp = $gambar -> where('saranaPrasarana', $data['id']) -> all();
+                                        @endphp
+                                        <div id="popup-modal-{{ $index }}" tabindex="-1" aria-hidden="true"
                                             class="z-30 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
                                             <div class="relative p-4 w-full max-w-2xl max-h-full">
                                                 <div class="relative bg-[#297785] rounded-lg shadow">
@@ -214,44 +217,38 @@
                                                                     <!-- Carousel wrapper -->
                                                                     <div
                                                                         class="m-5 relative h-56 overflow-hidden rounded-lg md:h-96">
+                                                                        @foreach ($temp as $item)
+                                                                            <div class="hidden duration-700 ease-in-out"
+                                                                            data-carousel-item>
+                                                                                <img src="{{ url(asset('storage/' . $item['gambar'])) }}"
+                                                                                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                                                    alt="...">
+                                                                            </div>
+                                                                        @endforeach
                                                                         <!-- Item 1 -->
-                                                                        <div class="hidden duration-700 ease-in-out"
+                                                                        {{-- <div class="hidden duration-700 ease-in-out"
                                                                             data-carousel-item>
                                                                             <img src="{{ url(asset('storage/assets/a1.jpg')) }}"
                                                                                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
                                                                                 alt="...">
-                                                                        </div>
+                                                                        </div> --}}
                                                                         <!-- Item 2 -->
-                                                                        <div class="hidden duration-700 ease-in-out"
+                                                                        {{-- <div class="hidden duration-700 ease-in-out"
                                                                             data-carousel-item>
                                                                             <img src="{{ url(asset('storage/assets/b1.jpg')) }}"
                                                                                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
                                                                                 alt="...">
-                                                                        </div>
+                                                                        </div> --}}
                                                                     </div>
                                                                     <!-- Slider indicators -->
                                                                     <div
                                                                         class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                                                                        <button type="button"
-                                                                            class="w-3 h-3 rounded-full"
-                                                                            aria-current="true" aria-label="Slide 1"
-                                                                            data-carousel-slide-to="0"></button>
-                                                                        <button type="button"
-                                                                            class="w-3 h-3 rounded-full"
-                                                                            aria-current="false" aria-label="Slide 2"
-                                                                            data-carousel-slide-to="1"></button>
-                                                                        <button type="button"
-                                                                            class="w-3 h-3 rounded-full"
-                                                                            aria-current="false" aria-label="Slide 3"
-                                                                            data-carousel-slide-to="2"></button>
-                                                                        <button type="button"
-                                                                            class="w-3 h-3 rounded-full"
-                                                                            aria-current="false" aria-label="Slide 4"
-                                                                            data-carousel-slide-to="3"></button>
-                                                                        <button type="button"
-                                                                            class="w-3 h-3 rounded-full"
-                                                                            aria-current="false" aria-label="Slide 5"
-                                                                            data-carousel-slide-to="4"></button>
+                                                                        @foreach ($temp as $index => $item)
+                                                                            <button type="button"
+                                                                                class="w-3 h-3 rounded-full"
+                                                                                aria-current="true" aria-label="Slide 1"
+                                                                                data-carousel-slide-to="{{ $index }}"></button>
+                                                                        @endforeach
                                                                     </div>
                                                                     <!-- Slider controls -->
                                                                     <button type="button"
@@ -304,11 +301,11 @@
                                                     button.addEventListener('click', function() {
                                                         // console.log(button.getAttribute('data-index'));
                                                         const index = this.dataset.index;
-                                                        const modal = document.getElementById('popup-modal');
+                                                        const modal = document.getElementById('popup-modal-' + index);
                                                         modal.classList.remove('hidden');
                                                         modal.setAttribute('aria-hidden', 'false');
                                                         modal.setAttribute('tabindex', '0');
-                                                        const modalTidak = document.getElementById('popup-modal');
+                                                        const modalTidak = document.getElementById('popup-modal-' + index);
                                                         modalTidak.classList.remove('hidden');
                                                         modalTidak.setAttribute('aria-hidden', 'false');
                                                         modalTidak.setAttribute('tabindex', '0');

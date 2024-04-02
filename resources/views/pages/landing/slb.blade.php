@@ -67,7 +67,33 @@
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <div
                             class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-                            <div>
+                            <div class="dropdown dropdown-hover">
+                                <div tabindex="0" role="button"
+                                    class="bg-white text-black hover:bg-[#297785] hover:text-white flex gap-2 btn m-1 border-solid border-1 border-[#297785] hover:border-[#297785]">
+                                    <div class="div">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M24.5002 11.6666H22.1668V4.66659H23.3335V2.33325H4.66683V4.66659H5.8335V11.6666H3.50016C3.19074 11.6666 2.894 11.7895 2.6752 12.0083C2.45641 12.2271 2.3335 12.5238 2.3335 12.8333V23.3333H25.6668V12.8333C25.6668 12.5238 25.5439 12.2271 25.3251 12.0083C25.1063 11.7895 24.8096 11.6666 24.5002 11.6666ZM16.3335 20.9999V16.3333H11.6668V20.9999H8.16683V4.66659H19.8335V20.9999H16.3335Z"
+                                                fill="currentColor" />
+                                            <path
+                                                d="M10.5 7H12.8333V9.33333H10.5V7ZM15.1667 7H17.5V9.33333H15.1667V7ZM10.5 11.6667H12.8333V14H10.5V11.6667ZM15.1667 11.6667H17.5V14H15.1667V11.6667Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </div>
+                                    <div class="div">
+                                        Pilih Sekolah
+                                    </div>
+                                </div>
+                                <ul tabindex="0"
+                                    class="dropdown-content z-[1] menu p-2 shadow bg-white text-black rounded-box w-52">
+                                        <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb">semua</a></li>
+                                    @foreach ($sekolah as $data)
+                                        <li class="hover:bg-[#297785] hover:text-white"><a href="/sekolah-luar-biasa?filterSekolah={{ $data['id'] }}">{{ $data['nama'] }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            {{-- <div>
                                 <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
                                     class="inline-flex items-center text-black bg-white border border-[#2F8386] focus:outline-none hover:bg-[#2F8386] focus:ring-4 focus:ring-[#2F8386] font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-white dark:text-black hover:text-white dark:border-[#2F8386] dark:hover:bg-[#2F8386] dark:hover:border-[#2F8386] hover:border-[#2F8386] dark:focus:ring-[#2F8386]"
                                     type="button">
@@ -83,8 +109,7 @@
                                             stroke-width="2" d="m1 1 4 4 4-4" />
                                     </svg>
                                 </button>
-                                {{-- <x-pengumuman-slb /> --}}
-                            </div>
+                            </div> --}}
                             <label for="table-search" class="sr-only">Search</label>
                             <form class="relative">
                                 <div

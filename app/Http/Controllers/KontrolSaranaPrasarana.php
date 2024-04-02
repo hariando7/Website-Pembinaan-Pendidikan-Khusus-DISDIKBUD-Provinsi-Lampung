@@ -31,6 +31,7 @@ class KontrolSaranaPrasarana extends Controller
     public function daftarSaranaPrasaranaSuperAdmin (Request $req) {
         $saranaPrasarana = $this -> daftarSaranaPrasarana($req);
         $sekolah = Sekolah::all();
+        $gambar = GambarSaranaPrasarana::all();
 
         $dummyData = array_map(function ($data) use ($sekolah) {
             $temp = $sekolah -> find($data -> sekolah);
@@ -49,7 +50,8 @@ class KontrolSaranaPrasarana extends Controller
         return view('pages/dashboard/super-admin/slb/sarpras/sa-sarpras-slb', [
             'dummyData' => $dummyData,
             'DATA' => $saranaPrasarana,
-            'sekolah' => $sekolah
+            'sekolah' => $sekolah,
+            'gambar' => $gambar
         ]);
     }
     
