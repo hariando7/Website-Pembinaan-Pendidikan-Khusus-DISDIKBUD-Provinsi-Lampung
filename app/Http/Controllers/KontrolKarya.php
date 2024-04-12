@@ -24,21 +24,41 @@ class KontrolKarya extends Controller
     //                                     'deskripsi' => 'Deskripsi karya 1',
     //                                 ],
     //                             ];
-    public function daftarKaryaSuperAdmin (Request $req) {
-        $karya = $this -> daftarKarya($req);
+    public function lihatSemua()
+    {
+        $karya = Karya::all();
         $sekolah = Sekolah::all();
 
         $dummyData = array_map(function ($data) use ($sekolah) {
-            $temp = $sekolah -> find($data -> sekolah);
-        return [
-            'id' => $data->id,
-            'namaSekolah' => $temp-> nama,
-            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-            'judulKarya' => $data->nama,
-            'gambar' => $data->gambar,
-            'deskripsi' => $data->deskripsi,
-        ];
-    }, $karya->items());
+            $temp = $sekolah->find($data['sekolah']);
+            return [
+                'id' => $data['id'],
+                'namaSekolah' => $temp['nama'],
+                'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'judulKarya' => $data['nama'],
+                'gambar' => $data['gambar'],
+                'deskripsi' => $data['deskripsi'],
+            ];
+        }, $karya->toArray());
+
+        return json_encode($dummyData);
+    }
+    public function daftarKaryaSuperAdmin(Request $req)
+    {
+        $karya = $this->daftarKarya($req);
+        $sekolah = Sekolah::all();
+
+        $dummyData = array_map(function ($data) use ($sekolah) {
+            $temp = $sekolah->find($data->sekolah);
+            return [
+                'id' => $data->id,
+                'namaSekolah' => $temp->nama,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'judulKarya' => $data->nama,
+                'gambar' => $data->gambar,
+                'deskripsi' => $data->deskripsi,
+            ];
+        }, $karya->items());
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/super-admin/slb/karya/sa-karya-slb', [
@@ -48,24 +68,25 @@ class KontrolKarya extends Controller
         ]);
     }
 
-    public function daftarKaryaAdmin (Request $req) {
-        $karya = $this -> daftarKarya($req);
+    public function daftarKaryaAdmin(Request $req)
+    {
+        $karya = $this->daftarKarya($req);
 
         $dummyData = array_map(function ($data) {
-        return [
-            'id' => $data->id,
-            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-            // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
-            'judulKarya' => $data->nama,
-            'gambar' => $data->gambar,
-            'deskripsi' => $data->deskripsi,
-        ];
-    }, $karya->items());
+            return [
+                'id' => $data->id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+                'judulKarya' => $data->nama,
+                'gambar' => $data->gambar,
+                'deskripsi' => $data->deskripsi,
+            ];
+        }, $karya->items());
 
-    $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
-    $notif = Pengumuman::where('sistem', 'slb')
-                    -> where('tanggalMulai', '<', $time)
-                    -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+        $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
+        $notif = Pengumuman::where('sistem', 'slb')
+            ->where('tanggalMulai', '<', $time)
+            ->where('tanggalAkhir', '>', $time)->latest()->get();
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/karya/admin-karya-slb', [
@@ -75,33 +96,35 @@ class KontrolKarya extends Controller
         ]);
     }
 
-    public function daftarKarya (Request $req) {
+    public function daftarKarya(Request $req)
+    {
         $pengguna = Auth::user();
 
         $karya = Karya::where(function (Builder $query) use ($req, $pengguna) {
-            if ($pengguna -> akses === 'admin') {
-                $query -> where('sekolah', $pengguna -> sekolah);
-            } else if ($req -> filterSekolah) {
-                $query -> where('sekolah', (int) $req -> filterSekolah);
+            if ($pengguna->akses === 'admin') {
+                $query->where('sekolah', $pengguna->sekolah);
+            } else if ($req->filterSekolah) {
+                $query->where('sekolah', (int) $req->filterSekolah);
             }
-            if ($req -> pencarian) {
-                $query -> where(function (Builder $query) use ($req) {
-                    $query -> where('nama', 'LIKE', '%' . $req -> pencarian . '%')
-                        -> orWhere('deskripsi', 'LIKE', '%' . $req -> pencarian . '%');
+            if ($req->pencarian) {
+                $query->where(function (Builder $query) use ($req) {
+                    $query->where('nama', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('deskripsi', 'LIKE', '%' . $req->pencarian . '%');
                 });
             }
-        }) -> latest() -> paginate(10);
+        })->latest()->paginate(10);
 
         return $karya;
     }
 
-    public function home () {
+    public function home()
+    {
         $daftarSekolah = Sekolah::all();
         $daftarKarya = [];
         $count = 0;
 
         foreach ($daftarSekolah as $sekolah) {
-            $karya = Karya::firstWhere('sekolah', $sekolah -> id);
+            $karya = Karya::firstWhere('sekolah', $sekolah->id);
 
             if ($karya) {
                 array_push($daftarKarya, $karya);
@@ -117,12 +140,13 @@ class KontrolKarya extends Controller
         ]);
     }
 
-    public function lihatSatu ($id) {
+    public function lihatSatu($id)
+    {
         $pengguna = Auth::user();
         $karya = Karya::find($id);
 
         if ($karya) {
-            if ($pengguna -> sekolah !== $karya -> sekolah) {
+            if ($pengguna->sekolah !== $karya->sekolah) {
                 $karya = null;
             }
         }
@@ -130,27 +154,29 @@ class KontrolKarya extends Controller
         return $karya;
     }
 
-    public function tambah (Request $req) {
+    public function tambah(Request $req)
+    {
         $pengguna = Auth::user();
-        $validasi = $req -> validate ([
+        $validasi = $req->validate([
             'nama' => 'required',
             'gambar' => 'required',
             'deskripsi' => 'required'
         ]);
 
-        if ($req -> file('gambar')) {
-            $validasi['gambar'] = $req -> file('gambar') -> store('karya');
+        if ($req->file('gambar')) {
+            $validasi['gambar'] = $req->file('gambar')->store('karya');
         }
 
-        $validasi['pemilik'] = $pengguna -> id;
-        $validasi['sekolah'] = $pengguna -> sekolah;
+        $validasi['pemilik'] = $pengguna->id;
+        $validasi['sekolah'] = $pengguna->sekolah;
 
         Karya::create($validasi);
-        
+
         return redirect('/admin-karya-slb');
     }
 
-    public function tampilanEdit ($id) {
+    public function tampilanEdit($id)
+    {
         $karya = Karya::find($id);
         return view('pages/dashboard/admin-slb/karya/edit/edit-karya-slb', [
             'id' => $id,
@@ -158,28 +184,29 @@ class KontrolKarya extends Controller
         ]);
     }
 
-    public function ubah (Request $req) {
+    public function ubah(Request $req)
+    {
         $pengguna = Auth::user();
-        $validasi = $req -> validate ([
+        $validasi = $req->validate([
             'id' => 'required',
         ]);
 
         $karya = Karya::find($validasi['id']);
 
-        if ($karya){
-            if ($karya -> sekolah === $pengguna -> sekolah) {
+        if ($karya) {
+            if ($karya->sekolah === $pengguna->sekolah) {
                 if ($req['nama']) {
-                    $karya -> nama = $req['nama'];
+                    $karya->nama = $req['nama'];
                 }
                 if ($req['deskripsi']) {
-                    $karya -> deskripsi = $req['deskripsi'];
+                    $karya->deskripsi = $req['deskripsi'];
                 }
-                if ($req -> file('gambar')) {
-                    Storage::delete($karya -> gambar);
-                    $karya -> gambar = $req -> file('gambar') -> store('karya');
+                if ($req->file('gambar')) {
+                    Storage::delete($karya->gambar);
+                    $karya->gambar = $req->file('gambar')->store('karya');
                 }
 
-                $karya -> save();
+                $karya->save();
 
                 // return 'true';
                 return redirect('/admin-karya-slb');
@@ -190,17 +217,18 @@ class KontrolKarya extends Controller
         return back();
     }
 
-    public function hapus ($id) {
+    public function hapus($id)
+    {
         $pengguna = Auth::user();
 
         $karya = Karya::find($id);
 
         if ($karya) {
-            if ($karya -> sekolah === $pengguna -> sekolah) {
-                if ($karya -> gambar) {
-                    Storage::delete($karya -> gambar);
+            if ($karya->sekolah === $pengguna->sekolah) {
+                if ($karya->gambar) {
+                    Storage::delete($karya->gambar);
                 }
-                Karya::find($id) -> delete();
+                Karya::find($id)->delete();
 
                 // return 'true';
                 return redirect('/admin-karya-slb');

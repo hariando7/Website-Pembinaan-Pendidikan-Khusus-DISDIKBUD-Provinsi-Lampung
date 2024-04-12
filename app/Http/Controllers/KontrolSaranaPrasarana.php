@@ -27,17 +27,40 @@ class KontrolSaranaPrasarana extends Controller
     //                                     'catatan' => 'Tidak ada catatan',
     //                                 ],
     //                             ];
-    
-    public function daftarSaranaPrasaranaSuperAdmin (Request $req) {
-        $saranaPrasarana = $this -> daftarSaranaPrasarana($req);
+    public function lihatSemua()
+    {
+        $saranaPrasarana = SaranaPrasarana::all();
         $sekolah = Sekolah::all();
         $gambar = GambarSaranaPrasarana::all();
 
         $dummyData = array_map(function ($data) use ($sekolah) {
-            $temp = $sekolah -> find($data -> sekolah);
+            $temp = $sekolah->find($data['sekolah']);
+            $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $data['id'])->get();
+            return [
+                'id' => $data['id'],
+                'namaSekolah' => $temp['nama'],
+                'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'gedungRuang' => $data['nama'],
+                'jumlahVol' => $data['jumlah'],
+                'kondisi' => $data['kondisi'],
+                'catatan' => $data['keterangan'],
+                'gambar' => $daftarGambar,
+            ];
+        }, $saranaPrasarana->toArray());
+
+        return json_encode($dummyData);
+    }
+    public function daftarSaranaPrasaranaSuperAdmin(Request $req)
+    {
+        $saranaPrasarana = $this->daftarSaranaPrasarana($req);
+        $sekolah = Sekolah::all();
+        $gambar = GambarSaranaPrasarana::all();
+
+        $dummyData = array_map(function ($data) use ($sekolah) {
+            $temp = $sekolah->find($data->sekolah);
             return [
                 'id' => $data->id,
-                'namaSekolah' => $temp-> nama,
+                'namaSekolah' => $temp->nama,
                 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
                 'gedungRuang' => $data->nama,
                 'jumlahVol' => $data->jumlah,
@@ -54,12 +77,13 @@ class KontrolSaranaPrasarana extends Controller
             'gambar' => $gambar
         ]);
     }
-    
-    public function daftarSaranaPrasaranaAdmin (Request $req) {
-        $saranaPrasarana = $this -> daftarSaranaPrasarana($req);
+
+    public function daftarSaranaPrasaranaAdmin(Request $req)
+    {
+        $saranaPrasarana = $this->daftarSaranaPrasarana($req);
 
         $dummyData = array_map(function ($data) {
-            $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $data -> id) -> get();
+            $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $data->id)->get();
             return [
                 'id' => $data->id,
                 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
@@ -72,9 +96,9 @@ class KontrolSaranaPrasarana extends Controller
         }, $saranaPrasarana->items());
 
         $time = new \DateTime("now", new \DateTimeZone('Asia/Jakarta'));
-    $notif = Pengumuman::where('sistem', 'slb')
-                    -> where('tanggalMulai', '<', $time)
-                    -> where('tanggalAkhir', '>', $time) -> latest() -> get();
+        $notif = Pengumuman::where('sistem', 'slb')
+            ->where('tanggalMulai', '<', $time)
+            ->where('tanggalAkhir', '>', $time)->latest()->get();
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/sarpras/admin-sarpras-slb', [
@@ -84,34 +108,36 @@ class KontrolSaranaPrasarana extends Controller
         ]);
     }
 
-    public function daftarSaranaPrasarana (Request $req) {
+    public function daftarSaranaPrasarana(Request $req)
+    {
         $pengguna = Auth::user();
 
         $saranaPrasarana = SaranaPrasarana::where(function (Builder $query) use ($req, $pengguna) {
-            if ($pengguna -> akses === 'admin') {
-                $query -> where('sekolah', $pengguna -> sekolah);
-            } else if ($req -> filterSekolah) {
-                $query -> where('sekolah', (int) $req -> filterSekolah);
+            if ($pengguna->akses === 'admin') {
+                $query->where('sekolah', $pengguna->sekolah);
+            } else if ($req->filterSekolah) {
+                $query->where('sekolah', (int) $req->filterSekolah);
             }
-            if ($req -> pencarian) {
-                $query -> where(function (Builder $query) use ($req) {
-                    $query -> where('nama', 'LIKE', '%' . $req -> pencarian . '%')
-                        -> orWhere('jumlah', 'LIKE', '%' . $req -> pencarian . '%')
-                        -> orWhere('kondisi', 'LIKE', '%' . $req -> pencarian . '%')
-                        -> orWhere('keterangan', 'LIKE', '%' . $req -> pencarian . '%');
+            if ($req->pencarian) {
+                $query->where(function (Builder $query) use ($req) {
+                    $query->where('nama', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('jumlah', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('kondisi', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('keterangan', 'LIKE', '%' . $req->pencarian . '%');
                 });
             }
-        }) -> latest() -> paginate(10);
+        })->latest()->paginate(10);
 
         return $saranaPrasarana;
     }
 
-    public function lihatSatu ($id) {
+    public function lihatSatu($id)
+    {
         $pengguna = Auth::user();
         $saranaPrasarana = SaranaPrasarana::find($id);
 
         if ($saranaPrasarana) {
-            if ($pengguna -> sekolah !== $saranaPrasarana -> sekolah) {
+            if ($pengguna->sekolah !== $saranaPrasarana->sekolah) {
                 $saranaPrasarana = null;
             }
         }
@@ -119,39 +145,41 @@ class KontrolSaranaPrasarana extends Controller
         return $saranaPrasarana;
     }
 
-    public function tambah (Request $req) {
+    public function tambah(Request $req)
+    {
         $pengguna = Auth::user();
-        $validasi = $req -> validate ([
+        $validasi = $req->validate([
             'nama' => 'required',
             'jumlah' => 'required',
             'kondisi' => 'required',
             'keterangan' => 'required'
         ]);
 
-        $validasi['pemilik'] = $pengguna -> id;
-        $validasi['sekolah'] = $pengguna -> sekolah;
+        $validasi['pemilik'] = $pengguna->id;
+        $validasi['sekolah'] = $pengguna->sekolah;
 
         $saranaPrasarana = SaranaPrasarana::create($validasi);
 
-        if ($req -> hasFile('daftarGambar')) {
-            foreach ($req -> file('daftarGambar') as $gambar) {
-                $url = $gambar -> store('saranaPrasarana');
-                
+        if ($req->hasFile('daftarGambar')) {
+            foreach ($req->file('daftarGambar') as $gambar) {
+                $url = $gambar->store('saranaPrasarana');
+
                 GambarSaranaPrasarana::create([
-                    'saranaPrasarana' => $saranaPrasarana -> id,
+                    'saranaPrasarana' => $saranaPrasarana->id,
                     'gambar' => $url
                 ]);
             }
         }
-        
+
         // return 'true';
         return redirect('/admin-sarpras-slb');
     }
 
-    
-    public function tampilanEdit ($id) {
+
+    public function tampilanEdit($id)
+    {
         $saranaprasarana = SaranaPrasarana::find($id);
-        $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $id) -> get();
+        $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $id)->get();
         return view('pages/dashboard/admin-slb/sarpras/edit/edit-sarpras-slb', [
             'id' => $id,
             'DATA' => $saranaprasarana,
@@ -159,49 +187,50 @@ class KontrolSaranaPrasarana extends Controller
         ]);
     }
 
-    public function ubah (Request $req) {
+    public function ubah(Request $req)
+    {
         $pengguna = Auth::user();
-        $validasi = $req -> validate ([
+        $validasi = $req->validate([
             'id' => 'required',
         ]);
 
         $saranaPrasarana = SaranaPrasarana::find($validasi['id']);
 
-        if ($saranaPrasarana){
-            if ($saranaPrasarana -> sekolah === $pengguna -> sekolah) {
+        if ($saranaPrasarana) {
+            if ($saranaPrasarana->sekolah === $pengguna->sekolah) {
                 if ($req['nama']) {
-                    $saranaPrasarana -> nama = $req['nama'];
+                    $saranaPrasarana->nama = $req['nama'];
                 }
                 if ($req['jumlah']) {
-                    $saranaPrasarana -> jumlah = $req['jumlah'];
+                    $saranaPrasarana->jumlah = $req['jumlah'];
                 }
                 if ($req['kondisi']) {
-                    $saranaPrasarana -> kondisi = $req['kondisi'];
+                    $saranaPrasarana->kondisi = $req['kondisi'];
                 }
                 if ($req['keterangan']) {
-                    $saranaPrasarana -> keterangan = $req['keterangan'];
+                    $saranaPrasarana->keterangan = $req['keterangan'];
                 }
 
-                if ($req -> hasFile('daftarGambar')) {
-                    $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana -> id) -> get();
+                if ($req->hasFile('daftarGambar')) {
+                    $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana->id)->get();
 
                     foreach ($daftarGambar as $gambar) {
-                        Storage::delete($gambar -> gambar);
-                        $saranaPrasarana -> gambar = $req -> file('daftarGambar') -> store('saranaPrasarana');
+                        Storage::delete($gambar->gambar);
+                        $saranaPrasarana->gambar = $req->file('daftarGambar')->store('saranaPrasarana');
                     }
-                    GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana -> id) -> delete();
+                    GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana->id)->delete();
 
-                    foreach ($req -> file('daftarGambar') as $gambar) {
-                        $url = $gambar -> store('saranaPrasarana');
-                        
+                    foreach ($req->file('daftarGambar') as $gambar) {
+                        $url = $gambar->store('saranaPrasarana');
+
                         GambarSaranaPrasarana::create([
-                            'saranaPrasarana' => $saranaPrasarana -> id,
+                            'saranaPrasarana' => $saranaPrasarana->id,
                             'gambar' => $url
                         ]);
                     }
                 }
 
-                $saranaPrasarana -> save();
+                $saranaPrasarana->save();
 
                 // return 'true';
                 return redirect('/admin-sarpras-slb');
@@ -212,21 +241,22 @@ class KontrolSaranaPrasarana extends Controller
         return back();
     }
 
-    public function hapus ($id) {
+    public function hapus($id)
+    {
         $pengguna = Auth::user();
 
         $saranaPrasarana = SaranaPrasarana::find($id);
 
         if ($saranaPrasarana) {
-            if ($saranaPrasarana -> sekolah === $pengguna -> sekolah) {
-                $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana -> id) -> get();
+            if ($saranaPrasarana->sekolah === $pengguna->sekolah) {
+                $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana->id)->get();
 
                 foreach ($daftarGambar as $gambar) {
-                    Storage::delete($gambar -> gambar);
+                    Storage::delete($gambar->gambar);
                 }
 
-                GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana -> id) -> delete();
-                SaranaPrasarana::find($id) -> delete();
+                GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana->id)->delete();
+                SaranaPrasarana::find($id)->delete();
 
                 // return 'true';
                 return redirect('/admin-sarpras-slb');

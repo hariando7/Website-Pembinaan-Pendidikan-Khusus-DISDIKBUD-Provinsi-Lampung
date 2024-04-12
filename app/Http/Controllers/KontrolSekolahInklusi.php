@@ -38,19 +38,36 @@ class KontrolSekolahInklusi extends Controller
     //     'pangkat',
     //     'alamatTinggal',
     //     'nomorHP',
-    public function daftarSekolahInklusiSuperAdmin (Request $req) {
-        $sekolahInklusi = $this -> daftarSekolahInklusi($req);
-        
-    $dummyData = array_map(function ($data) {
-        return [
-            'id' => $data->id,
-            'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
-            'nama_sekolah' => $data->nama,
-            'npsn' => $data->npsn,
-            'jumlah_pdbk' => $data->jumlahPDBK
-        ];
-    }, $sekolahInklusi->items());
-        
+    public function lihatSemua()
+    {
+        $sekolahInklusi = SekolahInklusi::all();
+
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data['id'],
+                'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+                'nama_sekolah' => $data['nama'],
+                'npsn' => $data['npsn'],
+                'jumlah_pdbk' => $data['jumlahPDBK']
+            ];
+        }, $sekolahInklusi->toArray());
+
+        return json_encode($dummyData);
+    }
+    public function daftarSekolahInklusiSuperAdmin(Request $req)
+    {
+        $sekolahInklusi = $this->daftarSekolahInklusi($req);
+
+        $dummyData = array_map(function ($data) {
+            return [
+                'id' => $data->id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+                'nama_sekolah' => $data->nama,
+                'npsn' => $data->npsn,
+                'jumlah_pdbk' => $data->jumlahPDBK
+            ];
+        }, $sekolahInklusi->items());
+
         // return json_encode($sekolahInklusi);
         return view('pages/dashboard/super-admin/sekolah-inklusi/sa-pendataan-si', [
             'dummyData' => $dummyData,
@@ -58,24 +75,26 @@ class KontrolSekolahInklusi extends Controller
         ]);
     }
 
-    public function daftarSekolahInklusi (Request $req) {
+    public function daftarSekolahInklusi(Request $req)
+    {
         $pengguna = Auth::user();
 
         $sekolahInklusi = SekolahInklusi::where(function (Builder $query) use ($req, $pengguna) {
-            if ($req -> pencarian) {
-                $query -> where(function (Builder $query) use ($req) {
-                    $query -> where('nama', 'LIKE', '%' . $req -> pencarian . '%')
-                        -> orWhere('npsn', 'LIKE', '%' . $req -> pencarian . '%')
-                        -> orWhere('jumlahPDBK', 'LIKE', '%' . $req -> pencarian . '%');
+            if ($req->pencarian) {
+                $query->where(function (Builder $query) use ($req) {
+                    $query->where('nama', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('npsn', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('jumlahPDBK', 'LIKE', '%' . $req->pencarian . '%');
                 });
             }
-        }) -> latest() -> paginate(10);
+        })->latest()->paginate(10);
 
         return $sekolahInklusi;
     }
 
-    public function tambah (Request $req) {
-        $validasi = $req -> validate ([
+    public function tambah(Request $req)
+    {
+        $validasi = $req->validate([
             'nama' => 'required',
             'npsn' => 'required',
             'statusSekolah' => 'required',
@@ -88,13 +107,14 @@ class KontrolSekolahInklusi extends Controller
             'alamatTinggal' => 'required',
             'nomorHP' => 'required'
         ]);
-        
+
         SekolahInklusi::create($validasi);
-        
+
         return redirect('/pendataan-sekolah-inklusi');
     }
 
-    public function tampilanEdit ($id) {
+    public function tampilanEdit($id)
+    {
         $sekolahInklusi = SekolahInklusi::find($id);
         return view('pages/dashboard/super-admin/sekolah-inklusi/edit/edit-pendataan-si', [
             'id' => $id,
@@ -102,7 +122,8 @@ class KontrolSekolahInklusi extends Controller
         ]);
     }
 
-    public function tampilanLihat ($id) {
+    public function tampilanLihat($id)
+    {
         $sekolahInklusi = SekolahInklusi::find($id);
         return view('pages/dashboard/super-admin/sekolah-inklusi/lihat/lihat-pendataan-si', [
             'id' => $id,
@@ -110,53 +131,54 @@ class KontrolSekolahInklusi extends Controller
         ]);
     }
 
-    public function ubah (Request $req) {
+    public function ubah(Request $req)
+    {
         $pengguna = Auth::user();
-        $validasi = $req -> validate ([
+        $validasi = $req->validate([
             'id' => 'required',
         ]);
 
         // dd($validasi);
 
         $sekolahInklusi = SekolahInklusi::find($validasi['id']);
-        if ($sekolahInklusi){
+        if ($sekolahInklusi) {
             if ($req['nama']) {
-                $sekolahInklusi -> nama = $req['nama'];
+                $sekolahInklusi->nama = $req['nama'];
             }
             if ($req['npsn']) {
-                $sekolahInklusi -> npsn = $req['npsn'];
+                $sekolahInklusi->npsn = $req['npsn'];
             }
             if ($req['statusSekolah']) {
-                $sekolahInklusi -> statusSekolah = $req['statusSekolah'];
+                $sekolahInklusi->statusSekolah = $req['statusSekolah'];
             }
             if ($req['alamatSekolah']) {
-                $sekolahInklusi -> alamatSekolah = $req['alamatSekolah'];
+                $sekolahInklusi->alamatSekolah = $req['alamatSekolah'];
             }
             if ($req['kota']) {
-                $sekolahInklusi -> kota = $req['kota'];
+                $sekolahInklusi->kota = $req['kota'];
             }
             if ($req['jumlahPDBK']) {
-                $sekolahInklusi -> jumlahPDBK = $req['jumlahPDBK'];
+                $sekolahInklusi->jumlahPDBK = $req['jumlahPDBK'];
             }
             if ($req['namaPembimbing']) {
-                $sekolahInklusi -> namaPembimbing = $req['namaPembimbing'];
+                $sekolahInklusi->namaPembimbing = $req['namaPembimbing'];
             }
             if ($req['jenisKelamin']) {
-                $sekolahInklusi -> jenisKelamin = $req['jenisKelamin'];
+                $sekolahInklusi->jenisKelamin = $req['jenisKelamin'];
             }
             if ($req['pangkat']) {
-                $sekolahInklusi -> pangkat = $req['pangkat'];
+                $sekolahInklusi->pangkat = $req['pangkat'];
             }
             if ($req['alamatTinggal']) {
-                $sekolahInklusi -> alamatTinggal = $req['alamatTinggal'];
+                $sekolahInklusi->alamatTinggal = $req['alamatTinggal'];
             }
             if ($req['nomorHP']) {
-                $sekolahInklusi -> nomorHP = $req['nomorHP'];
+                $sekolahInklusi->nomorHP = $req['nomorHP'];
             }
 
-            $sekolahInklusi -> pengubah = $pengguna -> id;
+            $sekolahInklusi->pengubah = $pengguna->id;
 
-            $sekolahInklusi -> save();
+            $sekolahInklusi->save();
 
             return redirect('/sa-pendataan-si');
         }
@@ -164,11 +186,12 @@ class KontrolSekolahInklusi extends Controller
         return back();
     }
 
-    public function hapus ($id) {
+    public function hapus($id)
+    {
         $sekolahInklusi = SekolahInklusi::find($id);
 
         if ($sekolahInklusi) {
-            SekolahInklusi::find($id) -> delete();
+            SekolahInklusi::find($id)->delete();
 
             return redirect('/sa-pendataan-si');
         }

@@ -50,39 +50,33 @@
     </style>
 </head>
 
-<body class="bg-white z-10">
+<body class="z-10 bg-white">
     <div>
         <x-dashboard-side-bar-slb />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
+        <div class="full-height h-screen pb-[85px] pl-[280px] pr-5 pt-2">
             <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Peserta Didik
+                <div class="items-center justify-center text-center text-[32px] font-bold text-[#297785]">Peserta Didik
                     SLB A
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
                     <x-notifikasi-slb title="Notifikasi Dinas" :notifications="$pengumuman" />
-                    <div class="justify-end flex right-0">
-                        <x-buttitle-landing ref="/admin-pesertadidik-slb/tambah" color="#FA8F21" width="[13rem]"
-                            title="+ Tambah Peserta Didik"
-                            extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <div class="right-0 flex justify-end">
+                        <x-buttitle-landing ref="/admin-pesertadidik-slb/tambah" color="#FA8F21" width="[13rem]" title="+ Tambah Peserta Didik" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                     </div>
                 </div>
             </div>
-            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pl-5 pt-5 pr-5 pb-3"
-                id="moving-border">
-                <div class="max-h-[calc(100%-1rem)] overflow-y-auto hide-scrollbar">
+            <div class="h-full rounded border-4 border-solid border-[#297785] pb-3 pl-5 pr-5 pt-5 shadow-lg" id="moving-border">
+                <div class="hide-scrollbar max-h-[calc(100%-1rem)] overflow-y-auto">
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">
                         <div class="basis-[90%]">
-                            <form class="flex items-center mx-auto my-auto">
+                            <form class="mx-auto my-auto flex items-center">
                                 <div class="relative w-full">
-                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                    <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                                         <x-svg-search />
                                     </div>
-                                    <input type="text" name="pencarian" id="simple-search"
-                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="cekKosong(this)"
-                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
+                                    <input type="text" name="pencarian" id="simple-search" class="mx-auto block w-full rounded-lg border-2 border-[#297785] p-2.5 ps-10 text-sm text-black placeholder-gray-400 hover:text-black focus:border-[#FA8F21] focus:ring-[#FA8F21] dark:border-[#297785] dark:placeholder-gray-400 dark:hover:text-black dark:focus:ring-[#FA8F21]" placeholder="Search..." oninput="cekKosong(this)" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
                                         function cekKosong(e) {
                                             if (e.value === '') {
@@ -94,20 +88,17 @@
                             </form>
                         </div>
                         <div class="basis-[10%]">
-                            <button id="print-button" type="button" onclick="showModal()"
-                                class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
+                            <button id="print-button" type="button" onclick="showModal()" class="inline-flex w-full items-center gap-2 rounded-md border border-[#FA8F21] bg-[#FA8F21] px-5 py-2 text-center text-center text-sm font-medium text-white hover:bg-[#D87815] focus:outline-none focus:ring-2 focus:ring-[#FA8F21] dark:border-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] dark:focus:ring-[#FA8F21]">
                                 <x-svg-print />
                                 Print
                             </button>
                             <!-- Main modal -->
-                            <div id="modal-print" tabindex="-1" aria-hidden="true"
-                                class="hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50 z-50">
-                                <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div id="modal-print" tabindex="-1" aria-hidden="true" class="fixed bottom-0 left-[260px] right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
+                                <div class="relative max-h-full w-full max-w-md p-4">
                                     <!-- Modal content -->
-                                    <div class="relative rounded-lg shadow dark:bg-[#297785] bg-[#297785]">
+                                    <div class="relative rounded-lg bg-[#297785] shadow dark:bg-[#297785]">
                                         <!-- Modal header -->
-                                        <div
-                                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-white border-white">
+                                        <div class="flex items-center justify-between rounded-t border-b border-white p-4 dark:border-white md:p-5">
                                             <div class="div">
                                                 <h3 class="text-lg font-semibold text-white dark:text-white">
                                                     Cetak Data<br>
@@ -116,23 +107,16 @@
                                                     <x-time-saat-ini />
                                                 </h5>
                                             </div>
-                                            <button type="button"
-                                                class="text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-[#D87815] dark:hover:text-white"
-                                                data-modal-close="modal-print" onclick="hideModal()">
-                                                <svg class="w-3 h-3" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 14 14">
-                                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            <button type="button" class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-white hover:bg-[#D87815] hover:text-white dark:hover:bg-[#D87815] dark:hover:text-white" data-modal-close="modal-print" onclick="hideModal()">
+                                                <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                 </svg>
                                                 <span class="sr-only">Close modal</span>
                                             </button>
                                         </div>
                                         <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center justify-center m-auto text-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-5">
-                                            <button data-modal-hide="static-modal" type="button" id="downloadExcel"
-                                                class="btn border-none bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white">Download
+                                        <div class="m-auto flex items-center justify-center gap-5 rounded-b border-t border-gray-200 p-4 text-center dark:border-gray-600 md:p-5">
+                                            <button data-modal-hide="static-modal" type="button" id="downloadExcel" class="btn rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300">Download
                                                 Excel</button>
 
                                         </div>
@@ -146,9 +130,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
-                            <thead class="text-xs text-white uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
+                    <div class="relative mt-5 overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg">
+                        <table class="w-full bg-white text-left text-sm text-gray-500 rtl:text-right">
+                            <thead class="bg-[#2F8386] text-xs uppercase text-white dark:bg-[#2F8386] dark:text-white">
                                 <tr>
                                     <th scope="col" class="px-3 py-2">
                                         No
@@ -190,8 +174,7 @@
                                 // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
-                                <tr
-                                    class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
+                                <tr class="hover:text-whitee border-b border-gray-700 bg-white text-black hover:bg-[#C4DDDE] dark:border-gray-700 dark:bg-white dark:hover:bg-[#C4DDDE]">
                                     <td class="px-3 py-2">{{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}</td>
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
@@ -205,55 +188,38 @@
                                     <td class="px-3 py-2"><?= $data['kelas'] ?></td>
                                     <td class="px-3 py-2"><?= $data['romble'] ?></td>
                                     <td class="px-3 py-2">
-                                        <div class="flex justify-items-center m-auto text-center gap-2">
+                                        <div class="m-auto flex justify-items-center gap-2 text-center">
                                             <a href="/admin-pesertadidik-slb/edit/{{ $data['id'] }}" title="Edit">
-                                                <div
-                                                    class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
+                                                <div class="rounded-md bg-[#FA8F21] p-1 hover:bg-[#D87815] dark:bg-[#FA8F21] dark:hover:bg-[#D87815]">
                                                     <x-svg-edit />
                                                 </div>
                                             </a>
                                             <div class="div">
-                                                <button
-                                                    class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
-                                                    title="Delete" type="button" data-index="<?= $data['id'] ?>">
+                                                <button class="delete-button cursor-pointer rounded-md bg-[#FF0000] p-1 hover:bg-[#D51717]" title="Delete" type="button" data-index="<?= $data['id'] ?>">
                                                     <x-svg-delete />
                                                 </button>
                                             </div>
                                             <?php endforeach; ?>
                                             <!-- Modal -->
-                                            <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
-                                                <div class="relative p-4 w-full max-w-md max-h-full">
-                                                    <div class="relative bg-[#297785] rounded-lg shadow">
-                                                        <button type="button"
-                                                            class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                            data-modal-hide="popup-modal-delete">
-                                                            <svg class="w-3 h-3" aria-hidden="true"
-                                                                xmlns="http://www.w3.org/2000/svg" fill="white"
-                                                                viewBox="0 0 14 14">
-                                                                <path stroke="white" stroke-linecap="round"
-                                                                    stroke-linejoin="round" stroke-width="2"
-                                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            <div id="popup-modal" tabindex="-1" aria-hidden="true" class="fixed bottom-0 left-[260px] right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-md">
+                                                <div class="relative max-h-full w-full max-w-md p-4">
+                                                    <div class="relative rounded-lg bg-[#297785] shadow">
+                                                        <button type="button" class="absolute end-2.5 top-3 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-white hover:bg-[#D87815] hover:text-white" data-modal-hide="popup-modal-delete">
+                                                            <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 14 14">
+                                                                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                             </svg>
                                                             <span class="sr-only">Close modal</span>
                                                         </button>
-                                                        <div class="p-4 md:p-5 text-center">
-                                                            <svg class="mx-auto mb-4 text-white w-12 h-12"
-                                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                                fill="none" viewBox="0 0 20 20">
-                                                                <path stroke="currentColor" stroke-linecap="round"
-                                                                    stroke-linejoin="round" stroke-width="2"
-                                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                        <div class="p-4 text-center md:p-5">
+                                                            <svg class="mx-auto mb-4 h-12 w-12 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                             </svg>
-                                                            <h3 class="mb-5 text-lg font-normal text-white ">
+                                                            <h3 class="mb-5 text-lg font-normal text-white">
                                                                 Anda Yakin Ingin Menghapus Data Ini?</h3>
-                                                            <button data-modal-hide="popup-modal-ya" type="button"
-                                                                class="btn border-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                            <button data-modal-hide="popup-modal-ya" type="button" class="btn inline-flex items-center rounded-lg border-none bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800">
                                                                 Ya
                                                             </button>
-                                                            <button data-modal-hide="popup-modal-tidak"
-                                                                aria-hidden="true" type="button"
-                                                                class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
+                                                            <button data-modal-hide="popup-modal-tidak" aria-hidden="true" type="button" class="btn ms-3 rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:z-10">Tidak</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -306,7 +272,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="relative flex justify-between mt-5">
+                    <div class="relative mt-5 flex justify-between">
                         {{-- <div class="font-bold text-black">Jumlah : {{ $DATA->count() }}</div> --}}
                         <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
                         {{ $DATA->links() }}
@@ -317,8 +283,9 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('downloadExcel').addEventListener('click', function() {
-                let allData = <?php echo json_encode($dummyData); ?>;
+            document.getElementById('downloadExcel').addEventListener('click', async function() {
+                let data = await fetch('/api/peserta-didik');
+                let allData = await data.json();
 
                 function createExcel(data) {
                     const excelData = data.map(function(item, index) {
