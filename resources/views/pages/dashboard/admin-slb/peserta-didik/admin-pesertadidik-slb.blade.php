@@ -10,8 +10,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
-    </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include SheetJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 
     <style>
         .hide-scrollbar {
@@ -130,15 +131,16 @@
                                         <!-- Modal footer -->
                                         <div
                                             class="flex items-center justify-center m-auto text-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-5">
-                                            <button data-modal-hide="static-modal" type="button"
+                                            <button data-modal-hide="static-modal" type="button" id="downloadExcel"
                                                 class="btn border-none bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white">Download
                                                 Excel</button>
-                                            <!-- Button untuk cetak -->
-                                            <button id="download-pdf" onclick="printPDF()"
+
+                                        </div>
+                                        <!-- Button untuk cetak -->
+                                        {{-- <button id="download-pdf" onclick="printPDF()"
                                                 class="btn border-none bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
                                                 Download PDF
-                                            </button>
-                                        </div>
+                                            </button> --}}
                                     </div>
                                 </div>
                             </div>
@@ -307,48 +309,42 @@
                     <div class="relative flex justify-between mt-5">
                         {{-- <div class="font-bold text-black">Jumlah : {{ $DATA->count() }}</div> --}}
                         <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
-                        <div class="">
-                            {{-- <nav aria-label="Page navigation example">
-                                <ul class="inline-flex -space-x-px text-sm gap-2">
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
-                                    </li>
-                                </ul>
-                            </nav> --}}
-                            {{ $DATA->links() }}
-                        </div>
+                        {{ $DATA->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        // Open Modal
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('downloadExcel').addEventListener('click', function() {
+                let allData = <?php echo json_encode($dummyData); ?>;
+
+                function createExcel(data) {
+                    const excelData = data.map(function(item, index) {
+                        return [
+                            index + 1, // No
+                            item.tahun,
+                            item.namaSiswa,
+                            item.jenisKelamin,
+                            item.jenisKetunaan,
+                            item.kelas,
+                            item.romble
+                        ];
+                    });
+
+                    const wb = XLSX.utils.book_new();
+                    const ws = XLSX.utils.aoa_to_sheet(excelData);
+
+                    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+                    XLSX.writeFile(wb, 'PesertaDidik.xlsx');
+                }
+
+                createExcel(allData);
+            });
+        });
+
         function showModal() {
             // Dapatkan modal
             var modal = document.getElementById("modal-print");
@@ -363,46 +359,6 @@
             // Sembunyikan modal
             modal.classList.add("hidden");
             modal.setAttribute("aria-hidden", "true");
-        }
-        // Print PDF
-        function printPDF() {
-            printTable(<?= json_encode($dummyData) ?>);
-        }
-        // Data Table
-        function printTable(dummyData) {
-            var printWindow = window.open('', '', 'width=800,height=800,top=400,left=200');
-
-            var tableHtml = '<table class="border border-gray-200">';
-            tableHtml += '<thead class="bg-gray-50">';
-            tableHtml += '<tr>';
-            tableHtml += '<th class="px-4 py-2">ID</th>';
-            tableHtml += '<th class="px-4 py-2">Tahun</th>';
-            tableHtml += '<th class="px-4 py-2">Nama Siswa</th>';
-            tableHtml += '<th class="px-4 py-2">Jenis Kelamin</th>';
-            tableHtml += '<th class="px-4 py-2">Jenis Ketunaan</th>';
-            tableHtml += '<th class="px-4 py-2">Kelas</th>';
-            tableHtml += '<th class="px-4 py-2">Romble</th>';
-            tableHtml += '</tr>';
-            tableHtml += '</thead>';
-            tableHtml += '<tbody class="divide-y divide-gray-200">';
-            dummyData.forEach(function(data, index) {
-                tableHtml += '<tr>';
-                tableHtml += '<td class="px-4 py-2">' + (index + 1) + '</td>';
-                tableHtml += '<td class="px-4 py-2">' + data.tahun + '</td>';
-                tableHtml += '<td class="px-4 py-2">' + (data.namaSiswa.length > 15 ? data.namaSiswa.substring(0,
-                    15) + '...' : data.namaSiswa) + '</td>';
-                tableHtml += '<td class="px-4 py-2">' + data.jenisKelamin + '</td>';
-                tableHtml += '<td class="px-4 py-2">' + data.jenisKetunaan + '</td>';
-                tableHtml += '<td class="px-4 py-2">' + data.kelas + '</td>';
-                tableHtml += '<td class="px-4 py-2">' + data.romble + '</td>';
-                tableHtml += '</tr>';
-            });
-            tableHtml += '</tbody>';
-            tableHtml += '</table>';
-
-            printWindow.document.write(tableHtml);
-            printWindow.document.close();
-            printWindow.print();
         }
     </script>
 </body>

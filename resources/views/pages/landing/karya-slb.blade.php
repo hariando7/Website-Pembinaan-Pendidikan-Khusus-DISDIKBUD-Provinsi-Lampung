@@ -245,9 +245,12 @@
                                     </div>
                                     <ul tabindex="0"
                                         class="dropdown-content z-[1] menu p-2 shadow bg-white text-black rounded-box w-52">
-                                            <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb">semua</a></li>
+                                        <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb">semua</a>
+                                        </li>
                                         @foreach ($sekolah as $data)
-                                            <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb?filterSekolah={{ $data['id'] }}">{{ $data['nama'] }}</a></li>
+                                            <li class="hover:bg-[#297785] hover:text-white"><a
+                                                    href="/karya-slb?filterSekolah={{ $data['id'] }}">{{ $data['nama'] }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -255,7 +258,8 @@
                             <form class="static bg-inherit mt-2 lg:mt-0 mb-5 lg:mb-0">
                                 <label
                                     class="input input-bordered flex items-center gap-2 bg-white border-solid border-1 border-[#297785] hover:border-[#297785]">
-                                    <input type="text" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
+                                    <input type="text"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
                                         class="grow border-none focus:ring-white focus:border-white text-black"
                                         placeholder="Search Karya SLB" name="pencarian" oninput="cekKosong(this)" />
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="black"
@@ -287,12 +291,17 @@
                         {{-- Isi Content --}}
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             @foreach ($dummyData as $index => $data)
-                                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-                                    <img class="w-full" src="{{ url(asset('storage/' . $data['gambar'])) }}" alt="Gambar {{ $index + 1 }}">
+                                <div class="relative max-w-sm rounded overflow-hidden shadow-lg ">
+                                    <img class="w-full h-[300px] w-[300px]"
+                                        src="{{ url(asset('storage/' . $data['gambar'])) }}"
+                                        alt="Gambar {{ $index + 1 }}">
                                     <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">{{ $data['nama'] }}</div>
+                                        <div class="font-bold text-xl mb-2 text-[#297785]">{{ $data['nama'] }}</div>
                                         <p class="text-gray-700 text-base">
                                             {{ $data['deskripsi'] }}
+                                        </p>
+                                        <p class="text-gray-700 text-base">
+                                            {{ $data['namaSekolah'] }}
                                         </p>
                                     </div>
                                 </div>
