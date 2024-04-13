@@ -33,8 +33,8 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-full pt-2 pr-5 pb-28">
+        <x-dashboard-side-bar-sa id="{{ $id }}"/>
+        <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
                 <div class="text-[#297785] font-bold text-[32px]">Lihat Admin SLB Provinsi Lampung
                 </div>
@@ -46,15 +46,6 @@
             <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
                 {{-- isi konten disini --}}
-                {{-- 'email' => 'required|email|unique:pengguna',
-            'password' => 'required',
-            'nama' => 'required',
-            'npsn' => 'required',
-            'kota' => 'required',
-            'kecamatan' => 'required',
-            'alamat' => 'required',
-            'jenisKetunaan' => 'required',
-            'linkWebsiteSekolah' => 'required' --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">

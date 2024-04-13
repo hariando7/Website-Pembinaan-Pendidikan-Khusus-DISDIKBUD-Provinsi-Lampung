@@ -301,7 +301,8 @@
                                             {{ $data['deskripsi'] }}
                                         </p>
                                         <p class="text-gray-700 text-base">
-                                            {{ $data['namaSekolah'] }}
+                                            {{-- {{ $data['namaSekolah'] }} --}}
+                                            {{ $data['deskripsi'] }}
                                         </p>
                                     </div>
                                 </div>

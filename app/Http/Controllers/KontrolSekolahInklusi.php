@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 use App\Models\SekolahInklusi;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class KontrolSekolahInklusi extends Controller
 {
@@ -110,6 +111,11 @@ class KontrolSekolahInklusi extends Controller
 
         SekolahInklusi::create($validasi);
 
+        Session::flash('toast-tambah', [
+            'type' => 'toast-tambah',
+            'message' => 'Berhasil Menambahkan Data'
+        ]);
+
         return redirect('/pendataan-sekolah-inklusi');
     }
 
@@ -180,10 +186,15 @@ class KontrolSekolahInklusi extends Controller
 
             $sekolahInklusi->save();
 
+            Session::flash('toast-edit', [
+                'type' => 'toast-edit',
+                'message' => 'Berhasil Edit Data'
+            ]);
+
             return redirect('/sa-pendataan-si');
         }
 
-        return back();
+        // return back();
     }
 
     public function hapus($id)
@@ -193,9 +204,14 @@ class KontrolSekolahInklusi extends Controller
         if ($sekolahInklusi) {
             SekolahInklusi::find($id)->delete();
 
+            Session::flash('toast-hapus', [
+                'type' => 'toast-hapus',
+                'message' => 'Berhasil Hapus Data'
+            ]);
+
             return redirect('/sa-pendataan-si');
         }
 
-        return back();
+        // return back();
     }
 }

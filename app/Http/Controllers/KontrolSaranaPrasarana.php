@@ -13,6 +13,7 @@ use App\Models\Sekolah;
 use App\Models\SaranaPrasarana;
 use App\Models\GambarSaranaPrasarana;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class KontrolSaranaPrasarana extends Controller
 {
@@ -172,6 +173,11 @@ class KontrolSaranaPrasarana extends Controller
         }
 
         // return 'true';
+        Session::flash('toast-tambah', [
+            'type' => 'toast-tambah',
+            'message' => 'Berhasil Menambahkan Data'
+        ]);
+
         return redirect('/admin-sarpras-slb');
     }
 
@@ -232,13 +238,18 @@ class KontrolSaranaPrasarana extends Controller
 
                 $saranaPrasarana->save();
 
+                Session::flash('toast-edit', [
+                    'type' => 'toast-edit',
+                    'message' => 'Berhasil Edit Data'
+                ]);
+
                 // return 'true';
                 return redirect('/admin-sarpras-slb');
             }
         }
 
         // return 'false';
-        return back();
+        // return back();
     }
 
     public function hapus($id)
@@ -259,11 +270,16 @@ class KontrolSaranaPrasarana extends Controller
                 SaranaPrasarana::find($id)->delete();
 
                 // return 'true';
+                Session::flash('toast-hapus', [
+                    'type' => 'toast-hapus',
+                    'message' => 'Berhasil Hapus Data'
+                ]);
+                
                 return redirect('/admin-sarpras-slb');
             }
         }
 
         // return 'false';
-        return back();
+        // return back();
     }
 }

@@ -34,7 +34,7 @@
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
+        <div class="pl-[280px] full-height h-screen pt-2 pr-5 pb-28">
             <div class="flex justify-between">
                 <div class="pb-2 mt-5 flex gap-5">
                     <x-buttitle-landing ref="/sa-kelola-notifikasi-slb" color="#FA8F21" width="[7rem]" title="Kembali"

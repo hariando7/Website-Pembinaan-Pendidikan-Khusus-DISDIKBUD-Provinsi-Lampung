@@ -36,7 +36,7 @@
         <x-dashboard-side-bar-slb id="{{ $id }}" />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Tambah Tendik SLB
+                <div class="text-[#297785] font-bold text-[32px]">Edit Tendik SLB
                 </div>
                 <div class="flex justify-between pb-2">
                     <div class="div">
@@ -158,7 +158,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">NIP</label>
-                            <input type="text" id="jenisketunaan" name="nip"
+                            <input type="number" id="jenisketunaan" name="nip"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan NIP" value="{{ $DATA['nip'] }}" required />
                         </div>

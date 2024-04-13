@@ -45,7 +45,8 @@
     </style>
 
     <aside id="default-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"aria-label="Sidebar">
+        class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar">
         <div class="h-full px-4 py-4 overflow-y-auto bg-[#297785]">
             <a href="/sa-kelola-notifikasi">
                 <img src="/assets/landing/prov-lampung2.svg" alt=""
@@ -66,7 +67,14 @@
                                 'sa-kelola-notifikasi-si/tambah',
                                 'sa-kelola-notifikasi-si/edit',
                             ]; // path halaman aktif
+                            if (isset($id)) {
+                                array_push($activePagePath4, 'sa-kelola-notifikasi-slb/edit/' . $id);
+                            }
+                            if (isset($id)) {
+                                array_push($activePagePath4, 'sa-kelola-notifikasi-si/edit/' . $id);
+                            }
                         @endphp
+                        {{-- @dd($id) --}}
                         <a href="/sa-kelola-notifikasi" type="button"
                             class="group w-[80%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
         @if (in_array(Request::path(), $activePagePath4)) rounded-lg bg-white text-[#297785] focus:z-10 focus:ring-2 focus:ring-white focus:text-white
@@ -110,11 +118,17 @@
                                     'sa-kelola-notifikasi-slb/tambah',
                                     'sa-kelola-notifikasi-slb/edit',
                                 ];
+                                if (isset($id)) {
+                                    array_push($kelolanotifikasislb, 'sa-kelola-notifikasi-slb/edit/' . $id);
+                                }
                                 $kelolanotifikasisi = [
                                     'sa-kelola-notifikasi-si',
                                     'sa-kelola-notifikasi-si/tambah',
                                     'sa-kelola-notifikasi-si/edit',
                                 ];
+                                if (isset($id)) {
+                                    array_push($kelolanotifikasisi, 'sa-kelola-notifikasi-si/edit/' . $id);
+                                }
                                 // halaman aktif
                             @endphp
                             <a href="/sa-kelola-notifikasi-slb"
@@ -136,6 +150,12 @@
                             'kelola-admin-slb/edit',
                             'kelola-admin-slb/lihat',
                         ]; // halaman aktif
+                        if (isset($id)) {
+                            array_push($activePagePath, 'kelola-admin-slb/edit/' . $id);
+                        }
+                        if (isset($id)) {
+                            array_push($activePagePath, 'kelola-admin-slb/lihat/' . $id);
+                        }
                     @endphp
                     <li class="absolute flex items-center justify-center inset-x-0 mt-5 mt-[70px]">
                         <a href="/kelola-admin-slb" type="button"
@@ -263,6 +283,12 @@
                     {{-- sekolah inklusi slb --}}
                     @php
                         $activePagePath = ['sa-pendataan-si', 'sa-pendataan-si/lihat', 'sa-pendataan-si/edit']; // halaman aktif
+                        if (isset($id)) {
+                            array_push($activePagePath, 'sa-pendataan-si/lihat/' . $id);
+                        }
+                        if (isset($id)) {
+                            array_push($activePagePath, 'sa-pendataan-si/edit/' . $id);
+                        }
                     @endphp
                     <li class="absolute flex items-center justify-center inset-x-0 mt-5 mt-[210px]">
                         <a href="/sa-pendataan-si" type="button"

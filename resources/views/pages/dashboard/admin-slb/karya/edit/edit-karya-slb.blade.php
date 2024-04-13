@@ -82,7 +82,7 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-slb />
+        <x-dashboard-side-bar-slb id="{{ $id }}"/>
         <div class="pl-[280px] h-full pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
                 <div class="text-[#297785] font-bold text-[32px]">Edit Karya SLB

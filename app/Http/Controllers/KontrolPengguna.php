@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\User;
 use App\Models\Sekolah;
 
+use Illuminate\Support\Facades\Session;
+
 class KontrolPengguna extends Controller
 {
     public function daftarPenggunaSuperAdmin (Request $req) {
@@ -81,6 +83,11 @@ class KontrolPengguna extends Controller
             'password' => Hash::make($validasi['password']),
             'sekolah' => $sekolah -> id,
             'akses' => 'admin'
+        ]);
+
+        Session::flash('toast-tambah', [
+            'type' => 'toast-tambah',
+            'message' => 'Berhasil Menambahkan Data'
         ]);
 
         return redirect('/kelola-admin-slb');
@@ -173,11 +180,18 @@ class KontrolPengguna extends Controller
             $sekolah -> save();
 
             // return 'true';
+
+            Session::flash('toast-edit', [
+                'type' => 'toast-edit',
+                'message' => 'Berhasil Edit Data'
+            ]);
+
+
             return redirect('/kelola-admin-slb');
         }
 
         // return 'false';
-        return back();
+        // return back();
     }
 
     public function hapus($id)
@@ -191,6 +205,11 @@ class KontrolPengguna extends Controller
         }
 
         $admin->delete();
+
+        Session::flash('toast-hapus', [
+            'type' => 'toast-hapus',
+            'message' => 'Berhasil Hapus Data'
+        ]);
 
         return redirect('/kelola-admin-slb');
     }

@@ -36,7 +36,7 @@
         <x-dashboard-side-bar-slb id="{{ $id }}" />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Tambah Kebutuhan Guru SLB
+                <div class="text-[#297785] font-bold text-[32px]">Edit Kebutuhan Guru SLB
                 </div>
                 <div class="flex justify-between pb-2">
                     <div class="div">

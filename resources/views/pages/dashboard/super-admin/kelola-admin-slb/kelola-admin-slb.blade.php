@@ -62,18 +62,27 @@
             <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pl-5 pt-5 pr-5 pb-3"
                 id="moving-border">
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto hide-scrollbar">
+                    <div class="flex m-auto justify-center items-center">
+                        <x-toast-tambah />
+                        <x-toast-edit />
+                        <x-toast-hapus />
+                    </div>
                     {{-- isi konten disini --}}
                     <form class="flex flex-row gap-2">
                         <div class="basis-[20%]">
                             <div class="relative">
-                                <select name="filterSekolah" id="filterSekolah" class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none" onchange="cariSekolah(this)" >
+                                <select name="filterSekolah" id="filterSekolah"
+                                    class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
+                                    onchange="cariSekolah(this)">
                                     <option value="">semua</option>
                                     @foreach ($sekolah as $data)
-                                        <option value="{{ $data -> id }}" @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data -> id) selected @endif @endif>{{ $data -> nama }}</option>
+                                        <option value="{{ $data->id }}"
+                                            @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data->id) selected @endif
+                                            @endif>{{ $data->nama }}</option>
                                     @endforeach
                                 </select>
                                 <script>
-                                    function cariSekolah (e) {
+                                    function cariSekolah(e) {
                                         console.log(e.value);
                                         if (e.value === '') {
                                             window.location.href = window.location.origin + window.location.pathname;
@@ -110,7 +119,9 @@
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <x-svg-search />
                                     </div>
-                                    <input name="pencarian" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" type="text" id="simple-search"
+                                    <input name="pencarian"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" type="text"
+                                        id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
                                         placeholder="Search..." oninput="cekKosong(this)" required />
                                     <script>

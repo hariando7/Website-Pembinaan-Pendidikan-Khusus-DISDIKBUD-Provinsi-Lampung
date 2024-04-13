@@ -72,7 +72,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">NIP</label>
-                            <input type="text" id="jenisketunaan" name="nip"
+                            <input type="number" id="jenisketunaan" name="nip"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan NIP" required />
                         </div>

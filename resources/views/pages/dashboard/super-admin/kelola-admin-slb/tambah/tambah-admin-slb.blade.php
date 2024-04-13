@@ -8,6 +8,7 @@
     <title>Kelola Admin SLB | Tambah</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- Other meta tags and CSS links -->
@@ -47,138 +48,320 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST"
+                class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
                 @csrf
                 {{-- isi konten disini --}}
-                                            {{-- 'email' => 'required|email|unique:pengguna',
-            'password' => 'required',
-            'nama' => 'required',
-            'npsn' => 'required',
-            'kota' => 'required',
-            'kecamatan' => 'required',
-            'alamat' => 'required',
-            'jenisKetunaan' => 'required',
-            'linkWebsiteSekolah' => 'required' --}}
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="email_sekolah">Email Sekolah</label>
+                            <div class="flex">
+                                <label htmlFor="email_sekolah">Email Sekolah</label>
+                                <div class="div">
+                                    <button data-popover-target="popover-email" data-popover-placement="right"
+                                        type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
+                                            aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                                clip-rule="evenodd"></path>
+                                        </svg><span class="sr-only">Show information</span>
+                                    </button>
+                                    <div data-popover id="popover-email" role="tooltip"
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        <div class="p-3 space-y-2">
+                                            <h3 class="font-semibold text-gray-900">Email Sekolah</h3>
+                                            <p>Masukkan Email Sekolah Aktif, diusahakan menggunakan @gmail.com. Supaya
+                                                memudahkan saat ingin reset password</p>
+                                            <a href="https://mail.google.com/mail/u/0/#inbox"
+                                                class="flex items-center font-medium text-blue-600 hover:text-blue-700 hover:underline">Selengkapnya
+                                                <svg class="w-2 h-2 ms-1.5 rtl:rotate-180" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 6 10">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                                </svg></a>
+                                        </div>
+                                        <div data-popper-arrow></div>
+                                    </div>
+                                </div>
+                            </div>
                             <input type="email" name="email" id="email_sekolah"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Email Aktif Sekolah" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4 relative">
-                            <label htmlFor="password">Password</label>
+                            <div class="flex">
+                                <label htmlFor="password">Password</label>
+                                <div class="div">
+                                    <button data-popover-target="popover-password" data-popover-placement="right"
+                                        type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
+                                            aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                                clip-rule="evenodd"></path>
+                                        </svg><span class="sr-only">Show information</span>
+                                    </button>
+                                    <div data-popover id="popover-password" role="tooltip"
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        <div class="p-3 space-y-2">
+                                            <h3 class="font-semibold text-gray-900">Password</h3>
+                                            <p>Masukkan Password, Masukkan minimal 6 karakter random. Apabila password
+                                                lupa, dapat melakukan reset password menggunakan Email aktif. Atau
+                                                menghubungi admin Dinas</p>
+                                            <a href="https://wa.me/0895637316999"
+                                                class="flex items-center font-medium text-blue-600 hover:text-blue-700 hover:underline">Selengkapnya
+                                                <svg class="w-2 h-2 ms-1.5 rtl:rotate-180" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 6 10">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                                </svg></a>
+                                        </div>
+                                        <div data-popper-arrow></div>
+                                    </div>
+                                </div>
+                            </div>
                             <input type="password" name="password" id="password"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 pl-2 pr-10 w-full"
                                 placeholder="Masukkan Password" required />
                             <x-icon-password />
                         </div>
                     </div>
-                </div>
-                <div class=''>
-                    <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="nama_sekolah">Nama Sekolah</label>
-                            <input type="text" name="nama" id="nama_sekolah"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Sekolah" required />
-                        </div>
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="npsn">NPSN</label>
-                            <input type="text" name="npsn" id="npsn"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan NPSN Sekolah" required />
+                    <div class=''>
+                        <div class="flex gap-x-2">
+                            <div class="flex flex-col flex-1 mb-4">
+                                <div class="flex">
+                                    <label htmlFor="nama_sekolah">Nama Sekolah</label>
+                                    <div class="div">
+                                        <button data-popover-target="popover-namaSekolah"
+                                            data-popover-placement="right" type="button"><svg
+                                                class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
+                                                aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg><span class="sr-only">Show information</span>
+                                        </button>
+                                        <div data-popover id="popover-namaSekolah" role="tooltip"
+                                            class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                            <div class="p-3 space-y-2">
+                                                <h3 class="font-semibold text-gray-900">Nama Sekolah</h3>
+                                                <p>Masukkan Nama Sekolah yang sesuai dan sudah terdata di Disdikbud</p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="nama" id="nama_sekolah"
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    placeholder="Masukkan Nama Sekolah" required />
+                            </div>
+                            <div class="flex flex-col flex-1 mb-4">
+                                <div class="flex">
+                                    <label htmlFor="npsn">NPSN Sekolah</label>
+                                    <div class="div">
+                                        <button data-popover-target="popover-npsn" data-popover-placement="right"
+                                            type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
+                                                aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg><span class="sr-only">Show information</span>
+                                        </button>
+                                        <div data-popover id="popover-npsn" role="tooltip"
+                                            class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                            <div class="p-3 space-y-2">
+                                                <h3 class="font-semibold text-gray-900">NPSN Sekolah</h3>
+                                                <p>Masukkan NPSN Sekolah yang sesuai dan sudah terdata di Disdikbud</p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="number" name="npsn" id="npsn"
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    placeholder="Masukkan NPSN Sekolah" required />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class=''>
-                    <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="kabkota">Kab/Kota</label>
-                            <select id="kabkota" name="kota"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                required onchange="populateKecamatan(this.value)">
-                                <option value="" disabled selected>Pilih Kab/Kota</option>
-                                <option value="Bandar Lampung">Bandar Lampung</option>
-                                <option value="Metro">Metro</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="kecamatan">Kecamatan</label>
-                            <select id="kecamatan" name="kecamatan"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                required>
-                                <option value="" disabled selected>Pilih Kecamatan</option>
-                            </select>
-                        </div>
-                        <script>
-                            function populateKecamatan(selectedKabKota) {
-                                var kecamatanSelect = document.getElementById("kecamatan");
-                                while (kecamatanSelect.options.length > 0) {
-                                    kecamatanSelect.remove(0);
-                                }
-                                var defaultOption = document.createElement("option");
-                                defaultOption.text = "Pilih Kecamatan";
-                                defaultOption.disabled = true;
-                                defaultOption.selected = true;
-                                kecamatanSelect.add(defaultOption);
-                                // opsi kecamatan sesuai dengan kab/kota
-                                if (selectedKabKota === "Bandar Lampung") {
-                                    var kecamatanArray = ["Kedaton", "Sukarame", "Telukbetung", "Panjang", "Tanah Sareal", "Rajabasa",
-                                        "Tanjung Karang Barat", "Tanjung Karang Pusat", "Tanjung Karang Timur", "Tanjung Senang"
-                                    ];
-                                    for (var i = 0; i < kecamatanArray.length; i++) {
-                                        var option = document.createElement("option");
-                                        option.text = kecamatanArray[i];
-                                        kecamatanSelect.add(option);
+                    <div class=''>
+                        <div class="flex gap-x-2">
+                            <div class="flex flex-col flex-1 mb-4">
+                                <label htmlFor="kabkota">Kab/Kota</label>
+                                <select id="kabkota" name="kota"
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    required onchange="populateKecamatan(this.value)">
+                                    <option value="" disabled selected>Pilih Kab/Kota</option>
+                                    <option value="Bandar Lampung">Bandar Lampung</option>
+                                    {{-- <option value="Lampung Barat">Lampung Barat</option> --}}
+                                    <option value="Lampung Selatan">Lampung Selatan</option>
+                                    <option value="Lampung Tengah">Lampung Tengah</option>
+                                    <option value="Lampung Timur">Lampung Timur</option>
+                                    <option value="Lampung Utara">Lampung Utara</option>
+                                    <option value="Metro">Metro</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col flex-1 mb-4">
+                                <label htmlFor="kecamatan">Kecamatan</label>
+                                <select id="kecamatan" name="kecamatan"
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    required>
+                                    <option value="" disabled selected>Pilih Kecamatan</option>
+                                </select>
+                            </div>
+                            <script>
+                                function populateKecamatan(selectedKabKota) {
+                                    var kecamatanSelect = document.getElementById("kecamatan");
+                                    while (kecamatanSelect.options.length > 0) {
+                                        kecamatanSelect.remove(0);
                                     }
-                                } else if (selectedKabKota === "Metro") {
-                                    var kecamatanArray = ["Metro Pusat", "Metro Barat", "Metro Timur", "Metro Selatan", "Metro Utara"];
-                                    for (var i = 0; i < kecamatanArray.length; i++) {
-                                        var option = document.createElement("option");
-                                        option.text = kecamatanArray[i];
-                                        kecamatanSelect.add(option);
+                                    var defaultOption = document.createElement("option");
+                                    defaultOption.text = "Pilih Kecamatan";
+                                    defaultOption.disabled = true;
+                                    defaultOption.selected = true;
+                                    kecamatanSelect.add(defaultOption);
+                                    // opsi kecamatan sesuai dengan kab/kota
+                                    if (selectedKabKota === "Bandar Lampung") {
+                                        var kecamatanArray = ["Kedaton", "Kemiling", "Rajabasa", "Sukabumi", "Tanjungkarang Barat",
+                                            "Tanjungkarang Pusat", "Tanjungkarang Timur", "Tanjungsenang"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Metro") {
+                                        var kecamatanArray = ["Metro Pusat", "Metro Barat", "Metro Timur", "Metro Selatan", "Metro Utara"];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Lampung Selatan") {
+                                        var kecamatanArray = ["Kalianda", "Kalianda Selatan", "Kalianda Utara", "Sidomulyo", "Sragi"];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Lampung Tengah") {
+                                        var kecamatanArray = ["Abung Barat", "Abung Kunang", "Abung Pekurun", "Abung Selatan", "Abung Semuli",
+                                            "Abung Surakarta", "Abung Tengah", "Abung Timur", "Abung Tinggi", "Bukit Kemuning", "Pugung",
+                                            "Pugung Tengah", "Punggur", "Taman Sari"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Lampung Timur") {
+                                        var kecamatanArray = ["Abung Surakarta", "Bandar Sribawono", "Batanghari", "Braja Slebah", "Bumi Agung",
+                                            "Mataram Baru", "Melinting", "Metro Kibang", "Pasir Sakti", "Pematang Sawa", "Purwoharjo",
+                                            "Sekampung", "Sekampung Udik", "Sukadana", "Waway Karya"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Lampung Utara") {
+                                        var kecamatanArray = ["Abung Selatan", "Abung Semuli", "Abung Tengah", "Abung Tinggi", "Bukit Kemuning",
+                                            "Kedondong", "Kotabumi", "Kotabumi Selatan", "Kotabumi Utara", "Muara Sungkai", "Sungkai Barat",
+                                            "Sungkai Jaya", "Sungkai Selatan", "Sungkai Tengah", "Sungkai Utara"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
                                     }
                                 }
-                                // Tambahkan daftar kecamatan lainnya sesuai kebutuhan
-                            }
-                        </script>
-                    </div>
-                </div>
-                <div class=''>
-                    <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="alamat">Alamat</label>
-                            <input type="text" name="alamat" id="alamat"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Alamat Sekolah" required />
-                        </div>
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
-                            <input type="text" name="jenisKetunaan" id="jenis_ketunaan"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />
+                            </script>
                         </div>
                     </div>
-                </div>
-                <div class=''>
-                    <div class="gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="link_website">Link Website Sekolah</label>
-                            <input type="url" name="linkWebsiteSekolah" id="link_website"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Link Website Sekolah" required />
+                    <div class=''>
+                        <div class="flex gap-x-2">
+                            <div class="flex flex-col flex-1 mb-4">
+                                <div class="flex">
+                                    <label htmlFor="alamat">Alamat Sekolah</label>
+                                    <div class="div">
+                                        <button data-popover-target="popover-alamat" data-popover-placement="right"
+                                            type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
+                                                aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg><span class="sr-only">Show information</span>
+                                        </button>
+                                        <div data-popover id="popover-alamat" role="tooltip"
+                                            class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                            <div class="p-3 space-y-2">
+                                                <h3 class="font-semibold text-gray-900">Alamat Sekolah</h3>
+                                                <p>Masukkan Alamat Sekolah yang sesuai dan sudah terdata di Disdikbud
+                                                </p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="alamat" id="alamat"
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    placeholder="Masukkan Alamat Sekolah" required />
+                            </div>
+                            <div class="flex flex-col flex-1 mb-4">
+                                <div class="flex">
+                                    <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
+                                    <div class="div">
+                                        <button data-popover-target="popover-ketunaan" data-popover-placement="right"
+                                            type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
+                                                aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg><span class="sr-only">Show information</span>
+                                        </button>
+                                        <div data-popover id="popover-ketunaan" role="tooltip"
+                                            class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                            <div class="p-3 space-y-2">
+                                                <h3 class="font-semibold text-gray-900">Janis Ketunaan</h3>
+                                                <p>Masukkan Jenis Ketunaan yang ada disekolah. Apabila lebih dari 1,
+                                                    maka pisahkan dengan tanda (,) koma. Contoh Tunagrahita, Tunanetra
+                                                    dan Autis.
+                                                </p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="jenisKetunaan" id="jenis_ketunaan"
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="flex justify-end mt-4">
-                    <button type="submit"
-                        class="flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
-                        + Simpan
-                    </button>
-                </div>
+                    <div class=''>
+                        <div class="gap-x-2">
+                            <div class="flex flex-col flex-1 mb-4">
+                                <label htmlFor="link_website">Link Website Sekolah</label>
+                                <input type="url" name="linkWebsiteSekolah" id="link_website"
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    placeholder="Masukkan Link Website Sekolah" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end mt-4">
+                        <button type="submit"
+                            class="btn border-none flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
+                            + Simpan
+                        </button>
+                    </div>
             </form>
         </div>
     </div>

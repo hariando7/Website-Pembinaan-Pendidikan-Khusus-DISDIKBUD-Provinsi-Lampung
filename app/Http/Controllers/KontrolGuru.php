@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Sekolah;
 use App\Models\Guru;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class KontrolGuru extends Controller
 {
@@ -165,6 +166,10 @@ class KontrolGuru extends Controller
         Guru::create($validasi);
 
         // return 'true';
+        Session::flash('toast-tambah', [
+            'type' => 'toast-tambah',
+            'message' => 'Berhasil Menambahkan Data'
+        ]);
         return redirect('/admin-guru-slb');
     }
 
@@ -210,12 +215,16 @@ class KontrolGuru extends Controller
                 $guru->save();
 
                 // return 'true';
+                Session::flash('toast-edit', [
+                    'type' => 'toast-edit',
+                    'message' => 'Berhasil Edit Data'
+                ]);
                 return redirect('/admin-guru-slb');
             }
         }
 
         // return 'false';
-        return back();
+        // return back();
     }
 
     public function hapus($id)
@@ -228,10 +237,14 @@ class KontrolGuru extends Controller
                 Guru::find($id)->delete();
 
                 // return 'true';
+                Session::flash('toast-hapus', [
+                    'type' => 'toast-hapus',
+                    'message' => 'Berhasil Hapus Data'
+                ]);
                 return redirect('/admin-guru-slb');
             }
         }
 
-        return back();
+        // return back();
     }
 }

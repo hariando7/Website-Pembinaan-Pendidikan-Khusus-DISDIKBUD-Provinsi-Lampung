@@ -55,7 +55,8 @@
     </style>
 
     <aside id="default-sidebar"
-        class="fixed top-0 left-0 z-70 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"aria-label="Sidebar">
+        class="fixed top-0 left-0 z-70 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar">
         <div class="h-full px-4 py-4 bg-[#297785]">
             <a href="/admin-home-slb">
                 <img src="/assets/landing/prov-lampung2.svg" alt=""
@@ -126,7 +127,7 @@
                                 // path halaman aktif
                                 $activePagePath3 = ['admin-tendik-slb', 'admin-tendik-slb/tambah']; // path halaman aktif
                                 if (isset($id)) {
-                                    array_push($activePagePath3, 'admin-tendik-slb/edit' . $id);
+                                    array_push($activePagePath3, 'admin-tendik-slb/edit/' . $id);
                                 }
                             @endphp
                             <a href="/admin-tendik-slb" type="button"
@@ -164,6 +165,9 @@
                                     'admin-sarpras-slb/tambah',
                                     'admin-sarpras-slb/edit',
                                 ]; // path halaman aktif
+                                if (isset($id)) {
+                                    array_push($activePagePath4, 'admin-sarpras-slb/edit/' . $id);
+                                }
                             @endphp
                             <a href="/admin-sarpras-slb" type="button"
                                 class="group w-[90%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium
@@ -232,10 +236,7 @@
                         <li class="flex items-center justify-center inset-x-0 mt-2">
                             @php
                                 // path halaman aktif
-                                $activePagePath5 = [
-                                    'admin-kebutuhan-guru-slb',
-                                    'admin-kebutuhan-guru-slb/tambah',
-                                ]; // path halaman aktif
+                                $activePagePath5 = ['admin-kebutuhan-guru-slb', 'admin-kebutuhan-guru-slb/tambah']; // path halaman aktif
                                 if (isset($id)) {
                                     array_push($activePagePath5, 'admin-kebutuhan-guru-slb/edit/' . $id);
                                 }
@@ -265,6 +266,9 @@
                                     'admin-karya-slb/tambah',
                                     'admin-karya-slb/edit',
                                 ]; // path halaman aktif
+                                if (isset($id)) {
+                                    array_push($activePagePath6, 'admin-karya-slb/edit/' . $id);
+                                }
                             @endphp
                             <a href="/admin-karya-slb" type="button"
                                 class="group w-[90%] h-[60px] p-1 pl-5 flex gap-6 text-lg font-medium

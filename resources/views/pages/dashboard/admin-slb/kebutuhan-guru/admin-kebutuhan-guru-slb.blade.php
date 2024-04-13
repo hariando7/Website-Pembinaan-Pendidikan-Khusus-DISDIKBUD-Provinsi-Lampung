@@ -10,6 +10,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include SheetJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
     <style>
         .hide-scrollbar {
             scrollbar-width: thin;
@@ -65,6 +68,11 @@
             <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1"
                 id="moving-border">
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar">
+                    <div class="flex m-auto justify-center items-center">
+                        <x-toast-tambah />
+                        <x-toast-edit />
+                        <x-toast-hapus />
+                    </div>
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">
                         <div class="basis-[90%]">
@@ -88,11 +96,51 @@
                             </form>
                         </div>
                         <div class="basis-[10%]">
-                            <button type="button"
-                                class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
+                            <button id="print-button" type="button" onclick="showModal()"
+                                class="inline-flex w-full items-center gap-2 rounded-md border border-[#FA8F21] bg-[#FA8F21] px-5 py-2 text-center text-center text-sm font-medium text-white hover:bg-[#D87815] focus:outline-none focus:ring-2 focus:ring-[#FA8F21] dark:border-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] dark:focus:ring-[#FA8F21]">
                                 <x-svg-print />
                                 Print
                             </button>
+                            <!-- Main modal -->
+                            <div id="modal-print" tabindex="-1" aria-hidden="true"
+                                class="fixed bottom-0 left-[260px] right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
+                                <div class="relative max-h-full w-full max-w-md p-4">
+                                    <!-- Modal content -->
+                                    <div class="relative rounded-lg bg-[#297785] shadow dark:bg-[#297785]">
+                                        <!-- Modal header -->
+                                        <div
+                                            class="flex items-center justify-between rounded-t border-b border-white p-4 dark:border-white md:p-5">
+                                            <div class="div">
+                                                <h3 class="text-lg font-semibold text-white dark:text-white">
+                                                    Cetak Data<br>
+                                                </h3>
+                                                <h5 class="text-white">
+                                                    <x-time-saat-ini />
+                                                </h5>
+                                            </div>
+                                            <button type="button"
+                                                class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-white hover:bg-[#D87815] hover:text-white dark:hover:bg-[#D87815] dark:hover:text-white"
+                                                data-modal-close="modal-print" onclick="hideModal()">
+                                                <svg class="h-3 w-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 14 14">
+                                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div
+                                            class="m-auto flex items-center justify-center gap-5 rounded-b border-t border-gray-200 p-4 text-center dark:border-gray-600 md:p-5">
+                                            <button data-modal-hide="static-modal" type="button" id="downloadExcel"
+                                                class="btn rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300">Download
+                                                Excel</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
@@ -156,7 +204,8 @@
                                     <td class="px-3 py-2"><?= $data['keterangan'] ?></td>
                                     <td class="px-3 py-2">
                                         <div class="flex justify-items-center m-auto text-center gap-2">
-                                            <a href="/admin-kebutuhan-guru-slb/edit/{{ $data['id'] }}" title="Edit">
+                                            <a href="/admin-kebutuhan-guru-slb/edit/{{ $data['id'] }}"
+                                                title="Edit">
                                                 <div
                                                     class="bg-[#FA8F21] dark:bg-[#FA8F21] hover:bg-[#D87815] dark:hover:bg-[#D87815] p-1 rounded-md">
                                                     <x-svg-edit />
@@ -259,45 +308,71 @@
                     <div class="relative flex justify-between mt-5">
                         <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
                         {{ $DATA->links() }}
-                        {{-- <div class="">
-                            <nav aria-label="Page navigation example">
-                                <ul class="inline-flex -space-x-px text-sm gap-2">
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('downloadExcel').addEventListener('click', async function() {
+                let data = await fetch('/api/kebutuhan-guru');
+                let allData = await data.json();
+
+                function createExcel(data) {
+                    const header = [
+                        'No',
+                        'Tahun',
+                        'Mata Pelajaran',
+                        'Jumlah Dibutuhkan',
+                        'Jumlah Yang Ada',
+                        'Lebih Kurang',
+                        'Keterangan'
+                    ];
+
+                    const excelData = [header];
+                    data.forEach(function(item, index) {
+                        const rowData = [
+                            index + 1, // No
+                            item.tahun,
+                            item.mataPelajaran,
+                            item.jumlahDibutuhkan,
+                            item.jumlahYangAda,
+                            item.lebihKurang,
+                            item.keterangan
+                        ];
+                        excelData.push(rowData);
+                    });
+
+                    const ws = XLSX.utils.aoa_to_sheet(excelData);
+                    const wb = XLSX.utils.book_new();
+                    XLSX.utils.book_append_sheet(wb, ws, 'KebutuhanGuru');
+
+                    XLSX.writeFile(wb, 'KebutuhanGuru.xlsx');
+                }
+
+                createExcel(allData);
+            });
+        });
+
+
+
+        function showModal() {
+            // Dapatkan modal
+            var modal = document.getElementById("modal-print");
+            // Tampilkan modal
+            modal.classList.remove("hidden");
+            modal.setAttribute("aria-hidden", "false");
+        }
+        // Close modal
+        function hideModal() {
+            // Dapatkan modal
+            var modal = document.getElementById("modal-print");
+            // Sembunyikan modal
+            modal.classList.add("hidden");
+            modal.setAttribute("aria-hidden", "true");
+        }
+    </script>
 </body>
 
 </html>

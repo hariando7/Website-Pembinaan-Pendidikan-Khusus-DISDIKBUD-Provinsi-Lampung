@@ -275,7 +275,7 @@
                     <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="npsn" class="relative" type="text" required="required">
+                                <input name="npsn" class="relative" type="number" required="required">
                                 <span>NPSN</span>
                                 <i></i>
                             </div>

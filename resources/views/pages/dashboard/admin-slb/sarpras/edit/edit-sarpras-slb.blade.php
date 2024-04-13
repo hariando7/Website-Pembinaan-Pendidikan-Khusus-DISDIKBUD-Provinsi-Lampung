@@ -82,7 +82,7 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-slb />
+        <x-dashboard-side-bar-slb id="{{ $id }}"/>
         <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
                 <div class="text-[#297785] font-bold text-[32px]">Edit Sarpras SLB
@@ -197,7 +197,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jumlah">Jumlah</label>
-                            <input value="{{ $DATA['jumlah'] }}" name="jumlah" type="text" id="jumlah"
+                            <input value="{{ $DATA['jumlah'] }}" name="jumlah" type="number" id="jumlah"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Total Luas (550 m2)" required />
                         </div>

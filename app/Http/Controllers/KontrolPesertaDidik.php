@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Sekolah;
 use App\Models\PesertaDidik;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class KontrolPesertaDidik extends Controller
 {
@@ -141,7 +142,7 @@ class KontrolPesertaDidik extends Controller
 
         return $pesertaDidik;
     }
-
+    
     public function tambah(Request $req)
     {
         $pengguna = Auth::user();
@@ -157,6 +158,11 @@ class KontrolPesertaDidik extends Controller
         $validasi['sekolah'] = $pengguna->sekolah;
 
         PesertaDidik::create($validasi);
+
+        Session::flash('toast-tambah', [
+            'type' => 'toast-tambah',
+            'message' => 'Berhasil Menambahkan Data'
+        ]);
 
         return redirect('/admin-pesertadidik-slb');
     }
@@ -201,11 +207,16 @@ class KontrolPesertaDidik extends Controller
 
                 $pesertaDidik->save();
 
+                Session::flash('toast-edit', [
+                    'type' => 'toast-edit',
+                    'message' => 'Berhasil Edit Data'
+                ]);
+
                 return redirect('/admin-pesertadidik-slb');
             }
         }
 
-        return back();
+        // return back();
     }
 
     public function hapus($id)
@@ -218,10 +229,15 @@ class KontrolPesertaDidik extends Controller
             if ($pesertaDidik->sekolah === $pengguna->sekolah) {
                 PesertaDidik::find($id)->delete();
 
+                Session::flash('toast-hapus', [
+                    'type' => 'toast-hapus',
+                    'message' => 'Berhasil Hapus Data'
+                ]);
+
                 return redirect('/admin-pesertadidik-slb');
             }
         }
 
-        return back();
+        // return back();
     }
 }

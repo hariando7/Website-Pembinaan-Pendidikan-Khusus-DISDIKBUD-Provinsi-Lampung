@@ -67,9 +67,14 @@
             <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pl-5 pt-5 pr-5 pb-3"
                 id="moving-border">
                 <div class="max-h-[calc(100%-1rem)] overflow-y-auto hide-scrollbar">
+                    <div class="flex m-auto justify-center items-center">
+                        <x-toast-tambah />
+                        <x-toast-edit />
+                        <x-toast-hapus />
+                    </div>
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">
-                        <div class="basis-[90%]">
+                        <div class="basis-full">
                             <form class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -77,24 +82,25 @@
                                     </div>
                                     <input name="pencarian" type="text" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="cekKosong(this)" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" required />
-                                        <script>
-                                            function cekKosong(e) {
-                                                if (e.value === '') {
-                                                    window.location.href = window.location.origin + window.location.pathname;
-                                                }
+                                        placeholder="Search..." oninput="cekKosong(this)"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" required />
+                                    <script>
+                                        function cekKosong(e) {
+                                            if (e.value === '') {
+                                                window.location.href = window.location.origin + window.location.pathname;
                                             }
-                                        </script>
+                                        }
+                                    </script>
                                 </div>
                             </form>
                         </div>
-                        <div class="basis-[10%]">
+                        {{-- <div class="basis-[10%]">
                             <button type="button"
                                 class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
                                 <x-svg-print />
                                 Print
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">

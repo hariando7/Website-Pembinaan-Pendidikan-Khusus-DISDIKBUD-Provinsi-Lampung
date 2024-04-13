@@ -6,6 +6,8 @@ use App\Models\Pengumuman;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Session;
+
 class KontrolPengumuman extends Controller
 {
     public function index () {
@@ -59,6 +61,11 @@ class KontrolPengumuman extends Controller
 
         Pengumuman::create($validate);
 
+        Session::flash('toast-tambah', [
+            'type' => 'toast-tambah',
+            'message' => 'Berhasil Menambahkan Data'
+        ]);
+
         return redirect('/sa-kelola-notifikasi-slb');
     }
 
@@ -95,6 +102,11 @@ class KontrolPengumuman extends Controller
 
             $pengumuman -> save();
 
+            Session::flash('toast-edit', [
+                'type' => 'toast-edit',
+                'message' => 'Berhasil Edit Data'
+            ]);
+
             return redirect('/sa-kelola-notifikasi-slb');
         }
     }
@@ -103,6 +115,11 @@ class KontrolPengumuman extends Controller
         if (Pengumuman::find($id)) {
             Pengumuman::find($id) -> delete();
         }
+
+        Session::flash('toast-hapus', [
+            'type' => 'toast-hapus',
+            'message' => 'Berhasil Hapus Data'
+        ]);
 
         return redirect('/sa-kelola-notifikasi-slb');
     }
@@ -136,6 +153,11 @@ class KontrolPengumuman extends Controller
         $validate['sistem'] = 'si';
 
         Pengumuman::create($validate);
+
+        Session::flash('toast-tambah', [
+            'type' => 'toast-tambah',
+            'message' => 'Berhasil Menambahkan Data'
+        ]);
 
         return redirect('/sa-kelola-notifikasi-si');
     }
@@ -171,6 +193,11 @@ class KontrolPengumuman extends Controller
 
             $pengumuman -> save();
 
+            Session::flash('toast-edit', [
+                'type' => 'toast-edit',
+                'message' => 'Berhasil Edit Data'
+            ]);
+
             return redirect('/sa-kelola-notifikasi-si');
         }
     }
@@ -179,6 +206,11 @@ class KontrolPengumuman extends Controller
         if (Pengumuman::find($id)) {
             Pengumuman::find($id) -> delete();
         }
+
+        Session::flash('toast-hapus', [
+            'type' => 'toast-hapus',
+            'message' => 'Berhasil Hapus Data'
+        ]);
 
         return redirect('/sa-kelola-notifikasi-si');
     }

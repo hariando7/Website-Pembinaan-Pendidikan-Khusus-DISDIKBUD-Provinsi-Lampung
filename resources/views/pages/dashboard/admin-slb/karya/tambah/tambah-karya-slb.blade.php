@@ -86,7 +86,7 @@
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb />
-        <div class="pl-[280px] h-full pt-2 pr-5 pb-28">
+        <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
                 <div class="text-[#297785] font-bold text-[32px]">Tambah Karya SLB
                 </div>

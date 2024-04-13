@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Sekolah;
 use App\Models\Karya;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class KontrolKarya extends Controller
 {
@@ -172,6 +173,11 @@ class KontrolKarya extends Controller
 
         Karya::create($validasi);
 
+        Session::flash('toast-tambah', [
+            'type' => 'toast-tambah',
+            'message' => 'Berhasil Menambahkan Data'
+        ]);
+
         return redirect('/admin-karya-slb');
     }
 
@@ -209,12 +215,16 @@ class KontrolKarya extends Controller
                 $karya->save();
 
                 // return 'true';
+                Session::flash('toast-edit', [
+                    'type' => 'toast-edit',
+                    'message' => 'Berhasil Edit Data'
+                ]);
                 return redirect('/admin-karya-slb');
             }
         }
 
         // return 'false';
-        return back();
+        // return back();
     }
 
     public function hapus($id)
@@ -231,11 +241,17 @@ class KontrolKarya extends Controller
                 Karya::find($id)->delete();
 
                 // return 'true';
+
+                Session::flash('toast-hapus', [
+                    'type' => 'toast-hapus',
+                    'message' => 'Berhasil Hapus Data'
+                ]);
+
                 return redirect('/admin-karya-slb');
             }
         }
 
         // return 'false';
-        return back();
+        // return back();
     }
 }

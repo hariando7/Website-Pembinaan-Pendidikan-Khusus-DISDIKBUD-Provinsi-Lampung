@@ -985,13 +985,13 @@
                                 <div class="px-6 py-4">
                                     {{-- <div class="font-bold text-xl mb-2">Judul </div> --}}
                                     <p class="text-gray-700 text-base">
-                                        Dokumentasi Kegiatan Bidang Pembinaan Pendidikan Khusus
+                                        Karya Peserta Didik SLB Provinsi Lampung
                                     </p>
                                 </div>
-                                <button id="open-modal-button"
+                                <a href="/karya-slb" id="open-modal-button"
                                     class="text-white text-center mt-6 py-3 bg-[#FA8F21] hover:bg-[#D87815] w-[50%] lg:w-[50%] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] btn border-none m-auto">
                                     Selengkapnya
-                                </button>
+                                </a>
                                 <x-pop-up-landing />
                             </div>
                         </div>
