@@ -27,6 +27,23 @@ class KontrolGuru extends Controller
     //         'bidangStudi' => 'Matematika',
     //     ],
     // ];
+    public function statistik()
+    {
+        $guru = Guru::all();
+        $sekolah = Sekolah::all();
+
+        $data = array_map(function ($data) use ($guru) {
+            $perempuan = $guru->where('sekolah', $data['id'])->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $guru->where('sekolah', $data['id'])->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'namaSekolah' => $data['nama'],
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
     public function lihatSemua()
     {
         $guru = Guru::all();

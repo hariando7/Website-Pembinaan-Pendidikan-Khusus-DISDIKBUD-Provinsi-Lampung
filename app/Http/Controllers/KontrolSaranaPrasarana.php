@@ -28,6 +28,25 @@ class KontrolSaranaPrasarana extends Controller
     //                                     'catatan' => 'Tidak ada catatan',
     //                                 ],
     //                             ];
+    public function statistik()
+    {
+        $saranaPrasarana = SaranaPrasarana::all();
+        $sekolah = Sekolah::all();
+
+        $data = array_map(function ($data) use ($saranaPrasarana) {
+            $baik = $saranaPrasarana->where('sekolah', $data['id'])->where('kondisi', 'Baik')->all();
+            $rusakRingan = $saranaPrasarana->where('sekolah', $data['id'])->where('kondisi', 'Rusak Ringan')->all();
+            $rusakBerat = $saranaPrasarana->where('sekolah', $data['id'])->where('kondisi', 'Rusak Berat')->all();
+            return [
+                'namaSekolah' => $data['nama'],
+                'baik' => count($baik),
+                'rusakRingan' => count($rusakRingan),
+                'rusakBerat' => count($rusakBerat),
+            ];
+        }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
     public function lihatSemua()
     {
         $saranaPrasarana = SaranaPrasarana::all();
@@ -274,7 +293,7 @@ class KontrolSaranaPrasarana extends Controller
                     'type' => 'toast-hapus',
                     'message' => 'Berhasil Hapus Data'
                 ]);
-                
+
                 return redirect('/admin-sarpras-slb');
             }
         }

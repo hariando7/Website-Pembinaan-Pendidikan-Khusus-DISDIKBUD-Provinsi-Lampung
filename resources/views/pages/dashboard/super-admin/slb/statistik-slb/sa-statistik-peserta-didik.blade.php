@@ -83,112 +83,117 @@
     </style>
 </head>
 
-<body class="bg-white z-10">
+<body class="z-10 bg-white">
     <div>
         <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] min-h-screen pt-5 pr-5 pb-28">
+        <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
             <div class="flex justify-between pb-2">
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-statistik-slb" color="#FA8F21" width="[13rem]" title="Kembali"
-                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/sa-statistik-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-xl m-auto">Statistik
+                <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
                     Peserta Didik SLB Provinsi Lampung
                 </div>
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-peserta-didik-slb" color="#FA8F21" width="[13rem]" title="Selengkapnya"
-                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/sa-peserta-didik-slb" color="#FA8F21" width="[13rem]" title="Selengkapnya" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black relative"
-                id="moving-border">
+            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg" id="moving-border">
                 {{-- isi konten disini --}}
-                <div class="max-w-full h-[450px] relative" style="">
-                    <canvas id="myChart" class="top-0 left-0 w-full h-full"></canvas>
+                <div class="relative h-[450px] max-w-full" style="">
+                    <canvas id="myChart" class="left-0 top-0 h-full w-full"></canvas>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        const ctx = document.getElementById('myChart');
-        const labels = ['Sekolah 1', 'Sekolah 2', 'Sekolah 3', 'Sekolah 4', 'Sekolah 5', 'Sekolah 6', 'Sekolah 7',
-            'Sekolah 8', 'Sekolah 9', 'Sekolah 10', 'Sekolah 11', 'Sekolah 12', 'Sekolah 13', 'Sekolah 14',
-            'Sekolah 15',
-            'Sekolah 16', 'Sekolah 17', 'Sekolah 18', 'Sekolah 19', 'Sekolah 20', 'Sekolah 21', 'Sekolah 22',
-            'Sekolah 23', 'Sekolah 24', 'Sekolah 25', 'Sekolah 26', 'Sekolah 27', 'Sekolah 28', 'Sekolah 29',
-            'Sekolah 30', 'Sekolah 31'
-        ]; // Replace with your desired labels
-        const data = {
-            labels: labels,
-            datasets: [{
-                    label: 'Perempuan',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(54, 162, 235)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: 'Laki-Laki',
-                    data: [35, 40, 60, 45, 70, 80, 65],
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(255, 159, 64)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
-                    ],
-                    borderWidth: 1
-                }
-            ]
-        };
+        async function statistik() {
+            const ctx = document.getElementById('myChart');
+            let temp = await fetch('/api/statistik-peserta-didik');
+            let pesertaDidik = await temp.json();
 
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+            let labels = [];
+            let perempuan = [];
+            let lakiLaki = [];
+            pesertaDidik.forEach(item => {
+                labels.push(item['namaSekolah']);
+                perempuan.push(item['perempuan']);
+                lakiLaki.push(item['lakiLaki']);
+            });
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                        label: 'Perempuan',
+                        data: perempuan,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Laki-Laki',
+                        data: lakiLaki,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(255, 159, 64)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
                     }
-                }
-            },
-        };
+                ]
+            };
 
-        // Set canvas size to match its parent
-        const parent = ctx.parentElement;
-        ctx.width = parent.clientWidth;
-        ctx.height = parent.clientHeight;
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            };
 
-        // Draw chart
-        new Chart(ctx, config);
+            // Set canvas size to match its parent
+            const parent = ctx.parentElement;
+            ctx.width = parent.clientWidth;
+            ctx.height = parent.clientHeight;
+
+            // Draw chart
+            new Chart(ctx, config);
+        }
+        statistik();
     </script>
 </body>
 

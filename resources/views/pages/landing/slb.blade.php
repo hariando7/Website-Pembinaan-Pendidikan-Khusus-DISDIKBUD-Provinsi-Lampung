@@ -115,6 +115,22 @@
                             </div> --}}
                             <label for="table-search" class="sr-only">Search</label>
                             <form class="relative">
+                                <select name="filterSekolah" id="filterSekolah" onchange="cariSekolah(this)">
+                                    <option value="">semua</option>
+                                    @foreach ($sekolah as $data)
+                                        <option value="{{ $data['id'] }}" @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data['id']) selected @endif @endif>{{ $data['nama'] }}</option>
+                                    @endforeach
+                                </select>
+                                <script>
+                                    function cariSekolah(e) {
+                                        console.log(e.value);
+                                        if (e.value === '') {
+                                            window.location.href = window.location.origin + window.location.pathname;
+                                        } else {
+                                            e.form.submit();
+                                        }
+                                    }
+                                </script>
                                 <div
                                     class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
                                     <svg class="w-5 h-5 text-gray-400 dark:text-gray-400" aria-hidden="true"

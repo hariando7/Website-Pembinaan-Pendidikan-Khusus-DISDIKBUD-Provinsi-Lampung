@@ -26,6 +26,23 @@ class KontrolTenagaPendidik extends Controller
     //         'bidangTugas' => 'Guru',
     //     ],
     // ];
+    public function statistik()
+    {
+        $tenagaPendidik = TenagaPendidik::all();
+        $sekolah = Sekolah::all();
+
+        $data = array_map(function ($data) use ($tenagaPendidik) {
+            $perempuan = $tenagaPendidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $tenagaPendidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'namaSekolah' => $data['nama'],
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
     public function lihatSemua()
     {
         $tenagaPendidik = TenagaPendidik::all();
@@ -230,7 +247,7 @@ class KontrolTenagaPendidik extends Controller
                 TenagaPendidik::find($id)->delete();
 
                 // return 'true';
-                
+
                 Session::flash('toast-hapus', [
                     'type' => 'toast-hapus',
                     'message' => 'Berhasil Hapus Data'

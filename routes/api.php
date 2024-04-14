@@ -32,3 +32,11 @@ Route::get('/sarana-prasarana', [KontrolSaranaPrasarana::class, 'lihatSemua']);
 Route::get('/kebutuhan-guru', [KontrolKebutuhanGuru::class, 'lihatSemua']);
 Route::get('/karya', [KontrolKarya::class, 'lihatSemua']);
 Route::get('/sekolah-inklusi', [KontrolSekolahInklusi::class, 'lihatSemua']);
+
+
+Route::get('/statistik-peserta-didik', [KontrolPesertaDidik::class, 'statistik']);
+Route::get('/statistik-guru', [KontrolGuru::class, 'statistik']);
+Route::get('/statistik-tenaga-pendidik', [KontrolTenagaPendidik::class, 'statistik']);
+Route::get('/statistik-sarana-prasarana', [KontrolSaranaPrasarana::class, 'statistik']);
+Route::get('/statistik-kebutuhan-guru', [KontrolKebutuhanGuru::class, 'statistik']);
+Route::get('/statistik-karya', [KontrolKarya::class, 'statistik']);

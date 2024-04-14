@@ -257,6 +257,22 @@
                                 </div>
                             </div>
                             <form class="static bg-inherit mt-2 lg:mt-0 mb-5 lg:mb-0">
+                                <select name="filterSekolah" id="filterSekolah" onchange="cariSekolah(this)">
+                                    <option value="">semua</option>
+                                    @foreach ($sekolah as $data)
+                                        <option value="{{ $data['id'] }}" @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data['id']) selected @endif @endif>{{ $data['nama'] }}</option>
+                                    @endforeach
+                                </select>
+                                <script>
+                                    function cariSekolah(e) {
+                                        console.log(e.value);
+                                        if (e.value === '') {
+                                            window.location.href = window.location.origin + window.location.pathname;
+                                        } else {
+                                            e.form.submit();
+                                        }
+                                    }
+                                </script>
                                 <label
                                     class="input input-bordered flex items-center gap-2 bg-white border-solid border-1 border-[#297785] hover:border-[#297785]">
                                     <input type="text"
@@ -301,9 +317,12 @@
                                         <p class="text-gray-700 text-base">
                                             {{ $data['deskripsi'] }}
                                         </p>
+                                        @php
+                                            $temp = $sekolah -> find($data['sekolah'])
+                                        @endphp
                                         <p class="text-gray-700 text-base">
                                             {{-- {{ $data['namaSekolah'] }} --}}
-                                            {{ $data['deskripsi'] }}
+                                            {{ $temp['nama'] }}
                                         </p>
                                     </div>
                                 </div>

@@ -26,6 +26,28 @@ class KontrolKebutuhanGuru extends Controller
     //                                     'keterangan' => 'Kurang',
     //                                 ],
     //                             ];
+    public function statistik()
+    {
+        $kebutuhanGuru = KebutuhanGuru::all();
+        $sekolah = Sekolah::all();
+
+        $data = array_map(function ($data) use ($kebutuhanGuru) {
+            $arr = $kebutuhanGuru->where('sekolah', $data['id'])->all();
+            $jumlahDibutuhkan = 0;
+            $jumlahYangAda = 0;
+            foreach ($arr as $key => $value) {
+                $jumlahDibutuhkan += $value['jumlahDibutuhkan'];
+                $jumlahYangAda += $value['jumlahYangAda'];
+            }
+            return [
+                'namaSekolah' => $data['nama'],
+                'jumlahDibutuhkan' => $jumlahDibutuhkan,
+                'jumlahYangAda' => $jumlahYangAda,
+            ];
+        }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
     public function lihatSemua()
     {
         $kebutuhanGuru = KebutuhanGuru::all();

@@ -26,6 +26,23 @@ class KontrolPesertaDidik extends Controller
     //         'romble' => '1A',
     //     ],
     // ];
+    public function statistik()
+    {
+        $pesertaDidik = PesertaDidik::all();
+        $sekolah = Sekolah::all();
+
+        $data = array_map(function ($data) use ($pesertaDidik) {
+            $perempuan = $pesertaDidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $pesertaDidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'namaSekolah' => $data['nama'],
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
     public function lihatSemua()
     {
         $pesertaDidik = PesertaDidik::all();
@@ -142,7 +159,7 @@ class KontrolPesertaDidik extends Controller
 
         return $pesertaDidik;
     }
-    
+
     public function tambah(Request $req)
     {
         $pengguna = Auth::user();

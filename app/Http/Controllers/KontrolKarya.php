@@ -25,6 +25,21 @@ class KontrolKarya extends Controller
     //                                     'deskripsi' => 'Deskripsi karya 1',
     //                                 ],
     //                             ];
+    public function statistik()
+    {
+        $karya = Karya::all();
+        $sekolah = Sekolah::all();
+
+        $data = array_map(function ($data) use ($karya) {
+            $jumlah = $karya->where('sekolah', $data['id'])->all();
+            return [
+                'namaSekolah' => $data['nama'],
+                'jumlah' => count($jumlah),
+            ];
+        }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
     public function lihatSemua()
     {
         $karya = Karya::all();
