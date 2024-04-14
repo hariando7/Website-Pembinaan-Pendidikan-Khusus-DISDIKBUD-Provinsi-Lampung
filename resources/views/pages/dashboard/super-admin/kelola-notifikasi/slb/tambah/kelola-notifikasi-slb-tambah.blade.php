@@ -8,6 +8,7 @@
     <title>Kelola Notifikasi | Tambah notifikasi SLB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <style>
@@ -47,7 +48,8 @@
                     <x-time-saat-ini />
                 </div>
             </div>
-            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST"
+                class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
                 @csrf
                 {{-- isi konten disini --}}
@@ -92,7 +94,8 @@
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">Send To Email Admin SLB</label>
                             <label class="inline-flex items-center me-5 cursor-pointer">
-                                <input name="kirimEmail" type="checkbox" id="emailCheckbox" class="sr-only peer" checked>
+                                <input name="kirimEmail" type="checkbox" id="emailCheckbox" class="sr-only peer"
+                                    checked>
                                 <div
                                     class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
                                 </div>

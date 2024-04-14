@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
     <!-- Slick Carousel CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -87,9 +88,11 @@
                                 </div>
                                 <ul tabindex="0"
                                     class="dropdown-content z-[1] menu p-2 shadow bg-white text-black rounded-box w-52">
-                                        <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb">semua</a></li>
+                                    <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb">semua</a></li>
                                     @foreach ($sekolah as $data)
-                                        <li class="hover:bg-[#297785] hover:text-white"><a href="/sekolah-luar-biasa?filterSekolah={{ $data['id'] }}">{{ $data['nama'] }}</a></li>
+                                        <li class="hover:bg-[#297785] hover:text-white"><a
+                                                href="/sekolah-luar-biasa?filterSekolah={{ $data['id'] }}">{{ $data['nama'] }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -121,9 +124,10 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <input type="text" name="pencarian" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" id="table-search"
-                                class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-80 bg-white focus:ring-[#2F8386] focus:border-[#2F8386] dark:bg-white dark:border-[#2F8386] dark:placeholder-[#2F8386] dark:text-black dark:focus:ring-[#2F8386] dark:focus:border-[#2F8386]"
-                                placeholder="Search for items" oninput="cekKosong(this)">
+                                <input type="text" name="pencarian"
+                                    value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" id="table-search"
+                                    class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-80 bg-white focus:ring-[#2F8386] focus:border-[#2F8386] dark:bg-white dark:border-[#2F8386] dark:placeholder-[#2F8386] dark:text-black dark:focus:ring-[#2F8386] dark:focus:border-[#2F8386]"
+                                    placeholder="Search for items" oninput="cekKosong(this)">
                                 <script>
                                     function cekKosong(e) {
                                         if (e.value === '') {

@@ -286,7 +286,6 @@
                 </div>
                 <div class="links">
                     <a href="/lupa-password" class="hover:text-white">Forgot Password ?</a>
-                    {{-- <a href="/registrasi-si" class="hover:text-white">Signup</a> --}}
                 </div>
                 <input type="submit" value="Login"
                     class="btn border-none text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">

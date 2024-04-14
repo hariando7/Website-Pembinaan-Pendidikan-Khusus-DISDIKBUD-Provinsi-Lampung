@@ -8,6 +8,7 @@
     <title>Kelola Notifikasi | Edit Notifikasi Sekolah Inklusi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <style>
@@ -47,7 +48,8 @@
                     <x-time-saat-ini />
                 </div>
             </div>
-            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST"
+                class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border">
                 @csrf
                 @method('PUT')
@@ -56,13 +58,15 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Mulai Notifikasi</label>
-                            <input type="datetime-local" id="notificationDateTime1" name="tanggalMulai" value="{{ $DATA['tanggalMulai'] }}"
+                            <input type="datetime-local" id="notificationDateTime1" name="tanggalMulai"
+                                value="{{ $DATA['tanggalMulai'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Selesai Notifikasi</label>
-                            <input type="datetime-local" id="notificationDateTime2" name="tanggalAkhir" value="{{ $DATA['tanggalAkhir'] }}"
+                            <input type="datetime-local" id="notificationDateTime2" name="tanggalAkhir"
+                                value="{{ $DATA['tanggalAkhir'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
