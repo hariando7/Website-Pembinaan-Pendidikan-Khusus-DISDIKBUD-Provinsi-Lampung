@@ -212,7 +212,7 @@
                 <div class="">
                     <div class="text-2xl lg:text-5xl font-bold text-black pb-5 lg:pb-10 text-center lg:text-center">
                         Karya Sekolah Luar Biasa</div>
-                    <div class="text-base lg:text-lg font-thin text-black text-justify">
+                    <div class="text-base lg:text-lg font-thin text-black text-center text-justify">
                         SLB vokasi mengacu pada kurikulum SLB yang lebih menekankan pada pendidikan keterampilan.
                         Tujuannya adalah agar setelah lulus dari sekolah, ABK atau PDPD memiliki modal untuk lebih
                         mandiri, sehingga di masa depan tidak menjadi beban bagi keluarga atau masyarakat di sekitarnya.
@@ -221,119 +221,89 @@
             </div>
         </div>
         <div id="section2" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 lg:pt-0">
-            <div class="lg:w-full lg:flex p-5 lg:pl-20 lg:pr-20 lg:pb-20">
+            <div class="lg:w-full lg:flex lg:pl-20 lg:pr-20 lg:pb-20">
                 <div class="w-full rounded shadow-lg border-solid border-4 border-[#297785]" id="moving-border">
-                    <div class="relative overflow-x-auto sm:rounded-lg p-5">
-                        <div class="lg:flex justify-between lg:mb-5">
-                            <div class="sm:flex flex sm:justify-center justify-center sm:items-center items-center">
-                                <div class="dropdown dropdown-hover">
-                                    <div tabindex="0" role="button"
-                                        class="bg-white text-black hover:bg-[#297785] hover:text-white flex gap-2 btn m-1 border-solid border-1 border-[#297785] hover:border-[#297785]">
-                                        <div class="div">
-                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M24.5002 11.6666H22.1668V4.66659H23.3335V2.33325H4.66683V4.66659H5.8335V11.6666H3.50016C3.19074 11.6666 2.894 11.7895 2.6752 12.0083C2.45641 12.2271 2.3335 12.5238 2.3335 12.8333V23.3333H25.6668V12.8333C25.6668 12.5238 25.5439 12.2271 25.3251 12.0083C25.1063 11.7895 24.8096 11.6666 24.5002 11.6666ZM16.3335 20.9999V16.3333H11.6668V20.9999H8.16683V4.66659H19.8335V20.9999H16.3335Z"
-                                                    fill="currentColor" />
-                                                <path
-                                                    d="M10.5 7H12.8333V9.33333H10.5V7ZM15.1667 7H17.5V9.33333H15.1667V7ZM10.5 11.6667H12.8333V14H10.5V11.6667ZM15.1667 11.6667H17.5V14H15.1667V11.6667Z"
-                                                    fill="currentColor" />
-                                            </svg>
-                                        </div>
-                                        <div class="div">
-                                            Pilih Sekolah
-                                        </div>
-                                    </div>
-                                    <ul tabindex="0"
-                                        class="dropdown-content z-[1] menu p-2 shadow bg-white text-black rounded-box w-52">
-                                        <li class="hover:bg-[#297785] hover:text-white"><a href="/karya-slb">semua</a>
-                                        </li>
-                                        @foreach ($sekolah as $data)
-                                            <li class="hover:bg-[#297785] hover:text-white"><a
-                                                    href="/karya-slb?filterSekolah={{ $data['id'] }}">{{ $data['nama'] }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                    <div class="sm:rounded-lg p-5">
+                        <form class="static bg-white mt-2 lg:-mt-5 lg:mb-0">
+                            <div class="flex justify-between">
+                                <select name="filterSekolah" id="filterSekolah"
+                                    class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                    onchange="cariSekolah(this)">
+                                    <option value="">semua</option>
+                                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg>
+                                    @foreach ($sekolah as $data)
+                                        <option value="{{ $data['id'] }}"
+                                            @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data['id']) selected @endif
+                                            @endif>{{ $data['nama'] }}</option>
+                                    @endforeach
+                                    <script>
+                                        function cariSekolah(e) {
+                                            console.log(e.value);
+                                            if (e.value === '') {
+                                                window.location.href = window.location.origin + window.location.pathname;
+                                            } else {
+                                                e.form.submit();
+                                            }
+                                        }
+                                    </script>
+                                </select>
+                                <div class="relative w-full">
+                                    <input type="search" id="search-dropdown" name="pencarian"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
+                                        class="block p-2.5 w-full h-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Cari data" oninput="cekKosong(this)" required />
+                                    <button type="submit"
+                                        class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-[#2F8386] rounded-e-lg border border-[#2F8386] hover:bg-[#FA8F21] focus:ring-4 focus:outline-none focus:ring-#FA8F21">
+                                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                        </svg>
+                                        <span class="sr-only">Search</span>
+                                    </button>
+                                    <script>
+                                        function cekKosong(e) {
+                                            if (e.value === '') {
+                                                window.location.href = window.location.origin + window.location.pathname;
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                        </form>
+                    </div>
+                    {{-- Isi Content --}}
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        @foreach ($dummyData as $index => $data)
+                            <div class="relative max-w-sm rounded overflow-hidden shadow-lg ">
+                                <img class="w-full h-[300px] w-[300px]"
+                                    src="{{ url(asset('storage/' . $data['gambar'])) }}"
+                                    alt="Gambar {{ $index + 1 }}">
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2 text-[#297785]">{{ $data['nama'] }}</div>
+                                    <p class="text-gray-700 text-base">
+                                        {{ $data['deskripsi'] }}
+                                    </p>
+                                    @php
+                                        $temp = $sekolah->find($data['sekolah']);
+                                    @endphp
+                                    <p class="text-gray-700 text-base">
+                                        {{-- {{ $data['namaSekolah'] }} --}}
+                                        {{ $temp['nama'] }}
+                                    </p>
                                 </div>
                             </div>
-                            <form class="static bg-inherit mt-2 lg:mt-0 mb-5 lg:mb-0">
-                                <select name="filterSekolah" id="filterSekolah" onchange="cariSekolah(this)">
-                                    <option value="">semua</option>
-                                    @foreach ($sekolah as $data)
-                                        <option value="{{ $data['id'] }}" @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data['id']) selected @endif @endif>{{ $data['nama'] }}</option>
-                                    @endforeach
-                                </select>
-                                <script>
-                                    function cariSekolah(e) {
-                                        console.log(e.value);
-                                        if (e.value === '') {
-                                            window.location.href = window.location.origin + window.location.pathname;
-                                        } else {
-                                            e.form.submit();
-                                        }
-                                    }
-                                </script>
-                                <label
-                                    class="input input-bordered flex items-center gap-2 bg-white border-solid border-1 border-[#297785] hover:border-[#297785]">
-                                    <input type="text"
-                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
-                                        class="grow border-none focus:ring-white focus:border-white text-black"
-                                        placeholder="Search Karya SLB" name="pencarian" oninput="cekKosong(this)" />
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="black"
-                                        class="w-4 h-4 opacity-70">
-                                        <path fill-rule="evenodd"
-                                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </label>
-                                <script>
-                                    function cekKosong(e) {
-                                        if (e.value === '') {
-                                            window.location.href = window.location.origin + window.location.pathname;
-                                        }
-                                    }
-                                </script>
-                                {{-- <label for="table-search" class="sr-only">Search</label>
-                                <div class="relative">
-                                    <div
-                                        class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                                        <x-svg-search />
-                                    </div>
-                                    <input type="text" id="table-search"
-                                        class="block p-2 ps-10 text-sm text-black border border-black rounded-lg w-full lg:w-[750px] bg-white focus:ring-[#2F8386] focus:border-[#2F8386]"
-                                        placeholder="Search...">
-                                </div> --}}
-                            </form>
-                        </div>
-                        {{-- Isi Content --}}
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            @foreach ($dummyData as $index => $data)
-                                <div class="relative max-w-sm rounded overflow-hidden shadow-lg ">
-                                    <img class="w-full h-[300px] w-[300px]"
-                                        src="{{ url(asset('storage/' . $data['gambar'])) }}"
-                                        alt="Gambar {{ $index + 1 }}">
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2 text-[#297785]">{{ $data['nama'] }}</div>
-                                        <p class="text-gray-700 text-base">
-                                            {{ $data['deskripsi'] }}
-                                        </p>
-                                        @php
-                                            $temp = $sekolah -> find($data['sekolah'])
-                                        @endphp
-                                        <p class="text-gray-700 text-base">
-                                            {{-- {{ $data['namaSekolah'] }} --}}
-                                            {{ $temp['nama'] }}
-                                        </p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="relative flex justify-between mt-5">
-                            <div class="font-bold text-black">Jumlah : {{ count($dummyData) }}</div>
-                        </div>
+                        @endforeach
+                    </div>
+                    <div class="relative flex justify-between mt-5">
+                        <div class="font-bold text-black">Jumlah : {{ count($dummyData) }}</div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </x-layout-landing>
 </body>

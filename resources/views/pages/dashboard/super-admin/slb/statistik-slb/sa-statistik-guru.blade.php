@@ -92,7 +92,8 @@
                     <x-buttitle-landing ref="/sa-statistik-slb" color="#FA8F21" width="[13rem]" title="Kembali"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-xl m-auto">Statistik Guru
+                <div class="text-center items-center justify-center text-[#297785] font-bold text-xl m-auto">Statistik
+                    Guru
                     SLB Provinsi Lampung
                 </div>
                 <div class="div">
@@ -110,84 +111,92 @@
         </div>
     </div>
     <script>
-        const ctx = document.getElementById('myChart');
-        const labels = ['Sekolah 1', 'Sekolah 2', 'Sekolah 3', 'Sekolah 4', 'Sekolah 5', 'Sekolah 6', 'Sekolah 7',
-            'Sekolah 8', 'Sekolah 9', 'Sekolah 10', 'Sekolah 11', 'Sekolah 12', 'Sekolah 13', 'Sekolah 14',
-            'Sekolah 15',
-            'Sekolah 16', 'Sekolah 17', 'Sekolah 18', 'Sekolah 19', 'Sekolah 20', 'Sekolah 21', 'Sekolah 22',
-            'Sekolah 23', 'Sekolah 24', 'Sekolah 25', 'Sekolah 26', 'Sekolah 27', 'Sekolah 28', 'Sekolah 29',
-            'Sekolah 30', 'Sekolah 31'
-        ]; // Replace with your desired labels
-        const data = {
-            labels: labels,
-            datasets: [{
-                    label: 'Perempuan',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(54, 162, 235)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: 'Laki-Laki',
-                    data: [35, 40, 60, 45, 70, 80, 65],
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(255, 159, 64)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
-                    ],
-                    borderWidth: 1
-                }
-            ]
-        };
+        async function statistik() {
+            const ctx = document.getElementById('myChart');
+            let temp = await fetch('/api/statistik-guru');
+            let guru = await temp.json();
 
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+            const labels = [];
+            let perempuan = [];
+            let lakiLaki = [];
+            guru.forEach(item => {
+                labels.push(item['namaSekolah']);
+                perempuan.push(item['perempuan']);
+                lakiLaki.push(item['lakiLaki']);
+            });
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                        label: 'Perempuan',
+                        data: perempuan,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Laki-Laki',
+                        data: lakiLaki,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(255, 159, 64)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
                     }
-                }
-            },
-        };
+                ]
+            };
 
-        // Set canvas size to match its parent
-        const parent = ctx.parentElement;
-        ctx.width = parent.clientWidth;
-        ctx.height = parent.clientHeight;
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            };
 
-        // Draw chart
-        new Chart(ctx, config);
+            // Set canvas size to match its parent
+            const parent = ctx.parentElement;
+            ctx.width = parent.clientWidth;
+            ctx.height = parent.clientHeight;
+
+            // Draw chart
+            new Chart(ctx, config);
+        }
+        statistik();
     </script>
 </body>
 

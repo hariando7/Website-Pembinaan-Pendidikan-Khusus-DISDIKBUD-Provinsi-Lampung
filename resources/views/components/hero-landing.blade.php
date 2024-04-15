@@ -12,7 +12,7 @@
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                 <a href="{{ $ref }}"
                     class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#FA8F21] dark:focus:ring-[#FA8F21] btn">
-                    <span class="text-sm">S</span><span class="lowercase">elengkapnya</span>
+                    <span class="uppercase">S</span><span class="lowercase">elengkapnya</span>
                     <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -21,9 +21,8 @@
                 </a>
                 <a href="/tentang-bidang-pembinaan-pendidikan-khusus"
                     class="btn inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400 bg-transparent">
-                    <span class="text-sm">T</span><span class="lowercase">entang</span><span class="ml-1"></span>
-                    <span class="text-sm">B</span><span class="lowercase">idang</span>
-
+                    <span class="uppercase">T</span><span class="lowercase">entang</span><span class="ml-1"></span>
+                    <span class="uppercase">B</span><span class="lowercase">idang</span>
                 </a>
             </div>
         </div>
