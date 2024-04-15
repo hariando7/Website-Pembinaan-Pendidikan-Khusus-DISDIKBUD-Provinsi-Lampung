@@ -92,29 +92,9 @@
                                         }
                                     }
                                 </script>
-                                {{-- <button id="dropdown-button" data-dropdown-toggle="dropdown"
-                                    class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
-                                    type="button" onclick="toggleDropdown()">Filter Nama Sekolah
-                                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 1 4 4 4-4" />
-                                    </svg>
-                                </button> --}}
-                                {{-- <div id="dropdown"
-                                    class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#FA8F21] top-full mt-1">
-                                    <ul class="py-2 text-sm text-gray-200 dark:text-gray-200"
-                                        aria-labelledby="dropdown-button">
-                                        <li>
-                                            <a href="#" onclick="filterGender('All')"
-                                                class="block px-4 py-2 hover:bg-[#D87815] dark:hover:bg-[#D87815] dark:hover:text-white hover:text-white">Bina
-                                                Insani</a>
-                                        </li>
-                                    </ul>
-                                </div> --}}
                             </div>
                         </div>
-                        <div class="basis-[70%]">
+                        <div class="basis-[80%]">
                             <div class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -135,13 +115,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="basis-[10%]">
+                        {{-- <div class="basis-[10%]">
                             <button type="button"
                                 class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
                                 <x-svg-print />
                                 Print
                             </button>
-                        </div>
+                        </div> --}}
                     </form>
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
