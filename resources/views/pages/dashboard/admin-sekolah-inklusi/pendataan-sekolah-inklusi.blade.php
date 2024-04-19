@@ -267,7 +267,7 @@
                             <div class="inputBox relative w-full mt-5">
                                 <select class="text-black" id="tahun" name="tahun" type="select" required>
                                 </select>
-                                <span>Tahun Pelajaran</span>
+                                <span>Tahun Ajaran</span>
                                 <i></i>
                                 <script>
                                     function populateTahunOptions() {

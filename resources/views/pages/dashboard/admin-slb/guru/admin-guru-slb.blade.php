@@ -77,7 +77,29 @@
                     </div>
                     {{-- isi konten disini --}}
                     <div class="flex flex-row gap-2">
-                        <div class="basis-[90%]">
+                        <div class="basis-[20%]">
+                            <select name="filterSekolah" id="filterSekolah"
+                                class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
+                                onchange="cariSekolah(this)">
+                                <option value="">Tahun Ajaran</option>
+                                {{-- @foreach ($sekolah as $data)
+                                    <option value="{{ $data->id }}"
+                                        @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data->id) selected @endif
+                                        @endif>{{ $data->nama }}</option>
+                                @endforeach --}}
+                            </select>
+                            <script>
+                                function cariSekolah(e) {
+                                    console.log(e.value);
+                                    if (e.value === '') {
+                                        window.location.href = window.location.origin + window.location.pathname;
+                                    } else {
+                                        e.form.submit();
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <div class="basis-[70%]">
                             <form class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -152,7 +174,7 @@
                                         No
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Tahun
+                                        Tahun Pelajaran
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Nama Guru
@@ -329,7 +351,7 @@
                 function createExcel(data) {
                     const headers = [
                         'No',
-                        'Tahun',
+                        'Tahun Pelajaran',
                         'Nama Guru',
                         'Jenis Kelamin',
                         'NIP',

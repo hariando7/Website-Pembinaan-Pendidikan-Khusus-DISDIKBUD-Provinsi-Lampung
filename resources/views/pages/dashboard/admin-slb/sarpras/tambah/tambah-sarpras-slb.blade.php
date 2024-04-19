@@ -100,7 +100,7 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label for="tahun">Tahun Pelajaran</label>
+                            <label for="tahun">Tahun Ajaran</label>
                             <select name="tahun" id="tahun"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>

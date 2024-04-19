@@ -245,7 +245,7 @@
         <div class="box relative w-[400px] h-[500px] m-auto flex items-center m-auto mt-10">
             <form autocomplete="off" class="" action={{ url('/login') }} method="POST">
                 @csrf
-                <h2 class="mb-5">selamat datang
+                <h2 class="mb-5">Selamat Datang
                     di Dashboard SLB Bidang
                     Pembinaan Pendidikan Khusus</h2>
                 <h2 class="mb-3 font-bold">Login</h2>
