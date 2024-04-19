@@ -124,7 +124,7 @@
             outline: none;
             box-shadow: none;
             border: none;
-            color: white;
+            color: black;
             font-size: 1em;
             letter-spacing: 0.05em;
             transition: 0.5s;
@@ -153,7 +153,7 @@
             outline: none;
             box-shadow: none;
             border: none;
-            color: white;
+            color: black;
             font-size: 1em;
             letter-spacing: 0.05em;
             transition: 0.5s;
@@ -253,7 +253,7 @@
             </div>
         </div>
         <div
-            class="box relative w-[300px] h-[500px] lg:w-[845px] lg:h-[820px] m-auto flex items-center m-auto mt-32 lg:mt-5 lg:mb-5">
+            class="box relative w-[300px] h-[500px] lg:w-[845px] lg:h-[900px] m-auto flex items-center m-auto mt-32 lg:mt-5 lg:mb-5">
             <!-- Konten div Anda -->
             <form method="POST" autocomplete="off" class="overflow-y-auto lg:overflow-hidden">
                 @csrf
@@ -261,6 +261,35 @@
                     Selamat Datang di Portal <br>
                     Pendataan Sekolah Inklusi <br>
                     Dinas Pendidikan Dan Kebudayaan Provinsi Lampung</h2>
+                <div class="">
+                    <div class="lg:flex gap-x-2">
+                        <div class="flex flex-col flex-1">
+                            <div class="inputBox relative w-full mt-5">
+                                <select class="text-black" id="tahun" name="tahun" type="select" required>
+                                </select>
+                                <span>Tahun Pelajaran</span>
+                                <i></i>
+                                <script>
+                                    function populateTahunOptions() {
+                                        var select = document.getElementById("tahun");
+                                        var date = new Date();
+                                        var year = date.getFullYear();
+                                        var month = date.getMonth() + 1;
+                                        select.innerHTML = '';
+                                        if (month >= 1 && month <= 7) {
+                                            select.add(new Option((year - 1) + "/" + year, year - 1));
+                                            select.add(new Option(year + "/" + (year + 1), year));
+                                        } else {
+                                            select.add(new Option(year + "/" + (year + 1), year));
+                                            select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                                        }
+                                    }
+                                    window.onload = populateTahunOptions;
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="">
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
@@ -308,11 +337,13 @@
                             <div class="inputBox relative w-full mt-5">
                                 <select id="statusSekolah" name="kota" type="select" id="statusSekolah" required>
                                     <option value="pilih" hidden class="text-black">Pilih Kab/Kota</option>
-                                    <option value="Kab. Lampung Tengah" class="text-black">Kab. Lampung Tengah</option>
+                                    <option value="Kab. Lampung Tengah" class="text-black">Kab. Lampung Tengah
+                                    </option>
                                     <option value="Kab. Lampung Timur" class="text-black">Kab. Lampung Timur</option>
                                     <option value="Kab. Lampung Selatan" class="text-black">Kab. Lampung Selatan
                                     </option>
-                                    <option value="Kota Bandar Lampung" class="text-black">Kota Bandar Lampung</option>
+                                    <option value="Kota Bandar Lampung" class="text-black">Kota Bandar Lampung
+                                    </option>
                                     <option value="Kab. Tanggamus" class="text-black">Kab. Tanggamus</option>
                                     <option value="Kab. Lampung Utara" class="text-black">Kab. Lampung Utara</option>
                                     <option value="Kab. Way Kanan" class="text-black">Kab. Way Kanan</option>

@@ -279,9 +279,10 @@
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         @foreach ($dummyData as $index => $data)
                             <div class="relative max-w-sm rounded overflow-hidden shadow-lg ">
-                                <img class="w-full h-[300px] w-[300px]"
-                                    src="{{ url(asset('storage/' . $data['gambar'])) }}"
-                                    alt="Gambar {{ $index + 1 }}">
+                                <div class="m-auto"> <img class="w-full h-[300px] w-[300px]"
+                                        src="{{ url(asset('storage/' . $data['gambar'])) }}"
+                                        alt="Gambar {{ $index + 1 }}">
+                                </div>
                                 <div class="px-6 py-4">
                                     <div class="font-bold text-xl mb-2 text-[#297785]">{{ $data['nama'] }}</div>
                                     <p class="text-gray-700 text-base">

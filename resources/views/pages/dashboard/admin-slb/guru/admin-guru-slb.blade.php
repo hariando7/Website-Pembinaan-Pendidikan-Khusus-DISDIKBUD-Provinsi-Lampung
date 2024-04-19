@@ -158,7 +158,7 @@
                                         Nama Guru
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        JK
+                                        Jenis Kelamin
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         NIP

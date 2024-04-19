@@ -51,6 +51,34 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
+                            <label for="tahun">Tahun Pelajaran</label>
+                            <select name="tahun" id="tahun"
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                required>
+                            </select>
+                        </div>
+                    </div>
+                    <script>
+                        function populateTahunOptions() {
+                            var select = document.getElementById("tahun");
+                            var date = new Date();
+                            var year = date.getFullYear();
+                            var month = date.getMonth() + 1;
+                            select.innerHTML = '';
+                            if (month >= 1 && month <= 7) {
+                                select.add(new Option((year - 1) + "/" + year, year - 1));
+                                select.add(new Option(year + "/" + (year + 1), year));
+                            } else {
+                                select.add(new Option(year + "/" + (year + 1), year));
+                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                            }
+                        }
+                        window.onload = populateTahunOptions;
+                    </script>
+                </div>
+                <div class=''>
+                    <div class="flex gap-x-2">
+                        <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="name">Nama tendik</label>
                             <input type="text" id="name" name="nama"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"

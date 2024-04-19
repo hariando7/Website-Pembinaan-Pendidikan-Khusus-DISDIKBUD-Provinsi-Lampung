@@ -95,10 +95,39 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <form method="POST" class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <form method="POST"
+                class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
                 id="moving-border" enctype="multipart/form-data">
                 @csrf
                 {{-- isi konten disini --}}
+                <div class=''>
+                    <div class="flex gap-x-2">
+                        <div class="flex flex-col flex-1 mb-4">
+                            <label for="tahun">Tahun Pelajaran</label>
+                            <select name="tahun" id="tahun"
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                required>
+                            </select>
+                        </div>
+                    </div>
+                    <script>
+                        function populateTahunOptions() {
+                            var select = document.getElementById("tahun");
+                            var date = new Date();
+                            var year = date.getFullYear();
+                            var month = date.getMonth() + 1;
+                            select.innerHTML = '';
+                            if (month >= 1 && month <= 7) {
+                                select.add(new Option((year - 1) + "/" + year, year - 1));
+                                select.add(new Option(year + "/" + (year + 1), year));
+                            } else {
+                                select.add(new Option(year + "/" + (year + 1), year));
+                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                            }
+                        }
+                        window.onload = populateTahunOptions;
+                    </script>
+                </div>
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
@@ -123,8 +152,9 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="gambarKarya">Gambar Karya</label>
-                            <input type="file" name="gambar" id="gambarKarya" accept="image/png, image/jpeg, image/jpg"
-                                class="custom-file-input" onchange="previewImage(event)" required />
+                            <input type="file" name="gambar" id="gambarKarya"
+                                accept="image/png, image/jpeg, image/jpg" class="custom-file-input"
+                                onchange="previewImage(event)" required />
                             <img id="preview" src="" alt="Preview Gambar" class="mt-5"
                                 style="max-width: 300px; max-height: 300px;">
                             <span id="deleteIcon" style="display: none; cursor: pointer;"><i

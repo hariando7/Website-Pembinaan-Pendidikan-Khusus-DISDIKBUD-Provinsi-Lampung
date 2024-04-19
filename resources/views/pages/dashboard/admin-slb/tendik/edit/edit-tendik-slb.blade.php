@@ -137,6 +137,34 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
+                            <label for="tahun">Tahun Pelajaran</label>
+                            <select name="tahun" id="tahun"
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                required>
+                            </select>
+                        </div>
+                    </div>
+                    <script>
+                        function populateTahunOptions() {
+                            var select = document.getElementById("tahun");
+                            var date = new Date();
+                            var year = date.getFullYear();
+                            var month = date.getMonth() + 1;
+                            select.innerHTML = '';
+                            if (month >= 1 && month <= 7) {
+                                select.add(new Option((year - 1) + "/" + year, year - 1));
+                                select.add(new Option(year + "/" + (year + 1), year));
+                            } else {
+                                select.add(new Option(year + "/" + (year + 1), year));
+                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                            }
+                        }
+                        window.onload = populateTahunOptions;
+                    </script>
+                </div>
+                <div class=''>
+                    <div class="flex gap-x-2">
+                        <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="name">Nama tendik</label>
                             <input type="text" id="name" name="nama"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
@@ -147,7 +175,8 @@
                             <select value="{{ $DATA['jenisKelamin'] }}" name="jenisKelamin" id="jeniskelamin"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>
-                                <option value="{{ $DATA['jenisKelamin'] }}" disabled selected>{{ $DATA['jenisKelamin'] }}</option>
+                                <option value="{{ $DATA['jenisKelamin'] }}" disabled selected>
+                                    {{ $DATA['jenisKelamin'] }}</option>
                                 <option value="Laki-Laki">Laki-Laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
@@ -171,7 +200,8 @@
                             <select value="{{ $DATA['statusPNS'] }}" name="statusPNS" id="statusPNS"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>
-                                <option value="{{ $DATA['statusPNS'] }}" disabled selected>{{ $DATA['statusPNS'] }}</option>
+                                <option value="{{ $DATA['statusPNS'] }}" disabled selected>{{ $DATA['statusPNS'] }}
+                                </option>
                                 <option value="PNS">PNS</option>
                                 <option value="Non PNS">Non PNS</option>
                             </select>
@@ -180,8 +210,8 @@
                             <label htmlFor="romble">Bidang Tugas/ Pekerjaan</label>
                             <input type="text" id="romble" name="bidangPekerjaan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Bidang Tugas / Pekerjaan" value="{{ $DATA['bidangPekerjaan'] }}"
-                                required />
+                                placeholder="Masukkan Bidang Tugas / Pekerjaan"
+                                value="{{ $DATA['bidangPekerjaan'] }}" required />
                         </div>
                     </div>
                 </div>

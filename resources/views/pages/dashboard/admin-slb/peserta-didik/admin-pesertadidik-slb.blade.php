@@ -166,7 +166,7 @@
                                         Nama Siswa
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        JK
+                                        Jenis Kelamin
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Jenis Ketunaan
@@ -174,9 +174,9 @@
                                     <th scope="col" class="px-3 py-2">
                                         Kelas
                                     </th>
-                                    <th scope="col" class="px-3 py-2">
+                                    {{-- <th scope="col" class="px-3 py-2">
                                         Romble
-                                    </th>
+                                    </th> --}}
                                     <th scope="col" class="px-3 py-2">
                                         Aksi
                                     </th>
@@ -209,7 +209,6 @@
                                     <td class="px-3 py-2"><?= $data['jenisKelamin'] ?></td>
                                     <td class="px-3 py-2"><?= $data['jenisKetunaan'] ?></td>
                                     <td class="px-3 py-2"><?= $data['kelas'] ?></td>
-                                    <td class="px-3 py-2"><?= $data['romble'] ?></td>
                                     <td class="px-3 py-2">
                                         <div class="m-auto flex justify-items-center gap-2 text-center">
                                             <a href="/admin-pesertadidik-slb/edit/{{ $data['id'] }}" title="Edit">
@@ -332,10 +331,9 @@
                         'No',
                         'Tahun',
                         'Nama Siswa',
-                        'JK',
+                        'Jenis Kelamin',
                         'Jenis Ketunaan',
                         'Kelas',
-                        'Romble'
                     ];
 
                     const excelData = [header];
@@ -347,7 +345,6 @@
                             item.jenisKelamin,
                             item.jenisKetunaan,
                             item.kelas,
-                            item.romble
                         ];
                         excelData.push(rowData);
                     });

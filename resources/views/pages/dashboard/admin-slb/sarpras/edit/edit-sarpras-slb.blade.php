@@ -82,7 +82,7 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-slb id="{{ $id }}"/>
+        <x-dashboard-side-bar-slb id="{{ $id }}" />
         <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
                 <div class="text-[#297785] font-bold text-[32px]">Edit Sarpras SLB
@@ -186,6 +186,34 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
+                            <label for="tahun">Tahun Pelajaran</label>
+                            <select name="tahun" id="tahun"
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                required>
+                            </select>
+                        </div>
+                    </div>
+                    <script>
+                        function populateTahunOptions() {
+                            var select = document.getElementById("tahun");
+                            var date = new Date();
+                            var year = date.getFullYear();
+                            var month = date.getMonth() + 1;
+                            select.innerHTML = '';
+                            if (month >= 1 && month <= 7) {
+                                select.add(new Option((year - 1) + "/" + year, year - 1));
+                                select.add(new Option(year + "/" + (year + 1), year));
+                            } else {
+                                select.add(new Option(year + "/" + (year + 1), year));
+                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                            }
+                        }
+                        window.onload = populateTahunOptions;
+                    </script>
+                </div>
+                <div class=''>
+                    <div class="flex gap-x-2">
+                        <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="nama">Gedung/Ruang</label>
                             <input name="nama" value="{{ $DATA['nama'] }}" type="text" id="nama"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
@@ -235,10 +263,10 @@
                                 onchange="previewImages(event)" />
 
                             @foreach ($daftarGambar as $gambar)
-                                <img id="preview" src="{{ url(asset('storage/' . $gambar -> gambar)) }}"
+                                <img id="preview" src="{{ url(asset('storage/' . $gambar->gambar)) }}"
                                     alt="Preview Gambar" class="mt-5" style="max-width: 300px; max-height: 300px;">
                             @endforeach
-                            
+
                             <div id="previewContainer" class="mt-5" style="display: flex; flex-wrap: wrap;"></div>
                             <span id="deleteIcon" style="display: none; cursor: pointer;"><i
                                     class="fas fa-times-circle">Hapus Gambar</i></span>

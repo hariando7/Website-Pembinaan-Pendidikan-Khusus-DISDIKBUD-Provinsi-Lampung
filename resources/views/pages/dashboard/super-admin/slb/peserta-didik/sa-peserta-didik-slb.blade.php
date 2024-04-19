@@ -89,28 +89,6 @@
                                     }
                                 }
                             </script>
-                            {{-- <div class="relative">
-                                    <button id="dropdown-button" data-dropdown-toggle="dropdown"
-                                        class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
-                                        type="button" onclick="toggleDropdown()">Filter Nama Sekolah
-                                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="m1 1 4 4 4-4" />
-                                        </svg>
-                                    </button>
-                                    <div id="dropdown"
-                                        class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#FA8F21] top-full mt-1">
-                                        <ul class="py-2 text-sm text-gray-200 dark:text-gray-200"
-                                            aria-labelledby="dropdown-button">
-                                            <li>
-                                                <a href="#" onclick="filterGender('All')"
-                                                    class="block px-4 py-2 hover:bg-[#D87815] dark:hover:bg-[#D87815] dark:hover:text-white hover:text-white">Bina
-                                                    Insani</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> --}}
                         </div>
                         <div class="basis-[70%]">
                             <div class="flex items-center mx-auto my-auto">
@@ -197,7 +175,7 @@
                                         Nama Siswa
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        JK
+                                        Jenis Kelamin
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Jenis Ketunaan
@@ -205,9 +183,9 @@
                                     <th scope="col" class="px-3 py-2">
                                         Kelas
                                     </th>
-                                    <th scope="col" class="px-3 py-2">
+                                    {{-- <th scope="col" class="px-3 py-2">
                                         Romble
-                                    </th>
+                                    </th> --}}
                                 </tr>
                             <tbody>
                                 <?php
@@ -238,7 +216,6 @@
                                     <td class="px-3 py-2"><?= $data['jenisKelamin'] ?></td>
                                     <td class="px-3 py-2"><?= $data['jenisKetunaan'] ?></td>
                                     <td class="px-3 py-2"><?= $data['kelas'] ?></td>
-                                    <td class="px-3 py-2"><?= $data['romble'] ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -266,10 +243,9 @@
                         'Tahun',
                         'Nama Sekolah',
                         'Nama Siswa',
-                        'JK',
+                        'Jenis Kelamin',
                         'Jenis Ketunaan',
                         'Kelas',
-                        'Romble'
                     ];
 
                     const excelData = [header];
@@ -282,7 +258,6 @@
                             item.jenisKelamin,
                             item.jenisKetunaan,
                             item.kelas,
-                            item.romble
                         ];
                         excelData.push(rowData);
                     });

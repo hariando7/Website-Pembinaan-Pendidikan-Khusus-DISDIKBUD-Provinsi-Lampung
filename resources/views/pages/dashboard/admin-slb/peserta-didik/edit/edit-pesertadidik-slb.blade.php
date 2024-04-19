@@ -137,6 +137,34 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
+                            <label for="tahun">Tahun Pelajaran</label>
+                            <select name="tahun" id="tahun"
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                required>
+                            </select>
+                        </div>
+                    </div>
+                    <script>
+                        function populateTahunOptions() {
+                            var select = document.getElementById("tahun");
+                            var date = new Date();
+                            var year = date.getFullYear();
+                            var month = date.getMonth() + 1;
+                            select.innerHTML = '';
+                            if (month >= 1 && month <= 7) {
+                                select.add(new Option((year - 1) + "/" + year, year - 1));
+                                select.add(new Option(year + "/" + (year + 1), year));
+                            } else {
+                                select.add(new Option(year + "/" + (year + 1), year));
+                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                            }
+                        }
+                        window.onload = populateTahunOptions;
+                    </script>
+                </div>
+                <div class=''>
+                    <div class="flex gap-x-2">
+                        <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="name">Nama Peserta Didik</label>
                             <input type="text" name="nama" id="name"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
@@ -147,7 +175,8 @@
                             <select value="{{ $DATA['jenisKelamin'] }}" name="jenisKelamin" id="jeniskelamin"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>
-                                <option value="{{ $DATA['jenisKelamin'] }}" disabled selected>{{ $DATA['jenisKelamin'] }}</option>
+                                <option value="{{ $DATA['jenisKelamin'] }}" disabled selected>
+                                    {{ $DATA['jenisKelamin'] }}</option>
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
@@ -157,33 +186,38 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
+                            <label for="kelas">Kelas Peserta Didik</label>
+                            <select name="kelas" id="kelas" value="{{ $DATA['kelas'] }}"
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                required>
+                                <option value="" disabled selected>Pilih Kelas</option>
+                                <option value="1">Kelas 1</option>
+                                <option value="2">Kelas 2</option>
+                                <option value="3">Kelas 3</option>
+                                <option value="4">Kelas 4</option>
+                                <option value="5">Kelas 5</option>
+                                <option value="6">Kelas 6</option>
+                                <option value="7">Kelas 7</option>
+                                <option value="8">Kelas 8</option>
+                                <option value="9">Kelas 9</option>
+                                <option value="10">Kelas 10</option>
+                                <option value="11">Kelas 11</option>
+                                <option value="12">Kelas 12</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">Jenis Ketunaan</label>
                             <select value="{{ $DATA['jenisKetunaan'] }}" name="jenisKetunaan" id="jenisketunaan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>
-                                <option value="{{ $DATA['jenisKetunaan'] }}" disabled selected>{{ $DATA['jenisKetunaan'] }}</option>
+                                <option value="{{ $DATA['jenisKetunaan'] }}" disabled selected>
+                                    {{ $DATA['jenisKetunaan'] }}</option>
                                 <option value="Tunanetra">Tunanetra</option>
                                 <option value="Tunarungu">Tunarungu</option>
                                 <option value="Tuna Laras">Tuna Laras</option>
                                 <option value="Tunadaksa">Tunadaksa</option>
                                 <option value="Tunagrahita">Tunagrahita</option>
                             </select>
-                        </div>
-                    </div>
-                </div>
-                <div class=''>
-                    <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="kelas">Kelas</label>
-                            <input type="text" name="kelas" id="kelas"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Kelas" value="{{ $DATA['kelas'] }}" required />
-                        </div>
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="romble">Romble</label>
-                            <input type="text" name="rombel" id="romble"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Romble" value="{{ $DATA['rombel'] }}" required />
                         </div>
                     </div>
                 </div>
