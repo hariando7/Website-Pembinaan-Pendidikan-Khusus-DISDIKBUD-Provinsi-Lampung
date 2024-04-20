@@ -27,20 +27,76 @@ class KontrolTenagaPendidik extends Controller
     //         'bidangTugas' => 'Guru',
     //     ],
     // ];
-    public function statistik()
+    public function statistikSekolah(Request $req)
     {
-        $tenagaPendidik = TenagaPendidik::all();
+        $tenagaPendidik = TenagaPendidik::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+            if ($req->statusPNS) {
+                $query->where('statusPNS', $req->statusPNS);
+            }
+        })->get();
         $sekolah = Sekolah::all();
 
         $data = array_map(function ($data) use ($tenagaPendidik) {
             $perempuan = $tenagaPendidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Perempuan')->all();
-            $lakiLaki = $tenagaPendidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Laki-laki')->all();
+            $lakiLaki = $tenagaPendidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Laki-Laki')->all();
             return [
-                'namaSekolah' => $data['nama'],
+                'sekolah' => $data['nama'],
+                'total' => count($lakiLaki) + count($perempuan),
                 'lakiLaki' => count($lakiLaki),
                 'perempuan' => count($perempuan),
             ];
         }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
+    public function statistikPNS(Request $req)
+    {
+        $tenagaPendidik = TenagaPendidik::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+        })->get();
+
+        $data = array_map(function ($data) use ($tenagaPendidik) {
+            $perempuan = $tenagaPendidik->where('statusPNS', $data)->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $tenagaPendidik->where('statusPNS', $data)->where('jenisKelamin', 'Laki-Laki')->all();
+            return [
+                'pnsnon' => $data,
+                'total' => count($lakiLaki) + count($perempuan),
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, ['PNS', 'Non PNS']);
+
+        return json_encode($data);
+    }
+    public function statistikTahun(Request $req)
+    {
+        $tenagaPendidik = TenagaPendidik::where(function (Builder $query) use ($req) {
+            if ($req->statusPNS) {
+                $query->where('statusPNS', $req->statusPNS);
+            }
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+        })->get();
+        $tahun = Tahun::all();
+        $data = array_map(function ($data) use ($tenagaPendidik) {
+            $perempuan = $tenagaPendidik->where('tahun', $data['tahun'])->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $tenagaPendidik->where('tahun', $data['tahun'])->where('jenisKelamin', 'Laki-Laki')->all();
+            return [
+                'tahun' => $data['tahun'],
+                'total' => count($lakiLaki) + count($perempuan),
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, $tahun->toArray());
 
         return json_encode($data);
     }
@@ -136,7 +192,7 @@ class KontrolTenagaPendidik extends Controller
                 $query->where('sekolah', (int) $req->filterSekolah);
             }
             if ($req->tahun) {
-                $query->where('tahun', (int) $req->tahun);
+                $query->where('tahun', $req->tahun);
             }
             if ($req->pencarian) {
                 $query->where(function (Builder $query) use ($req) {
