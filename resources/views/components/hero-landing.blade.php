@@ -45,7 +45,7 @@
 </section>
 <div class="scroolTop">
     <a href='#scrollTop'
-        class="bg-[#FA8F21]/[0.20] btn border-none hover:bg-[#D87815] text-white font-bold py-2 px-4 rounded fixed z-50 bottom-4 right-4"
+        class="bg-[#FA8F21]/[0.20] btn border-none hover:bg-[#D87815] text-white font-bold py-2 px-4 rounded fixed z-50 bottom-4 right-4 animate-bounce"
         onclick="smoothScroll('#scrollTop')">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 14">
             <path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

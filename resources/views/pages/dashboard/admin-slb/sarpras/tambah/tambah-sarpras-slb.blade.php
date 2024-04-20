@@ -107,23 +107,6 @@
                             </select>
                         </div>
                     </div>
-                    <script>
-                        function populateTahunOptions() {
-                            var select = document.getElementById("tahun");
-                            var date = new Date();
-                            var year = date.getFullYear();
-                            var month = date.getMonth() + 1;
-                            select.innerHTML = '';
-                            if (month >= 1 && month <= 7) {
-                                select.add(new Option((year - 1) + "/" + year, year - 1));
-                                select.add(new Option(year + "/" + (year + 1), year));
-                            } else {
-                                select.add(new Option(year + "/" + (year + 1), year));
-                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
-                            }
-                        }
-                        window.onload = populateTahunOptions;
-                    </script>
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
@@ -175,36 +158,8 @@
                                 onchange="previewImages(event)" />
                             <div id="previewContainer" class="mt-5" style="display: flex; flex-wrap: wrap;"></div>
                             <span id="deleteIcon" style="display: none; cursor: pointer;"><i
-                                    class="fas fa-times-circle">Hapus Gambar</i></span>
-                            <script>
-                                function previewImages(event) {
-                                    var files = event.target.files;
-                                    var previewContainer = document.getElementById('previewContainer');
-                                    previewContainer.innerHTML = ''; // Clear previous previews
-                                    for (var i = 0; i < files.length; i++) {
-                                        (function(file) {
-                                            var reader = new FileReader();
-                                            reader.onload = function() {
-                                                var output = document.createElement('img');
-                                                output.src = reader.result;
-                                                output.style.maxWidth = '300px';
-                                                output.style.maxHeight = '300px';
-                                                output.style.marginRight = '10px'; // Adjust spacing between images
-                                                previewContainer.appendChild(output);
-                                            }
-                                            reader.readAsDataURL(file);
-                                        })(files[i]);
-                                    }
-                                    document.getElementById('deleteIcon').style.display = 'inline-block';
-                                }
-                                window.onload = function() {
-                                    document.getElementById('deleteIcon').addEventListener('click', function() {
-                                        document.getElementById('gambarKarya').value = ''; // Reset input file
-                                        document.getElementById('previewContainer').innerHTML = ''; // Clear preview images
-                                        document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
-                                    });
-                                };
-                            </script>
+                                    class="fas fa-times-circle">Hapus Gambar</i>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -217,6 +172,51 @@
             </form>
         </div>
     </div>
+    <script>
+        function previewImages(event) {
+            var files = event.target.files;
+            var previewContainer = document.getElementById('previewContainer');
+            previewContainer.innerHTML = ''; // Clear previous previews
+            for (var i = 0; i < files.length; i++) {
+                (function(file) {
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                        var output = document.createElement('img');
+                        output.src = reader.result;
+                        output.style.maxWidth = '300px';
+                        output.style.maxHeight = '300px';
+                        output.style.marginRight = '10px'; // Adjust spacing between images
+                        previewContainer.appendChild(output);
+                    }
+                    reader.readAsDataURL(file);
+                })(files[i]);
+            }
+            document.getElementById('deleteIcon').style.display = 'inline-block';
+        }
+        window.onload = function() {
+            document.getElementById('deleteIcon').addEventListener('click', function() {
+                document.getElementById('gambarKarya').value = ''; // Reset input file
+                document.getElementById('previewContainer').innerHTML = ''; // Clear preview images
+                document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
+            });
+        };
+
+        function populateTahunOptions() {
+            var select = document.getElementById("tahun");
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            select.innerHTML = '';
+            if (month >= 1 && month <= 7) {
+                select.add(new Option((year - 1) + "/" + year, (year - 1) + "/" + year));
+                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
+            } else {
+                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
+                select.add(new Option((year + 1) + "/" + (year + 2), (year + 1) + "/" + (year + 2)));
+            }
+        }
+        window.onload = populateTahunOptions;
+    </script>
 </body>
 
 </html>

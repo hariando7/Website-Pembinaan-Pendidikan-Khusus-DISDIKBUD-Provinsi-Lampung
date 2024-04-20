@@ -193,23 +193,6 @@
                             </select>
                         </div>
                     </div>
-                    <script>
-                        function populateTahunOptions() {
-                            var select = document.getElementById("tahun");
-                            var date = new Date();
-                            var year = date.getFullYear();
-                            var month = date.getMonth() + 1;
-                            select.innerHTML = '';
-                            if (month >= 1 && month <= 7) {
-                                select.add(new Option((year - 1) + "/" + year, year - 1));
-                                select.add(new Option(year + "/" + (year + 1), year));
-                            } else {
-                                select.add(new Option(year + "/" + (year + 1), year));
-                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
-                            }
-                        }
-                        window.onload = populateTahunOptions;
-                    </script>
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
@@ -242,24 +225,6 @@
                                 alt="Preview Gambar" class="mt-5" style="max-width: 300px; max-height: 300px;">
                             <span id="deleteIcon" style="display: none; cursor: pointer;"><i
                                     class="fas fa-times-circle">Hapus Gambar</i></span>
-                            <script>
-                                function previewImage(event) {
-                                    var reader = new FileReader();
-                                    reader.onload = function() {
-                                        var output = document.getElementById('preview');
-                                        output.src = reader.result;
-                                        document.getElementById('deleteIcon').style.display = 'inline-block';
-                                    }
-                                    reader.readAsDataURL(event.target.files[0]);
-                                }
-                                window.onload = function() {
-                                    document.getElementById('deleteIcon').addEventListener('click', function() {
-                                        document.getElementById('gambarKarya').value = ''; // Reset input file
-                                        document.getElementById('preview').src = ''; // Clear preview image
-                                        document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
-                                    });
-                                };
-                            </script>
                         </div>
                     </div>
                 </div>
@@ -283,6 +248,37 @@
             </form>
         </div>
     </div>
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+                document.getElementById('deleteIcon').style.display = 'inline-block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        window.onload = function() {
+            document.getElementById('deleteIcon').addEventListener('click', function() {
+                document.getElementById('gambarKarya').value = ''; // Reset input file
+                document.getElementById('preview').src = ''; // Clear preview image
+                document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
+            });
+        };
+
+        function populateTahunOptions() {
+            var select = document.getElementById("tahun");
+            var yearValue = "{{ $DATA['tahun'] }}";
+            var yearParts = yearValue.split('/');
+            var startYear = parseInt(yearParts[0]);
+            var endYear = parseInt(yearParts[1]);
+            select.innerHTML = '';
+            for (var year = startYear; year <= endYear; year++) {
+                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
+            }
+        }
+        window.onload = populateTahunOptions;
+    </script>
 </body>
 
 </html>

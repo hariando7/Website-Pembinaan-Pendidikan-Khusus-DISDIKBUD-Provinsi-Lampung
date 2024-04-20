@@ -147,16 +147,13 @@
                     <script>
                         function populateTahunOptions() {
                             var select = document.getElementById("tahun");
-                            var date = new Date();
-                            var year = date.getFullYear();
-                            var month = date.getMonth() + 1;
+                            var yearValue = "{{ $DATA['tahun'] }}";
+                            var yearParts = yearValue.split('/');
+                            var startYear = parseInt(yearParts[0]);
+                            var endYear = parseInt(yearParts[1]);
                             select.innerHTML = '';
-                            if (month >= 1 && month <= 7) {
-                                select.add(new Option((year - 1) + "/" + year, year - 1));
-                                select.add(new Option(year + "/" + (year + 1), year));
-                            } else {
-                                select.add(new Option(year + "/" + (year + 1), year));
-                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                            for (var year = startYear; year <= endYear; year++) {
+                                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
                             }
                         }
                         window.onload = populateTahunOptions;

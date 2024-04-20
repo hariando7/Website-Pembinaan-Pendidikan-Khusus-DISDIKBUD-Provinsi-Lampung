@@ -79,7 +79,7 @@
                     <form class="flex flex-row gap-2">
                         <div class="basis-[20%]">
                             <select name="tahun" id="tahun" class="focus:ring-none z-10 inline-flex w-full items-center rounded-lg border-2 border-[#297785] py-2.5 pl-2 text-center text-sm font-medium text-[#297785] focus:border-[#FA8F21] dark:border-[#297785] dark:text-[#297785]" onchange="filterTahun(this)">
-                                <option value="">Tahun Ajaran</option>
+                                <option value="">Semua Tahun</option>
                                 @foreach ($daftarTahun as $tahun)
                                     <option value="{{ $tahun->tahun }}" @if (isset($_GET['tahun'])) @if ($_GET['tahun'] == $tahun->tahun) selected @endif @endif>{{ $tahun->tahun }}</option>
                                 @endforeach

@@ -35,7 +35,7 @@
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
+        <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
                 <div class="text-[#297785] font-bold text-[32px]">Tambah Guru SLB
                 </div>
@@ -67,11 +67,11 @@
                             var month = date.getMonth() + 1;
                             select.innerHTML = '';
                             if (month >= 1 && month <= 7) {
-                                select.add(new Option((year - 1) + "/" + year, year - 1));
-                                select.add(new Option(year + "/" + (year + 1), year));
+                                select.add(new Option((year - 1) + "/" + year, (year - 1) + "/" + year));
+                                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
                             } else {
-                                select.add(new Option(year + "/" + (year + 1), year));
-                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
+                                select.add(new Option((year + 1) + "/" + (year + 2), (year + 1) + "/" + (year + 2)));
                             }
                         }
                         window.onload = populateTahunOptions;

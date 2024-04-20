@@ -10,9 +10,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-+5Hi7Iadm2f4gAsj7CgNlzJy+3N3lCB98aIwleP6uvlC/0YBfZxUjfa51MxtfdX9pJb8q+7XrHRdiFZgN8qTtQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @keyframes moving-border {
             0% {
@@ -110,23 +107,6 @@
                             </select>
                         </div>
                     </div>
-                    <script>
-                        function populateTahunOptions() {
-                            var select = document.getElementById("tahun");
-                            var date = new Date();
-                            var year = date.getFullYear();
-                            var month = date.getMonth() + 1;
-                            select.innerHTML = '';
-                            if (month >= 1 && month <= 7) {
-                                select.add(new Option((year - 1) + "/" + year, year - 1));
-                                select.add(new Option(year + "/" + (year + 1), year));
-                            } else {
-                                select.add(new Option(year + "/" + (year + 1), year));
-                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
-                            }
-                        }
-                        window.onload = populateTahunOptions;
-                    </script>
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
@@ -159,24 +139,6 @@
                                 style="max-width: 300px; max-height: 300px;">
                             <span id="deleteIcon" style="display: none; cursor: pointer;"><i
                                     class="fas fa-times-circle">Hapus Gambar</i></span>
-                            <script>
-                                function previewImage(event) {
-                                    var reader = new FileReader();
-                                    reader.onload = function() {
-                                        var output = document.getElementById('preview');
-                                        output.src = reader.result;
-                                        document.getElementById('deleteIcon').style.display = 'inline-block';
-                                    }
-                                    reader.readAsDataURL(event.target.files[0]);
-                                }
-                                window.onload = function() {
-                                    document.getElementById('deleteIcon').addEventListener('click', function() {
-                                        document.getElementById('gambarKarya').value = ''; // Reset input file
-                                        document.getElementById('preview').src = ''; // Clear preview image
-                                        document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
-                                    });
-                                };
-                            </script>
                         </div>
                     </div>
                 </div>
@@ -189,6 +151,41 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+                document.getElementById('deleteIcon').style.display = 'inline-block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        window.onload = function() {
+            document.getElementById('deleteIcon').addEventListener('click', function() {
+                document.getElementById('gambarKarya').value = ''; // Reset input file
+                document.getElementById('preview').src = ''; // Clear preview image
+                document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
+            });
+        };
+
+        function populateTahunOptions() {
+            var select = document.getElementById("tahun");
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            select.innerHTML = '';
+            if (month >= 1 && month <= 7) {
+                select.add(new Option((year - 1) + "/" + year, (year - 1) + "/" + year));
+                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
+            } else {
+                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
+                select.add(new Option((year + 1) + "/" + (year + 2), (year + 1) + "/" + (year + 2)));
+            }
+        }
+        window.onload = populateTahunOptions;
+    </script>
 </body>
 
 </html>

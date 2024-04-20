@@ -5,13 +5,15 @@
                 <img src="{{ asset('assets/landing/prov-lampung2.svg') }}" alt="" class="w-[100px] lg:w-[70px]">
             </div>
             <div class="">
-                <div class="text-black text-base lg:text-2xl font-bold text-left">DINAS PENDIDIKAN KEBUDAYAAN <br>PROVINSI LAMPUNG
+                <div class="text-black text-base lg:text-2xl font-bold text-left">DINAS PENDIDIKAN KEBUDAYAAN
+                    <br>PROVINSI LAMPUNG
                 </div>
-                <div class="text-xs text-left mt-2 text-[#717275]">Bidang Pembinaan Pendidikan Khusus Sekolah Luar Biasa (SLB)</div>
+                <div class="text-xs text-left mt-2 text-[#717275]">Bidang Pembinaan Pendidikan Khusus Sekolah Luar Biasa
+                    (SLB)</div>
             </div>
         </div>
         <div class="bg-[#C4DDDE] w-full lg:w-[80%] items-center m-auto justify-center mb-5">
-            <a href="https://disdikbud.lampungprov.go.id/"  target="_blank"
+            <a href="https://disdikbud.lampungprov.go.id/" target="_blank"
                 class="text-center inline-block w-full bg-[#C4DDDE] overflow-hidden relative group rounded-[100px]">
                 <div
                     class="flex items-center justify-center m-auto border-2 border-[#FA8F21] rounded-[100px] text-[#717275]">
@@ -113,7 +115,7 @@
             <div class="italic">@ 2024 All Rights Reserved.</div>
         </div>
         <div class="flex gap-2">
-            <div class="">
+            <div class="animate-pulse">
                 <a href="">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -132,12 +134,12 @@
                     </svg>
                 </a>
             </div>
-            <div class="div">
+            <div class="animate-pulse">
                 <a href="">
                     <img src={{ asset('assets/landing/ig.png') }} alt="">
                 </a>
             </div>
-            <div class="div">
+            <div class="animate-pulse">
                 <a href="">
                     <img src={{ asset('assets/landing/yt.png') }} alt="">
                 </a>

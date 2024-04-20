@@ -255,7 +255,8 @@
                                     <input type="search" id="search-dropdown" name="pencarian"
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
                                         class="block p-2.5 w-full h-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="Cari data" oninput="cekKosong(this)" required />
+                                        placeholder="Cari Judul Karya, Cari Sekolah" oninput="cekKosong(this)"
+                                        required />
                                     <button type="submit"
                                         class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-[#2F8386] rounded-e-lg border border-[#2F8386] hover:bg-[#FA8F21] focus:ring-4 focus:outline-none focus:ring-#FA8F21">
                                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -278,8 +279,16 @@
                     {{-- Isi Content --}}
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         @foreach ($dummyData as $index => $data)
-                            <div class="relative max-w-sm rounded overflow-hidden shadow-lg ">
-                                <div class="m-auto"> <img class="w-full h-[300px] w-[300px]"
+                            <div class="border relative h-full max-w-sm rounded overflow-hidden shadow-lg ">
+                                @php
+                                    $temp = $sekolah->find($data['sekolah']);
+                                @endphp
+                                <div class="text-center font-bold text-xl pt-5 mb-5 text-[#297785]">
+                                    {{-- {{ $data['namaSekolah'] }} --}}
+                                    {{ $temp['nama'] }}
+                                </div>
+                                <div class="flex m-auto">
+                                    <img class="w-full h-[300px] w-[300px] m-auto flex rounded-md"
                                         src="{{ url(asset('storage/' . $data['gambar'])) }}"
                                         alt="Gambar {{ $index + 1 }}">
                                 </div>
@@ -287,13 +296,6 @@
                                     <div class="font-bold text-xl mb-2 text-[#297785]">{{ $data['nama'] }}</div>
                                     <p class="text-gray-700 text-base">
                                         {{ $data['deskripsi'] }}
-                                    </p>
-                                    @php
-                                        $temp = $sekolah->find($data['sekolah']);
-                                    @endphp
-                                    <p class="text-gray-700 text-base">
-                                        {{-- {{ $data['namaSekolah'] }} --}}
-                                        {{ $temp['nama'] }}
                                     </p>
                                 </div>
                             </div>

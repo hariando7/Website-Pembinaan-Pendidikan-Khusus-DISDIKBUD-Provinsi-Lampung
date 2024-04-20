@@ -147,16 +147,13 @@
                     <script>
                         function populateTahunOptions() {
                             var select = document.getElementById("tahun");
-                            var date = new Date();
-                            var year = date.getFullYear();
-                            var month = date.getMonth() + 1;
+                            var yearValue = "{{ $DATA['tahun'] }}";
+                            var yearParts = yearValue.split('/');
+                            var startYear = parseInt(yearParts[0]);
+                            var endYear = parseInt(yearParts[1]);
                             select.innerHTML = '';
-                            if (month >= 1 && month <= 7) {
-                                select.add(new Option((year - 1) + "/" + year, year - 1));
-                                select.add(new Option(year + "/" + (year + 1), year));
-                            } else {
-                                select.add(new Option(year + "/" + (year + 1), year));
-                                select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
+                            for (var year = startYear; year <= endYear; year++) {
+                                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
                             }
                         }
                         window.onload = populateTahunOptions;
@@ -190,7 +187,7 @@
                             <select name="kelas" id="kelas" value="{{ $DATA['kelas'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>
-                                <option value="" disabled selected>Pilih Kelas</option>
+                                <option value="{{ $DATA['kelas'] }}" disabled selected>{{ $DATA['kelas'] }}</option>
                                 <option value="1">Kelas 1</option>
                                 <option value="2">Kelas 2</option>
                                 <option value="3">Kelas 3</option>
