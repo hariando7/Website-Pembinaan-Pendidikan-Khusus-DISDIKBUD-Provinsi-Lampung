@@ -29,9 +29,13 @@ class KontrolSaranaPrasarana extends Controller
     //                                     'catatan' => 'Tidak ada catatan',
     //                                 ],
     //                             ];
-    public function statistik()
+    public function statistikSekolah(Request $req)
     {
-        $saranaPrasarana = SaranaPrasarana::all();
+        $saranaPrasarana = SaranaPrasarana::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+        })->get();
         $sekolah = Sekolah::all();
 
         $data = array_map(function ($data) use ($saranaPrasarana) {
@@ -39,12 +43,37 @@ class KontrolSaranaPrasarana extends Controller
             $rusakRingan = $saranaPrasarana->where('sekolah', $data['id'])->where('kondisi', 'Rusak Ringan')->all();
             $rusakBerat = $saranaPrasarana->where('sekolah', $data['id'])->where('kondisi', 'Rusak Berat')->all();
             return [
-                'namaSekolah' => $data['nama'],
+                'sekolah' => $data['nama'],
+                'total' => count($baik) + count($rusakRingan) + count($rusakBerat),
                 'baik' => count($baik),
                 'rusakRingan' => count($rusakRingan),
                 'rusakBerat' => count($rusakBerat),
             ];
         }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
+    public function statistikTahun(Request $req)
+    {
+        $saranaPrasarana = SaranaPrasarana::where(function (Builder $query) use ($req) {
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+        })->get();
+        $tahun = Tahun::all();
+
+        $data = array_map(function ($data) use ($saranaPrasarana) {
+            $baik = $saranaPrasarana->where('tahun', $data['tahun'])->where('kondisi', 'Baik')->all();
+            $rusakRingan = $saranaPrasarana->where('tahun', $data['tahun'])->where('kondisi', 'Rusak Ringan')->all();
+            $rusakBerat = $saranaPrasarana->where('tahun', $data['tahun'])->where('kondisi', 'Rusak Berat')->all();
+            return [
+                'tahun' => $data['tahun'],
+                'total' => count($baik) + count($rusakRingan) + count($rusakBerat),
+                'baik' => count($baik),
+                'rusakRingan' => count($rusakRingan),
+                'rusakBerat' => count($rusakBerat),
+            ];
+        }, $tahun->toArray());
 
         return json_encode($data);
     }
