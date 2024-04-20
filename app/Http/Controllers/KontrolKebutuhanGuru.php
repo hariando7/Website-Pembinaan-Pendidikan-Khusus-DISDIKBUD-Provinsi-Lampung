@@ -27,9 +27,13 @@ class KontrolKebutuhanGuru extends Controller
     //                                     'keterangan' => 'Kurang',
     //                                 ],
     //                             ];
-    public function statistik()
+    public function statistikSekolah(Request $req)
     {
-        $kebutuhanGuru = KebutuhanGuru::all();
+        $kebutuhanGuru = KebutuhanGuru::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+        })->get();
         $sekolah = Sekolah::all();
 
         $data = array_map(function ($data) use ($kebutuhanGuru) {
@@ -38,14 +42,42 @@ class KontrolKebutuhanGuru extends Controller
             $jumlahYangAda = 0;
             foreach ($arr as $key => $value) {
                 $jumlahDibutuhkan += $value['jumlahDibutuhkan'];
-                $jumlahYangAda += $value['jumlahYangAda'];
+                $jumlahYangAda += $value['jumlahSaatIni'];
             }
             return [
-                'namaSekolah' => $data['nama'],
+                'sekolah' => $data['nama'],
+                'total' => $jumlahDibutuhkan + $jumlahYangAda,
                 'jumlahDibutuhkan' => $jumlahDibutuhkan,
                 'jumlahYangAda' => $jumlahYangAda,
             ];
         }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
+    public function statistikTahun(Request $req)
+    {
+        $kebutuhanGuru = KebutuhanGuru::where(function (Builder $query) use ($req) {
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+        })->get();
+        $tahun = Tahun::all();
+
+        $data = array_map(function ($data) use ($kebutuhanGuru) {
+            $arr = $kebutuhanGuru->where('tahun', $data['tahun'])->all();
+            $jumlahDibutuhkan = 0;
+            $jumlahYangAda = 0;
+            foreach ($arr as $key => $value) {
+                $jumlahDibutuhkan += $value['jumlahDibutuhkan'];
+                $jumlahYangAda += $value['jumlahSaatIni'];
+            }
+            return [
+                'tahun' => $data['tahun'],
+                'total' => $jumlahDibutuhkan + $jumlahYangAda,
+                'jumlahDibutuhkan' => $jumlahDibutuhkan,
+                'jumlahYangAda' => $jumlahYangAda,
+            ];
+        }, $tahun->toArray());
 
         return json_encode($data);
     }
