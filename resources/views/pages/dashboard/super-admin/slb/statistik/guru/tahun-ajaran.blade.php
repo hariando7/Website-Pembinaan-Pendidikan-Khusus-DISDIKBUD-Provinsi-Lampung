@@ -94,56 +94,62 @@
         <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
             <div class="flex justify-between pb-2">
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-guru-slb" color="#FA8F21" width="[13rem]" title="Kembali"
-                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/sa-guru-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
                 <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
                     Guru SLB By Tahun Ajaran Provinsi Lampung
                 </div>
                 <div class="">
                     <x-sa-statistik-guru />
-                    <button data-modal-target="select-modal2" data-modal-toggle="select-modal2"
-                        class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 pl-2 pr-2"
-                        type="button">
+                    <button data-modal-target="select-modal2" data-modal-toggle="select-modal2" class="btn my-2 flex items-center justify-center rounded-md border-none bg-[#FA8F21] py-2 pl-2 pr-2 text-center text-white hover:bg-[#D87815] focus:ring-4 lg:py-2" type="button">
                         Statistik Guru SLB
                     </button>
                 </div>
             </div>
-            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg"
-                id="moving-border">
-                <div class="flex justify-between mb-4">
+            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg" id="moving-border">
+                <div class="mb-4 flex justify-between">
                     <div class="relative">
                         <label for="filterSertifikasi" class="block text-sm font-medium text-gray-700">Jenis
                             Sertifikasi</label>
-                        <select id="filterSertifikasi"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="semua">Semua</option>
+                        <select id="filterSertifikasi" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
                             <option value="Sertifikasi">Sertifikasi</option>
-                            <option value="nonsertifikasi">Non Sertifikasi</option>
+                            <option value="Non Sertifikasi">Non Sertifikasi</option>
                         </select>
                     </div>
                     <div class="relative">
-                        <label for="filterSertifikasi" class="block text-sm font-medium text-gray-700">Nama
+                        <label for="filterSekolah" class="block text-sm font-medium text-gray-700">Nama
                             Sekolah</label>
-                        <select id="filterSertifikasi"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="semua">Semua</option>
-                            <option value="sekolahA">Sekolah A</option>
-                            <option value="sekolahB">Sekolah B</option>
+                        <select id="filterSekolah" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
                         </select>
+                        <script>
+                            async function daftarSekolah() {
+                                var select = document.getElementById("filterSekolah");
+                                let temp = await fetch('/api/daftar-sekolah');
+                                let dataSekolah = await temp.json();
+
+                                dataSekolah.forEach(item => {
+                                    select.add(new Option(item['nama'], item['id']));
+                                })
+                            }
+                            window.onload = () => {
+                                // daftarTahun();
+                                daftarSekolah();
+                            };
+                        </script>
                     </div>
                     <div class="relative">
                         <label for="filterPNS" class="block text-sm font-medium text-gray-700">Jenis
                             PNS</label>
-                        <select id="filterPNS"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="semua">Semua</option>
-                            <option value="pns">PNS</option>
-                            <option value="nonpns">Non PNS</option>
+                        <select id="filterPNS" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="PNS">PNS</option>
+                            <option value="Non PNS">Non PNS</option>
                         </select>
                     </div>
                 </div>
-                <div class="relative h-[450px] max-w-full">
+                <div id="template" class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full" width="800" height="600"></canvas>
                 </div>
             </div>
@@ -153,28 +159,32 @@
     <script>
         async function statistik() {
             const ctx = document.getElementById('myChart');
-            const filterTahun = document.getElementById('filterTahun');
-            const filterKelas = document.getElementById('filterKelas');
+            const filterSertifikasi = document.getElementById('filterSertifikasi');
+            const filterPNS = document.getElementById('filterPNS');
+            const filterSekolah = document.getElementById('filterSekolah');
 
-            const dummyData = [{
-                    tahun: '2023/2024',
-                    total: 100,
-                    perempuan: 50,
-                    lakiLaki: 70
-                },
-                {
-                    tahun: '2024/2025',
-                    total: 100,
-                    perempuan: 40,
-                    lakiLaki: 60
-                },
-                {
-                    tahun: '2025/2026',
-                    total: 100,
-                    perempuan: 30,
-                    lakiLaki: 50
-                },
-            ];
+            const temp = await fetch(`/api/statistik-guru-tahun?statusPNS=${ encodeURI(filterPNS.value) }&sekolah=${ encodeURI(filterSekolah.value) }&sertifikasi=${ encodeURI(filterSertifikasi.value) }`);
+            const dummyData = await temp.json();
+
+            // const dummyData = [{
+            //         tahun: '2023/2024',
+            //         total: 100,
+            //         perempuan: 50,
+            //         lakiLaki: 70
+            //     },
+            //     {
+            //         tahun: '2024/2025',
+            //         total: 100,
+            //         perempuan: 40,
+            //         lakiLaki: 60
+            //     },
+            //     {
+            //         tahun: '2025/2026',
+            //         total: 100,
+            //         perempuan: 30,
+            //         lakiLaki: 50
+            //     },
+            // ];
 
             let labels = [];
             let total = [];
@@ -245,18 +255,18 @@
             ctx.height = parent.clientHeight;
 
             const myChart = new Chart(ctx, config);
-
-            filterTahun.addEventListener('change', () => updateChart());
-            filterKelas.addEventListener('change', () => updateChart());
-
-            function updateChart() {
-                const selectedTahun = filterTahun.value;
-                const selectedKElas = filterKelas.value;
-
-                console.log('Selected Year:', selectedTahun);
-                console.log('Selected Disability Type:', selectedKelas);
-            }
         }
+
+        function updateChart() {
+            document.getElementById('myChart').remove();
+            let canv = document.createElement('canvas');
+            canv.id = 'myChart';
+            document.getElementById('template').appendChild(canv);
+            statistik();
+        }
+        document.getElementById('filterPNS').addEventListener('change', () => updateChart());
+        document.getElementById('filterSekolah').addEventListener('change', () => updateChart());
+        document.getElementById('filterSertifikasi').addEventListener('change', () => updateChart());
         statistik();
     </script>
 </body>

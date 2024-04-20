@@ -28,20 +28,112 @@ class KontrolGuru extends Controller
     //         'bidangStudi' => 'Matematika',
     //     ],
     // ];
-    public function statistik()
+    public function statistikSekolah(Request $req)
     {
-        $guru = Guru::all();
+        $guru = Guru::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+            if ($req->statusPNS) {
+                $query->where('statusPNS', $req->statusPNS);
+            }
+            if ($req->sertifikasi) {
+                $query->where('sertifikasi', $req->sertifikasi);
+            }
+        })->get();
         $sekolah = Sekolah::all();
 
         $data = array_map(function ($data) use ($guru) {
             $perempuan = $guru->where('sekolah', $data['id'])->where('jenisKelamin', 'Perempuan')->all();
             $lakiLaki = $guru->where('sekolah', $data['id'])->where('jenisKelamin', 'Laki-laki')->all();
             return [
-                'namaSekolah' => $data['nama'],
+                'sekolah' => $data['nama'],
+                'total' => count($lakiLaki) + count($perempuan),
                 'lakiLaki' => count($lakiLaki),
                 'perempuan' => count($perempuan),
             ];
         }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
+    public function statistikPNS(Request $req)
+    {
+        $guru = Guru::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+            if ($req->sertifikasi) {
+                $query->where('sertifikasi', $req->sertifikasi);
+            }
+        })->get();
+
+        $data = array_map(function ($data) use ($guru) {
+            $perempuan = $guru->where('statusPNS', $data)->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $guru->where('statusPNS', $data)->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'pnsnon' => $data,
+                'total' => count($lakiLaki) + count($perempuan),
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, ['PNS', 'Non PNS']);
+
+        return json_encode($data);
+    }
+    public function statistikSertifikasi(Request $req)
+    {
+        $guru = Guru::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+            if ($req->statusPNS) {
+                $query->where('statusPNS', $req->statusPNS);
+            }
+        })->get();
+
+        $data = array_map(function ($data) use ($guru) {
+            $perempuan = $guru->where('sertifikasi', $data)->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $guru->where('sertifikasi', $data)->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'sertifikasinon' => $data,
+                'total' => count($lakiLaki) + count($perempuan),
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, ['Sertifikasi', 'Non Sertifikasi']);
+
+        return json_encode($data);
+    }
+    public function statistikTahun(Request $req)
+    {
+        $guru = Guru::where(function (Builder $query) use ($req) {
+            if ($req->sertifikasi) {
+                $query->where('sertifikasi', $req->sertifikasi);
+            }
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+            if ($req->statusPNS) {
+                $query->where('statusPNS', $req->statusPNS);
+            }
+        })->get();
+        $tahun = Tahun::all();
+        $data = array_map(function ($data) use ($guru) {
+            $perempuan = $guru->where('tahun', $data['tahun'])->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $guru->where('tahun', $data['tahun'])->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'tahun' => $data['tahun'],
+                'total' => count($lakiLaki) + count($perempuan),
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, $tahun->toArray());
 
         return json_encode($data);
     }

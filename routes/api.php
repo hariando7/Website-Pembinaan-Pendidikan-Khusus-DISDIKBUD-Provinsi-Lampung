@@ -42,9 +42,12 @@ Route::get('/statistik-peserta-didik-kelas', [KontrolPesertaDidik::class, 'stati
 Route::get('/statistik-peserta-didik-jenisKetunaan', [KontrolPesertaDidik::class, 'statistikJenisKetunaan']);
 Route::get('/statistik-peserta-didik-tahun', [KontrolPesertaDidik::class, 'statistikTahun']);
 
+Route::get('/statistik-guru-sekolah', [KontrolGuru::class, 'statistikSekolah']);
+Route::get('/statistik-guru-pns', [KontrolGuru::class, 'statistikPNS']);
+Route::get('/statistik-guru-sertifikasi', [KontrolGuru::class, 'statistikSertifikasi']);
+Route::get('/statistik-guru-tahun', [KontrolGuru::class, 'statistikTahun']);
 
 
-Route::get('/statistik-guru', [KontrolGuru::class, 'statistik']);
 Route::get('/statistik-tenaga-pendidik', [KontrolTenagaPendidik::class, 'statistik']);
 Route::get('/statistik-sarana-prasarana', [KontrolSaranaPrasarana::class, 'statistik']);
 Route::get('/statistik-kebutuhan-guru', [KontrolKebutuhanGuru::class, 'statistik']);
