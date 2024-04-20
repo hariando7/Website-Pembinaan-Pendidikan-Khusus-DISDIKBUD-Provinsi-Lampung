@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GeneralPage;
 use App\Http\Controllers\KontrolGuru;
 use App\Http\Controllers\KontrolKarya;
 use App\Http\Controllers\KontrolKebutuhanGuru;
@@ -33,8 +34,16 @@ Route::get('/kebutuhan-guru', [KontrolKebutuhanGuru::class, 'lihatSemua']);
 Route::get('/karya', [KontrolKarya::class, 'lihatSemua']);
 Route::get('/sekolah-inklusi', [KontrolSekolahInklusi::class, 'lihatSemua']);
 
+Route::get('/daftar-tahun', [GeneralPage::class, 'daftarTahun']);
+Route::get('/daftar-sekolah', [GeneralPage::class, 'daftarSekolah']);
 
-Route::get('/statistik-peserta-didik', [KontrolPesertaDidik::class, 'statistik']);
+Route::get('/statistik-peserta-didik-sekolah', [KontrolPesertaDidik::class, 'statistikSekolah']);
+Route::get('/statistik-peserta-didik-kelas', [KontrolPesertaDidik::class, 'statistikKelas']);
+Route::get('/statistik-peserta-didik-jenisKetunaan', [KontrolPesertaDidik::class, 'statistikJenisKetunaan']);
+Route::get('/statistik-peserta-didik-tahun', [KontrolPesertaDidik::class, 'statistikTahun']);
+
+
+
 Route::get('/statistik-guru', [KontrolGuru::class, 'statistik']);
 Route::get('/statistik-tenaga-pendidik', [KontrolTenagaPendidik::class, 'statistik']);
 Route::get('/statistik-sarana-prasarana', [KontrolSaranaPrasarana::class, 'statistik']);

@@ -87,62 +87,76 @@
     </style>
 </head>
 
-<body class="bg-white z-10">
+<body class="z-10 bg-white">
     <div>
         <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] min-h-screen pt-5 pr-5 pb-28">
+        <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
             <div class="flex justify-between pb-2">
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-peserta-didik-slb" color="#FA8F21" width="[13rem]" title="Kembali"
-                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/sa-peserta-didik-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-xl m-auto">Statistik
+                <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
                     Pwserta Didik SLB By Sekolah Provinsi Lampung
                 </div>
                 <div class="">
                     <x-sa-statistik-pd />
-                    <button data-modal-target="select-modal1" data-modal-toggle="select-modal1"
-                        class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 pl-2 pr-2"
-                        type="button">
+                    <button data-modal-target="select-modal1" data-modal-toggle="select-modal1" class="btn my-2 flex items-center justify-center rounded-md border-none bg-[#FA8F21] py-2 pl-2 pr-2 text-center text-white hover:bg-[#D87815] focus:ring-4 lg:py-2" type="button">
                         Statistik Peserta Didik SLB
                     </button>
                 </div>
             </div>
-            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg"
-                id="moving-border">
-                <div class="flex justify-between mb-4">
+            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg" id="moving-border">
+                <div class="mb-4 flex justify-between">
                     <div class="relative">
                         <label for="filterTahun" class="block text-sm font-medium text-gray-700">Tahun</label>
-                        <select id="filterTahun"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="2022/2023">2022/2023</option>
-                            <option value="2023/2024">2023/2024</option>
-                            <option value="2024/2025">2024/2025</option>
+                        <select id="filterTahun" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">semua</option>
                         </select>
+                        <script>
+                            async function daftarTahun() {
+                                var select = document.getElementById("filterTahun");
+                                let temp = await fetch('/api/daftar-tahun');
+                                let dataTahun = await temp.json();
+
+                                dataTahun.forEach(item => {
+                                    select.add(new Option(item['tahun'], item['tahun']));
+                                })
+                            }
+                            window.onload = daftarTahun;
+                        </script>
                     </div>
                     <div class="relative">
                         <label for="filterKelas" class="block text-sm font-medium text-gray-700">Kelas</label>
-                        <select id="filterKelas"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="semua">Semua</option>
-                            <option value="Class A">Kelas 1</option>
-                            <option value="Class B">Kelas 2</option>
-                            <option value="Class C">Kelas 3</option>
+                        <select id="filterKelas" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="1">Kelas 1</option>
+                            <option value="2">Kelas 2</option>
+                            <option value="3">Kelas 3</option>
+                            <option value="4">Kelas 4</option>
+                            <option value="5">Kelas 5</option>
+                            <option value="6">Kelas 6</option>
+                            <option value="7">Kelas 7</option>
+                            <option value="8">Kelas 8</option>
+                            <option value="9">Kelas 9</option>
+                            <option value="10">Kelas 10</option>
+                            <option value="11">Kelas 11</option>
+                            <option value="12">Kelas 12</option>
                         </select>
                     </div>
                     <div class="relative">
                         <label for="filterDisabilitas" class="block text-sm font-medium text-gray-700">Jenis
                             Disabilitas</label>
-                        <select id="filterDisabilitas"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="semua">Semua</option>
-                            <option value="Physical">Tunanetra</option>
-                            <option value="Visual">Tunagrahita</option>
-                            <option value="Hearing">Tunadhaksa</option>
+                        <select id="filterDisabilitas" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="Tunanetra">Tunanetra</option>
+                            <option value="Tunarungu">Tunarungu</option>
+                            <option value="Tuna Laras">Tuna Laras</option>
+                            <option value="Tunadaksa">Tunadaksa</option>
+                            <option value="Tunagrahita">Tunagrahita</option>
                         </select>
                     </div>
                 </div>
-                <div class="relative h-[450px] max-w-full">
+                <div id="template" class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full" width="800" height="600"></canvas>
                 </div>
             </div>
@@ -152,21 +166,25 @@
         async function statistik() {
             const ctx = document.getElementById('myChart');
             const filterTahun = document.getElementById('filterTahun');
-            const filterSertifikasi = document.getElementById('filterSertifikasi');
+            const filterKelas = document.getElementById('filterKelas');
+            const filterDisabilitas = document.getElementById('filterDisabilitas');
 
-            const dummyData = [{
-                    sekolah: 'Sekolah A',
-                    total: 100,
-                    perempuan: 50,
-                    lakiLaki: 70
-                },
-                {
-                    sekolah: 'Sekolah B',
-                    total: 100,
-                    perempuan: 40,
-                    lakiLaki: 60
-                },
-            ];
+            const temp = await fetch(`/api/statistik-peserta-didik-sekolah?tahun=${ encodeURI(filterTahun.value) }&kelas=${ encodeURI(filterKelas.value) }&jenisKetunaan=${ encodeURI(filterDisabilitas.value) }`);
+            const dummyData = await temp.json();
+
+            // const dummyData = [{
+            //         sekolah: 'Sekolah A',
+            //         total: 100,
+            //         perempuan: 50,
+            //         lakiLaki: 70
+            //     },
+            //     {
+            //         sekolah: 'Sekolah B',
+            //         total: 100,
+            //         perempuan: 40,
+            //         lakiLaki: 60
+            //     },
+            // ];
 
             let labels = [];
             let total = [];
@@ -238,17 +256,18 @@
 
             const myChart = new Chart(ctx, config);
 
-            filterTahun.addEventListener('change', () => updateChart());
-            filterSertifikasi.addEventListener('change', () => updateChart());
-
-            function updateChart() {
-                const selectedTahun = filterTahun.value;
-                const selectedSertifikasi = filterSertifikasi.value;
-
-                console.log('Selected Year:', selectedTahun);
-                console.log('Selected Sertifikasi Type:', selectedSertifikasi);
-            }
         }
+
+        function updateChart() {
+            document.getElementById('myChart').remove();
+            let canv = document.createElement('canvas');
+            canv.id = 'myChart';
+            document.getElementById('template').appendChild(canv);
+            statistik();
+        }
+        document.getElementById('filterTahun').addEventListener('change', () => updateChart());
+        document.getElementById('filterKelas').addEventListener('change', () => updateChart());
+        document.getElementById('filterDisabilitas').addEventListener('change', () => updateChart());
         statistik();
     </script>
 </body>

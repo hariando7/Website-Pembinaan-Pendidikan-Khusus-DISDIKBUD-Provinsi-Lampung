@@ -27,20 +27,115 @@ class KontrolPesertaDidik extends Controller
     //         'romble' => '1A',
     //     ],
     // ];
-    public function statistik()
+    public function statistikSekolah(Request $req)
     {
-        $pesertaDidik = PesertaDidik::all();
+        $pesertaDidik = PesertaDidik::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+            if ($req->kelas) {
+                $query->where('kelas', $req->kelas);
+            }
+            if ($req->jenisKetunaan) {
+                $query->where('jenisKetunaan', $req->jenisKetunaan);
+            }
+        })->get();
+
         $sekolah = Sekolah::all();
 
         $data = array_map(function ($data) use ($pesertaDidik) {
             $perempuan = $pesertaDidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Perempuan')->all();
             $lakiLaki = $pesertaDidik->where('sekolah', $data['id'])->where('jenisKelamin', 'Laki-laki')->all();
             return [
-                'namaSekolah' => $data['nama'],
+                'sekolah' => $data['nama'],
+                'total' => count($lakiLaki) + count($perempuan),
                 'lakiLaki' => count($lakiLaki),
                 'perempuan' => count($perempuan),
             ];
         }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
+    public function statistikKelas(Request $req)
+    {
+        $pesertaDidik = PesertaDidik::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+            if ($req->jenisKetunaan) {
+                $query->where('jenisKetunaan', $req->jenisKetunaan);
+            }
+        })->get();
+
+        $data = array_map(function ($data) use ($pesertaDidik) {
+            $perempuan = $pesertaDidik->where('kelas', $data)->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $pesertaDidik->where('kelas', $data)->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'kelas' => $data,
+                'total' => count($lakiLaki) + count($perempuan),
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']);
+
+        return json_encode($data);
+    }
+    public function statistikJenisKetunaan(Request $req)
+    {
+        $pesertaDidik = PesertaDidik::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+            if ($req->kelas) {
+                $query->where('kelas', $req->kelas);
+            }
+        })->get();
+
+        $data = array_map(function ($data) use ($pesertaDidik) {
+            $perempuan = $pesertaDidik->where('jenisKetunaan', $data)->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $pesertaDidik->where('jenisKetunaan', $data)->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'jenisKetunaan' => $data,
+                'total' => count($lakiLaki) + count($perempuan),
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, ['Tunanetra', 'Tunarungu', 'Tuna Laras', 'Tunadaksa', 'Tunagrahita']);
+
+        return json_encode($data);
+    }
+    public function statistikTahun(Request $req)
+    {
+        $pesertaDidik = PesertaDidik::where(function (Builder $query) use ($req) {
+            if ($req->jenisKetunaan) {
+                $query->where('jenisKetunaan', $req->jenisKetunaan);
+            }
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+            if ($req->kelas) {
+                $query->where('kelas', $req->kelas);
+            }
+        })->get();
+
+        $tahun = Tahun::all();
+
+        $data = array_map(function ($data) use ($pesertaDidik) {
+            $perempuan = $pesertaDidik->where('tahun', $data['tahun'])->where('jenisKelamin', 'Perempuan')->all();
+            $lakiLaki = $pesertaDidik->where('tahun', $data['tahun'])->where('jenisKelamin', 'Laki-laki')->all();
+            return [
+                'tahun' => $data['tahun'],
+                'total' => count($lakiLaki) + count($perempuan),
+                'lakiLaki' => count($lakiLaki),
+                'perempuan' => count($perempuan),
+            ];
+        }, $tahun->toArray());
 
         return json_encode($data);
     }
