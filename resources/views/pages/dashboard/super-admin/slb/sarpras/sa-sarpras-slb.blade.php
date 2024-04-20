@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Data SLB | Sarana Prasarana</title>
+    <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Include SheetJS library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
@@ -60,9 +59,12 @@
                     Provinsi Lampung
                 </div>
                 <div class="">
-                    <x-buttitle-landing ref="/sa-statistik-sarpras" color="#FA8F21" width="[13rem]"
-                        title="Statistik Sarpras SLB"
-                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-sa-statistik-sarpras />
+                    <button data-modal-target="select-modal5" data-modal-toggle="select-modal5"
+                        class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 pl-2 pr-2"
+                        type="button">
+                        Statistik Sarpras SLB
+                    </button>
                 </div>
             </div>
             <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1"

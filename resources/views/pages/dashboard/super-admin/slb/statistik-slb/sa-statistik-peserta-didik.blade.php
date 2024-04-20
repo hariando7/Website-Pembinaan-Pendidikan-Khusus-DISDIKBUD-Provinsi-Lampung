@@ -89,18 +89,47 @@
         <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
             <div class="flex justify-between pb-2">
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-statistik-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/admin-pesertadidik-slb" color="#FA8F21" width="[13rem]" title="Kembali"
+                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
                 <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
-                    Peserta Didik SLB Provinsi Lampung
+                    Peserta Didik By Jenis Kelamin
                 </div>
-                <div class="div">
-                    <x-buttitle-landing ref="/sa-peserta-didik-slb" color="#FA8F21" width="[13rem]" title="Selengkapnya" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
-                </div>
+                <x-admin-statistik-pd />
             </div>
-            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg" id="moving-border">
-                {{-- isi konten disini --}}
-                <div class="relative h-[450px] max-w-full" style="">
+            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg"
+                id="moving-border">
+                <div class="flex justify-between mb-4">
+                    <div class="relative">
+                        <label for="filterTahun" class="block text-sm font-medium text-gray-700">Tahun</label>
+                        <select id="filterTahun"
+                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <label for="filterKelas" class="block text-sm font-medium text-gray-700">Kelas</label>
+                        <select id="filterKelas"
+                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="Class A">Kelas 1</option>
+                            <option value="Class B">Kelas 2</option>
+                            <option value="Class C">Kelas 3</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <label for="filterDisabilitas" class="block text-sm font-medium text-gray-700">Jenis
+                            Disabilitas</label>
+                        <select id="filterDisabilitas"
+                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="Physical">Tunanetra</option>
+                            <option value="Visual">Tunagrahita</option>
+                            <option value="Hearing">Tunadhaksa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full"></canvas>
                 </div>
             </div>
@@ -110,14 +139,49 @@
     <script>
         async function statistik() {
             const ctx = document.getElementById('myChart');
-            let temp = await fetch('/api/statistik-peserta-didik');
-            let pesertaDidik = await temp.json();
+            const filterTahun = document.getElementById('filterTahun');
+            const filterKelas = document.getElementById('filterKelas');
+            const filterDisabilitas = document.getElementById('filterDisabilitas');
+
+            const dummyData = [{
+                    namaSekolah: 'Sekolah A',
+                    total: 100,
+                    perempuan: 50,
+                    lakiLaki: 70
+                },
+                {
+                    namaSekolah: 'Sekolah B',
+                    total: 100,
+                    perempuan: 40,
+                    lakiLaki: 60
+                },
+                {
+                    namaSekolah: 'Sekolah C',
+                    total: 100,
+                    perempuan: 30,
+                    lakiLaki: 50
+                },
+                {
+                    namaSekolah: 'Sekolah D',
+                    total: 100,
+                    perempuan: 60,
+                    lakiLaki: 80
+                },
+                {
+                    namaSekolah: 'Sekolah E',
+                    total: 100,
+                    perempuan: 45,
+                    lakiLaki: 65
+                },
+            ];
 
             let labels = [];
+            let total = [];
             let perempuan = [];
             let lakiLaki = [];
-            pesertaDidik.forEach(item => {
+            dummyData.forEach(item => {
                 labels.push(item['namaSekolah']);
+                total.push(item['total']);
                 perempuan.push(item['perempuan']);
                 lakiLaki.push(item['lakiLaki']);
             });
@@ -125,51 +189,28 @@
             const data = {
                 labels: labels,
                 datasets: [{
+                        label: 'Total',
+                        data: total,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgb(54, 162, 235)',
+                        borderWidth: 1
+                    },
+                    {
                         label: 'Perempuan',
                         data: perempuan,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 205, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(201, 203, 207, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(255, 159, 64)',
-                            'rgb(255, 205, 86)',
-                            'rgb(75, 192, 192)',
-                            'rgb(54, 162, 235)',
-                            'rgb(153, 102, 255)',
-                            'rgb(201, 203, 207)'
-                        ],
-                        borderWidth: 1
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        borderWidth: 1,
+                        hidden: true
                     },
                     {
                         label: 'Laki-Laki',
                         data: lakiLaki,
-                        backgroundColor: [
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(255, 205, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(201, 203, 207, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 99, 132)',
-                            'rgb(255, 205, 86)',
-                            'rgb(75, 192, 192)',
-                            'rgb(255, 159, 64)',
-                            'rgb(153, 102, 255)',
-                            'rgb(201, 203, 207)'
-                        ],
-                        borderWidth: 1
-                    }
+                        backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                        borderColor: 'rgb(255, 205, 86)',
+                        borderWidth: 1,
+                        hidden: true
+                    },
                 ]
             };
 
@@ -182,19 +223,45 @@
                             beginAtZero: true
                         }
                     }
-                },
+                }
             };
 
-            // Set canvas size to match its parent
             const parent = ctx.parentElement;
             ctx.width = parent.clientWidth;
             ctx.height = parent.clientHeight;
 
-            // Draw chart
-            new Chart(ctx, config);
+            const myChart = new Chart(ctx, config);
+
+            filterTahun.addEventListener('change', () => updateChart());
+            filterKelas.addEventListener('change', () => updateChart());
+            filterDisabilitas.addEventListener('change', () => updateChart());
+
+            function updateChart() {
+                const selectedTahun = filterTahun.value;
+                const selectedKelas = filterKelas.value;
+                const selectedDisabilitas = filterDisabilitas.value;
+
+                console.log('Selected Year:', selectedTahun);
+                console.log('Selected Class:', selectedKelas);
+                console.log('Selected Disability Type:', selectedDisabilitas);
+            }
+            // non aktif perepuan
+            document.getElementById('togglePerempuan').addEventListener('click', () => {
+                const perempuanDataset = myChart.getDatasetMeta(1);
+                perempuanDataset.hidden = !perempuanDataset.hidden;
+                myChart.update();
+            });
+            // non aktif laki laki
+            document.getElementById('toggleLakiLaki').addEventListener('click', () => {
+                const lakiLakiDataset = myChart.getDatasetMeta(2);
+                lakiLakiDataset.hidden = !lakiLakiDataset.hidden;
+                myChart.update();
+            });
         }
         statistik();
     </script>
+
+
 </body>
 
 </html>

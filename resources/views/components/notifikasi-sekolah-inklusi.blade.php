@@ -23,7 +23,7 @@
 <button data-modal-target="default-modal" data-modal-toggle="default-modal"
     class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2">
     {{-- {{ $title }} --}}
-    Notifikasi SLB
+    Notifikasi Dinas
     <span id="notificationBadge"
         class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
         style="display: none;">
@@ -42,7 +42,7 @@
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <div class="div">
                     <h3 class="text-lg font-semibold text-white dark:text-white">
-                        Notifikasi Pengisian Data <br>
+                        Notifikasi Pengumuman Dinas<br>
                     </h3>
                     <h5 class="text-white">
                         <x-time-saat-ini />

@@ -181,11 +181,34 @@
                             $activePagePath2 = [
                                 'sa-dashboard-slb',
                                 'sa-guru-slb',
+                                'sa-statistik-guru-sekolah',
+                                'sa-statistik-guru-pns',
+                                'sa-statistik-guru-sertifikasi',
+                                'sa-statistik-guru-tahun',
+
                                 'sa-kebutuhan-guru-slb',
+                                'sa-statistik-kg-sekolah',
+                                'sa-statistik-kg-tahun',
+
                                 'sa-peserta-didik-slb',
+                                'sa-statistik-pd-sekolah',
+                                'sa-statistik-pd-kelas',
+                                'sa-statistik-pd-jenisKetunaan',
+                                'sa-statistik-pd-tahun',
+
                                 'sa-sarpras-slb',
+                                'sa-statistik-sarpras-sekolah',
+                                'sa-statistik-sarpras-tahun',
+
                                 'sa-tendik-slb',
+                                'sa-statistik-tendik-sekolah',
+                                'sa-statistik-tendik-pns',
+                                'sa-statistik-tendik-tahun',
+
                                 'sa-karya-slb',
+                                'sa-statistik-karya-sekolah',
+                                'sa-statistik-karya-tahun',
+
                                 'sa-statistik-slb',
                                 'sa-statistik-guru',
                                 'sa-statistik-kebutuhan-guru',
@@ -227,27 +250,52 @@
                             class="absolute mt-2 bg-white rounded-md shadow-lg right-6 top-14 z-20">
                             @php
                                 // path halaman aktif
-                                $statistikslb = [
-                                    'sa-statistik-slb',
-                                    'sa-statistik-guru',
-                                    'sa-statistik-kebutuhan-guru',
-                                    'sa-statistik-peserta-didik',
-                                    'sa-statistik-sarpras',
-                                    'sa-statistik-tendik',
-                                    'sa-statistik-karya',
-                                ]; // halaman aktif
-                                $pesertadidik = ['sa-peserta-didik-slb'];
-                                $guru = ['sa-guru-slb'];
-                                $tendik = ['sa-tendik-slb'];
-                                $sarpras = ['sa-sarpras-slb'];
-                                $kebutuhanguru = ['sa-kebutuhan-guru-slb'];
-                                $karyaslb = ['sa-karya-slb'];
+                                // $statistikslb = [
+                                //     'sa-statistik-slb',
+                                //     'sa-statistik-guru',
+                                //     'sa-statistik-kebutuhan-guru',
+                                //     'sa-statistik-peserta-didik',
+                                //     'sa-statistik-sarpras',
+                                //     'sa-statistik-tendik',
+                                //     'sa-statistik-karya',
+                                // ]; // halaman aktif
+                                $pesertadidik = [
+                                    'sa-peserta-didik-slb',
+                                    'sa-statistik-pd-sekolah',
+                                    'sa-statistik-pd-kelas',
+                                    'sa-statistik-pd-jenisKetunaan',
+                                    'sa-statistik-pd-tahun',
+                                ];
+                                $guru = [
+                                    'sa-guru-slb',
+                                    'sa-statistik-guru-sekolah',
+                                    'sa-statistik-guru-pns',
+                                    'sa-statistik-guru-sertifikasi',
+                                    'sa-statistik-guru-tahun',
+                                ];
+                                $tendik = [
+                                    'sa-tendik-slb',
+                                    'sa-statistik-tendik-sekolah',
+                                    'sa-statistik-tendik-pns',
+                                    'sa-statistik-tendik-tahun',
+                                ];
+                                $sarpras = [
+                                    'sa-sarpras-slb',
+                                    'sa-statistik-sarpras-sekolah',
+                                    'sa-statistik-sarpras-tahun',
+                                ];
+                                $kebutuhanguru = [
+                                    'sa-kebutuhan-guru-slb',
+                                    'sa-statistik-kg-sekolah',
+                                    'sa-statistik-kg-tahun',
+                                ];
+                                $karyaslb = ['sa-karya-slb', 'sa-statistik-karya-sekolah', 'sa-statistik-karya-tahun'];
                             @endphp
-                            <a href="/sa-statistik-slb"
+                            {{-- <a href="/sa-statistik-slb"
                                 class="block px-4 py-2 text-sm @if (in_array(Request::path(), $statistikslb)) rounded-b-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else
             bg-white text-[#297785] font-bold rounded-md hover:bg-[#FA8F21] hover:text-white focus:z-10 focus:ring-2 focus:ring-white focus:text-white @endif">Statistik
-                                SLB</a>
+                                SLB</a> --}}
                             <a href="/sa-peserta-didik-slb"
                                 class="block px-4 py-2 text-sm @if (in_array(Request::path(), $pesertadidik)) rounded-lg bg-[#FA8F21] text-white hover:text-white font-bold focus:z-10 focus:ring-2 focus:ring-white focus:text-white
         @else

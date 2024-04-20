@@ -85,6 +85,25 @@ Route::controller(GeneralPage::class) -> group(function () {
         // Route::get('/admin-karya-slb', 'adminkaryaslb');
         Route::get('/admin-karya-slb/tambah', 'admintambahkaryaslb');
         // Route::get('/admin-karya-slb/edit', 'admineditkaryaslb');
+
+        // awal statistik admin
+        Route::get('/admin-statistik-guru-pns', 'asgurupnsnon');
+        Route::get('/admin-statistik-guru-sertifikasi', 'asgurusertifikasinon');
+        Route::get('/admin-statistik-guru-tahun', 'asgurutahunajaran');
+
+        Route::get('/admin-statistik-karya-tahun', 'askaryatahunajaran');
+
+        Route::get('/admin-statistik-kg-tahun', 'askebutuhangurutahunajaran');
+
+        Route::get('/admin-statistik-pd-jenisKetunaan', 'aspesertadidikjenisketunaan');
+        Route::get('/admin-statistik-pd-kelas', 'aspesertadidikkelas');
+        Route::get('/admin-statistik-pd-tahun', 'aspesertadidiktahunajaran');
+
+        Route::get('/admin-statistik-sarpras-tahun', 'assarprastahunajaran');
+
+        Route::get('/admin-statistik-tendik-pns', 'astendikpnsnon');
+        Route::get('/admin-statistik-tendik-tahun', 'astendiktahunajaran');
+        // akhir sttistik admin
     });
     // Akhir Admin Home SLB
 
@@ -105,6 +124,31 @@ Route::controller(GeneralPage::class) -> group(function () {
         Route::get('/sa-statistik-sarpras', 'sastatistiksarpras');
         Route::get('/sa-statistik-tendik', 'sastatistiktendik');
         Route::get('/sa-statistik-karya', 'sastatistikkarya');
+
+        // awal statistik Super admin
+        Route::get('/sa-statistik-guru-sekolah', 'sasgurusekolah');
+        Route::get('/sa-statistik-guru-pns', 'sasgurupnsnon');
+        Route::get('/sa-statistik-guru-sertifikasi', 'sasgurusertifikasinon');
+        Route::get('/sa-statistik-guru-tahun', 'sasgurutahunajaran');
+
+        Route::get('/sa-statistik-karya-sekolah', 'saskaryasekolah');
+        Route::get('/sa-statistik-karya-tahun', 'saskaryatahunajaran');
+
+        Route::get('/sa-statistik-kg-sekolah', 'saskebutuhangurusekolah');
+        Route::get('/sa-statistik-kg-tahun', 'saskebutuhangurutahunajaran');
+
+        Route::get('/sa-statistik-pd-sekolah', 'saspesertadidiksekolah');
+        Route::get('/sa-statistik-pd-jenisKetunaan', 'saspesertadidikjenisketunaan');
+        Route::get('/sa-statistik-pd-kelas', 'saspesertadidikkelas');
+        Route::get('/sa-statistik-pd-tahun', 'saspesertadidiktahunajaran');
+
+        Route::get('/sa-statistik-sarpras-sekolah', 'sassarprassekolah');
+        Route::get('/sa-statistik-sarpras-tahun', 'sassarprastahunajaran');
+
+        Route::get('/sa-statistik-tendik-sekolah', 'sastendiksekolah');
+        Route::get('/sa-statistik-tendik-pns', 'sastendikpnsnon');
+        Route::get('/sa-statistik-tendik-tahun', 'sastendiktahunajaran');
+        // akhir sttistik Super admin
     
         // Awal Super admin data SLB
         // Data Guru SLB

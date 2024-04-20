@@ -164,6 +164,49 @@ class GeneralPage extends Controller
     function admineditkaryaslb () {
         return view('pages/dashboard/admin-slb/karya/edit/edit-karya-slb');
     } 
+
+    // awal admin statistik
+    function asgurupnsnon () {
+        return view('pages/dashboard/admin-slb/statistik/guru/pns-non');
+    }
+    function asgurusertifikasinon () {
+        return view('pages/dashboard/admin-slb/statistik/guru/sertifikasi-non');
+    }
+    function asgurutahunajaran () {
+        return view('pages/dashboard/admin-slb/statistik/guru/tahun-ajaran');
+    }
+
+    function askaryatahunajaran () {
+        return view('pages/dashboard/admin-slb/statistik/karya/tahun-ajaran');
+    }
+
+    
+    function askebutuhangurutahunajaran () {
+        return view('pages/dashboard/admin-slb/statistik/kebutuhan-guru/tahun-ajaran');
+    }
+
+    function aspesertadidikjenisketunaan () {
+        return view('pages/dashboard/admin-slb/statistik/peserta-didik/jenis-ketunaan');
+    }
+    function aspesertadidikkelas () {
+        return view('pages/dashboard/admin-slb/statistik/peserta-didik/kelas');
+    }
+    function aspesertadidiktahunajaran () {
+        return view('pages/dashboard/admin-slb/statistik/peserta-didik/tahun-ajaran');
+    }
+
+    function assarprastahunajaran () {
+        return view('pages/dashboard/admin-slb/statistik/sarpras/tahun-ajaran');
+    }
+    
+    function astendikpnsnon () {
+        return view('pages/dashboard/admin-slb/statistik/tendik/pns-non');
+    }
+    function astendiktahunajaran () {
+        return view('pages/dashboard/admin-slb/statistik/tendik/tahun-ajaran');
+    }
+    // akhir admin statistik
+
     // Akhir Admin Home SLB
 
     // Awal Super Admin
@@ -206,6 +249,65 @@ class GeneralPage extends Controller
     function sastatistikkarya () {
         return view('pages/dashboard/super-admin/slb/statistik-slb/sa-statistik-karya');
     }
+
+     // awal Super admin statistik
+    function sasgurusekolah () {
+        return view('pages/dashboard/super-admin/slb/statistik/guru/sekolah');
+    }
+    function sasgurupnsnon () {
+        return view('pages/dashboard/super-admin/slb/statistik/guru/pns-non');
+    }
+    function sasgurusertifikasinon () {
+        return view('pages/dashboard/super-admin/slb/statistik/guru/sertifikasi-non');
+    }
+    function sasgurutahunajaran () {
+        return view('pages/dashboard/super-admin/slb/statistik/guru/tahun-ajaran');
+    }
+
+    function saskaryasekolah () {
+        return view('pages/dashboard/super-admin/slb/statistik/karya/sekolah');
+    }
+    function saskaryatahunajaran () {
+        return view('pages/dashboard/super-admin/slb/statistik/karya/tahun-ajaran');
+    }
+
+    function saskebutuhangurusekolah () {
+        return view('pages/dashboard/super-admin/slb/statistik/kebutuhan-guru/sekolah');
+    }
+    function saskebutuhangurutahunajaran () {
+        return view('pages/dashboard/super-admin/slb/statistik/kebutuhan-guru/tahun-ajaran');
+    }
+
+    function saspesertadidiksekolah () {
+        return view('pages/dashboard/super-admin/slb/statistik/peserta-didik/sekolah');
+    }
+    function saspesertadidikjenisketunaan () {
+        return view('pages/dashboard/super-admin/slb/statistik/peserta-didik/jenis-ketunaan');
+    }
+    function saspesertadidikkelas () {
+        return view('pages/dashboard/super-admin/slb/statistik/peserta-didik/kelas');
+    }
+    function saspesertadidiktahunajaran () {
+        return view('pages/dashboard/super-admin/slb/statistik/peserta-didik/tahun-ajaran');
+    }
+
+    function sassarprassekolah () {
+        return view('pages/dashboard/super-admin/slb/statistik/sarpras/sekolah');
+    }
+    function sassarprastahunajaran () {
+        return view('pages/dashboard/super-admin/slb/statistik/sarpras/tahun-ajaran');
+    }
+    
+    function sastendiksekolah () {
+        return view('pages/dashboard/super-admin/slb/statistik/tendik/sekolah');
+    }
+    function sastendikpnsnon () {
+        return view('pages/dashboard/super-admin/slb/statistik/tendik/pns-non');
+    }
+    function sastendiktahunajaran () {
+        return view('pages/dashboard/super-admin/slb/statistik/tendik/tahun-ajaran');
+    }
+    // akhir Super admin statistik
 
     // Data Guru SLB
     function saguruslb () {

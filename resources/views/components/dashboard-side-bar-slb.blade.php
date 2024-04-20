@@ -68,7 +68,13 @@
                     <div class="overflow-y-auto h-[500px] hide-scrollbar">
                         {{-- peserta didik slb --}}
                         @php
-                            $activePagePath = ['admin-pesertadidik-slb', 'admin-pesertadidik-slb/tambah']; // halaman aktif
+                            $activePagePath = [
+                                'admin-pesertadidik-slb',
+                                'admin-pesertadidik-slb/tambah',
+                                'admin-statistik-pd-kelas',
+                                'admin-statistik-pd-jenisKetunaan',
+                                'admin-statistik-pd-tahun',
+                            ]; // halaman aktif
                             if (isset($id)) {
                                 array_push($activePagePath, 'admin-pesertadidik-slb/edit/' . $id);
                             }
@@ -100,7 +106,13 @@
                         <li class="flex items-center justify-center inset-x-0 mt-2">
                             @php
                                 // path halaman aktif
-                                $activePagePath2 = ['admin-guru-slb', 'admin-guru-slb/tambah']; // halaman aktif
+                                $activePagePath2 = [
+                                    'admin-guru-slb',
+                                    'admin-guru-slb/tambah',
+                                    'admin-statistik-guru-pns',
+                                    'admin-statistik-guru-sertifikasi',
+                                    'admin-statistik-guru-tahun',
+                                ]; // halaman aktif
                                 if (isset($id)) {
                                     array_push($activePagePath2, 'admin-guru-slb/edit/' . $id);
                                 }
@@ -125,7 +137,12 @@
                         <li class="flex items-center justify-center inset-x-0 mt-2">
                             @php
                                 // path halaman aktif
-                                $activePagePath3 = ['admin-tendik-slb', 'admin-tendik-slb/tambah']; // path halaman aktif
+                                $activePagePath3 = [
+                                    'admin-tendik-slb',
+                                    'admin-tendik-slb/tambah',
+                                    'admin-statistik-tendik-pns',
+                                    'admin-statistik-tendik-tahun',
+                                ]; // path halaman aktif
                                 if (isset($id)) {
                                     array_push($activePagePath3, 'admin-tendik-slb/edit/' . $id);
                                 }
@@ -164,6 +181,7 @@
                                     'admin-sarpras-slb',
                                     'admin-sarpras-slb/tambah',
                                     'admin-sarpras-slb/edit',
+                                    'admin-statistik-sarpras-tahun',
                                 ]; // path halaman aktif
                                 if (isset($id)) {
                                     array_push($activePagePath4, 'admin-sarpras-slb/edit/' . $id);
@@ -236,7 +254,11 @@
                         <li class="flex items-center justify-center inset-x-0 mt-2">
                             @php
                                 // path halaman aktif
-                                $activePagePath5 = ['admin-kebutuhan-guru-slb', 'admin-kebutuhan-guru-slb/tambah']; // path halaman aktif
+                                $activePagePath5 = [
+                                    'admin-kebutuhan-guru-slb',
+                                    'admin-kebutuhan-guru-slb/tambah',
+                                    'admin-statistik-kg-tahun',
+                                ]; // path halaman aktif
                                 if (isset($id)) {
                                     array_push($activePagePath5, 'admin-kebutuhan-guru-slb/edit/' . $id);
                                 }
@@ -265,6 +287,7 @@
                                     'admin-karya-slb',
                                     'admin-karya-slb/tambah',
                                     'admin-karya-slb/edit',
+                                    'admin-statistik-karya-tahun',
                                 ]; // path halaman aktif
                                 if (isset($id)) {
                                     array_push($activePagePath6, 'admin-karya-slb/edit/' . $id);

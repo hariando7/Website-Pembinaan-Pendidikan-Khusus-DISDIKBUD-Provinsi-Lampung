@@ -61,6 +61,7 @@
                 </div>
                 <div class="flex justify-end gap-5">
                     <!-- Modal toggle -->
+                    <x-admin-statistik-pd />
                     <x-notifikasi-slb title="Notifikasi Dinas" :notifications="$pengumuman" />
                     <div class="right-0 flex justify-end">
                         <x-buttitle-landing ref="/admin-pesertadidik-slb/tambah" color="#FA8F21" width="[13rem]"

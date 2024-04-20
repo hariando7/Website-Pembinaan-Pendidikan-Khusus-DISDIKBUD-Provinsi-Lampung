@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Data SLB | Statistik SLB</title>
+    <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include SheetJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
     <style>
         /* peserta didik slb */
         .icon-peserta-didik-slb {
@@ -81,22 +85,26 @@
     <div>
         <x-dashboard-side-bar-sa />
         <div class="pl-[280px] h-screen pt-10 pr-5 pb-28">
-            <div class="flex gap-2 pb-2">
+            <div class="flex justify-between mb-5">
                 <div class="div">
                     <x-buttitle-landing ref="/sa-dashboard-slb" color="#FA8F21" width="[13rem]" title="Kembali"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
-                <div class="text-start items-start text-[#297785] font-bold text-[32px]">Statistik SLB
+                <div class="text-[#297785] font-bold text-[32px]">Statistik SLB
                     Provinsi Lampung
-                </div>
-                <div class="flex justify-end gap-5">
                 </div>
             </div>
             <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-10 font-bold text-black"
                 id="moving-border">
                 {{-- isi konten disini --}}
+                <x-sa-statistik-pd />
+                <x-sa-statistik-guru />
+                <x-sa-statistik-tendik />
+                <x-sa-statistik-sarpras />
+                <x-sa-statistik-kebutuhanguru />
+                <x-sa-statistik-karya />
                 <div class="flex justify-center">
-                    <a href="/sa-statistik-peserta-didik">
+                    <button data-modal-target="select-modal1" data-modal-toggle="select-modal1">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
@@ -118,8 +126,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="/sa-statistik-guru">
+                    </button>
+                    <button data-modal-target="select-modal2" data-modal-toggle="select-modal2">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
@@ -141,8 +149,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="/sa-statistik-tendik">
+                    </button>
+                    <button data-modal-target="select-modal6" data-modal-toggle="select-modal6">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
@@ -164,10 +172,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </button>
                 </div>
                 <div class="flex justify-center">
-                    <a href="/sa-statistik-sarpras">
+                    <button data-modal-target="select-modal5" data-modal-toggle="select-modal5">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
@@ -189,8 +197,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="/sa-statistik-kebutuhan-guru">
+                    </button>
+                    <button data-modal-target="select-modal4" data-modal-toggle="select-modal4">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
@@ -212,8 +220,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="/sa-statistik-karya">
+                    </button>
+                    <button data-modal-target="select-modal3" data-modal-toggle="select-modal3">
                         <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
                             <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
@@ -235,7 +243,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
