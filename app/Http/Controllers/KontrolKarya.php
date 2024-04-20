@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Tahun;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +51,7 @@ class KontrolKarya extends Controller
             return [
                 'id' => $data['id'],
                 'namaSekolah' => $temp['nama'],
-                'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data['tahun'],
                 'judulKarya' => $data['nama'],
                 'gambar' => $data['gambar'],
                 'deskripsi' => $data['deskripsi'],
@@ -69,17 +70,19 @@ class KontrolKarya extends Controller
             return [
                 'id' => $data->id,
                 'namaSekolah' => $temp->nama,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data->tahun,
                 'judulKarya' => $data->nama,
                 'gambar' => $data->gambar,
                 'deskripsi' => $data->deskripsi,
             ];
         }, $karya->items());
+        $tahun = Tahun::all();
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/super-admin/slb/karya/sa-karya-slb', [
             'dummyData' => $dummyData,
             'DATA' => $karya,
+            'daftarTahun' => $tahun,
             'sekolah' => $sekolah
         ]);
     }
@@ -91,8 +94,7 @@ class KontrolKarya extends Controller
         $dummyData = array_map(function ($data) {
             return [
                 'id' => $data->id,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-                // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+                'tahun' => $data->tahun,
                 'judulKarya' => $data->nama,
                 'gambar' => $data->gambar,
                 'deskripsi' => $data->deskripsi,
@@ -103,11 +105,13 @@ class KontrolKarya extends Controller
         $notif = Pengumuman::where('sistem', 'slb')
             ->where('tanggalMulai', '<', $time)
             ->where('tanggalAkhir', '>', $time)->latest()->get();
+        $tahun = Tahun::all();
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/karya/admin-karya-slb', [
             'dummyData' => $dummyData,
             'DATA' => $karya,
+            'daftarTahun' => $tahun,
             'pengumuman' => $notif
         ]);
     }
@@ -121,6 +125,9 @@ class KontrolKarya extends Controller
                 $query->where('sekolah', $pengguna->sekolah);
             } else if ($req->filterSekolah) {
                 $query->where('sekolah', (int) $req->filterSekolah);
+            }
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
             }
             if ($req->pencarian) {
                 $query->where(function (Builder $query) use ($req) {
@@ -174,6 +181,7 @@ class KontrolKarya extends Controller
     {
         $pengguna = Auth::user();
         $validasi = $req->validate([
+            'tahun' => 'required',
             'nama' => 'required',
             'gambar' => 'required',
             'deskripsi' => 'required'
@@ -185,6 +193,8 @@ class KontrolKarya extends Controller
 
         $validasi['pemilik'] = $pengguna->id;
         $validasi['sekolah'] = $pengguna->sekolah;
+
+        Tahun::firstOrCreate(['tahun' => $req['tahun']]);
 
         Karya::create($validasi);
 
@@ -216,6 +226,10 @@ class KontrolKarya extends Controller
 
         if ($karya) {
             if ($karya->sekolah === $pengguna->sekolah) {
+                if ($req['tahun']) {
+                    Tahun::firstOrCreate(['tahun' => $req['tahun']]);
+                    $karya->tahun = $req['tahun'];
+                }
                 if ($req['nama']) {
                     $karya->nama = $req['nama'];
                 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Tahun;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -53,12 +54,11 @@ class KontrolPesertaDidik extends Controller
             return [
                 'id' => $data['id'],
                 'namaSekolah' => $temp['nama'],
-                'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data['tahun'],
                 'namaSiswa' => $data['nama'],
                 'jenisKelamin' => $data['jenisKelamin'],
                 'jenisKetunaan' => $data['jenisKetunaan'],
                 'kelas' => $data['kelas'],
-                'romble' => $data['rombel'],
             ];
         }, $pesertaDidik->toArray());
 
@@ -75,20 +75,21 @@ class KontrolPesertaDidik extends Controller
             return [
                 'id' => $data->id,
                 'namaSekolah' => $temp->nama,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data->tahun,
                 'namaSiswa' => $data->nama,
                 'jenisKelamin' => $data->jenisKelamin,
                 'jenisKetunaan' => $data->jenisKetunaan,
                 'kelas' => $data->kelas,
-                'romble' => $data->rombel,
             ];
         }, $pesertaDidik->items());
+        $tahun = Tahun::all();
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/super-admin/slb/peserta-didik/sa-peserta-didik-slb', [
             'dummyData' => $dummyData,
             'DATA' => $pesertaDidik,
-            'sekolah' => $sekolah
+            'sekolah' => $sekolah,
+            'daftarTahun' => $tahun
         ]);
     }
 
@@ -99,13 +100,11 @@ class KontrolPesertaDidik extends Controller
         $dummyData = array_map(function ($data) {
             return [
                 'id' => $data->id,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-                // 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+                'tahun' => $data->tahun,
                 'namaSiswa' => $data->nama,
                 'jenisKelamin' => $data->jenisKelamin,
                 'jenisKetunaan' => $data->jenisKetunaan,
                 'kelas' => $data->kelas,
-                'romble' => $data->rombel,
             ];
         }, $pesertaDidik->items());
 
@@ -113,12 +112,14 @@ class KontrolPesertaDidik extends Controller
         $notif = Pengumuman::where('sistem', 'slb')
             ->where('tanggalMulai', '<', $time)
             ->where('tanggalAkhir', '>', $time)->latest()->get();
+        $tahun = Tahun::all();
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/peserta-didik/admin-pesertadidik-slb', [
             'dummyData' => $dummyData,
             'DATA' => $pesertaDidik,
-            'pengumuman' => $notif
+            'pengumuman' => $notif,
+            'daftarTahun' => $tahun
         ]);
     }
 
@@ -132,13 +133,15 @@ class KontrolPesertaDidik extends Controller
             } else if ($req->filterSekolah) {
                 $query->where('sekolah', (int) $req->filterSekolah);
             }
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
             if ($req->pencarian) {
                 $query->where(function (Builder $query) use ($req) {
                     $query->where('nama', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('jenisKelamin', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('jenisKetunaan', 'LIKE', '%' . $req->pencarian . '%')
-                        ->orWhere('kelas', 'LIKE', '%' . $req->pencarian . '%')
-                        ->orWhere('rombel', 'LIKE', '%' . $req->pencarian . '%');
+                        ->orWhere('kelas', 'LIKE', '%' . $req->pencarian . '%');
                 });
             }
         })->latest()->paginate(10);
@@ -164,15 +167,17 @@ class KontrolPesertaDidik extends Controller
     {
         $pengguna = Auth::user();
         $validasi = $req->validate([
+            'tahun' => 'required',
             'nama' => 'required',
             'jenisKelamin' => 'required',
             'jenisKetunaan' => 'required',
             'kelas' => 'required',
-            'rombel' => 'required'
         ]);
 
         $validasi['pemilik'] = $pengguna->id;
         $validasi['sekolah'] = $pengguna->sekolah;
+
+        Tahun::firstOrCreate(['tahun' => $req['tahun']]);
 
         PesertaDidik::create($validasi);
 
@@ -206,6 +211,10 @@ class KontrolPesertaDidik extends Controller
 
         if ($pesertaDidik) {
             if ($pesertaDidik->sekolah === $pengguna->sekolah) {
+                if ($req['tahun']) {
+                    Tahun::firstOrCreate(['tahun' => $req['tahun']]);
+                    $pesertaDidik->tahun = $req['tahun'];
+                }
                 if ($req['nama']) {
                     $pesertaDidik->nama = $req['nama'];
                 }
@@ -217,9 +226,6 @@ class KontrolPesertaDidik extends Controller
                 }
                 if ($req['kelas']) {
                     $pesertaDidik->kelas = $req['kelas'];
-                }
-                if ($req['rombel']) {
-                    $pesertaDidik->rombel = $req['rombel'];
                 }
 
                 $pesertaDidik->save();

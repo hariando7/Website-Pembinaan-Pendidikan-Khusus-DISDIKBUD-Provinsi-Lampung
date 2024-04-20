@@ -14,10 +14,10 @@ class PesertaDidik extends Model
     protected $fillable = [
         'pemilik',
         'sekolah',
+        'tahun',
         'nama',
         'jenisKelamin',
         'jenisKetunaan',
         'kelas',
-        'rombel',
     ];
 }

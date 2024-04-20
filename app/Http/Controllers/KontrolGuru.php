@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Tahun;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -54,7 +55,7 @@ class KontrolGuru extends Controller
             return [
                 'id' => $data['id'],
                 'namaSekolah' => $temp['nama'],
-                'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data['tahun'],
                 'namaGuru' => $data['nama'],
                 'jenisKelamin' => $data['jenisKelamin'],
                 'NIP' => $data['nip'],
@@ -77,7 +78,7 @@ class KontrolGuru extends Controller
             return [
                 'id' => $data->id,
                 'namaSekolah' => $temp->nama,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data->tahun,
                 'namaGuru' => $data->nama,
                 'jenisKelamin' => $data->jenisKelamin,
                 'NIP' => $data->nip,
@@ -86,12 +87,14 @@ class KontrolGuru extends Controller
                 'bidangStudi' => $data->bidangStudi,
             ];
         }, $guru->items());
+        $tahun = Tahun::all();
 
         // return json_encode($guru);
         return view('pages/dashboard/super-admin/slb/guru/sa-guru-slb', [
             'dummyData' => $dummyData,
             'DATA' => $guru,
-            'sekolah' => $sekolah
+            'sekolah' => $sekolah,
+            'daftarTahun' => $tahun,
         ]);
     }
 
@@ -102,8 +105,7 @@ class KontrolGuru extends Controller
         $dummyData = array_map(function ($data) {
             return [
                 'id' => $data->id,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-                // 'tahun' => $data -> created_at,
+                'tahun' => $data->tahun,
                 'namaGuru' => $data->nama,
                 'jenisKelamin' => $data->jenisKelamin,
                 'NIP' => $data->nip,
@@ -117,11 +119,13 @@ class KontrolGuru extends Controller
         $notif = Pengumuman::where('sistem', 'slb')
             ->where('tanggalMulai', '<', $time)
             ->where('tanggalAkhir', '>', $time)->latest()->get();
+        $tahun = Tahun::all();
 
         // return json_encode($guru);
         return view('pages/dashboard/admin-slb/guru/admin-guru-slb', [
             'dummyData' => $dummyData,
             'DATA' => $guru,
+            'daftarTahun' => $tahun,
             'pengumuman' => $notif
         ]);
     }
@@ -135,6 +139,9 @@ class KontrolGuru extends Controller
                 $query->where('sekolah', $pengguna->sekolah);
             } else if ($req->filterSekolah) {
                 $query->where('sekolah', (int) $req->filterSekolah);
+            }
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
             }
             if ($req->pencarian) {
                 $query->where(function (Builder $query) use ($req) {
@@ -169,6 +176,7 @@ class KontrolGuru extends Controller
     {
         $pengguna = Auth::user();
         $validasi = $req->validate([
+            'tahun' => 'required',
             'nama' => 'required',
             'jenisKelamin' => 'required',
             'nip' => 'required',
@@ -179,6 +187,8 @@ class KontrolGuru extends Controller
 
         $validasi['pemilik'] = $pengguna->id;
         $validasi['sekolah'] = $pengguna->sekolah;
+
+        Tahun::firstOrCreate(['tahun' => $req['tahun']]);
 
         Guru::create($validasi);
 
@@ -210,6 +220,10 @@ class KontrolGuru extends Controller
 
         if ($guru) {
             if ($guru->sekolah === $pengguna->sekolah) {
+                if ($req['tahun']) {
+                    Tahun::firstOrCreate(['tahun' => $req['tahun']]);
+                    $guru->tahun = $req['tahun'];
+                }
                 if ($req['nama']) {
                     $guru->nama = $req['nama'];
                 }

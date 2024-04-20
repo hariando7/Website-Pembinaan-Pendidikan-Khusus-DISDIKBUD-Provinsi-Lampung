@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Tahun;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -58,7 +59,7 @@ class KontrolKebutuhanGuru extends Controller
             return [
                 'id' => $data['id'],
                 'namaSekolah' => $temp['nama'],
-                'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data['tahun'],
                 'mataPelajaran' => $data['mataPelajaran'],
                 'jumlahDibutuhkan' => $data['jumlahDibutuhkan'],
                 'jumlahYangAda' => $data['jumlahSaatIni'],
@@ -79,7 +80,7 @@ class KontrolKebutuhanGuru extends Controller
             return [
                 'id' => $data->id,
                 'namaSekolah' => $temp->nama,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data->tahun,
                 'mataPelajaran' => $data->mataPelajaran,
                 'jumlahDibutuhkan' => $data->jumlahDibutuhkan,
                 'jumlahYangAda' => $data->jumlahSaatIni,
@@ -87,11 +88,13 @@ class KontrolKebutuhanGuru extends Controller
                 'keterangan' => $data->keterangan,
             ];
         }, $kebutuhanGuru->items());
+        $tahun = Tahun::all();
 
         // return json_encode($kebutuhanGuru);
         return view('pages/dashboard/super-admin/slb/kebutuhan-guru/sa-kebutuhan-guru-slb', [
             'dummyData' => $dummyData,
             'DATA' => $kebutuhanGuru,
+            'daftarTahun' => $tahun,
             'sekolah' => $sekolah
         ]);
     }
@@ -103,8 +106,7 @@ class KontrolKebutuhanGuru extends Controller
         $dummyData = array_map(function ($data) {
             return [
                 'id' => $data->id,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
-                // 'tahun' => $data -> created_at,
+                'tahun' => $data->tahun,
                 'mataPelajaran' => $data->mataPelajaran,
                 'jumlahDibutuhkan' => $data->jumlahDibutuhkan,
                 'jumlahYangAda' => $data->jumlahSaatIni,
@@ -117,11 +119,13 @@ class KontrolKebutuhanGuru extends Controller
         $notif = Pengumuman::where('sistem', 'slb')
             ->where('tanggalMulai', '<', $time)
             ->where('tanggalAkhir', '>', $time)->latest()->get();
+        $tahun = Tahun::all();
 
         // return json_encode($kebutuhanGuru);
         return view('pages/dashboard/admin-slb/kebutuhan-guru/admin-kebutuhan-guru-slb', [
             'dummyData' => $dummyData,
             'DATA' => $kebutuhanGuru,
+            'daftarTahun' => $tahun,
             'pengumuman' => $notif
         ]);
     }
@@ -135,6 +139,9 @@ class KontrolKebutuhanGuru extends Controller
                 $query->where('sekolah', $pengguna->sekolah);
             } else if ($req->filterSekolah) {
                 $query->where('sekolah', (int) $req->filterSekolah);
+            }
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
             }
             if ($req->pencarian) {
                 $query->where(function (Builder $query) use ($req) {
@@ -168,6 +175,7 @@ class KontrolKebutuhanGuru extends Controller
     {
         $pengguna = Auth::user();
         $validasi = $req->validate([
+            'tahun' => 'required',
             'mataPelajaran' => 'required',
             'jumlahDibutuhkan' => 'required',
             'jumlahSaatIni' => 'required',
@@ -177,6 +185,8 @@ class KontrolKebutuhanGuru extends Controller
 
         $validasi['pemilik'] = $pengguna->id;
         $validasi['sekolah'] = $pengguna->sekolah;
+
+        Tahun::firstOrCreate(['tahun' => $req['tahun']]);
 
         KebutuhanGuru::create($validasi);
 
@@ -209,6 +219,10 @@ class KontrolKebutuhanGuru extends Controller
 
         if ($kebutuhanGuru) {
             if ($kebutuhanGuru->sekolah === $pengguna->sekolah) {
+                if ($req['tahun']) {
+                    Tahun::firstOrCreate(['tahun' => $req['tahun']]);
+                    $kebutuhanGuru->tahun = $req['tahun'];
+                }
                 if ($req['mataPelajaran']) {
                     $kebutuhanGuru->mataPelajaran = $req['mataPelajaran'];
                 }

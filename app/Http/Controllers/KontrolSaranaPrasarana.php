@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Tahun;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -59,7 +60,7 @@ class KontrolSaranaPrasarana extends Controller
             return [
                 'id' => $data['id'],
                 'namaSekolah' => $temp['nama'],
-                'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data['tahun'],
                 'gedungRuang' => $data['nama'],
                 'jumlahVol' => $data['jumlah'],
                 'kondisi' => $data['kondisi'],
@@ -81,19 +82,21 @@ class KontrolSaranaPrasarana extends Controller
             return [
                 'id' => $data->id,
                 'namaSekolah' => $temp->nama,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data->tahun,
                 'gedungRuang' => $data->nama,
                 'jumlahVol' => $data->jumlah,
                 'kondisi' => $data->kondisi,
                 'catatan' => $data->keterangan,
             ];
         }, $saranaPrasarana->items());
+        $tahun = Tahun::all();
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/super-admin/slb/sarpras/sa-sarpras-slb', [
             'dummyData' => $dummyData,
             'DATA' => $saranaPrasarana,
             'sekolah' => $sekolah,
+            'daftarTahun' => $tahun,
             'gambar' => $gambar
         ]);
     }
@@ -106,7 +109,7 @@ class KontrolSaranaPrasarana extends Controller
             $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $data->id)->get();
             return [
                 'id' => $data->id,
-                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s'),
+                'tahun' => $data->tahun,
                 'gedungRuang' => $data->nama,
                 'jumlahVol' => $data->jumlah,
                 'kondisi' => $data->kondisi,
@@ -119,11 +122,13 @@ class KontrolSaranaPrasarana extends Controller
         $notif = Pengumuman::where('sistem', 'slb')
             ->where('tanggalMulai', '<', $time)
             ->where('tanggalAkhir', '>', $time)->latest()->get();
+        $tahun = Tahun::all();
 
         // return json_encode($pesertaDidik);
         return view('pages/dashboard/admin-slb/sarpras/admin-sarpras-slb', [
             'dummyData' => $dummyData,
             'DATA' => $saranaPrasarana,
+            'daftarTahun' => $tahun,
             'pengumuman' => $notif
         ]);
     }
@@ -137,6 +142,9 @@ class KontrolSaranaPrasarana extends Controller
                 $query->where('sekolah', $pengguna->sekolah);
             } else if ($req->filterSekolah) {
                 $query->where('sekolah', (int) $req->filterSekolah);
+            }
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
             }
             if ($req->pencarian) {
                 $query->where(function (Builder $query) use ($req) {
@@ -169,6 +177,7 @@ class KontrolSaranaPrasarana extends Controller
     {
         $pengguna = Auth::user();
         $validasi = $req->validate([
+            'tahun' => 'required',
             'nama' => 'required',
             'jumlah' => 'required',
             'kondisi' => 'required',
@@ -177,6 +186,8 @@ class KontrolSaranaPrasarana extends Controller
 
         $validasi['pemilik'] = $pengguna->id;
         $validasi['sekolah'] = $pengguna->sekolah;
+
+        Tahun::firstOrCreate(['tahun' => $req['tahun']]);
 
         $saranaPrasarana = SaranaPrasarana::create($validasi);
 
@@ -223,6 +234,10 @@ class KontrolSaranaPrasarana extends Controller
 
         if ($saranaPrasarana) {
             if ($saranaPrasarana->sekolah === $pengguna->sekolah) {
+                if ($req['tahun']) {
+                    Tahun::firstOrCreate(['tahun' => $req['tahun']]);
+                    $saranaPrasarana->tahun = $req['tahun'];
+                }
                 if ($req['nama']) {
                     $saranaPrasarana->nama = $req['nama'];
                 }

@@ -14,6 +14,7 @@ class Karya extends Model
     protected $fillable = [
         'pemilik',
         'sekolah',
+        'tahun',
         'nama',
         'gambar',
         'deskripsi'

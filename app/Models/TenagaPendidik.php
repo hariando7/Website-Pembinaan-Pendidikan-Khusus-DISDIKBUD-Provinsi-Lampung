@@ -14,6 +14,7 @@ class TenagaPendidik extends Model
     protected $fillable = [
         'pemilik',
         'sekolah',
+        'tahun',
         'nama',
         'jenisKelamin',
         'nip',
