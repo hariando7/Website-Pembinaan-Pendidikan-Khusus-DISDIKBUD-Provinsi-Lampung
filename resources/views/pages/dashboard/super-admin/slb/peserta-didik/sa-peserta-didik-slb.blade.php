@@ -94,19 +94,19 @@
                                 }
                             </script>
                         </div>
-                        <div class="basis-[15%]">
-                            <select name="filterSekolah" id="filterSekolah"
-                                class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
-                                onchange="cariSekolah(this)">
-                                <option value="">Tahun</option>
-                                @foreach ($sekolah as $data)
-                                    <option value="{{ $data->id }}"
-                                        @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data->id) selected @endif
-                                        @endif>{{ $data->nama }}</option>
+                        <div class="basis-[20%]">
+                            <select name="tahun" id="tahun"
+                                class="focus:ring-none z-10 inline-flex w-full items-center rounded-lg border-2 border-[#297785] py-2.5 pl-2 text-center text-sm font-medium text-[#297785] focus:border-[#FA8F21] dark:border-[#297785] dark:text-[#297785]"
+                                onchange="filterTahun(this)">
+                                <option value="">Semua Tahun</option>
+                                @foreach ($daftarTahun as $tahun)
+                                    <option value="{{ $tahun->tahun }}"
+                                        @if (isset($_GET['tahun'])) @if ($_GET['tahun'] == $tahun->tahun) selected @endif
+                                        @endif>{{ $tahun->tahun }}</option>
                                 @endforeach
                             </select>
                             <script>
-                                function cariSekolah(e) {
+                                function filterTahun(e) {
                                     console.log(e.value);
                                     if (e.value === '') {
                                         window.location.href = window.location.origin + window.location.pathname;
@@ -116,7 +116,7 @@
                                 }
                             </script>
                         </div>
-                        <div class="basis-[55%]">
+                        <div class="basis-[50%]">
                             <div class="flex items-center mx-auto my-auto">
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
