@@ -121,23 +121,24 @@
                         </select>
                     </div>
                     <div class="relative">
-                        <label for="filterPNS" class="block text-sm font-medium text-gray-700">Jenis
-                            PNS</label>
-                        <select id="filterPNS"
+                        <label for="filterKelas" class="block text-sm font-medium text-gray-700">Kelas</label>
+                        <select id="filterKelas"
                             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option value="semua">Semua</option>
-                            <option value="pns">PNS</option>
-                            <option value="nonpns">Non PNS</option>
+                            <option value="Class A">Kelas 1</option>
+                            <option value="Class B">Kelas 2</option>
+                            <option value="Class C">Kelas 3</option>
                         </select>
                     </div>
                     <div class="relative">
-                        <label for="filterSertifikasi" class="block text-sm font-medium text-gray-700">Jenis
-                            Sertifikasi</label>
-                        <select id="filterSertifikasi"
+                        <label for="filterDisabilitas" class="block text-sm font-medium text-gray-700">Jenis
+                            Disabilitas</label>
+                        <select id="filterDisabilitas"
                             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option value="semua">Semua</option>
-                            <option value="sertifikasi">Sertifikasi</option>
-                            <option value="nonsertifikasi">Non Sertifikasi</option>
+                            <option value="Physical">Tunanetra</option>
+                            <option value="Visual">Tunagrahita</option>
+                            <option value="Hearing">Tunadhaksa</option>
                         </select>
                     </div>
                 </div>
