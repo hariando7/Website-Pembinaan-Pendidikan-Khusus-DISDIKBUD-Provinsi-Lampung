@@ -87,41 +87,46 @@
     </style>
 </head>
 
-<body class="bg-white z-10">
+<body class="z-10 bg-white">
     <div>
         <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] min-h-screen pt-5 pr-5 pb-28">
+        <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
             <div class="flex justify-between pb-2">
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-karya-slb" color="#FA8F21" width="[13rem]" title="Kembali"
-                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/sa-karya-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-xl m-auto">Statistik
+                <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
                     Karya SLB By Sekolah Provinsi Lampung
                 </div>
                 <div class="">
                     <x-sa-statistik-karya />
-                    <button data-modal-target="select-modal3" data-modal-toggle="select-modal3"
-                        class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 pl-2 pr-2"
-                        type="button">
+                    <button data-modal-target="select-modal3" data-modal-toggle="select-modal3" class="btn my-2 flex items-center justify-center rounded-md border-none bg-[#FA8F21] py-2 pl-2 pr-2 text-center text-white hover:bg-[#D87815] focus:ring-4 lg:py-2" type="button">
                         Statistik Karya SLB
                     </button>
                 </div>
             </div>
-            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg"
-                id="moving-border">
-                <div class="flex justify-between mb-4">
+            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg" id="moving-border">
+                <div class="mb-4 flex justify-between">
                     <div class="relative">
                         <label for="filterTahun" class="block text-sm font-medium text-gray-700">Tahun</label>
-                        <select id="filterTahun"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="2022/2023">2022/2023</option>
-                            <option value="2023/2024">2023/2024</option>
-                            <option value="2024/2025">2024/2025</option>
+                        <select id="filterTahun" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
                         </select>
+                        <script>
+                            async function daftarTahun() {
+                                var select = document.getElementById("filterTahun");
+                                let temp = await fetch('/api/daftar-tahun');
+                                let dataTahun = await temp.json();
+
+                                dataTahun.forEach(item => {
+                                    select.add(new Option(item['tahun'], item['tahun']));
+                                })
+                            }
+                            window.onload = daftarTahun;
+                        </script>
                     </div>
                 </div>
-                <div class="relative h-[450px] max-w-full">
+                <div id="template" class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full" width="800" height="600"></canvas>
                 </div>
             </div>
@@ -132,19 +137,22 @@
             const ctx = document.getElementById('myChart');
             const filterTahun = document.getElementById('filterTahun');
 
-            const dummyData = [{
-                    sekolah: 'Sekolah A',
-                    total: 100,
-                },
-                {
-                    sekolah: 'Sekolah B',
-                    total: 100,
-                },
-                {
-                    sekolah: 'Sekolah C',
-                    total: 100,
-                },
-            ];
+            const temp = await fetch(`/api/statistik-karya-sekolah?tahun=${ encodeURI(filterTahun.value) }`);
+            const dummyData = await temp.json();
+
+            // const dummyData = [{
+            //         sekolah: 'Sekolah A',
+            //         total: 100,
+            //     },
+            //     {
+            //         sekolah: 'Sekolah B',
+            //         total: 100,
+            //     },
+            //     {
+            //         sekolah: 'Sekolah C',
+            //         total: 100,
+            //     },
+            // ];
 
             let labels = [];
             let total = [];
@@ -195,6 +203,16 @@
 
             const myChart = new Chart(ctx, config);
         }
+
+        function updateChart() {
+            document.getElementById('myChart').remove();
+            let canv = document.createElement('canvas');
+            canv.id = 'myChart';
+            document.getElementById('template').appendChild(canv);
+            statistik();
+        }
+        document.getElementById('filterTahun').addEventListener('change', () => updateChart());
+
         statistik();
     </script>
 </body>

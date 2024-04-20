@@ -57,5 +57,5 @@ Route::get('/statistik-sarana-prasarana-tahun', [KontrolSaranaPrasarana::class, 
 Route::get('/statistik-kebutuhan-guru-sekolah', [KontrolKebutuhanGuru::class, 'statistikSekolah']);
 Route::get('/statistik-kebutuhan-guru-tahun', [KontrolKebutuhanGuru::class, 'statistikTahun']);
 
-
-Route::get('/statistik-karya', [KontrolKarya::class, 'statistik']);
+Route::get('/statistik-karya-sekolah', [KontrolKarya::class, 'statistikSekolah']);
+Route::get('/statistik-karya-tahun', [KontrolKarya::class, 'statistikTahun']);

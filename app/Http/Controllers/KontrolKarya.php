@@ -26,18 +26,41 @@ class KontrolKarya extends Controller
     //                                     'deskripsi' => 'Deskripsi karya 1',
     //                                 ],
     //                             ];
-    public function statistik()
+    public function statistikSekolah(Request $req)
     {
-        $karya = Karya::all();
+        $karya = Karya::where(function (Builder $query) use ($req) {
+            if ($req->tahun) {
+                $query->where('tahun', $req->tahun);
+            }
+        })->get();
         $sekolah = Sekolah::all();
 
         $data = array_map(function ($data) use ($karya) {
             $jumlah = $karya->where('sekolah', $data['id'])->all();
             return [
-                'namaSekolah' => $data['nama'],
-                'jumlah' => count($jumlah),
+                'sekolah' => $data['nama'],
+                'total' => count($jumlah),
             ];
         }, $sekolah->toArray());
+
+        return json_encode($data);
+    }
+    public function statistikTahun(Request $req)
+    {
+        $karya = Karya::where(function (Builder $query) use ($req) {
+            if ($req->sekolah) {
+                $query->where('sekolah', $req->sekolah);
+            }
+        })->get();
+        $tahun = Tahun::all();
+
+        $data = array_map(function ($data) use ($karya) {
+            $jumlah = $karya->where('tahun', $data['tahun'])->all();
+            return [
+                'tahun' => $data['tahun'],
+                'total' => count($jumlah),
+            ];
+        }, $tahun->toArray());
 
         return json_encode($data);
     }
