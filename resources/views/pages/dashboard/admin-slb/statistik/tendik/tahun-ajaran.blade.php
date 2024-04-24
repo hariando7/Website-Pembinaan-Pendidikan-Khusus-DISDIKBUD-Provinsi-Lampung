@@ -115,7 +115,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="relative h-[450px] max-w-full">
+                <div id="template" sekolah="{{ auth()->user()->sekolah }}" class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full" width="800" height="600"></canvas>
                 </div>
             </div>
@@ -125,27 +125,33 @@
     <script>
         async function statistik() {
             const ctx = document.getElementById('myChart');
+            const idSekolah = document.getElementById('template').getAttribute('sekolah');
             const filterPNS = document.getElementById('filterPNS');
 
-            const dummyData = [{
-                    tahun: '2023/2024',
-                    total: 100,
-                    perempuan: 50,
-                    lakiLaki: 70
-                },
-                {
-                    tahun: '2024/2025',
-                    total: 100,
-                    perempuan: 40,
-                    lakiLaki: 60
-                },
-                {
-                    tahun: '2025/2026',
-                    total: 100,
-                    perempuan: 30,
-                    lakiLaki: 50
-                },
-            ];
+            const temp = await fetch(
+                `/api/statistik-tenaga-pendidik-tahun?sekolah=${ encodeURI(idSekolah) }&statusPNS=${ encodeURI(filterPNS.value) }`
+            );
+            const dummyData = await temp.json();
+
+            // const dummyData = [{
+            //         tahun: '2023/2024',
+            //         total: 100,
+            //         perempuan: 50,
+            //         lakiLaki: 70
+            //     },
+            //     {
+            //         tahun: '2024/2025',
+            //         total: 100,
+            //         perempuan: 40,
+            //         lakiLaki: 60
+            //     },
+            //     {
+            //         tahun: '2025/2026',
+            //         total: 100,
+            //         perempuan: 30,
+            //         lakiLaki: 50
+            //     },
+            // ];
 
             let labels = [];
             let total = [];
@@ -216,15 +222,16 @@
             ctx.height = parent.clientHeight;
 
             const myChart = new Chart(ctx, config);
-
-            filterPNS.addEventListener('change', () => updateChart());
-
-            function updateChart() {
-                const selectedPNS = filterPNS.value;
-
-                console.log('Selected Year:', selectedPNS);
-            }
         }
+
+        function updateChart() {
+            document.getElementById('myChart').remove();
+            let canv = document.createElement('canvas');
+            canv.id = 'myChart';
+            document.getElementById('template').appendChild(canv);
+            statistik();
+        }
+        document.getElementById('filterPNS').addEventListener('change', () => updateChart());
         statistik();
     </script>
 </body>

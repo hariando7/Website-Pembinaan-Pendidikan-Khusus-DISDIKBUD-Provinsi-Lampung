@@ -109,25 +109,36 @@
                         <label for="filterDisabilitas" class="block text-sm font-medium text-gray-700">Jenis
                             Disabilitas</label>
                         <select id="filterDisabilitas"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="Physical">Semua</option>
-                            <option value="Physical">Tunanetra</option>
-                            <option value="Visual">Tunagrahita</option>
-                            <option value="Hearing">Tunadhaksa</option>
+                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="Tunanetra">Tunanetra</option>
+                            <option value="Tunarungu">Tunarungu</option>
+                            <option value="Tuna Laras">Tuna Laras</option>
+                            <option value="Tunadaksa">Tunadaksa</option>
+                            <option value="Tunagrahita">Tunagrahita</option>
                         </select>
                     </div>
                     <div class="relative">
                         <label for="filterKelas" class="block text-sm font-medium text-gray-700">Kelas</label>
                         <select id="filterKelas"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="Class A">Semua</option>
-                            <option value="Class A">Kelas 1</option>
-                            <option value="Class B">Kelas 2</option>
-                            <option value="Class C">Kelas 3</option>
+                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="1">Kelas 1</option>
+                            <option value="2">Kelas 2</option>
+                            <option value="3">Kelas 3</option>
+                            <option value="4">Kelas 4</option>
+                            <option value="5">Kelas 5</option>
+                            <option value="6">Kelas 6</option>
+                            <option value="7">Kelas 7</option>
+                            <option value="8">Kelas 8</option>
+                            <option value="9">Kelas 9</option>
+                            <option value="10">Kelas 10</option>
+                            <option value="11">Kelas 11</option>
+                            <option value="12">Kelas 12</option>
                         </select>
                     </div>
                 </div>
-                <div class="relative h-[450px] max-w-full">
+                <div id="template" sekolah="{{ auth()->user()->sekolah }}" class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full" width="800" height="600"></canvas>
                 </div>
             </div>
@@ -137,28 +148,34 @@
     <script>
         async function statistik() {
             const ctx = document.getElementById('myChart');
-            const filterTahun = document.getElementById('filterTahun');
+            const filterDisabilitas = document.getElementById('filterDisabilitas');
             const filterKelas = document.getElementById('filterKelas');
+            const idSekolah = document.getElementById('template').getAttribute('sekolah');
 
-            const dummyData = [{
-                    tahun: '2023/2024',
-                    total: 100,
-                    perempuan: 50,
-                    lakiLaki: 70
-                },
-                {
-                    tahun: '2024/2025',
-                    total: 100,
-                    perempuan: 40,
-                    lakiLaki: 60
-                },
-                {
-                    tahun: '2025/2026',
-                    total: 100,
-                    perempuan: 30,
-                    lakiLaki: 50
-                },
-            ];
+            const temp = await fetch(
+                `/api/statistik-peserta-didik-tahun?kelas=${ encodeURI(filterKelas.value) }&sekolah=${encodeURI(idSekolah) }&jenisKetunaan=${ encodeURI(filterDisabilitas.value) }`
+            );
+            const dummyData = await temp.json();
+
+            // const dummyData = [{
+            //         tahun: '2023/2024',
+            //         total: 100,
+            //         perempuan: 50,
+            //         lakiLaki: 70
+            //     },
+            //     {
+            //         tahun: '2024/2025',
+            //         total: 100,
+            //         perempuan: 40,
+            //         lakiLaki: 60
+            //     },
+            //     {
+            //         tahun: '2025/2026',
+            //         total: 100,
+            //         perempuan: 30,
+            //         lakiLaki: 50
+            //     },
+            // ];
 
             let labels = [];
             let total = [];
@@ -229,18 +246,17 @@
             ctx.height = parent.clientHeight;
 
             const myChart = new Chart(ctx, config);
-
-            filterTahun.addEventListener('change', () => updateChart());
-            filterKelas.addEventListener('change', () => updateChart());
-
-            function updateChart() {
-                const selectedTahun = filterTahun.value;
-                const selectedKElas = filterKelas.value;
-
-                console.log('Selected Year:', selectedTahun);
-                console.log('Selected Disability Type:', selectedKelas);
-            }
         }
+
+        function updateChart() {
+            document.getElementById('myChart').remove();
+            let canv = document.createElement('canvas');
+            canv.id = 'myChart';
+            document.getElementById('template').appendChild(canv);
+            statistik();
+        }
+        document.getElementById('filterKelas').addEventListener('change', () => updateChart());
+        document.getElementById('filterDisabilitas').addEventListener('change', () => updateChart());
         statistik();
     </script>
 </body>

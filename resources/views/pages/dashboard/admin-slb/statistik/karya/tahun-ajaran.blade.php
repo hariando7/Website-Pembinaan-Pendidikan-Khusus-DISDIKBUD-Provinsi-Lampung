@@ -104,36 +104,39 @@
             </div>
             <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg"
                 id="moving-border">
-                <div class="relative h-[450px] max-w-full">
+                <div id="template" sekolah="{{ auth()->user()->sekolah }}" class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full" width="800" height="600"></canvas>
                 </div>
-                <div class="m-auto flex justify-center items-center">
-                    <x-buttitle-landing ref="/karya-slb" color="#FA8F21" width="[13rem]" title="Lihat Landing Page"
-                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
-                </div>
+            </div>
+            <div class="m-auto flex justify-center items-center">
+                <x-buttitle-landing ref="/karya-slb" color="#FA8F21" width="[13rem]" title="Lihat Landing Page"
+                    extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
             </div>
         </div>
+    </div>
     </div>
 
     <script>
         async function statistik() {
             const ctx = document.getElementById('myChart');
-            const filterTahun = document.getElementById('filterTahun');
-            const filterKelas = document.getElementById('filterKelas');
+            const idSekolah = document.getElementById('template').getAttribute('sekolah');
 
-            const dummyData = [{
-                    tahun: '2023/2024',
-                    total: 100,
-                },
-                {
-                    tahun: '2024/2025',
-                    total: 100,
-                },
-                {
-                    tahun: '2025/2026',
-                    total: 100,
-                },
-            ];
+            const temp = await fetch(`/api/statistik-karya-tahun?sekolah=${ encodeURI(idSekolah) }`);
+            const dummyData = await temp.json();
+
+            // const dummyData = [{
+            //         tahun: '2023/2024',
+            //         total: 100,
+            //     },
+            //     {
+            //         tahun: '2024/2025',
+            //         total: 100,
+            //     },
+            //     {
+            //         tahun: '2025/2026',
+            //         total: 100,
+            //     },
+            // ];
 
             let labels = [];
             let total = [];
@@ -185,6 +188,14 @@
             ctx.height = parent.clientHeight;
 
             const myChart = new Chart(ctx, config);
+        }
+
+        function updateChart() {
+            document.getElementById('myChart').remove();
+            let canv = document.createElement('canvas');
+            canv.id = 'myChart';
+            document.getElementById('template').appendChild(canv);
+            statistik();
         }
         statistik();
     </script>

@@ -81,7 +81,10 @@
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb />
-        <div class="pl-[280px] h-screen pt-10 pr-5 pb-28">
+        <div class="pl-[280px] min-h-screen pt-10 pr-5 pb-28">
+            <div class="flex m-auto justify-center items-center">
+                <x-toast-login-sukses />
+            </div>
             <div class="flex justify-between pb-2">
                 <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Kelola SLB
                     Provinsi Lampung

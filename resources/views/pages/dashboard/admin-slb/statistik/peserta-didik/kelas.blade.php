@@ -108,25 +108,41 @@
                     <div class="relative">
                         <label for="filterTahun" class="block text-sm font-medium text-gray-700">Tahun</label>
                         <select id="filterTahun"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="2022/2023">2022/2023</option>
-                            <option value="2023/2024">2023/2024</option>
-                            <option value="2024/2025">2024/2025</option>
+                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
                         </select>
+                        <script>
+                            async function daftarTahun() {
+                                var select = document.getElementById("filterTahun");
+                                let temp = await fetch('/api/daftar-tahun');
+                                let dataTahun = await temp.json();
+
+                                dataTahun.forEach(item => {
+                                    select.add(new Option(item['tahun'], item['tahun']));
+                                })
+                            }
+                            window.onload = () => {
+                                daftarTahun();
+                                daftarSekolah();
+                            };
+                        </script>
                     </div>
                     <div class="relative">
                         <label for="filterDisabilitas" class="block text-sm font-medium text-gray-700">Jenis
                             Disabilitas</label>
                         <select id="filterDisabilitas"
-                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="semua">Semua</option>
-                            <option value="Physical">Tunanetra</option>
-                            <option value="Visual">Tunagrahita</option>
-                            <option value="Hearing">Tunadhaksa</option>
+                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="Tunanetra">Tunanetra</option>
+                            <option value="Tunarungu">Tunarungu</option>
+                            <option value="Tuna Laras">Tuna Laras</option>
+                            <option value="Tunadaksa">Tunadaksa</option>
+                            <option value="Tunagrahita">Tunagrahita</option>
                         </select>
                     </div>
                 </div>
-                <div class="relative h-[450px] max-w-full">
+                {{-- @dd(auth()->user()->sekolah) --}}
+                <div id="template" sekolah="{{ auth()->user()->sekolah }}" class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full" width="800" height="600"></canvas>
                 </div>
             </div>
@@ -138,80 +154,86 @@
             const ctx = document.getElementById('myChart');
             const filterTahun = document.getElementById('filterTahun');
             const filterDisabilitas = document.getElementById('filterDisabilitas');
+            const idSekolah = document.getElementById('template').getAttribute('sekolah');
 
-            const dummyData = [{
-                    kelas: 'Kelas 1',
-                    total: 100,
-                    perempuan: 50,
-                    lakiLaki: 70
-                },
-                {
-                    kelas: 'Kelas 2',
-                    total: 100,
-                    perempuan: 40,
-                    lakiLaki: 60
-                },
-                {
-                    kelas: 'Kelas 3',
-                    total: 100,
-                    perempuan: 30,
-                    lakiLaki: 50
-                },
-                {
-                    kelas: 'Kelas 4',
-                    total: 100,
-                    perempuan: 60,
-                    lakiLaki: 80
-                },
-                {
-                    kelas: 'Kelas 5',
-                    total: 100,
-                    perempuan: 45,
-                    lakiLaki: 65
-                },
-                {
-                    kelas: 'Kelas 6',
-                    total: 100,
-                    perempuan: 45,
-                    lakiLaki: 65
-                },
-                {
-                    kelas: 'Kelas 7',
-                    total: 100,
-                    perempuan: 45,
-                    lakiLaki: 65
-                },
-                {
-                    kelas: 'Kelas 8',
-                    total: 100,
-                    perempuan: 45,
-                    lakiLaki: 65
-                },
-                {
-                    kelas: 'Kelas 9',
-                    total: 100,
-                    perempuan: 45,
-                    lakiLaki: 65
-                },
-                {
-                    kelas: 'Kelas 10',
-                    total: 100,
-                    perempuan: 45,
-                    lakiLaki: 65
-                },
-                {
-                    kelas: 'Kelas 11',
-                    total: 100,
-                    perempuan: 45,
-                    lakiLaki: 65
-                },
-                {
-                    kelas: 'Kelas 12',
-                    total: 100,
-                    perempuan: 45,
-                    lakiLaki: 65
-                }
-            ];
+            const temp = await fetch(
+                `/api/statistik-peserta-didik-kelas?tahun=${ encodeURI(filterTahun.value) }&sekolah=${ encodeURI(idSekolah) }&jenisKetunaan=${ encodeURI(filterDisabilitas.value) }`
+            );
+            const dummyData = await temp.json();
+
+            // const dummyData = [{
+            //         kelas: 'Kelas 1',
+            //         total: 100,
+            //         perempuan: 50,
+            //         lakiLaki: 70
+            //     },
+            //     {
+            //         kelas: 'Kelas 2',
+            //         total: 100,
+            //         perempuan: 40,
+            //         lakiLaki: 60
+            //     },
+            //     {
+            //         kelas: 'Kelas 3',
+            //         total: 100,
+            //         perempuan: 30,
+            //         lakiLaki: 50
+            //     },
+            //     {
+            //         kelas: 'Kelas 4',
+            //         total: 100,
+            //         perempuan: 60,
+            //         lakiLaki: 80
+            //     },
+            //     {
+            //         kelas: 'Kelas 5',
+            //         total: 100,
+            //         perempuan: 45,
+            //         lakiLaki: 65
+            //     },
+            //     {
+            //         kelas: 'Kelas 6',
+            //         total: 100,
+            //         perempuan: 45,
+            //         lakiLaki: 65
+            //     },
+            //     {
+            //         kelas: 'Kelas 7',
+            //         total: 100,
+            //         perempuan: 45,
+            //         lakiLaki: 65
+            //     },
+            //     {
+            //         kelas: 'Kelas 8',
+            //         total: 100,
+            //         perempuan: 45,
+            //         lakiLaki: 65
+            //     },
+            //     {
+            //         kelas: 'Kelas 9',
+            //         total: 100,
+            //         perempuan: 45,
+            //         lakiLaki: 65
+            //     },
+            //     {
+            //         kelas: 'Kelas 10',
+            //         total: 100,
+            //         perempuan: 45,
+            //         lakiLaki: 65
+            //     },
+            //     {
+            //         kelas: 'Kelas 11',
+            //         total: 100,
+            //         perempuan: 45,
+            //         lakiLaki: 65
+            //     },
+            //     {
+            //         kelas: 'Kelas 12',
+            //         total: 100,
+            //         perempuan: 45,
+            //         lakiLaki: 65
+            //     }
+            // ];
 
             let labels = [];
             let total = [];
@@ -282,18 +304,17 @@
             ctx.height = parent.clientHeight;
 
             const myChart = new Chart(ctx, config);
-
-            filterTahun.addEventListener('change', () => updateChart());
-            filterDisabilitas.addEventListener('change', () => updateChart());
-
-            function updateChart() {
-                const selectedTahun = filterTahun.value;
-                const selectedDisabilitas = filterDisabilitas.value;
-
-                console.log('Selected Year:', selectedTahun);
-                console.log('Selected Disability Type:', selectedDisabilitas);
-            }
         }
+
+        function updateChart() {
+            document.getElementById('myChart').remove();
+            let canv = document.createElement('canvas');
+            canv.id = 'myChart';
+            document.getElementById('template').appendChild(canv);
+            statistik();
+        }
+        document.getElementById('filterTahun').addEventListener('change', () => updateChart());
+        document.getElementById('filterDisabilitas').addEventListener('change', () => updateChart());
         statistik();
     </script>
 </body>

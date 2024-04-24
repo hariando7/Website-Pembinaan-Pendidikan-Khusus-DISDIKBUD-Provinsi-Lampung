@@ -231,7 +231,8 @@
 </head>
 
 <body>
-    <div class="relative w-full min-h-screen bg-cover bg-no-repeat bg-center bg-[url({{ 'assets/landing/disdikbud.svg' }})]">
+    <div
+        class="relative w-full min-h-screen bg-cover bg-no-repeat bg-center bg-[url({{ 'assets/landing/disdikbud.svg' }})]">
         <div class="absolute inset-0 bg-[#000000]/[0.10] bg-blend-overlay"></div>
         <div class="flex justify-between pl-10 pr-10 pt-10 absolute w-full">
             <div class="">
@@ -243,6 +244,9 @@
             </div>
         </div>
         <div class="box relative w-[400px] h-[500px] m-auto flex items-center m-auto mt-10">
+            <div class="flex m-auto justify-center items-center">
+                <x-toast-login-gagal />
+            </div>
             <form autocomplete="off" class="" action={{ url('/login') }} method="POST">
                 @csrf
                 <h2 class="mb-5">Selamat Datang

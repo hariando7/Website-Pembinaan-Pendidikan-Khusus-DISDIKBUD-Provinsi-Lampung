@@ -11,6 +11,8 @@ use App\Mail\OtpSender;
 
 use App\Models\User;
 
+use Illuminate\Support\Facades\Session;
+
 class KontrolOtentifikasi extends Controller
 {
     public function otentifikasi (Request $req) {
@@ -25,12 +27,24 @@ class KontrolOtentifikasi extends Controller
             $req -> session() -> regenerate();
 
             if ($pengguna -> akses === 'superAdmin') {
+                Session::flash('toast-login-sukses', [
+                    'type' => 'toast-login-sukses',
+                    'message' => 'Berhasil Login Super Admin. Selamat Datang'
+                ]);
                 return redirect('/sa-kelola-notifikasi');
             }
+            Session::flash('toast-login-sukses', [
+                    'type' => 'toast-login-sukses',
+                    'message' => 'Berhasil Login Admin. Selamat Datang'
+                ]);
             return redirect('/admin-home-slb');
-        }
-
+        } else {
+        Session::flash('toast-login-gagal', [
+            'type' => 'toast-login-gagal',
+            'message' => 'Login Gagal, Kesalahan Data.'
+        ]);
         return redirect('/login');
+        }
     }
 
     public function lupaPassword (Request $req) {
@@ -98,11 +112,11 @@ class KontrolOtentifikasi extends Controller
 
     public function keluar () {
         Auth::logout();
- 
+
         request() -> session() -> invalidate();
-     
+
         request() -> session() -> regenerateToken();
-     
+
         return back();
     }
 }

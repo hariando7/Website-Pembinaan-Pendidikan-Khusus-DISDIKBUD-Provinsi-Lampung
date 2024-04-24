@@ -106,7 +106,7 @@
                 id="moving-border">
                 <div class="flex justify-between mb-4">
                 </div>
-                <div class="relative h-[450px] max-w-full">
+                <div id="template" sekolah="{{ auth()->user()->sekolah }}" class="relative h-[450px] max-w-full">
                     <canvas id="myChart" class="left-0 top-0 h-full w-full" width="800" height="600"></canvas>
                 </div>
             </div>
@@ -116,31 +116,34 @@
     <script>
         async function statistik() {
             const ctx = document.getElementById('myChart');
-            const filterTahun = document.getElementById('filterTahun');
-            const filterKelas = document.getElementById('filterKelas');
+            const idSekolah = document.getElementById('template').getAttribute('sekolah');
 
-            const dummyData = [{
-                    tahun: '2023/2024',
-                    total: 100,
-                    baik: 50,
-                    rusakRingan: 70,
-                    rusakBerat: 50
-                },
-                {
-                    tahun: '2023/2024',
-                    total: 100,
-                    baik: 50,
-                    rusakRingan: 70,
-                    rusakBerat: 50
-                },
-                {
-                    tahun: '2023/2024',
-                    total: 100,
-                    baik: 50,
-                    rusakRingan: 70,
-                    rusakBerat: 50
-                },
-            ];
+            const temp = await fetch(
+                `/api/statistik-sarana-prasarana-tahun?sekolah=${ encodeURI(idSekolah)}`);
+            const dummyData = await temp.json();
+
+            // const dummyData = [{
+            //         tahun: '2023/2024',
+            //         total: 100,
+            //         baik: 50,
+            //         rusakRingan: 70,
+            //         rusakBerat: 50
+            //     },
+            //     {
+            //         tahun: '2023/2024',
+            //         total: 100,
+            //         baik: 50,
+            //         rusakRingan: 70,
+            //         rusakBerat: 50
+            //     },
+            //     {
+            //         tahun: '2023/2024',
+            //         total: 100,
+            //         baik: 50,
+            //         rusakRingan: 70,
+            //         rusakBerat: 50
+            //     },
+            // ];
 
             let labels = [];
             let total = [];
@@ -234,17 +237,14 @@
             ctx.height = parent.clientHeight;
 
             const myChart = new Chart(ctx, config);
+        }
 
-            filterTahun.addEventListener('change', () => updateChart());
-            filterKelas.addEventListener('change', () => updateChart());
-
-            function updateChart() {
-                const selectedTahun = filterTahun.value;
-                const selectedKElas = filterKelas.value;
-
-                console.log('Selected Year:', selectedTahun);
-                console.log('Selected Disability Type:', selectedKelas);
-            }
+        function updateChart() {
+            document.getElementById('myChart').remove();
+            let canv = document.createElement('canvas');
+            canv.id = 'myChart';
+            document.getElementById('template').appendChild(canv);
+            statistik();
         }
         statistik();
     </script>
