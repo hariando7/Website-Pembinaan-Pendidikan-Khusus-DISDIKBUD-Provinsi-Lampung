@@ -69,9 +69,9 @@
                         <form class="w-full mb-5">
                             <div class="flex">
                                 <select name="filterSekolah" id="filterSekolah"
-                                    class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                    class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 w-[40%] lg:w-[30%]"
                                     onchange="cariSekolah(this)">
-                                    <option value="">semua</option>
+                                    <option value="">Semua</option>
                                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -97,7 +97,8 @@
                                     <input type="search" id="search-dropdown" name="pencarian"
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
                                         class="block p-2.5 w-full h-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="Cari data" oninput="cekKosong(this)" required />
+                                        placeholder="Cari Nama Sekolah, Kab/Kota, Kecamatan dan Jenis ketunaan Sekolah"
+                                        oninput="cekKosong(this)" required />
                                     <button type="submit"
                                         class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-[#2F8386] rounded-e-lg border border-[#2F8386] hover:bg-[#FA8F21] focus:ring-4 focus:outline-none focus:ring-#FA8F21">
                                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +183,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </x-layout-landing>
 </body>

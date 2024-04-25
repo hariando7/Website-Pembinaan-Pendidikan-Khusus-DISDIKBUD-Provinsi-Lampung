@@ -225,9 +225,9 @@
             }
         }
 
-        .slideshow-2 img {
+        /* .slideshow-2 img {
             animation: fadeInOut2 6s infinite;
-        }
+        } */
     </style>
     <style>
         .text-typing {
@@ -699,8 +699,38 @@
                         Apa itu Disabilitas ?</h1>
                     <div class="lg:flex justify-center gap-10">
                         <div class="lg:w-[40%] order-2 lg:order-1 image-container relative slideshow-2">
-                            <img src="assets/landing/apaItuDisabilitas.svg"
-                                class="w-full h-full m-auto items-center lg:mb-0 image-zoom" />
+                            {{-- <img src="{{ url(asset('storage/assets/disabilitas1.jpg')) }}"
+                                class="w-full h-full m-auto items-center lg:mb-0 image-zoom" /> --}}
+                            <div class="w-full h-80 carousel rounded-box">
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/disabilitas1.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/disabilitas2.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/disabilitas3.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/disabilitas4.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/disabilitas5.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/disabilitas6.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/disabilitas7.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                            </div>
                         </div>
                         <div class="lg:w-[60%] order-1 lg:order-2">
                             <p class="py-2 text-black text-justify" id="apaItuDisabilitasText">Disabilitas adalah
@@ -734,9 +764,9 @@
                                         speechSynthesis.speak(speech);
                                     });
                                 </script>
-                                <script>
+                                {{-- <script>
                                     var images = [
-                                        "/assets/landing/strukturDinas.svg", // Ganti dengan URL gambar pertama
+                                        "storage/assets/disabilitas2.jpg", // Ganti dengan URL gambar pertama
                                         // "/assets/landing/apaItuDisabilitas.svg"
                                         // "/assets/landing/bg-utama.png", // Ganti dengan URL gambar kedua
                                         // "/assets/landing/apaItuDisabilitas.svg" // Ganti dengan URL gambar ketiga dst.
@@ -751,7 +781,7 @@
                                     }
 
                                     setInterval(changeImage, 10000); // Ganti gambar setiap 10 detik
-                                </script>
+                                </script> --}}
                             </div>
                         </div>
                     </div>
@@ -877,21 +907,39 @@
                         Luar Biasa</h1>
                     <div class="lg:flex justify-center gap-10">
                         <div class="lg:w-[40%] order-1 lg:order-2">
-                            <img src="assets/landing/Pendidikan_SLB.svg"
-                                class="w-full h-full m-auto items-center lg:mb-0" />
+                            <div class="w-full h-80 carousel rounded-box lg:mt-5">
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/slb1.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/slb2.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/slb3.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/slb4.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                                <div class="carousel-item w-full">
+                                    <img src="{{ url(asset('storage/assets/slb5.jpg')) }}" class="w-full"
+                                        alt="Tailwind CSS Carousel component" />
+                                </div>
+                            </div>
                         </div>
                         <div class="lg:w-[60%] order-2 lg:order-1">
-                            <p class="py-6 text-black" id="pengertianSLB">Sekolah luar biasa (SLB) adalah sebuah
-                                sekolah
-                                yang diperuntukkan bagi anak berkebutuhan khusus agar bisa mendapatkan layanan dasar
-                                yang
-                                bisa membantu mendapatkan akses pendidikan.</p>
-                            <div class="text-black">Dengan jenis yang berbeda, berbeda pula strategi pembelajaran serta
-                                fasilitas yang dimiliki. SLB berperan sebagai bagian dari lembaga pendidikan yang dapat
-                                mengakomodasi dan menyelenggarakan pendidikan khusus untuk anak-anak dengan kebutuhan
+                            <p class="py-6 text-black text-justify" id="pengertianSLB">Sekolah luar biasa (SLB) adalah
+                                sebuah sekolah yang diperuntukkan bagi anak berkebutuhan khusus agar bisa mendapatkan
+                                layanan dasar yangbisa membantu mendapatkan akses pendidikan. Dengan jenis yang berbeda,
+                                berbeda pula strategi pembelajaran serta fasilitas yang dimiliki. SLB berperan sebagai
+                                bagian dari lembaga pendidikan yang dapat mengakomodasi dan menyelenggarakan pendidikan
+                                khusus untuk anak-anak dengan kebutuhan
                                 khusus. Jenis kebutuhan tersebut mencakup berbagai kondisi, seperti tunanetra,
                                 tunarungu,
-                                tunawicara, tunadaksa, tunalaras, tunaganda, dan anak terbelakangan.</div>
+                                tunawicara, tunadaksa, tunalaras, tunaganda, dan anak terbelakangan.</p>
                             <div class="gap-10 flex justify-between mt-5 lg:mt-0">
                                 <x-buttitle-landing ref="/sekolah-luar-biasa" color="#FA8F21" width="[10rem]"
                                     title="Selengkapnya"
@@ -949,7 +997,8 @@
                                         class="absolute z-0 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
                                         @for ($i = 0; $i < count($karya); $i++)
                                             <button type="button" class="w-3 h-3 rounded-full" aria-current="true"
-                                                aria-label="Slide 1" data-carousel-slide-to="{{ $i }}"></button>
+                                                aria-label="Slide 1"
+                                                data-carousel-slide-to="{{ $i }}"></button>
                                         @endfor
                                     </div>
                                     <!-- Slider controls -->
@@ -1001,20 +1050,19 @@
         </div>
         <div id="section7">
             <div class="w-full flex flex-col justify-center items-center pt-20 pb-20 bg-white">
-                <div class="fade7 w-[80%] bg-[#2E707B] p-10 rounded-lg">
-                    <h1 class="lg:text-4xl md:text-4xl sm:text-2xl font-bold text-white text-center">SLB PROVINSI
+                <div class="fade7 w-[80%] bg-[#2E707B] p-5 rounded-lg">
+                    <h1 class="lg:text-4xl md:text-4xl sm:text-2xl font-bold text-white text-center mb-5">SLB PROVINSI
                         LAMPUNG
                     </h1>
+                    <x-carousel-home />
                     <p
-                        class="text-sm md:text-base font-thin text-white text-justify md:text-center mt-4 m-2 md:m-8 pl-0 md:pl-24 md:pr-24">
+                        class="text-sm md:text-base font-thin text-white text-justify md:text-center mt-5 pl-0 md:pl-24 md:pr-24">
                         Sekolah Luar Biasa Dinas Pendidikan Kebudayaan Provinsi Lampung <br>
                         Bidang Pembinaan Pendidikan Khusus
                         {{-- <span><a href="/sekolah-luar-biasa" target="_blank">Selengkapnya</a></span> --}}
                     </p>
                     <x-buttitle-landing ref="/sekolah-luar-biasa" color="#FA8F21" width="[10rem]"
-                        title="Selengkapnya"
-                        extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3 m-auto mb-5" />
-                    <x-carousel-home />
+                        title="Selengkapnya" extendClass="text-white text-center m-auto" />
                 </div>
             </div>
         </div>

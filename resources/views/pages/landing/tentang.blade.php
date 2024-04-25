@@ -188,20 +188,83 @@
         <x-hero-landing title="Bidang Pembinaan Pendidikan Khusus"
             desc="Dinas Pendidikan dan Kebudayaan Provinsi Lampung Jl. Drs. Warsito No. 72 Teluk Betung Bandar Lampung, 35215"
             ref="#section2" imgPath="{{ asset('/assets/landing/bg-utama.png') }}" butTitle="Selengkapnya" />
-        <div id="section_profile">
+        <div id="section1">
             <div class="hero min-h-screen bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
-                <div class="hero-content flex-col lg:flex-row lg:w-full lg:flex p-5 lg:p-20 gap-10">
+                <div class="hero-content fade1 flex-col lg:flex-row lg:w-full lg:flex p-5 lg:p-20 gap-10">
                     <div class="image-container relative">
-                        <img src="assets/landing/prov-lampung2.svg" class="rounded-lg w-[300px] h-[300px] image-zoom" />
+                        <img src="assets/landing/sekapurSirih.jpg" class="rounded-lg w-[500px] h-[300px] image-zoom" />
+                        <div class="text-center text-black font-bold">
+                            <span class="text-typing">Dra. Suslina Sari, M.M.</span>
+                        </div>
+                        <script>
+                            function typeEffect(element, speed) {
+                                let text = element.getAttribute('data-text');
+                                element.innerHTML = '';
+
+                                let i = 0;
+                                let timer = setInterval(function() {
+                                    if (i < text.length) {
+                                        element.append(text.charAt(i));
+                                        i++;
+                                    } else {
+                                        clearInterval(timer);
+                                        setTimeout(function() {
+                                            deleteEffect(element, speed);
+                                        }, 1000);
+                                    }
+                                }, speed);
+                            }
+
+                            function deleteEffect(element, speed) {
+                                let text = element.innerHTML;
+                                let length = text.length;
+                                let timer = setInterval(function() {
+                                    if (length >= 0) {
+                                        element.innerHTML = text.substring(0, length);
+                                        length--;
+                                    } else {
+                                        clearInterval(timer);
+                                        setTimeout(function() {
+                                            typeEffect(element, speed);
+                                        }, 500);
+                                    }
+                                }, speed);
+                            }
+
+                            let textElement = document.querySelector('.text-typing');
+                            textElement.setAttribute('data-text', textElement.textContent.trim());
+                            typeEffect(textElement, 100);
+                        </script>
                     </div>
                     <div>
                         <h1 class="text-2xl lg:text-4xl text-center lg:text-left font-bold text-black">Sekapur Sirih
                             Kepala Bidang Pembinaan Pendidikan Khusus Provinsi Lampung</h1>
-                        <p class="py-6 text-black">Bidang Pembinaan Pendidikan Khusus memiliki tugas melaksanakan
+                        <p id="sekapurSirihText" class="py-6 text-black text-justify">Bidang Pembinaan Pendidikan Khusus
+                            memiliki tugas
+                            melaksanakan
                             penyusunan bahan perumusan dan pelaksanaan kebijakan di bidang pendidikan khusus.</p>
                         <x-buttitle-landing ref="" color="#FA8F21" width="[10rem]" title="Selengkapnya"
-                            extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3" />
+                            extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3 m-auto lg:m-0" />
                     </div>
+                    <button id="sekapurSirihButton"
+                        class="bg-[#FA8F21]/[0.20] btn border-none hover:bg-[#D87815] text-white font-bold py-2 px-4 rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M1.75 5.75v4.5h2.5l4 3V2.75l-4 3zm9 .5s1 .5 1 1.75s-1 1.75-1 1.75m1-6.5c2 1 3 2.5 3 4.75s-1 3.75-3 4.75" />
+                        </svg>
+                    </button>
+                    <script>
+                        document.getElementById('sekapurSirihButton').addEventListener('click', function() {
+                            var text = document.getElementById('sekapurSirihText').innerText.trim();
+                            var speech = new SpeechSynthesisUtterance(text);
+                            var voices = window.speechSynthesis.getVoices();
+                            speech.voice = voices.find(function(voice) {
+                                return voice.name === 'Google Bahasa Indonesia';
+                            });
+                            speechSynthesis.speak(speech);
+                        });
+                    </script>
                 </div>
             </div>
         </div>
@@ -332,7 +395,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div id="section5"
+        <div id="section5"
             class="bg-[url({{ '/assets/landing/disdikbud.png' }})] w-full h-[500px] lg:min-h-screen bg-cover bg-no-repeat bg-[#000000]/[0.50] bg-blend-overlay flex justify-center items-center"
             style="background-size: 100% 100%;">
             <div class="lg:w-1/2 lg:p-5 relative">
@@ -349,7 +412,7 @@
                     </form>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </x-layout-landing>
 </body>
 

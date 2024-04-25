@@ -24,164 +24,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-        .box {
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .box::before {
-            content: '';
-            z-index: 1;
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 380px;
-            height: 420px;
-            transform-origin: bottom right;
-            background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
-            animation: animate 6s linear infinite;
-        }
-
-        .box::after {
-            content: '';
-            z-index: 1;
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 380px;
-            height: 420px;
-            transform-origin: bottom right;
-            background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
-            animation: animate 6s linear infinite;
-            animation-delay: -3s;
-        }
-
-        @keyframes animate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        form {
-            position: absolute;
-            inset: 5px;
-            background: #494A4C;
-            padding: 50px 40px;
-            border-radius: 8px;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-        }
-
-        h2 {
-            color: #45f3ff;
-            font-weight: 500;
-            text-align: center;
-            letter-spacing: 0.1em;
-        }
-
-        .inputBox input {
-            width: 100%;
-            padding: 20px 10px 10px;
-            background: transparent;
-            outline: none;
-            box-shadow: none;
-            border: none;
-            color: white;
-            font-size: 1em;
-            letter-spacing: 0.05em;
-            transition: 0.5s;
-            z-index: 10;
-        }
-
-        .inputBox input {
-            position: relative;
-            width: 100%;
-            padding: 20px 10px 10px;
-            background: transparent;
-            outline: none;
-            box-shadow: none;
-            border: none;
-            color: white;
-            font-size: 1em;
-            letter-spacing: 0.05em;
-            transition: 0.5s;
-            z-index: 10;
-        }
-
-        .inputBox span {
-            position: absolute;
-            left: 0;
-            padding: 20px 0px 10px;
-            pointer-events: none;
-            font-size: 1em;
-            color: white;
-            letter-spacing: 0.05em;
-            transition: 0.5s;
-        }
-
-        .inputBox input:valid~span,
-        .inputBox input:focus~span {
-            color: #45f3ff;
-            transform: translateX(0px) translateY(-34px);
-            font-size: 0.75em;
-        }
-
-        .inputBox i {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background: #FA8F21;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: 0.5s;
-            pointer-events: none;
-            z-index: 9;
-        }
-
-        .inputBox input:valid~i,
-        .inputBox input:focus~i {
-            height: 44px;
-        }
-
-        .links {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .links a {
-            margin: 10px 0;
-            font-size: 0.75em;
-            color: #45f3ff;
-            text-decoration: beige;
-        }
-
-        input[type="submit"] {
-            border: none;
-            outline: none;
-            padding: 11px 25px;
-            background: #FA8F21;
-            cursor: pointer;
-            border-radius: 4px;
-            font-weight: 600;
-            width: 100px;
-            margin-top: 10px;
-        }
-
-        input[type="submit"]:active {
-            opacity: 0.8;
-        }
-    </style>
-
-    <style>
         @keyframes moving-border {
             0% {
                 border-color: white;
@@ -200,6 +42,7 @@
             animation: moving-border 3s infinite;
         }
     </style>
+
 </head>
 
 <body>
@@ -221,15 +64,15 @@
             </div>
         </div>
         <div id="section2" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 lg:pt-0">
-            <div class="lg:w-full lg:flex lg:pl-20 lg:pr-20 lg:pb-20">
-                <div class="w-full rounded shadow-lg border-solid border-4 border-[#297785]" id="moving-border">
-                    <div class="sm:rounded-lg p-5">
-                        <form class="static bg-white mt-2 lg:-mt-5 lg:mb-0">
+            <div class="lg:w-full lg:flex lg:pl-20 lg:pr-20 lg:pb-20 p-5">
+                <div class="w-full rounded shadow-lg border-solid border-4 border-[#297785] p-5" id="moving-border">
+                    <div class="sm:rounded-lg">
+                        <form class="static lg:mb-10 mb-10 h-5">
                             <div class="flex justify-between">
                                 <select name="filterSekolah" id="filterSekolah"
-                                    class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                    class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 w-[40%] lg:w-[30%]"
                                     onchange="cariSekolah(this)">
-                                    <option value="">semua</option>
+                                    <option value="">Semua</option>
                                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -274,6 +117,7 @@
                                         }
                                     </script>
                                 </div>
+                            </div>
                         </form>
                     </div>
                     {{-- Isi Content --}}
@@ -306,7 +150,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </x-layout-landing>
 </body>

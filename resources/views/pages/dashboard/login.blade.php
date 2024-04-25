@@ -236,30 +236,30 @@
         <div class="absolute inset-0 bg-[#000000]/[0.10] bg-blend-overlay"></div>
         <div class="flex justify-between pl-10 pr-10 pt-10 absolute w-full">
             <div class="">
-                <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] lg:h-full">
+                <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] w-[80px] h-[80px] lg:h-full">
             </div>
             <div class="flex items-start">
                 <x-buttitle-landing ref="/" color="#FA8F21" width="[10rem]" title="Home"
                     extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815]" />
             </div>
         </div>
-        <div class="box relative w-[400px] h-[500px] m-auto flex items-center m-auto mt-10">
+        <div class="box relative w-full lg:w-[400px] h-[500px] m-auto flex items-center m-auto mt-32 lg:mt-10">
             <div class="flex m-auto justify-center items-center">
                 <x-toast-login-gagal />
             </div>
             <form autocomplete="off" class="" action={{ url('/login') }} method="POST">
                 @csrf
-                <h2 class="mb-5">Selamat Datang
+                <h2 class="mb-5 font-bold">Selamat Datang
                     di Dashboard SLB Bidang
                     Pembinaan Pendidikan Khusus</h2>
                 <h2 class="mb-3 font-bold">Login</h2>
                 <h3 class="text-center text-sm text-white">Masukkan Email Password</h3>
-                <div class="inputBox relative w-[300px] mt-5">
+                <div class="inputBox relative w-[280px] lg:w-full mt-5">
                     <input class="relative" type="email" name="email" required="required">
                     <span>Email</span>
                     <i></i>
                 </div>
-                <div class="inputBox relative w-[300px] mt-5">
+                <div class="inputBox relative w-[280px] lg:w-full mt-5">
                     <input type="password" name="password" id="password"
                         oninvalid="this.setCustomValidity('Input your password, at least 6 character'); alertInputRequired()"
                         oninput="this.setCustomValidity('')" minLength="6" maxlength="255" required />
