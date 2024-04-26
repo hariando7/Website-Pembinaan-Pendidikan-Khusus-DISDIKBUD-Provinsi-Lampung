@@ -390,7 +390,7 @@
                     <div class="text-2xl lg:text-3xl text-center lg:text-center font-bold text-black pb-5 lg:pb-10">
                         Struktur Bidang
                         Pembinaan Pendidikan Khusus</div>
-                    <img src="assets/landing/strukturDinas.svg" class="flex justify-center items-center m-auto"
+                    <img src="{{ url(asset('storage/assets/diksus.png')) }}" class="flex justify-center items-center m-auto"
                         alt="">
                 </div>
             </div>

@@ -579,7 +579,7 @@
                     <div class="w-full lg:p-10">
                         <h1
                             class="text-2xl lg:text-4xl font-bold text-black pt-5 pb-5 lg:pb-10 text-center lg:text-center">
-                            Dokumentasi Kegiatan Bidang</h1>
+                            Dokumentasi Kegiatan Bidang Diksus</h1>
                         <div class="grid grid-cols-1 gap-5 pl-5 pr-5 pb-5 ">
                             <div class="w-full rounded overflow-hidden">
                                 <div id="default-carousel" class="relative w-full z-0" data-carousel="slide">

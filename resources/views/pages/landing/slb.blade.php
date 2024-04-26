@@ -142,7 +142,7 @@
                                         Jenis Ketunaan
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Website Sekolah
+                                        Website/Instagram Sekolah
                                     </th>
                                 </tr>
                             </thead>
@@ -168,13 +168,13 @@
                                         <td class="px-6 py-4">{{ $data['kecamatan'] }}</td>
                                         <td class="px-6 py-4">
                                             <a class="font-medium text-blue-500 dark:text-blue-500 hover:underline"
-                                                href="{{ $data['alamat'] }}">GoogleMaps</a>
+                                                href="{{ $data['alamat'] }}" target="_blank">GoogleMaps</a>
                                         </td>
                                         <td class="px-6 py-4">{{ $data['jenisKetunaan'] }}</td>
                                         <td class="px-6 py-4">
-                                            <a href="{{ $data['websiteSekolah'] }}"
+                                            <a href="{{ $data['websiteSekolah'] }}" target="_blank"
                                                 class="font-medium text-blue-500 dark:text-blue-500 hover:underline">Link
-                                                Website</a>
+                                                Website/Instagram</a>
                                         </td>
                                     </tr>
                                 @endforeach

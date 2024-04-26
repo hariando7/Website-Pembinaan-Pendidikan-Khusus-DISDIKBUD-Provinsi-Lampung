@@ -422,9 +422,80 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="Kirim"
-                    class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]">
+                {{-- <input type="submit" value="Kirim"
+                    class="text-white font-bold text-center w-full m-auto hover:bg-[#D87815]"> --}}
+                <button data-modal-target="kirim_inklusi" data-modal-toggle="kirim_inklusi" type="button"
+                    class="btn border-none gap-3 w-52 py-1 mt-5 flex items-center justify-center m-auto rounded-md bg-[#FA8F21] hover:bg-[#D87815] text-white p-2 pt-2 pb-2">
+                    Kirim
+                </button>
             </form>
+            <div id="kirim_inklusi" tabindex="-1"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <div class="relative bg-[#297785] rounded-lg shadow">
+                        <button type="button"
+                            class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                            data-modal-hide="kirim_inklusi">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                        <div class="p-4 md:p-5 text-center">
+                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            <h3 class="mb-5 text-lg font-normal text-white">Anda yakin ingin mengirim data? Data tidak
+                                bisa dirubah. Apabila terdapat kesalahan data, harap menghubungi Admin Dinas Bidang
+                                Pembinaan Pendidikan Khusus</h3>
+                            <button data-modal-hide="kirim_inklusi" type="button" value="Kirim"
+                                class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg text-white bg-red-600 hover:bg-red-800 rounded-lg hover:text-white">Tidak</button>
+                            <button onclick="submitFormFromPopup()" data-modal-hide="kirim_inklusi" type="button"
+                                value="Kirim"
+                                class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white"
+                                id="submitButton" disabled>Ya, Kirim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function submitFormFromPopup() {
+                    var form = document.querySelector('form');
+                    var dataSentSuccessfully = true; 
+                    if (dataSentSuccessfully) {
+                        alert('Data berhasil dikirim! Jika terdapat kesalahan data, Harap hubungi Dinas Bidang Pembinaan pendidikan khusus');
+                        form.submit();
+                    } else {
+                        alert('Maaf, terjadi kesalahan saat mengirim data.');
+                    }
+                }
+
+                function checkFormValidity() {
+                    var inputs = document.querySelectorAll('form input[type="text"], form input[type="number"], form select');
+                    var allFilled = true;
+
+                    inputs.forEach(function(input) {
+                        if (!input.value.trim()) {
+                            allFilled = false;
+                        }
+                    });
+                    var submitButton = document.getElementById('submitButton');
+                    if (allFilled) {
+                        submitButton.removeAttribute('disabled');
+                    } else {
+                        submitButton.setAttribute('disabled', 'disabled');
+                    }
+                }
+
+                document.querySelectorAll('form input[type="text"], form input[type="number"], form select').forEach(function(
+                    input) {
+                    input.addEventListener('input', checkFormValidity);
+                });
+            </script>
         </div>
     </div>
 </body>
