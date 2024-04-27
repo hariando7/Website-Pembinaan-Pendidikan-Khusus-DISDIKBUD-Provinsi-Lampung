@@ -83,9 +83,9 @@
                                         <x-svg-search />
                                     </div>
                                     <input type="text" name="pencarian" id="simple-search"
-                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." required />
+                                        placeholder="Search Nama Notifikasi, Tanggal Awal, Tanggal Akhir dan Deskripsi" oninput="cekKosong(this)"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
                                         function cekKosong(e) {
                                             if (e.value === '') {

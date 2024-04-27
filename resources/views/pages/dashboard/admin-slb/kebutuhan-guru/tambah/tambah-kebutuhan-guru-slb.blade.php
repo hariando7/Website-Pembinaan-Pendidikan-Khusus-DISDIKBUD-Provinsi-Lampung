@@ -80,9 +80,9 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="mataPelajaran">Guru Mata Pelajaran</label>
-                            <input type="text" id="mataPelajaran" name="mataPelajaran"
+                            <input type="text" id="mataPelajaran" name="mataPelajaran" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Guru Mata Pelajaran" required />
+                                placeholder="Masukkan Guru Mata Pelajaran (Maksimal 100 Karakter)" required />
                         </div>
                     </div>
                 </div>
@@ -90,13 +90,13 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jumlahDibutuhkan">Jumlah Dibutuhkan</label>
-                            <input type="number" id="jumlahDibutuhkan" name="jumlahDibutuhkan"
+                            <input type="number" id="jumlahDibutuhkan" name="jumlahDibutuhkan" maxlength="999"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jumlah Dibutuhkan" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jumlahSaatIni">Jumlah Yang Ada</label>
-                            <input type="number" id="jumlahSaatIni" name="jumlahSaatIni"
+                            <input type="number" id="jumlahSaatIni" name="jumlahSaatIni" maxlength="999"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jumlah Yang Ada" required />
                         </div>
@@ -112,9 +112,9 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="keterangan">Keterangan</label>
-                            <input type="text" id="keterangan" name="keterangan"
+                            <input type="text" id="keterangan" name="keterangan" maxlength="500"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Keterangan" required />
+                                placeholder="Masukkan Keterangan (Maksimal 500 Karakter)" required />
                         </div>
                     </div>
                 </div>

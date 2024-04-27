@@ -75,7 +75,7 @@
                                 <select name="filterSekolah" id="filterSekolah"
                                     class="z-10 inline-flex items-center py-2.5 w-full pl-2 text-sm font-medium text-center text-[#297785] border-2 border-[#297785] dark:border-[#297785] focus:border-[#FA8F21] dark:text-[#297785] rounded-lg focus:ring-none"
                                     onchange="cariSekolah(this)">
-                                    <option value="">semua</option>
+                                    <option value="">Semua Sekolah</option>
                                     @foreach ($sekolah as $data)
                                         <option value="{{ $data->id }}"
                                             @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data->id) selected @endif
@@ -104,7 +104,7 @@
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" type="text"
                                         id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="cekKosong(this)" required />
+                                        placeholder="Cari Nama Sekolah, Email Sekolah" oninput="cekKosong(this)" required />
                                     <script>
                                         function cekKosong(e) {
                                             if (e.value === '') {

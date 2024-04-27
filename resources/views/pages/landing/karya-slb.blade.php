@@ -123,12 +123,11 @@
                     {{-- Isi Content --}}
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         @foreach ($dummyData as $index => $data)
-                            <div class="border relative h-full max-w-sm rounded overflow-hidden shadow-lg ">
+                            <div class="border relative h-full max-w-sm rounded overflow-hidden shadow-lg">
                                 @php
                                     $temp = $sekolah->find($data['sekolah']);
                                 @endphp
                                 <div class="text-center font-bold text-xl pt-5 mb-5 text-[#297785]">
-                                    {{-- {{ $data['namaSekolah'] }} --}}
                                     {{ $temp['nama'] }}
                                 </div>
                                 <div class="flex m-auto">
@@ -139,12 +138,38 @@
                                 <div class="px-6 py-4">
                                     <div class="font-bold text-xl mb-2 text-[#297785]">{{ $data['nama'] }}</div>
                                     <p class="text-gray-700 text-base">
-                                        {{ $data['deskripsi'] }}
+                                        <span class="short-desc">{{ substr($data['deskripsi'], 0, 50) }}</span>
+                                        <span class="long-desc" style="display: none;">{{ $data['deskripsi'] }}</span>
+                                        @if (strlen($data['deskripsi']) > 50)
+                                            <button class="show-more text-blue-600">Selengkapnya</button>
+                                        @endif
                                     </p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
+
+                    <script>
+                        document.querySelectorAll('.show-more').forEach(item => {
+                            item.addEventListener('click', event => {
+                                const parent = event.target.closest('.px-6.py-4');
+                                const shortDesc = parent.querySelector('.short-desc');
+                                const longDesc = parent.querySelector('.long-desc');
+                                const button = parent.querySelector('.show-more');
+
+                                if (shortDesc.style.display === 'none') {
+                                    shortDesc.style.display = 'inline';
+                                    longDesc.style.display = 'none';
+                                    button.textContent = 'Selengkapnya';
+                                } else {
+                                    shortDesc.style.display = 'none';
+                                    longDesc.style.display = 'inline';
+                                    button.textContent = 'Perkecil';
+                                }
+                            });
+                        });
+                    </script>
+
                     <div class="relative flex justify-between mt-5">
                         <div class="font-bold text-black">Jumlah : {{ count($dummyData) }}</div>
                     </div>

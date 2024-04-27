@@ -101,7 +101,7 @@
                                     <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                                         <x-svg-search />
                                     </div>
-                                    <input type="text" name="pencarian" id="simple-search" class="mx-auto block w-full rounded-lg border-2 border-[#297785] p-2.5 ps-10 text-sm text-black placeholder-gray-400 hover:text-black focus:border-[#FA8F21] focus:ring-[#FA8F21] dark:border-[#297785] dark:placeholder-gray-400 dark:hover:text-black dark:focus:ring-[#FA8F21]" placeholder="Search..." oninput="cekKosong(this)" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
+                                    <input type="text" name="pencarian" id="simple-search" class="mx-auto block w-full rounded-lg border-2 border-[#297785] p-2.5 ps-10 text-sm text-black placeholder-gray-400 hover:text-black focus:border-[#FA8F21] focus:ring-[#FA8F21] dark:border-[#297785] dark:placeholder-gray-400 dark:hover:text-black dark:focus:ring-[#FA8F21]" placeholder="Cari Nama Siswa, Jenis Kelamin, Jenis Ketunaan dan Kelas" oninput="cekKosong(this)" value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
                                         function cekKosong(e) {
                                             if (e.value === '') {
@@ -205,7 +205,7 @@
                                     <td class="px-3 py-2">
                                         <?php
                                         $namaSiswa = $data['namaSiswa'];
-                                        echo strlen($namaSiswa) > 15 ? substr($namaSiswa, 0, 15) . '...' : $namaSiswa;
+                                        echo strlen($namaSiswa) > 30 ? substr($namaSiswa, 0, 30) . '...' : $namaSiswa;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jenisKelamin'] ?></td>

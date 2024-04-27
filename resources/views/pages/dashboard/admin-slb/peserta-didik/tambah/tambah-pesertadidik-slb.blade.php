@@ -80,9 +80,9 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="name">Nama Peserta Didik</label>
-                            <input type="text" name="nama" id="name"
+                            <input type="text" name="nama" id="name" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Peserta Didik" required />
+                                placeholder="Masukkan Nama Peserta Didik (Maksimal 100 Karakter)" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="jeniskelamin">Jenis Kelamin (JK)</label>

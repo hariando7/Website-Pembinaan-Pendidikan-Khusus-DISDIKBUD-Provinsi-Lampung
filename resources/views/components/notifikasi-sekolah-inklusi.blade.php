@@ -39,7 +39,7 @@
         <!-- Modal content -->
         <div class="relative rounded-lg shadow bg-[#297785]">
             <!-- Modal header -->
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                 <div class="div">
                     <h3 class="text-lg font-semibold text-white dark:text-white">
                         Notifikasi Pengumuman Dinas<br>
@@ -73,25 +73,27 @@
             <div class="p-4 md:p-5 lg:p-5">
                 <div class="overflow-y-auto h-[200px] hide-scrollbar">
                     <div class="relative">
-                        <?php foreach ($notifications as $notification): ?>
-                        <div class="mb-5 flex justify-between items-start">
-                            <div>
-                                {{-- Judul Notifikasi --}}
-                                <h3 class="text-lg font-semibold text-white dark:text-white">
-                                    <?= $notification['nama'] ?>
-                                </h3>
-                                {{-- Deskripsi Notifikasi --}}
-                                <p class="text-sm text-white">
-                                    <?= $notification['detail'] ?>
-                                </p>
+                        <?php $counter = 1; foreach ($notifications as $notification): ?>
+                        <div class="mb-5">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    {{-- Judul Notifikasi --}}
+                                    <h3 class="text-lg font-bold text-white">
+                                        <?= $counter ?>. <?= $notification['nama'] ?>
+                                    </h3>
+                                    {{-- Deskripsi Notifikasi --}}
+                                    <p class="text-sm text-white text-justify">
+                                        <?= $notification['detail'] ?>
+                                    </p>
+                                </div>
+                                {{-- Waktu notifikasi --}}
                             </div>
-                            {{-- Waktu notifikasi --}}
-                            <div class="text-right font-bold pt-2">
-                                <p class="text-sm text-white">Mulai: <?= $notification['tanggalMulai'] ?></p>
-                                <p class="text-sm text-white">Akhir: <?= $notification['tanggalAkhir'] ?></p>
+                            <div class="flex justify-between font-bold mt-2 pb-2 border-b border-gray-200">
+                                <p class="text-sm text-white">Awal Notifikasi: <?= $notification['tanggalMulai'] ?></p>
+                                <p class="text-sm text-white">Akhir Notifikasi: <?= $notification['tanggalAkhir'] ?></p>
                             </div>
                         </div>
-                        <?php endforeach; ?>
+                        <?php $counter++; endforeach; ?>
                     </div>
                 </div>
             </div>

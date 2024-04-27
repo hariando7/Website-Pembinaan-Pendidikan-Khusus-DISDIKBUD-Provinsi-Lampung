@@ -112,9 +112,9 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="nama">Gedung/Ruang</label>
-                            <input name="nama" type="text" id="nama"
+                            <input name="nama" type="text" id="nama" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Gedung/Ruang" required />
+                                placeholder="Masukkan Gedung/Ruang (Maksimal 100 Karakter)" required />
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jumlah">Jumlah</label>
-                            <input name="jumlah" type="number" id="jumlah"
+                            <input name="jumlah" type="number" id="jumlah" maxlength="999"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jumlah" required />
                         </div>
@@ -143,9 +143,9 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="keterangan">Catatan/Keterangan</label>
-                            <input name="keterangan" type="text" id="keterangan"
+                            <input name="keterangan" type="text" id="keterangan" maxlength="500"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Catatan/Keterangan" required />
+                                placeholder="Masukkan Catatan/Keterangan (Maksimal 500 Karakter)" required />
                         </div>
                     </div>
                 </div>

@@ -108,7 +108,7 @@
                                     </div>
                                     <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto block w-full rounded-lg border-2 border-[#297785] p-2.5 ps-10 text-sm text-black placeholder-gray-400 hover:text-black focus:border-[#FA8F21] focus:ring-[#FA8F21] dark:border-[#297785] dark:placeholder-gray-400 dark:hover:text-black dark:focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="cekKosong(this)"
+                                        placeholder="Cari Nama Guru, Jenis Kelamin, NIP, PNS/NON, Sertifikasi, Mengajar Bidang" oninput="cekKosong(this)"
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
                                         function cekKosong(e) {

@@ -72,7 +72,8 @@
                                         class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Email Sekolah</h3>
-                                            <p>Masukkan Email Sekolah Aktif, diusahakan menggunakan @gmail.com. Supaya
+                                            <p>Masukkan Email Sekolah Aktif (Maksimal 100 karakter), diusahakan
+                                                menggunakan @gmail.com. Supaya
                                                 memudahkan saat ingin reset password</p>
                                             <a href="https://mail.google.com/mail/u/0/#inbox"
                                                 class="flex items-center font-medium text-blue-600 hover:text-blue-700 hover:underline">Selengkapnya
@@ -87,9 +88,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="email" name="email" id="email_sekolah"
+                            <input type="email" name="email" id="email_sekolah" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Email Aktif Sekolah" required />
+                                placeholder="Masukkan Email Aktif Sekolah (Maksimal 100 karakter)" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4 relative">
                             <div class="flex">
@@ -108,7 +109,8 @@
                                         class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Password</h3>
-                                            <p>Masukkan Password, Masukkan minimal 6 karakter random. Apabila password
+                                            <p>Masukkan Password (Minimal 8 Karakter), Masukkan minimal 6 karakter
+                                                random. Apabila password
                                                 lupa, dapat melakukan reset password menggunakan Email aktif. Atau
                                                 menghubungi admin Dinas</p>
                                             <a href="https://wa.me/0895637316999"
@@ -124,9 +126,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="password" name="password" id="password"
+                            <input type="password" name="password" id="password" minlength="8"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 pl-2 pr-10 w-full"
-                                placeholder="Masukkan Password" required />
+                                placeholder="Masukkan Password (Minimal 8 Karakter)" required />
                             <x-icon-password />
                         </div>
                     </div>
@@ -150,15 +152,16 @@
                                             class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                             <div class="p-3 space-y-2">
                                                 <h3 class="font-semibold text-gray-900">Nama Sekolah</h3>
-                                                <p>Masukkan Nama Sekolah yang sesuai dan sudah terdata di Disdikbud</p>
+                                                <p>Masukkan Nama Sekolah (Maksimal 100 karakter) yang sesuai dan sudah
+                                                    terdata di Disdikbud</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="nama" id="nama_sekolah"
+                                <input type="text" name="nama" id="nama_sekolah" maxlength="100"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Nama Sekolah" required />
+                                    placeholder="Masukkan Nama Sekolah (Maksimal 100 karakter)" required />
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
                                 <div class="flex">
@@ -177,15 +180,16 @@
                                             class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                             <div class="p-3 space-y-2">
                                                 <h3 class="font-semibold text-gray-900">NPSN Sekolah</h3>
-                                                <p>Masukkan NPSN Sekolah yang sesuai dan sudah terdata di Disdikbud</p>
+                                                <p>Masukkan NPSN Sekolah (Minimal 8 Karakter) yang sesuai dan sudah
+                                                    terdata di Disdikbud</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="number" name="npsn" id="npsn"
+                                <input type="number" name="npsn" id="npsn" minlength="8"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan NPSN Sekolah" required />
+                                    placeholder="Masukkan NPSN Sekolah (Minimal 8 Karakter)" required />
                             </div>
                         </div>
                     </div>
@@ -288,7 +292,7 @@
                         <div class="flex gap-x-2">
                             <div class="flex flex-col flex-1 mb-4">
                                 <div class="flex">
-                                    <label htmlFor="alamat">Alamat Sekolah</label>
+                                    <label htmlFor="alamat">Alamat Link Maps Sekolah</label>
                                     <div class="div">
                                         <button data-popover-target="popover-alamat" data-popover-placement="right"
                                             type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
@@ -302,17 +306,17 @@
                                         <div data-popover id="popover-alamat" role="tooltip"
                                             class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                             <div class="p-3 space-y-2">
-                                                <h3 class="font-semibold text-gray-900">Alamat Sekolah</h3>
-                                                <p>Masukkan Alamat Sekolah yang sesuai dan sudah terdata di Disdikbud
+                                                <h3 class="font-semibold text-gray-900">Alamat Link Maps Sekolah</h3>
+                                                <p>Masukkan Link Maps Sekolah
                                                 </p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="alamat" id="alamat"
+                                <input type="text" name="alamat" id="alamat" maxlength="200"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Alamat Sekolah" required />
+                                    placeholder="Masukkan Link Maps Sekolah (Maksimal 200 Karakter)" required />
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
                                 <div class="flex">
@@ -340,19 +344,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="jenisKetunaan" id="jenis_ketunaan"
+                                <input type="text" name="jenisKetunaan" id="jenis_ketunaan" maxlength="100"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />
+                                    placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah (Maksimal 100 Karakter)"
+                                    required />
                             </div>
                         </div>
                     </div>
                     <div class=''>
                         <div class="gap-x-2">
                             <div class="flex flex-col flex-1 mb-4">
-                                <label htmlFor="link_website">Link Website Sekolah</label>
-                                <input type="url" name="linkWebsiteSekolah" id="link_website"
+                                <label htmlFor="link_website">Link Website/Sosial Media Sekolah</label>
+                                <input type="url" name="linkWebsiteSekolah" id="link_website" maxlength="200"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Link Website Sekolah" required />
+                                    placeholder="Masukkan Link Website/Sosial Media Sekolah (Maksimal 200 Karakter)"
+                                    required />
                             </div>
                         </div>
                     </div>
@@ -362,6 +368,7 @@
                             + Simpan
                         </button>
                     </div>
+                </div>
             </form>
         </div>
     </div>

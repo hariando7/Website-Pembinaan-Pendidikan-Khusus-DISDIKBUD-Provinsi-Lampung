@@ -164,9 +164,9 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="name">Nama Guru</label>
-                            <input type="text" id="name" name="nama"
+                            <input type="text" id="name" name="nama" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Guru" value="{{ $DATA['nama'] }}" required />
+                                placeholder="Masukkan Nama Guru (Maksimal 100 Karakter)" value="{{ $DATA['nama'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="jeniskelamin">Jenis Kelamin (JK)</label>
@@ -184,8 +184,8 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="">NIP</label>
-                            <input value="{{ $DATA['nip'] }}" name="nip" type="number" id=""
+                            <label htmlFor="nip">NIP</label>
+                            <input value="{{ $DATA['nip'] }}" name="nip" type="number" id="nip" minlength="8" maxlength="20"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan NIP" required />
                         </div>
@@ -219,8 +219,8 @@
                 </div>
                 <div class=''>
                     <div class="w-full mb-4">
-                        <label htmlFor="kelas">Mengajar Bidang Studi</label>
-                        <input type="text" id="kelas" name="bidangStudi"
+                        <label htmlFor="bidangStudi">Mengajar Bidang Studi</label>
+                        <input type="text" id="bidangStudi" name="bidangStudi" maxlength="100"
                             class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                             placeholder="Masukkan Mengajar Bidang Studi" value="{{ $DATA['bidangStudi'] }}"
                             required />

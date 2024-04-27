@@ -72,27 +72,28 @@
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jenisketunaan">Nama Notifikasi</label>
-                            <input name="nama" type="text" id="jenisketunaan"
+                            <label for="namaNotifikasi">Nama Notifikasi</label>
+                            <input name="nama" type="text" id="namaNotifikasi"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Notifikasi" required />
+                                maxlength="100" placeholder="Masukkan Nama Notifikasi (Maksimal 100 karakter)"
+                                required />
                         </div>
                     </div>
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jenisketunaan">Deskripsi Notifikasi</label>
-                            <input name="detail" type="text" id="jenisketunaan"
+                            <label htmlFor="deskNotifikasi">Deskripsi Notifikasi</label>
+                            <input name="detail" type="text" id="deskNotifikasi" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Detial Notifikasi" required />
+                                placeholder="Masukkan Detial Notifikasi (Maksimal 500 karakter)" required />
                         </div>
                     </div>
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jenisketunaan">Send To Email Admin SLB</label>
+                            <label htmlFor="kirimEmail">Send To Email Admin SLB</label>
                             <label class="inline-flex items-center me-5 cursor-pointer">
                                 <input name="kirimEmail" type="checkbox" id="emailCheckbox" class="sr-only peer"
                                     checked>

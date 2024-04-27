@@ -198,9 +198,9 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jusulKarya">Judul Karya</label>
-                            <input type="text" id="jusulKarya" name="nama" value="{{ $DATA['nama'] }}"
+                            <input type="text" id="jusulKarya" name="nama" value="{{ $DATA['nama'] }}" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Judul Karya SLB" required />
+                                placeholder="Masukkan Judul Karya SLB (Maksimal 100 Karakter)" required />
                         </div>
                     </div>
                 </div>
@@ -208,9 +208,9 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="deskripsi">Deskripsi</label>
-                            <input name="deskripsi" type="text" id="deskripsi" value="{{ $DATA['deskripsi'] }}"
+                            <input name="deskripsi" type="text" id="deskripsi" value="{{ $DATA['deskripsi'] }}" maxlength=""
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Deskripsi Karya" required />
+                                placeholder="Masukkan Deskripsi Karya (Maksimal 500 Karakter)" required />
                         </div>
                     </div>
                 </div>

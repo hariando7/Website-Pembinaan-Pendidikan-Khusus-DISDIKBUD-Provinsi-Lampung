@@ -80,7 +80,8 @@
                             <label for="notificationName">Nama Notifikasi</label>
                             <input name="nama" type="text" id="notificationName" value="{{ $DATA['nama'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Notifikasi" required />
+                                maxlength="100" placeholder="Masukkan Nama Notifikasi (Maksimal 100 karakter)"
+                                required />
                         </div>
                     </div>
                 </div>
@@ -91,7 +92,7 @@
                             <input name="detail" type="text" id="notificationDescription"
                                 value="{{ $DATA['detail'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Detail Notifikasi" required />
+                                placeholder="Masukkan Detial Notifikasi (Maksimal 500 karakter)" required />
                         </div>
                     </div>
                 </div>

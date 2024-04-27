@@ -294,7 +294,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="nama" class="relative" type="text" required="required">
+                                <input name="nama" class="relative" type="text" required maxlength="100">
                                 <span>Nama Sekolah</span>
                                 <i></i>
                             </div>
@@ -305,7 +305,7 @@
                     <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="npsn" class="relative" type="number" required="required">
+                                <input name="npsn" class="relative" type="number" required minlength="8">
                                 <span>NPSN</span>
                                 <i></i>
                             </div>
@@ -328,7 +328,7 @@
                     <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="alamatSekolah" class="relative" type="text" required="required">
+                                <input name="alamatSekolah" class="relative" type="text" required>
                                 <span>Alamat Sekolah</span>
                                 <i></i>
                             </div>
@@ -367,14 +367,14 @@
                     <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="jumlahPDBK" class="relative" type="number" required="required">
+                                <input name="jumlahPDBK" class="relative" type="number" required maxlength="200" minlength="1">
                                 <span>Jumlah PDBK</span>
                                 <i></i>
                             </div>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="namaPembimbing" class="relative" type="text" required="required">
+                                <input name="namaPembimbing" class="relative" type="text" required maxlength="100">
                                 <span class="">Nama Pembimbing PDBK</span>
                                 <i></i>
                             </div>
@@ -397,7 +397,7 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="pangkat" class="relative" type="text" required="required">
+                                <input name="pangkat" class="relative" type="text" required maxlength="100">
                                 <span>Pangkat/Golongan (Jika ASN)</span>
                                 <i></i>
                             </div>
@@ -408,14 +408,14 @@
                     <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="alamatTinggal" class="relative" type="text" required="required">
+                                <input name="alamatTinggal" class="relative" type="text" required maxlength="200">
                                 <span>Alamat Tinggal</span>
                                 <i></i>
                             </div>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <div class="inputBox relative w-full mt-5">
-                                <input name="nomorHP" class="relative" type="text" required="required">
+                                <input name="nomorHP" class="relative" type="number" required>
                                 <span>No HP </span>
                                 <i></i>
                             </div>

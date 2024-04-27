@@ -80,9 +80,9 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="name">Nama tendik</label>
-                            <input type="text" id="name" name="nama"
+                            <input type="text" id="name" name="nama" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Tendik" required />
+                                placeholder="Masukkan Nama Tendik (Maksimal 100 Karakter)" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="jeniskelamin">Jenis Kelamin (JK)</label>
@@ -100,7 +100,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenisketunaan">NIP</label>
-                            <input type="number" id="jenisketunaan" name="nip"
+                            <input type="number" id="jenisketunaan" name="nip" minlength="8"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan NIP" required />
                         </div>
@@ -120,9 +120,9 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="romble">Bidang Tugas/ Pekerjaan</label>
-                            <input type="text" id="romble" name="bidangPekerjaan"
+                            <input type="text" id="romble" name="bidangPekerjaan" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Bidang Tugas / Pekerjaan" required />
+                                placeholder="Masukkan Bidang Tugas / Pekerjaan (Maksimal 100 Karakter)" required />
                         </div>
                     </div>
                 </div>
