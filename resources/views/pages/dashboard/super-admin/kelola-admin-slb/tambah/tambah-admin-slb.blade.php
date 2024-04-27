@@ -202,12 +202,20 @@
                                     required onchange="populateKecamatan(this.value)">
                                     <option value="" disabled selected>Pilih Kab/Kota</option>
                                     <option value="Bandar Lampung">Bandar Lampung</option>
-                                    {{-- <option value="Lampung Barat">Lampung Barat</option> --}}
+                                    <option value="Lampung Barat">Lampung Barat</option>
                                     <option value="Lampung Selatan">Lampung Selatan</option>
                                     <option value="Lampung Tengah">Lampung Tengah</option>
                                     <option value="Lampung Timur">Lampung Timur</option>
                                     <option value="Lampung Utara">Lampung Utara</option>
                                     <option value="Metro">Metro</option>
+                                    <option value="Mesuji">Mesuji</option>
+                                    <option value="Pesawaran">Pesawaran</option>
+                                    <option value="Pesisir Barat">Pesisir Barat</option>
+                                    <option value="Pringsewu">Pringsewu</option>
+                                    <option value="Tanggamus">Tanggamus</option>
+                                    <option value="Tulang Bawang">Tulang Bawang</option>
+                                    <option value="Tulang Bawang Barat">Tulang Bawang Barat</option>
+                                    <option value="Way Kanan">Way Kanan</option>
                                 </select>
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
@@ -218,6 +226,7 @@
                                     <option value="" disabled selected>Pilih Kecamatan</option>
                                 </select>
                             </div>
+                            {{-- Refrensi dari https://p2k.stekom.ac.id/ensiklopedia/Daftar_kecamatan_dan_kelurahan_di_Lampung --}}
                             <script>
                                 function populateKecamatan(selectedKabKota) {
                                     var kecamatanSelect = document.getElementById("kecamatan");
@@ -229,10 +238,21 @@
                                     defaultOption.disabled = true;
                                     defaultOption.selected = true;
                                     kecamatanSelect.add(defaultOption);
-                                    // opsi kecamatan sesuai dengan kab/kota
                                     if (selectedKabKota === "Bandar Lampung") {
-                                        var kecamatanArray = ["Kedaton", "Kemiling", "Rajabasa", "Sukabumi", "Tanjungkarang Barat",
-                                            "Tanjungkarang Pusat", "Tanjungkarang Timur", "Tanjungsenang"
+                                        var kecamatanArray = ["Bumi Waras", "Enggal", "Kedamaian", "Kedaton", "Kemiling", "Labuhan Ratu",
+                                            "Langkapura", "Panjang", "Rajabasa", "Sukabumi", "Sukarame", "Tanjung Seneng",
+                                            "Tanjung Karang Barat", "Tanjung Karang Pusat", "Tanjung Karang Timur", "Teluk Betung",
+                                            "Teluk Betung Selatan", "Teluk Betung Timur", "Teluk Betung Utara", "Way Halim"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Lampung Barat") {
+                                        var kecamatanArray = ["Air Hitam", "Balik Bukit", "Bandar Negeri Suoh", "Batu Brak", "Batu Ketulis",
+                                            "Belalau", "Gedung Surian", "Kebun Tebu", "Lumbuk Seminung", "Pagar Dewa", "Sekincau", "Sukau",
+                                            "Suoh", "Sumber Jaya", "Way Tenong"
                                         ];
                                         for (var i = 0; i < kecamatanArray.length; i++) {
                                             var option = document.createElement("option");
@@ -247,16 +267,21 @@
                                             kecamatanSelect.add(option);
                                         }
                                     } else if (selectedKabKota === "Lampung Selatan") {
-                                        var kecamatanArray = ["Kalianda", "Kalianda Selatan", "Kalianda Utara", "Sidomulyo", "Sragi"];
+                                        var kecamatanArray = ["Bakauheni", "Candipuro", "Jati Agung", "Kalianda", "Katibung", "Ketapang",
+                                            "Merbau Mataram", "Natar", "Palas", "Penengahan", "Rajabasa", "Sidomulyo", "Sragi",
+                                            "Tanjung Bintang", "Tanjung Sari", "Way Panji", "Way Sulan"
+                                        ];
                                         for (var i = 0; i < kecamatanArray.length; i++) {
                                             var option = document.createElement("option");
                                             option.text = kecamatanArray[i];
                                             kecamatanSelect.add(option);
                                         }
                                     } else if (selectedKabKota === "Lampung Tengah") {
-                                        var kecamatanArray = ["Abung Barat", "Abung Kunang", "Abung Pekurun", "Abung Selatan", "Abung Semuli",
-                                            "Abung Surakarta", "Abung Tengah", "Abung Timur", "Abung Tinggi", "Bukit Kemuning", "Pugung",
-                                            "Pugung Tengah", "Punggur", "Taman Sari"
+                                        var kecamatanArray = ["Anak Ratu Aji", "Anak Tuha", "Bandar Mataram", "Bandar Surabaya", "Bangunrejo",
+                                            "Bekri", "Bumi Nabung", "Bumi Ratu Nuban", "Gunung Sugih", "Kalirejo", "Kota Gajah", "Padang Ratu",
+                                            "Pubian", "Punggur", "Putra Rumbia", "Rumbia", "Selagai Lingga", "Sendang Agung", "Seputih Agung",
+                                            "Seputih Banyak", "Seputih Mataram", "Seputih Raman", "Seputih Surabaya", "Terbanggi Besar",
+                                            "Terusan Nunyai", "Trimurjo", "Way Pengubuan", "Way Seputih"
                                         ];
                                         for (var i = 0; i < kecamatanArray.length; i++) {
                                             var option = document.createElement("option");
@@ -264,9 +289,10 @@
                                             kecamatanSelect.add(option);
                                         }
                                     } else if (selectedKabKota === "Lampung Timur") {
-                                        var kecamatanArray = ["Abung Surakarta", "Bandar Sribawono", "Batanghari", "Braja Slebah", "Bumi Agung",
-                                            "Mataram Baru", "Melinting", "Metro Kibang", "Pasir Sakti", "Pematang Sawa", "Purwoharjo",
-                                            "Sekampung", "Sekampung Udik", "Sukadana", "Waway Karya"
+                                        var kecamatanArray = ["Bandar Sribhawono", "Batanghari", "Batanghari Nuban", "Braja Slebah", "Bumi Agung",
+                                            "Gunung Pelindung", "Jabung", "Labuhan Maringgai", "Labuhan Ratu", "Marga Sekampung", "Marga Tiga",
+                                            "Mataram aru", "Melinting", "Metro Kibang", "Pasir Sakti", "Pekalongan", "Purbolinggo",
+                                            "Raman Utara", "Sekampung", "Sekampung Udik", "Sukadana", "Way Bungur", "Waway Karya", "Way Jepara"
                                         ];
                                         for (var i = 0; i < kecamatanArray.length; i++) {
                                             var option = document.createElement("option");
@@ -274,10 +300,85 @@
                                             kecamatanSelect.add(option);
                                         }
                                     } else if (selectedKabKota === "Lampung Utara") {
-                                        var kecamatanArray = ["Abung Selatan", "Abung Semuli", "Abung Tengah", "Abung Tinggi", "Bukit Kemuning",
-                                            "Kedondong", "Kotabumi", "Kotabumi Selatan", "Kotabumi Utara", "Muara Sungkai", "Sungkai Barat",
-                                            "Sungkai Jaya", "Sungkai Selatan", "Sungkai Tengah", "Sungkai Utara"
+                                        var kecamatanArray = ["Abung Barat", "Abung Kunang", "Abung Pekurun", "Abung Selatan", "Abung Semuli",
+                                            "Abung Surakarta", "Abung Tengah", "Abung Timur", "Abung Tinggi", "Blambangan Pagar",
+                                            "Bukit Kemuning", "Bunga Mayang", "Hulu Sungkai", "Kotabumi", "Kotabumi Selatan", "Kotabumi Utara",
+                                            "Muara Sungkai", "Sungkai Barat", "Sungkai Jaya", "Sungkai Selatan", "Sungkai Tengah",
+                                            "Sungkai Utara", "Tanjung Raja"
                                         ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Mesuji") {
+                                        var kecamatanArray = ["Mesuji", "Mesuji Timur", "Panca Jaya", "Rawa Jitu Utara", "Simpang Pematang",
+                                            "Tanjung Raya", "Way Serdang"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Pesawaran") {
+                                        var kecamatanArray = ["Gedong Tataan", "Kedondong", "Marga Punduh", "Negeri Katon", "Padang Cermin",
+                                            "Punduh Pidada", "Tegineneng", "Teluk Pandan", "Way Lima", "Way Khilau", "Way Ratai"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Pesisir Barat") {
+                                        var kecamatanArray = ["Bengkunat", "Karya Penggawa", "Krui Selatan", "Lemong", "Ngambur", "Ngaras",
+                                            "Pesisir Selatan", "Pesisir Tengah", "Pesisir Utara", "Pulaupisang", "Way Krui"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Pringsewu") {
+                                        var kecamatanArray = ["Adiluwih", "Ambarawa", "Banyumas", "Gading Rejo", "Pagelaran", "Pagelaran Utara",
+                                            "Pardasuka", "Pringsewu", "Sukoharjo"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Tanggamus") {
+                                        var kecamatanArray = ["Air Naningan", "Bandar Negeri Semuong", "Bulok", "Cukuh Balak", "Gisting",
+                                            "Gunung Alip", "Klumbayan", "Klumbayan Barat", "Kota Agung", "Kota Agung Barat", "Kota Agung Timur",
+                                            "Limau", "Pematang Sawa", "Pugung", "Pulau Panggung", "Semaka", "Sumber Rejo", "Talang Padang",
+                                            "Ulu Belu", "Wonosobo"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Tulang Bawang") {
+                                        var kecamatanArray = ["Banjar Agung", "Banjar Baru", "Banjar Margo", "Dente Teladas", "Gedung Aji",
+                                            "Gedung Aji Baru", "Gedung Meneng", "Menggala", "Menggala Timur", "Meraksa Aji", "Penawar Aji",
+                                            "Penawar Tama", "Rawa Jitu Selatan", "Rawa Jitu Timur", "Rawa Pitu"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Tulang Bawang Barat") {
+                                        var kecamatanArray = ["Batu Putih", "Gunung Agung", "Gunung Terang", "Lambu Kibang", "Pagar Dewa",
+                                            "Tulang Bawang Tengah", "Tulang Bawang Udik", "Tumijajar", "Way Kenanga"
+                                        ];
+                                        for (var i = 0; i < kecamatanArray.length; i++) {
+                                            var option = document.createElement("option");
+                                            option.text = kecamatanArray[i];
+                                            kecamatanSelect.add(option);
+                                        }
+                                    } else if (selectedKabKota === "Way Kanan") {
+                                        var kecamatanArray = ["Buhaga", "Banjit", "Baradatu", "Blambangan Umpu", "Buay Bahuga", "Bumi Agung", "Gunung Labuhan", "Kasui", "Negara Batin", "Negeri Agung", "Negeri Besar", "Pakuan Ratu", "Rebang Tangkas", "Umpu Semenguk", "Way Tuba"];
                                         for (var i = 0; i < kecamatanArray.length; i++) {
                                             var option = document.createElement("option");
                                             option.text = kecamatanArray[i];
