@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <style>
@@ -158,11 +159,20 @@
                                 required onchange="populateKecamatan(this.value)">
                                 <option value="{{ $DATA['kota'] }}" selected>{{ $DATA['kota'] }}</option>
                                 <option value="Bandar Lampung">Bandar Lampung</option>
+                                <option value="Lampung Barat">Lampung Barat</option>
                                 <option value="Lampung Selatan">Lampung Selatan</option>
                                 <option value="Lampung Tengah">Lampung Tengah</option>
                                 <option value="Lampung Timur">Lampung Timur</option>
                                 <option value="Lampung Utara">Lampung Utara</option>
                                 <option value="Metro">Metro</option>
+                                <option value="Mesuji">Mesuji</option>
+                                <option value="Pesawaran">Pesawaran</option>
+                                <option value="Pesisir Barat">Pesisir Barat</option>
+                                <option value="Pringsewu">Pringsewu</option>
+                                <option value="Tanggamus">Tanggamus</option>
+                                <option value="Tulang Bawang">Tulang Bawang</option>
+                                <option value="Tulang Bawang Barat">Tulang Bawang Barat</option>
+                                <option value="Way Kanan">Way Kanan</option>
                             </select>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
@@ -173,6 +183,7 @@
                                 <option value="{{ $DATA['kecamatan'] }}" selected>{{ $DATA['kecamatan'] }}</option>
                             </select>
                         </div>
+                        {{-- Refrensi dari https://p2k.stekom.ac.id/ensiklopedia/Daftar_kecamatan_dan_kelurahan_di_Lampung --}}
                         <script>
                             function populateKecamatan(selectedKabKota) {
                                 var kecamatanSelect = document.getElementById("kecamatan");
@@ -184,10 +195,21 @@
                                 defaultOption.disabled = true;
                                 defaultOption.selected = true;
                                 kecamatanSelect.add(defaultOption);
-                                // opsi kecamatan sesuai dengan kab/kota
                                 if (selectedKabKota === "Bandar Lampung") {
-                                    var kecamatanArray = ["Kedaton", "Kemiling", "Rajabasa", "Sukabumi", "Tanjungkarang Barat",
-                                        "Tanjungkarang Pusat", "Tanjungkarang Timur", "Tanjungsenang"
+                                    var kecamatanArray = ["Bumi Waras", "Enggal", "Kedamaian", "Kedaton", "Kemiling", "Labuhan Ratu",
+                                        "Langkapura", "Panjang", "Rajabasa", "Sukabumi", "Sukarame", "Tanjung Seneng",
+                                        "Tanjung Karang Barat", "Tanjung Karang Pusat", "Tanjung Karang Timur", "Teluk Betung",
+                                        "Teluk Betung Selatan", "Teluk Betung Timur", "Teluk Betung Utara", "Way Halim"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Lampung Barat") {
+                                    var kecamatanArray = ["Air Hitam", "Balik Bukit", "Bandar Negeri Suoh", "Batu Brak", "Batu Ketulis",
+                                        "Belalau", "Gedung Surian", "Kebun Tebu", "Lumbuk Seminung", "Pagar Dewa", "Sekincau", "Sukau",
+                                        "Suoh", "Sumber Jaya", "Way Tenong"
                                     ];
                                     for (var i = 0; i < kecamatanArray.length; i++) {
                                         var option = document.createElement("option");
@@ -195,23 +217,28 @@
                                         kecamatanSelect.add(option);
                                     }
                                 } else if (selectedKabKota === "Metro") {
-                                    var kecamatanArray = ["Metro Barat", "Metro Pusat", "Metro Selatan", "Metro Timur", "Metro Utara"];
+                                    var kecamatanArray = ["Metro Pusat", "Metro Barat", "Metro Timur", "Metro Selatan", "Metro Utara"];
                                     for (var i = 0; i < kecamatanArray.length; i++) {
                                         var option = document.createElement("option");
                                         option.text = kecamatanArray[i];
                                         kecamatanSelect.add(option);
                                     }
                                 } else if (selectedKabKota === "Lampung Selatan") {
-                                    var kecamatanArray = ["Kalianda", "Kalianda Selatan", "Kalianda Utara", "Sidomulyo", "Sragi"];
+                                    var kecamatanArray = ["Bakauheni", "Candipuro", "Jati Agung", "Kalianda", "Katibung", "Ketapang",
+                                        "Merbau Mataram", "Natar", "Palas", "Penengahan", "Rajabasa", "Sidomulyo", "Sragi",
+                                        "Tanjung Bintang", "Tanjung Sari", "Way Panji", "Way Sulan"
+                                    ];
                                     for (var i = 0; i < kecamatanArray.length; i++) {
                                         var option = document.createElement("option");
                                         option.text = kecamatanArray[i];
                                         kecamatanSelect.add(option);
                                     }
                                 } else if (selectedKabKota === "Lampung Tengah") {
-                                    var kecamatanArray = ["Abung Barat", "Abung Kunang", "Abung Pekurun", "Abung Selatan", "Abung Semuli",
-                                        "Abung Surakarta", "Abung Tengah", "Abung Timur", "Abung Tinggi", "Bukit Kemuning", "Pugung",
-                                        "Pugung Tengah", "Punggur", "Taman Sari"
+                                    var kecamatanArray = ["Anak Ratu Aji", "Anak Tuha", "Bandar Mataram", "Bandar Surabaya", "Bangunrejo",
+                                        "Bekri", "Bumi Nabung", "Bumi Ratu Nuban", "Gunung Sugih", "Kalirejo", "Kota Gajah", "Padang Ratu",
+                                        "Pubian", "Punggur", "Putra Rumbia", "Rumbia", "Selagai Lingga", "Sendang Agung", "Seputih Agung",
+                                        "Seputih Banyak", "Seputih Mataram", "Seputih Raman", "Seputih Surabaya", "Terbanggi Besar",
+                                        "Terusan Nunyai", "Trimurjo", "Way Pengubuan", "Way Seputih"
                                     ];
                                     for (var i = 0; i < kecamatanArray.length; i++) {
                                         var option = document.createElement("option");
@@ -219,9 +246,10 @@
                                         kecamatanSelect.add(option);
                                     }
                                 } else if (selectedKabKota === "Lampung Timur") {
-                                    var kecamatanArray = ["Abung Surakarta", "Bandar Sribawono", "Batanghari", "Braja Slebah", "Bumi Agung",
-                                        "Mataram Baru", "Melinting", "Metro Kibang", "Pasir Sakti", "Pematang Sawa", "Purwoharjo",
-                                        "Sekampung", "Sekampung Udik", "Sukadana", "Waway Karya"
+                                    var kecamatanArray = ["Bandar Sribhawono", "Batanghari", "Batanghari Nuban", "Braja Slebah", "Bumi Agung",
+                                        "Gunung Pelindung", "Jabung", "Labuhan Maringgai", "Labuhan Ratu", "Marga Sekampung", "Marga Tiga",
+                                        "Mataram aru", "Melinting", "Metro Kibang", "Pasir Sakti", "Pekalongan", "Purbolinggo",
+                                        "Raman Utara", "Sekampung", "Sekampung Udik", "Sukadana", "Way Bungur", "Waway Karya", "Way Jepara"
                                     ];
                                     for (var i = 0; i < kecamatanArray.length; i++) {
                                         var option = document.createElement("option");
@@ -229,9 +257,87 @@
                                         kecamatanSelect.add(option);
                                     }
                                 } else if (selectedKabKota === "Lampung Utara") {
-                                    var kecamatanArray = ["Abung Selatan", "Abung Semuli", "Abung Tengah", "Abung Tinggi", "Bukit Kemuning",
-                                        "Kedondong", "Kotabumi", "Kotabumi Selatan", "Kotabumi Utara", "Muara Sungkai", "Sungkai Barat",
-                                        "Sungkai Jaya", "Sungkai Selatan", "Sungkai Tengah", "Sungkai Utara"
+                                    var kecamatanArray = ["Abung Barat", "Abung Kunang", "Abung Pekurun", "Abung Selatan", "Abung Semuli",
+                                        "Abung Surakarta", "Abung Tengah", "Abung Timur", "Abung Tinggi", "Blambangan Pagar",
+                                        "Bukit Kemuning", "Bunga Mayang", "Hulu Sungkai", "Kotabumi", "Kotabumi Selatan", "Kotabumi Utara",
+                                        "Muara Sungkai", "Sungkai Barat", "Sungkai Jaya", "Sungkai Selatan", "Sungkai Tengah",
+                                        "Sungkai Utara", "Tanjung Raja"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Mesuji") {
+                                    var kecamatanArray = ["Mesuji", "Mesuji Timur", "Panca Jaya", "Rawa Jitu Utara", "Simpang Pematang",
+                                        "Tanjung Raya", "Way Serdang"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Pesawaran") {
+                                    var kecamatanArray = ["Gedong Tataan", "Kedondong", "Marga Punduh", "Negeri Katon", "Padang Cermin",
+                                        "Punduh Pidada", "Tegineneng", "Teluk Pandan", "Way Lima", "Way Khilau", "Way Ratai"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Pesisir Barat") {
+                                    var kecamatanArray = ["Bengkunat", "Karya Penggawa", "Krui Selatan", "Lemong", "Ngambur", "Ngaras",
+                                        "Pesisir Selatan", "Pesisir Tengah", "Pesisir Utara", "Pulaupisang", "Way Krui"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Pringsewu") {
+                                    var kecamatanArray = ["Adiluwih", "Ambarawa", "Banyumas", "Gading Rejo", "Pagelaran", "Pagelaran Utara",
+                                        "Pardasuka", "Pringsewu", "Sukoharjo"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Tanggamus") {
+                                    var kecamatanArray = ["Air Naningan", "Bandar Negeri Semuong", "Bulok", "Cukuh Balak", "Gisting",
+                                        "Gunung Alip", "Klumbayan", "Klumbayan Barat", "Kota Agung", "Kota Agung Barat", "Kota Agung Timur",
+                                        "Limau", "Pematang Sawa", "Pugung", "Pulau Panggung", "Semaka", "Sumber Rejo", "Talang Padang",
+                                        "Ulu Belu", "Wonosobo"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Tulang Bawang") {
+                                    var kecamatanArray = ["Banjar Agung", "Banjar Baru", "Banjar Margo", "Dente Teladas", "Gedung Aji",
+                                        "Gedung Aji Baru", "Gedung Meneng", "Menggala", "Menggala Timur", "Meraksa Aji", "Penawar Aji",
+                                        "Penawar Tama", "Rawa Jitu Selatan", "Rawa Jitu Timur", "Rawa Pitu"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Tulang Bawang Barat") {
+                                    var kecamatanArray = ["Batu Putih", "Gunung Agung", "Gunung Terang", "Lambu Kibang", "Pagar Dewa",
+                                        "Tulang Bawang Tengah", "Tulang Bawang Udik", "Tumijajar", "Way Kenanga"
+                                    ];
+                                    for (var i = 0; i < kecamatanArray.length; i++) {
+                                        var option = document.createElement("option");
+                                        option.text = kecamatanArray[i];
+                                        kecamatanSelect.add(option);
+                                    }
+                                } else if (selectedKabKota === "Way Kanan") {
+                                    var kecamatanArray = ["Buhaga", "Banjit", "Baradatu", "Blambangan Umpu", "Buay Bahuga", "Bumi Agung",
+                                        "Gunung Labuhan", "Kasui", "Negara Batin", "Negeri Agung", "Negeri Besar", "Pakuan Ratu",
+                                        "Rebang Tangkas", "Umpu Semenguk", "Way Tuba"
                                     ];
                                     for (var i = 0; i < kecamatanArray.length; i++) {
                                         var option = document.createElement("option");
@@ -239,7 +345,6 @@
                                         kecamatanSelect.add(option);
                                     }
                                 }
-                                // Tambahkan daftar kecamatan lainnya sesuai kebutuhan
                             }
                         </script>
                     </div>
@@ -276,6 +381,17 @@
                                 placeholder="Masukkan Alamat Sekolah" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
+                            <label htmlFor="link_website">Link Website Sekolah</label>
+                            <input value="{{ $DATA['linkWebsiteSekolah'] }}" name="linkWebsiteSekolah"
+                                type="url" id="link_website" value="www.website.com"
+                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                placeholder="Masukkan Link Website Sekolah" required />
+                        </div>
+                    </div>
+                </div>
+                <div class=''>
+                    <div class="gap-x-2">
+                        <div class="flex flex-col flex-1 mb-4">
                             <div class="flex">
                                 <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
                                 <div class="div">
@@ -301,21 +417,44 @@
                                     </div>
                                 </div>
                             </div>
-                            <input value="{{ $DATA['jenisKetunaan'] }}" name="jenisKetunaan" type="text"
-                                id="jenis_ketunaan" value="Tunan Wicara, Tuna Grahita, Tuna Daksa"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />
-                        </div>
-                    </div>
-                </div>
-                <div class=''>
-                    <div class="gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="link_website">Link Website Sekolah</label>
-                            <input value="{{ $DATA['linkWebsiteSekolah'] }}" name="linkWebsiteSekolah"
-                                type="url" id="link_website" value="www.website.com"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Link Website Sekolah" required />
+                            <div class="w-full">
+                                <input value="{{ $DATA['jenisKetunaan'] }}" name="jenisKetunaan" id="selected-text"
+                                    name="selectedText" readonly
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    placeholder="Jenis Ketunaan Sekolah" required />
+                                <select id="select-role" placeholder="Pilih Disini" autocomplete="off"
+                                    class="block w-full rounded-sm cursor-pointer focus:outline-none">
+                                    <option value="" disabled selected>Pililih</option>
+                                    <option value="Tunanetra">Tunanetra</option>
+                                    <option value="Tunarungu">Tunarungu</option>
+                                    <option value="Tunagrahita">Tunagrahita</option>
+                                    <option value="Tunadaksa">Tunadaksa</option>
+                                    <option value="Tunalaras">Tunalaras</option>
+                                    <option value="Adhd">Hiperaktivitas (ADHD)</option>
+                                    <option value="Gangguan Ganda">Gangguan Ganda</option>
+                                    <option value="Autis">Autis</option>
+                                    <!-- tambahkan opsi lainnya sesuai kebutuhan -->
+                                </select>
+                                <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+                                <script>
+                                    var select = new TomSelect('#select-role', {
+                                        maxItems: 8,
+                                        render: {
+                                            item: function(data, escape) {
+                                                return '<div>' + escape(data.text) + '</div>';
+                                            }
+                                        },
+                                        onChange: function(value) {
+                                            var selectedTexts = [];
+                                            for (var i = 0; i < value.length; i++) {
+                                                var option = select.options[value[i]];
+                                                selectedTexts.push(option.text);
+                                            }
+                                            document.getElementById('selected-text').value = selectedTexts.join(', ');
+                                        }
+                                    });
+                                </script>
+                            </div>
                         </div>
                     </div>
                 </div>

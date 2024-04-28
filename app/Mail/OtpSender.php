@@ -16,6 +16,8 @@ class OtpSender extends Mailable
     /**
      * Create a new message instance.
      */
+
+    public $data;
     public function __construct($data)
     {
         $this -> data = $data;

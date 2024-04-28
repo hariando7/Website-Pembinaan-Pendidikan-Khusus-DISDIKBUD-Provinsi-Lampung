@@ -13,7 +13,7 @@ use App\Http\Controllers\KontrolKarya;
 use App\Http\Controllers\KontrolSaranaPrasarana;
 use App\Http\Controllers\KontrolSekolahInklusi;
 use App\Http\Controllers\KontrolPengumuman;
-
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -326,3 +326,8 @@ Route::controller(KontrolSaranaPrasarana::class) -> group(function () {
 //     return view('pages/landing/slb');
 // });
 Route::get('/play-sound/{text}', 'SoundController@playSound')->name('play-sound');
+
+Route::get('/storage', function(){
+    Artisan::call("storage:link");
+    return 0;
+});

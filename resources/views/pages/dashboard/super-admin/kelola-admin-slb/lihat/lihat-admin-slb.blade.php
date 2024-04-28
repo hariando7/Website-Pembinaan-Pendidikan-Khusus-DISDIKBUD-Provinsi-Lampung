@@ -88,8 +88,6 @@
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required onchange="populateKecamatan(this.value)">
                                 <option value="{{ $DATA['kota'] }}" selected>{{ $DATA['kota'] }}</option>
-                                <option value="Bandar Lampung">Bandar Lampung</option>
-                                <option value="Metro">Metro</option>
                             </select>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
@@ -100,38 +98,6 @@
                                 <option value="{{ $DATA['kecamatan'] }}" selected>{{ $DATA['kecamatan'] }}</option>
                             </select>
                         </div>
-                        <script>
-                            function populateKecamatan(selectedKabKota) {
-                                var kecamatanSelect = document.getElementById("kecamatan");
-                                while (kecamatanSelect.options.length > 0) {
-                                    kecamatanSelect.remove(0);
-                                }
-                                var defaultOption = document.createElement("option");
-                                defaultOption.text = "Pilih Kecamatan";
-                                defaultOption.disabled = true;
-                                defaultOption.selected = true;
-                                kecamatanSelect.add(defaultOption);
-                                // opsi kecamatan sesuai dengan kab/kota
-                                if (selectedKabKota === "Bandar Lampung") {
-                                    var kecamatanArray = ["Kedaton", "Sukarame", "Telukbetung", "Panjang", "Tanah Sareal", "Rajabasa",
-                                        "Tanjung Karang Barat", "Tanjung Karang Pusat", "Tanjung Karang Timur", "Tanjung Senang"
-                                    ];
-                                    for (var i = 0; i < kecamatanArray.length; i++) {
-                                        var option = document.createElement("option");
-                                        option.text = kecamatanArray[i];
-                                        kecamatanSelect.add(option);
-                                    }
-                                } else if (selectedKabKota === "Metro") {
-                                    var kecamatanArray = ["Metro Pusat", "Metro Barat", "Metro Timur", "Metro Selatan", "Metro Utara"];
-                                    for (var i = 0; i < kecamatanArray.length; i++) {
-                                        var option = document.createElement("option");
-                                        option.text = kecamatanArray[i];
-                                        kecamatanSelect.add(option);
-                                    }
-                                }
-                                // Tambahkan daftar kecamatan lainnya sesuai kebutuhan
-                            }
-                        </script>
                     </div>
                 </div>
                 <div class=''>
@@ -143,22 +109,22 @@
                                 placeholder="Masukkan Alamat Sekolah" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
-                            <input name="jenisKetunaan" type="text" id="jenis_ketunaan"
-                                value="{{ $DATA['jenisKetunaan'] }}"
+                            <label htmlFor="link_website">Link Website Sekolah</label>
+                            <input name="linkWebsiteSekolah" type="url" id="link_website"
+                                value="{{ $DATA['linkWebsiteSekolah'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />
+                                placeholder="Masukkan Link Website Sekolah" required />
                         </div>
                     </div>
                 </div>
                 <div class=''>
                     <div class="gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
-                            <label htmlFor="link_website">Link Website Sekolah</label>
-                            <input name="linkWebsiteSekolah" type="url" id="link_website"
-                                value="{{ $DATA['linkWebsiteSekolah'] }}"
+                            <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
+                            <input name="jenisKetunaan" type="text" id="jenis_ketunaan"
+                                value="{{ $DATA['jenisKetunaan'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Link Website Sekolah" required />
+                                placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />
                         </div>
                     </div>
                 </div>

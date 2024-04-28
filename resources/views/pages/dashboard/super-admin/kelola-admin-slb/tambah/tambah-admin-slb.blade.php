@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- Other meta tags and CSS links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -378,7 +379,10 @@
                                             kecamatanSelect.add(option);
                                         }
                                     } else if (selectedKabKota === "Way Kanan") {
-                                        var kecamatanArray = ["Buhaga", "Banjit", "Baradatu", "Blambangan Umpu", "Buay Bahuga", "Bumi Agung", "Gunung Labuhan", "Kasui", "Negara Batin", "Negeri Agung", "Negeri Besar", "Pakuan Ratu", "Rebang Tangkas", "Umpu Semenguk", "Way Tuba"];
+                                        var kecamatanArray = ["Buhaga", "Banjit", "Baradatu", "Blambangan Umpu", "Buay Bahuga", "Bumi Agung",
+                                            "Gunung Labuhan", "Kasui", "Negara Batin", "Negeri Agung", "Negeri Besar", "Pakuan Ratu",
+                                            "Rebang Tangkas", "Umpu Semenguk", "Way Tuba"
+                                        ];
                                         for (var i = 0; i < kecamatanArray.length; i++) {
                                             var option = document.createElement("option");
                                             option.text = kecamatanArray[i];
@@ -420,6 +424,17 @@
                                     placeholder="Masukkan Link Maps Sekolah (Maksimal 200 Karakter)" required />
                             </div>
                             <div class="flex flex-col flex-1 mb-4">
+                                <label htmlFor="link_website">Link Website/Sosial Media Sekolah</label>
+                                <input type="url" name="linkWebsiteSekolah" id="link_website" maxlength="200"
+                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                    placeholder="Masukkan Link Website/Sosial Media Sekolah (Maksimal 200 Karakter)"
+                                    required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class=''>
+                        <div class="gap-x-2">
+                            <div class="flex flex-col flex-1 mb-4">
                                 <div class="flex">
                                     <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
                                     <div class="div">
@@ -445,21 +460,45 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="jenisKetunaan" id="jenis_ketunaan" maxlength="100"
-                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah (Maksimal 100 Karakter)"
-                                    required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class=''>
-                        <div class="gap-x-2">
-                            <div class="flex flex-col flex-1 mb-4">
-                                <label htmlFor="link_website">Link Website/Sosial Media Sekolah</label>
-                                <input type="url" name="linkWebsiteSekolah" id="link_website" maxlength="200"
-                                    class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan Link Website/Sosial Media Sekolah (Maksimal 200 Karakter)"
-                                    required />
+                                <div class="w-full">
+                                    <input type="text" name="jenisKetunaan" id="selected-text"
+                                        name="selectedText" readonly
+                                        class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
+                                        placeholder="Jenis Ketunaan Sekolah" required />
+                                    <select id="select-role" placeholder="Pilih Disini" autocomplete="off"
+                                        class="block w-full rounded-sm cursor-pointer focus:outline-none">
+                                        <option value="" disabled selected>Pililih</option>
+                                        <option value="Tunanetra">Tunanetra</option>
+                                        <option value="Tunarungu">Tunarungu</option>
+                                        <option value="Tunagrahita">Tunagrahita</option>
+                                        <option value="Tunadaksa">Tunadaksa</option>
+                                        <option value="Tunalaras">Tunalaras</option>
+                                        <option value="Adhd">Hiperaktivitas (ADHD)</option>
+                                        <option value="Gangguan Ganda">Gangguan Ganda</option>
+                                        <option value="Autis">Autis</option>
+
+                                        <!-- tambahkan opsi lainnya sesuai kebutuhan -->
+                                    </select>
+                                    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+                                    <script>
+                                        var select = new TomSelect('#select-role', {
+                                            maxItems: 8,
+                                            render: {
+                                                item: function(data, escape) {
+                                                    return '<div>' + escape(data.text) + '</div>';
+                                                }
+                                            },
+                                            onChange: function(value) {
+                                                var selectedTexts = [];
+                                                for (var i = 0; i < value.length; i++) {
+                                                    var option = select.options[value[i]];
+                                                    selectedTexts.push(option.text);
+                                                }
+                                                document.getElementById('selected-text').value = selectedTexts.join(', ');
+                                            }
+                                        });
+                                    </script>
+                                </div>
                             </div>
                         </div>
                     </div>
