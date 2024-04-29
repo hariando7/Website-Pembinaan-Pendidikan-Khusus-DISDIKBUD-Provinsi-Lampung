@@ -116,6 +116,9 @@
                             <option value="Tuna Laras">Tuna Laras</option>
                             <option value="Tunadaksa">Tunadaksa</option>
                             <option value="Tunagrahita">Tunagrahita</option>
+                            <option value="Down Syndrome">Down Syndrome</option>
+                            <option value="Autis">Autis</option>
+                            <option value="Hiperaktif">Hiperaktif</option>
                         </select>
                     </div>
                     <div class="relative">

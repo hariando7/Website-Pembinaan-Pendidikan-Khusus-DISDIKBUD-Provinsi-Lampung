@@ -165,7 +165,8 @@
                             <label htmlFor="name">Nama Peserta Didik</label>
                             <input type="text" name="nama" id="name" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Peserta Didik (Maksimal 100 Karakter)" value="{{ $DATA['nama'] }}" required />
+                                placeholder="Masukkan Nama Peserta Didik (Maksimal 100 Karakter)"
+                                value="{{ $DATA['nama'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="jeniskelamin">Jenis Kelamin (JK)</label>
@@ -214,6 +215,9 @@
                                 <option value="Tuna Laras">Tuna Laras</option>
                                 <option value="Tunadaksa">Tunadaksa</option>
                                 <option value="Tunagrahita">Tunagrahita</option>
+                                <option value="Down Syndrome">Down Syndrome</option>
+                                <option value="Autis">Autis</option>
+                                <option value="Hiperaktif">Hiperaktif</option>
                             </select>
                         </div>
                     </div>

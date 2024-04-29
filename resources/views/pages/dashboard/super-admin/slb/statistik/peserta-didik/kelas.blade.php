@@ -94,23 +94,28 @@
         <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
             <div class="flex justify-between pb-2">
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-pesertadidik-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/sa-peserta-didik-slb" color="#FA8F21" width="[13rem]" title="Kembali"
+                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
                 <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
                     Peserta Didik By Kelas Provinsi Lampung
                 </div>
                 <div class="">
                     <x-sa-statistik-pd />
-                    <button data-modal-target="select-modal1" data-modal-toggle="select-modal1" class="btn my-2 flex items-center justify-center rounded-md border-none bg-[#FA8F21] py-2 pl-2 pr-2 text-center text-white hover:bg-[#D87815] focus:ring-4 lg:py-2" type="button">
+                    <button data-modal-target="select-modal1" data-modal-toggle="select-modal1"
+                        class="btn my-2 flex items-center justify-center rounded-md border-none bg-[#FA8F21] py-2 pl-2 pr-2 text-center text-white hover:bg-[#D87815] focus:ring-4 lg:py-2"
+                        type="button">
                         Statistik Peserta Didik SLB
                     </button>
                 </div>
             </div>
-            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg" id="moving-border">
+            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg"
+                id="moving-border">
                 <div class="mb-4 flex justify-between">
                     <div class="relative">
                         <label for="filterTahun" class="block text-sm font-medium text-gray-700">Tahun</label>
-                        <select id="filterTahun" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                        <select id="filterTahun"
+                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                             <option value="">semua</option>
                         </select>
                         <script>
@@ -132,7 +137,8 @@
                     <div class="relative">
                         <label for="filterSekolah" class="block text-sm font-medium text-gray-700">Nama
                             Sekolah</label>
-                        <select id="filterSekolah" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                        <select id="filterSekolah"
+                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                             <option value="">Semua</option>
                         </select>
                         <script>
@@ -154,13 +160,17 @@
                     <div class="relative">
                         <label for="filterDisabilitas" class="block text-sm font-medium text-gray-700">Jenis
                             Disabilitas</label>
-                        <select id="filterDisabilitas" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                        <select id="filterDisabilitas"
+                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                             <option value="">Semua</option>
                             <option value="Tunanetra">Tunanetra</option>
                             <option value="Tunarungu">Tunarungu</option>
                             <option value="Tuna Laras">Tuna Laras</option>
                             <option value="Tunadaksa">Tunadaksa</option>
                             <option value="Tunagrahita">Tunagrahita</option>
+                            <option value="Down Syndrome">Down Syndrome</option>
+                            <option value="Autis">Autis</option>
+                            <option value="Hiperaktif">Hiperaktif</option>
                         </select>
                     </div>
                 </div>
@@ -178,7 +188,9 @@
             const filterSekolah = document.getElementById('filterSekolah');
             const filterDisabilitas = document.getElementById('filterDisabilitas');
 
-            const temp = await fetch(`/api/statistik-peserta-didik-kelas?tahun=${ encodeURI(filterTahun.value) }&sekolah=${ encodeURI(filterSekolah.value) }&jenisKetunaan=${ encodeURI(filterDisabilitas.value) }`);
+            const temp = await fetch(
+                `/api/statistik-peserta-didik-kelas?tahun=${ encodeURI(filterTahun.value) }&sekolah=${ encodeURI(filterSekolah.value) }&jenisKetunaan=${ encodeURI(filterDisabilitas.value) }`
+                );
             const dummyData = await temp.json();
 
             // const dummyData = [{

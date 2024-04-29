@@ -106,7 +106,7 @@ class KontrolPesertaDidik extends Controller
                 'lakiLaki' => count($lakiLaki),
                 'perempuan' => count($perempuan),
             ];
-        }, ['Tunanetra', 'Tunarungu', 'Tuna Laras', 'Tunadaksa', 'Tunagrahita']);
+        }, ['Tunanetra', 'Tunarungu', 'Tuna Laras', 'Tunadaksa', 'Tunagrahita', 'Down Syndrome', 'Autis', 'Hiperaktif']);
 
         return json_encode($data);
     }
