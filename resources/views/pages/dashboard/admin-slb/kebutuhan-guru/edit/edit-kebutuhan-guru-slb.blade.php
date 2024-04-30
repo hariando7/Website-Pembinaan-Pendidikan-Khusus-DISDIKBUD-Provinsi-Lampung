@@ -30,13 +30,17 @@
         }
     </style>
 </head>
+@use('App\Models\Sekolah')
+@php
+    $sekolah = Sekolah::find(auth()->user()->sekolah);
+@endphp
 
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb id="{{ $id }}" />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Edit Kebutuhan Guru SLB
+                <div class="text-[#297785] font-bold text-[32px]">Edit Kebutuhan Guru SLB - {{ $sekolah->nama }}
                 </div>
                 <div class="flex justify-between pb-2">
                     <div class="div">
@@ -165,8 +169,8 @@
                             <label htmlFor="mataPelajaran">Guru Mata Pelajaran</label>
                             <input type="text" id="mataPelajaran" name="mataPelajaran" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Guru Mata Pelajaran (Maksimal 100 Karakter)" value="{{ $DATA['mataPelajaran'] }}"
-                                required />
+                                placeholder="Masukkan Guru Mata Pelajaran (Maksimal 100 Karakter)"
+                                value="{{ $DATA['mataPelajaran'] }}" required />
                         </div>
                     </div>
                 </div>
@@ -200,7 +204,8 @@
                             <label htmlFor="romble">Keterangan</label>
                             <input type="text" id="romble" name="keterangan" maxlength="500"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Keterangan (Maksimal 500 Karakter)" value="{{ $DATA['keterangan'] }}" required />
+                                placeholder="Masukkan Keterangan (Maksimal 500 Karakter)"
+                                value="{{ $DATA['keterangan'] }}" required />
                         </div>
                     </div>
                 </div>

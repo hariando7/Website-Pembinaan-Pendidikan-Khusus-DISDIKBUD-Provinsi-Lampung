@@ -49,15 +49,18 @@
         }
     </style>
 </head>
-
+@use('App\Models\Sekolah')
+@php
+    $sekolah = Sekolah::find(auth()->user()->sekolah);
+@endphp
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
             <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Sarpras SLB
+                <div class="text-left items-center justify-center text-[#297785] font-bold text-[24px] m-auto w-[40%]">Sarpras SLB - {{ $sekolah->nama }}
                 </div>
-                <div class="flex justify-end gap-5">
+                <div class="flex justify-end gap-5 w-[60%]">
                     <!-- Modal toggle -->
                     <x-admin-statistik-sarpras />
                     <x-notifikasi-slb title="Notifikasi Dinas" :notifications="$pengumuman" />

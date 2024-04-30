@@ -79,13 +79,17 @@
         }
     </style>
 </head>
+@use('App\Models\Sekolah')
+@php
+    $sekolah = Sekolah::find(auth()->user()->sekolah);
+@endphp
 
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb id="{{ $id }}" />
         <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Edit Sarpras SLB
+                <div class="text-[#297785] font-bold text-[32px]">Edit Sarpras SLB - {{ $sekolah->nama }}
                 </div>
                 <div class="flex justify-between pb-2">
                     <div class="div">
@@ -198,7 +202,8 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="nama">Gedung/Ruang</label>
-                            <input name="nama" value="{{ $DATA['nama'] }}" type="text" id="nama" maxlength="100"
+                            <input name="nama" value="{{ $DATA['nama'] }}" type="text" id="nama"
+                                maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Gedung/Ruang (Maksimal 100 Karakter)" required />
                         </div>
@@ -208,7 +213,8 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jumlah">Jumlah</label>
-                            <input value="{{ $DATA['jumlah'] }}" name="jumlah" type="number" id="jumlah" maxlength="999"
+                            <input value="{{ $DATA['jumlah'] }}" name="jumlah" type="number" id="jumlah"
+                                maxlength="999"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jumlah" required />
                         </div>
@@ -230,8 +236,8 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="romble">Catatan/Keterangan</label>
-                            <input value="{{ $DATA['keterangan'] }}" name="keterangan" type="text" maxlength="500"
-                                id="keterangan"
+                            <input value="{{ $DATA['keterangan'] }}" name="keterangan" type="text"
+                                maxlength="500" id="keterangan"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Catatan/Keterangan (Maksimal 500 Karakter)" required />
                         </div>

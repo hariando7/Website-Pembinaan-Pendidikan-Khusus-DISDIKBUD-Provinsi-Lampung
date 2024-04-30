@@ -50,14 +50,19 @@
     </style>
 </head>
 
+@use('App\Models\Sekolah')
+@php
+    $sekolah = Sekolah::find(auth()->user()->sekolah);
+@endphp
+
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
-            <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Guru SLB
+            <div class="flex pb-2">
+                <div class="w-[40%] text-left items-center justify-center text-[#297785] font-bold text-[24px] m-auto">Guru SLB - {{ $sekolah->nama }}
                 </div>
-                <div class="flex justify-end gap-5">
+                <div class="flex justify-end gap-5 w-[60%]">
                     <!-- Modal toggle -->
                     <x-admin-statistik-guru />
                     <x-notifikasi-slb title="Notifikasi Dinas" :notifications="$pengumuman" />
@@ -108,7 +113,8 @@
                                     </div>
                                     <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto block w-full rounded-lg border-2 border-[#297785] p-2.5 ps-10 text-sm text-black placeholder-gray-400 hover:text-black focus:border-[#FA8F21] focus:ring-[#FA8F21] dark:border-[#297785] dark:placeholder-gray-400 dark:hover:text-black dark:focus:ring-[#FA8F21]"
-                                        placeholder="Cari Nama Guru, Jenis Kelamin, NIP, PNS/NON, Sertifikasi, Mengajar Bidang" oninput="cekKosong(this)"
+                                        placeholder="Cari Nama Guru, Jenis Kelamin, NIP, PNS/NON, Sertifikasi, Mengajar Bidang"
+                                        oninput="cekKosong(this)"
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
                                         function cekKosong(e) {

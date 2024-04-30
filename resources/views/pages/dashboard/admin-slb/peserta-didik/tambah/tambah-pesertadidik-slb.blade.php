@@ -30,13 +30,17 @@
         }
     </style>
 </head>
+@use('App\Models\Sekolah')
+@php
+    $sekolah = Sekolah::find(auth()->user()->sekolah);
+@endphp
 
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Tambah Peserta Didik SLB
+                <div class="text-[#297785] font-bold text-[32px]">Tambah Peserta Didik SLB - {{ $sekolah->nama }}
                 </div>
                 <div class="">
                     <x-buttitle-landing ref="/admin-pesertadidik-slb" color="#FA8F21" width="[7rem]" title="Kembali"

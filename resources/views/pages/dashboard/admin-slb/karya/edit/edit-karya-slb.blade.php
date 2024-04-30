@@ -80,12 +80,17 @@
     </style>
 </head>
 
+@use('App\Models\Sekolah')
+@php
+    $sekolah = Sekolah::find(auth()->user()->sekolah);
+@endphp
+
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb id="{{ $id }}" />
         <div class="pl-[280px] h-full pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Edit Karya SLB
+                <div class="text-[#297785] font-bold text-[32px]">Edit Karya SLB - {{ $sekolah->nama }}
                 </div>
                 <div class="flex justify-between pb-2">
                     <div class="div">
@@ -198,7 +203,8 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jusulKarya">Judul Karya</label>
-                            <input type="text" id="jusulKarya" name="nama" value="{{ $DATA['nama'] }}" maxlength="100"
+                            <input type="text" id="jusulKarya" name="nama" value="{{ $DATA['nama'] }}"
+                                maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Judul Karya SLB (Maksimal 100 Karakter)" required />
                         </div>
@@ -208,7 +214,8 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="deskripsi">Deskripsi</label>
-                            <input name="deskripsi" type="text" id="deskripsi" value="{{ $DATA['deskripsi'] }}" maxlength=""
+                            <input name="deskripsi" type="text" id="deskripsi" value="{{ $DATA['deskripsi'] }}"
+                                maxlength=""
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Deskripsi Karya (Maksimal 500 Karakter)" required />
                         </div>

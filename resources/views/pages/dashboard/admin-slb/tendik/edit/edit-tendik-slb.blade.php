@@ -30,13 +30,17 @@
         }
     </style>
 </head>
+@use('App\Models\Sekolah')
+@php
+    $sekolah = Sekolah::find(auth()->user()->sekolah);
+@endphp
 
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb id="{{ $id }}" />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
             <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Edit Tendik SLB
+                <div class="text-[#297785] font-bold text-[32px]">Edit Tendik SLB - {{ $sekolah->nama }}
                 </div>
                 <div class="flex justify-between pb-2">
                     <div class="div">
@@ -165,7 +169,8 @@
                             <label htmlFor="name">Nama tendik</label>
                             <input type="text" id="name" name="nama" maxlength="100"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Tendik (Maksimal 100 Karakter)" value="{{ $DATA['nama'] }}" required />
+                                placeholder="Masukkan Nama Tendik (Maksimal 100 Karakter)" value="{{ $DATA['nama'] }}"
+                                required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="jeniskelamin">Jenis Kelamin (JK)</label>
