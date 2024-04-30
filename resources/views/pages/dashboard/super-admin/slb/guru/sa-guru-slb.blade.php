@@ -243,7 +243,7 @@
                                     <td class="px-3 py-2">
                                         <?php
                                         $namaGuru = $data['namaGuru'];
-                                        echo strlen($namaGuru) > 15 ? substr($namaGuru, 0, 15) . '...' : $namaGuru;
+                                        echo strlen($namaGuru) > 100 ? substr($namaGuru, 0, 100) . '...' : $namaGuru;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jenisKelamin'] ?></td>

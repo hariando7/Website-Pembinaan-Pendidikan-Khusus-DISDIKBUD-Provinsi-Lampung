@@ -230,7 +230,7 @@
                                     <td class="px-3 py-2">
                                         <?php
                                         $namaSiswa = $data['namaSiswa'];
-                                        echo strlen($namaSiswa) > 30 ? substr($namaSiswa, 0, 30) . '...' : $namaSiswa;
+                                        echo strlen($namaSiswa) > 100 ? substr($namaSiswa, 0, 100) . '...' : $namaSiswa;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jenisKelamin'] ?></td>

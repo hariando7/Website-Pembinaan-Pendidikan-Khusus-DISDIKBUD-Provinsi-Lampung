@@ -226,7 +226,7 @@
                                     <td class="px-3 py-2">
                                         <?php
                                         $namaTendik = $data['namaTendik'];
-                                        echo strlen($namaTendik) > 15 ? substr($namaTendik, 0, 15) . '...' : $namaTendik;
+                                        echo strlen($namaTendik) > 100 ? substr($namaTendik, 0, 100) . '...' : $namaTendik;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jenisKelamin'] ?></td>

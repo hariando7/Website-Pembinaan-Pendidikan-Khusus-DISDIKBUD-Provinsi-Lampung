@@ -228,7 +228,7 @@
                                     <td class="px-3 py-2">
                                         <?php
                                         $mataPelajaran = $data['mataPelajaran'];
-                                        echo strlen($mataPelajaran) > 15 ? substr($mataPelajaran, 0, 15) . '...' : $mataPelajaran;
+                                        echo strlen($mataPelajaran) > 100 ? substr($mataPelajaran, 0, 100) . '...' : $mataPelajaran;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jumlahDibutuhkan'] ?></td>

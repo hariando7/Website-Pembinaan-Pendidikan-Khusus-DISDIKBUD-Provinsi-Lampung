@@ -229,7 +229,7 @@
                                     <td class="px-3 py-2">
                                         <?php
                                         $judulKarya = $data['judulKarya'];
-                                        echo strlen($judulKarya) > 15 ? substr($judulKarya, 0, 15) . '...' : $judulKarya;
+                                        echo strlen($judulKarya) > 100 ? substr($judulKarya, 0, 100) . '...' : $judulKarya;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2">

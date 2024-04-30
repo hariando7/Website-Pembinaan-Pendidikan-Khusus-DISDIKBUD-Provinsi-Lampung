@@ -237,7 +237,7 @@
                                     <td class="px-3 py-2">
                                         <?php
                                         $gedungRuang = $data['gedungRuang'];
-                                        echo strlen($gedungRuang) > 15 ? substr($gedungRuang, 0, 15) . '...' : $gedungRuang;
+                                        echo strlen($gedungRuang) > 100 ? substr($gedungRuang, 0, 100) . '...' : $gedungRuang;
                                         ?>
                                     </td>
                                     <td class="px-3 py-2"><?= $data['jumlahVol'] ?></td>
