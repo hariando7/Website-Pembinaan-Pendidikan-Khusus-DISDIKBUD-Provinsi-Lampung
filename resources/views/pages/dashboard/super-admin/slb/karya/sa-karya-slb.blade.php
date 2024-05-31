@@ -232,15 +232,16 @@
                                         echo strlen($judulKarya) > 100 ? substr($judulKarya, 0, 100) . '...' : $judulKarya;
                                         ?>
                                     </td>
-                                    <td class="px-32 py-2">
+                                    <td class="px-3 py-2">
                                         {{-- @dd($data['gambar']) --}}
                                         <div class="grid grid-cols-1 gap-5">
                                             <div class="w-full rounded overflow-hidden">
-                                                <div id="default-carousel" class="relative w-full z-0"
+                                                <div id="default-carousel"
+                                                    class="relative w-full z-0 m-auto justify-center flex"
                                                     data-carousel="slide">
                                                     <!-- Carousel wrapper -->
                                                     <div
-                                                        class="relative h-[300px] w-[300px] overflow-hidden rounded-lg">
+                                                        class="relative h-[200px] w-[250px] overflow-hidden rounded-lg">
                                                         <!-- Item 1 -->
                                                         <div class="duration-700 ease-in-out" data-carousel-item>
                                                             <img src="{{ url(asset('storage/' . $data['gambar'])) }}"
