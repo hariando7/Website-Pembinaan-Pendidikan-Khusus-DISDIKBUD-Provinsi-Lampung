@@ -42,10 +42,10 @@
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                 <div class="div">
                     <h3 class="text-lg font-semibold text-white dark:text-white">
-                        Notifikasi Pengumuman Dinas<br>
+                        Notifikasi Bidang Pembinaan Pendidikan Khusus<br>
                     </h3>
                     <h5 class="text-white">
-                        <x-time-saat-ini />
+                        {{-- <x-time-saat-ini /> --}}
                     </h5>
                 </div>
                 <button type="button"
@@ -121,9 +121,8 @@
                 notificationBadge.style.display = 'none';
             }
             setInterval(function() {
-                // Toggle class untuk membuat teks berkedip
                 notificationBadge.classList.toggle('text-blink');
-            }, 500); // Mengatur interval kedipan menjadi setiap 500ms (0.5 detik)
+            }, 500);
         }
 
         const modalButtons = document.querySelectorAll('[data-modal-toggle]');

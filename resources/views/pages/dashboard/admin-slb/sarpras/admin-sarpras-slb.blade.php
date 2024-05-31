@@ -139,7 +139,7 @@
                                             class="flex items-center justify-between rounded-t border-b border-white p-4 dark:border-white md:p-5">
                                             <div class="div">
                                                 <h3 class="text-lg font-semibold text-white dark:text-white">
-                                                    Cetak Data<br>
+                                                    Unduh Data<br>
                                                 </h3>
                                                 <h5 class="text-white">
                                                     <x-time-saat-ini />
@@ -357,9 +357,27 @@
                 let allData = await data.json();
 
                 function createExcel(data) {
+                    const sekolahNama = @json($sekolah->nama);
+                    const currentDate = new Date();
+                    const formattedDate = currentDate.toLocaleString('id-ID', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    });
+
+                    const titleHeader = [
+                        ['Daftar Sarpras ' + sekolahNama], // Judul
+                        ['Tanggal Unduh: ' + formattedDate], // Waktu download
+                        ['Pengunduh: Admin ' + sekolahNama], // Judul
+                        []
+                    ];
                     const header = [
                         'No',
                         'Tahun',
+                        'Nama Sekolah',
                         'Gedung Ruang',
                         'Jumlah',
                         'Kondisi',
@@ -367,11 +385,12 @@
                         'Catatan'
                     ];
 
-                    const excelData = [header];
+                    const excelData = [...titleHeader, header];
                     data.forEach(function(item, index) {
                         const rowData = [
                             index + 1, // No
-                            item.tahun, // Handle missing data
+                            item.tahun,
+                            item.namaSekolah,
                             item.gedungRuang,
                             item.jumlahVol,
                             item.kondisi,
@@ -382,17 +401,92 @@
                     });
 
                     const ws = XLSX.utils.aoa_to_sheet(excelData);
-                    const wb = XLSX.utils.book_new();
-                    XLSX.utils.book_append_sheet(wb, ws, 'Sarpras');
 
-                    XLSX.writeFile(wb, 'Sarpras.xlsx');
+                    ws['!merges'] = [{
+                            s: {
+                                r: 0,
+                                c: 0
+                            },
+                            e: {
+                                r: 0,
+                                c: 12
+                            }
+                        }, // Merge untuk judul
+                        {
+                            s: {
+                                r: 1,
+                                c: 0
+                            },
+                            e: {
+                                r: 1,
+                                c: 12
+                            }
+                        } // Merge untuk tanggal
+                    ];
+
+                    ws['!cols'] = [{
+                            wch: 5
+                        }, // No
+                        {
+                            wch: 20
+                        }, // Waktu Submit
+                        {
+                            wch: 30
+                        }, // Nama Sekolah
+                        {
+                            wch: 15
+                        }, // NPSN Sekolah
+                        {
+                            wch: 20
+                        }, // Status Sekolah
+                        {
+                            wch: 40
+                        }, // Alamat Sekolah
+                        {
+                            wch: 20
+                        }, // Kota Sekolah
+                        {
+                            wch: 15
+                        }, // Jumlah PDBK
+                        {
+                            wch: 30
+                        }, // Nama Pembimbing PDBK
+                        {
+                            wch: 25
+                        }, // Jenis Kelamin Pembimbing PDKB
+                        {
+                            wch: 25
+                        }, // Pangkat/Golongan Pembimbing PDBK
+                        {
+                            wch: 40
+                        }, // Alamat Tinggal Pembimbing PDBK
+                        {
+                            wch: 25
+                        } // Nomor HP Pembimbing PDBK
+                    ];
+
+                    ws['A1'].s = {
+                        font: {
+                            name: 'Arial',
+                            sz: 24, // ukuran huruf 24pt
+                            bold: true // teks bold
+                        },
+                        alignment: {
+                            horizontal: 'center',
+                            vertical: 'center'
+                        }
+                    };
+
+                    // const ws = XLSX.utils.aoa_to_sheet(excelData);
+                    const wb = XLSX.utils.book_new();
+                    XLSX.utils.book_append_sheet(wb, ws, 'Sarpras-SLB');
+
+                    XLSX.writeFile(wb, 'Sarpras-SLB.xlsx');
                 }
 
                 createExcel(allData);
             });
         });
-
-
 
         function showModal() {
             // Dapatkan modal
