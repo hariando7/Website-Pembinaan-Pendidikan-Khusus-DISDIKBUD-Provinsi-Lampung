@@ -53,12 +53,14 @@
 @php
     $sekolah = Sekolah::find(auth()->user()->sekolah);
 @endphp
+
 <body class="bg-white z-10">
     <div>
         <x-dashboard-side-bar-slb />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
             <div class="flex pb-2">
-                <div class="text-left items-center justify-center text-[#297785] font-bold text-[24px] m-auto w-[40%]">Tendik SLB - {{ $sekolah->nama }}
+                <div class="text-left items-center justify-center text-[#297785] font-bold text-[24px] m-auto w-[40%]">
+                    Tendik SLB - {{ $sekolah->nama }}
                 </div>
                 <div class="flex justify-end gap-5 w-[60%]">
                     <!-- Modal toggle -->

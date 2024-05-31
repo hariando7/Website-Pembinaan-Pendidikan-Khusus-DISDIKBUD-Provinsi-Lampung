@@ -54,12 +54,14 @@
 @php
     $sekolah = Sekolah::find(auth()->user()->sekolah);
 @endphp
+
 <body class="z-10 bg-white">
     <div>
         <x-dashboard-side-bar-slb />
         <div class="full-height h-screen pb-[85px] pl-[280px] pr-5 pt-2">
             <div class="flex pb-2">
-                <div class="w-[40%] justify-center text-left items-center text-[24px] font-bold text-[#297785] m-auto">Peserta Didik
+                <div class="w-[40%] justify-center text-left items-center text-[24px] font-bold text-[#297785] m-auto">
+                    Peserta Didik
                     SLB - {{ $sekolah->nama }}
                 </div>
                 <div class="flex w-[60%] justify-end gap-5">

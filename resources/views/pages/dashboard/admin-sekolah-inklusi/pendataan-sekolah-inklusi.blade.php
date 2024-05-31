@@ -254,7 +254,6 @@
         </div>
         <div
             class="box relative w-[300px] h-[500px] lg:w-[845px] lg:h-[850px] m-auto flex items-center m-auto mt-32 lg:mt-5 lg:mb-5">
-            <!-- Konten div Anda -->
             <form method="POST" autocomplete="off" class="overflow-y-auto lg:overflow-hidden">
                 @csrf
                 <h2 class="mb-5 font-bold lg:text-[22px] text-[12px]">

@@ -131,7 +131,7 @@
                                     {{ $temp['nama'] }}
                                 </div>
                                 <div class="flex m-auto">
-                                    <img class="w-full h-[300px] w-[300px] m-auto flex rounded-md"
+                                    <img class="w-full h-[300px] w-[300px] m-auto flex rounded-md transition-transform duration-300 transform-gpu hover:scale-110"
                                         src="{{ url(asset('storage/' . $data['gambar'])) }}"
                                         alt="Gambar {{ $index + 1 }}">
                                 </div>
@@ -173,6 +173,8 @@
                     <div class="relative flex justify-between mt-5">
                         <div class="font-bold text-black">Jumlah : {{ count($dummyData) }}</div>
                     </div>
+                    <x-buttitle-landing ref="/login" color="#FA8F21" width="[10rem]" title="Ubah Data?"
+                        extendClass="text-white text-center py-2 lg:py-3 hover:bg-[#D87815] m-auto flex" />
                 </div>
             </div>
         </div>

@@ -200,7 +200,7 @@
                                     <th scope="col" class="px-3 py-2">
                                         Judul Karya
                                     </th>
-                                    <th scope="col" class="px-3 py-2">
+                                    <th scope="col" class="px-32 py-2">
                                         Gambar
                                     </th>
                                     <th scope="col" class="px-3 py-2">
@@ -232,7 +232,7 @@
                                         echo strlen($judulKarya) > 100 ? substr($judulKarya, 0, 100) . '...' : $judulKarya;
                                         ?>
                                     </td>
-                                    <td class="px-3 py-2">
+                                    <td class="px-32 py-2">
                                         {{-- @dd($data['gambar']) --}}
                                         <div class="grid grid-cols-1 gap-5">
                                             <div class="w-full rounded overflow-hidden">

@@ -397,7 +397,6 @@
 
                     const ws = XLSX.utils.aoa_to_sheet(excelData);
 
-                    // Menggabungkan sel untuk judul dan tanggal
                     ws['!merges'] = [{
                             s: {
                                 r: 0,

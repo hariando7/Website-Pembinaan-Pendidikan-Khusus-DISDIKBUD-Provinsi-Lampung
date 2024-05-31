@@ -61,7 +61,8 @@
         <x-dashboard-side-bar-slb />
         <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
             <div class="flex pb-2">
-                <div class="text-left items-center justify-center text-[#297785] font-bold text-[24px] w-[40%] m-auto">Karya
+                <div class="text-left items-center justify-center text-[#297785] font-bold text-[24px] w-[40%] m-auto">
+                    Karya
                     SLB - {{ $sekolah->nama }}
                 </div>
                 <div class="flex justify-end gap-5 w-[60%]">
@@ -193,7 +194,7 @@
                                     <th scope="col" class="px-3 py-2">
                                         Judul Karya
                                     </th>
-                                    <th scope="col" class="px-3 py-2">
+                                    <th scope="col" class="px-32 py-2">
                                         Gambar
                                     </th>
                                     <th scope="col" class="px-3 py-2">
@@ -227,7 +228,7 @@
                                         echo strlen($judulKarya) > 100 ? substr($judulKarya, 0, 100) . '...' : $judulKarya;
                                         ?>
                                     </td>
-                                    <td class="px-3 py-2">
+                                    <td class="px-32 py-2">
                                         {{-- <img src="{{ url(asset('storage/' . $data['gambar'])) }}" alt=""> --}}
                                         {{-- @dd($data['gambar']) --}}
                                         <div class="grid grid-cols-1 gap-5">

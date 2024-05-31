@@ -42,7 +42,6 @@ class KontrolSekolahInklusi extends Controller
     public function lihatSemua()
     {
         $sekolahInklusi = SekolahInklusi::all();
-
         $dummyData = array_map(function ($data) {
             return [
                 'id' => $data['id'],
