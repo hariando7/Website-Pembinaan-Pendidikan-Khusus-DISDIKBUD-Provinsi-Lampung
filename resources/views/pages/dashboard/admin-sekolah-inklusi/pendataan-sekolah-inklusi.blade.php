@@ -253,7 +253,7 @@
             </div>
         </div>
         <div
-            class="box relative w-[300px] h-[500px] lg:w-[845px] lg:h-[900px] m-auto flex items-center m-auto mt-32 lg:mt-5 lg:mb-5">
+            class="box relative w-[300px] h-[500px] lg:w-[845px] lg:h-[850px] m-auto flex items-center m-auto mt-32 lg:mt-5 lg:mb-5">
             <!-- Konten div Anda -->
             <form method="POST" autocomplete="off" class="overflow-y-auto lg:overflow-hidden">
                 @csrf
@@ -261,7 +261,7 @@
                     Selamat Datang di Portal <br>
                     Pendataan Sekolah Inklusi <br>
                     Dinas Pendidikan Dan Kebudayaan Provinsi Lampung</h2>
-                <div class="">
+                {{-- <div class="">
                     <div class="lg:flex gap-x-2">
                         <div class="flex flex-col flex-1">
                             <div class="inputBox relative w-full mt-5">
@@ -289,7 +289,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="">
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">

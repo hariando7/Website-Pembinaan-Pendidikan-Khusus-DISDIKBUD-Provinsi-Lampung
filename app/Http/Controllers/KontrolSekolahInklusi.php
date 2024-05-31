@@ -49,7 +49,15 @@ class KontrolSekolahInklusi extends Controller
                 'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
                 'nama_sekolah' => $data['nama'],
                 'npsn' => $data['npsn'],
-                'jumlah_pdbk' => $data['jumlahPDBK']
+                'statusSekolah' => $data['statusSekolah'],
+                'alamatSekolah' => $data['alamatSekolah'],
+                'kota' => $data['kota'],
+                'jumlah_pdbk' => $data['jumlahPDBK'],
+                'namaPembimbing' => $data['namaPembimbing'],
+                'jenisKelamin' => $data['jenisKelamin'],
+                'pangkat' => $data['pangkat'],
+                'alamatTinggal' => $data['alamatTinggal'],
+                'nomorHP' => $data['nomorHP']
             ];
         }, $sekolahInklusi->toArray());
 
@@ -65,7 +73,15 @@ class KontrolSekolahInklusi extends Controller
                 'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
                 'nama_sekolah' => $data->nama,
                 'npsn' => $data->npsn,
-                'jumlah_pdbk' => $data->jumlahPDBK
+                'statusSekolah' => $data->statusSekolah,
+                'alamatSekolah' => $data->alamatSekolah,
+                'kota' => $data->kota,
+                'jumlah_pdbk' => $data->jumlahPDBK,
+                'namaPembimbing' => $data->namaPembimbing,
+                'jenisKelamin' => $data->jenisKelamin,
+                'pangkat' => $data->pangkat,
+                'alamatTinggal' => $data->alamatTinggal,
+                'nomorHP' => $data->nomorHP
             ];
         }, $sekolahInklusi->items());
 
@@ -85,7 +101,10 @@ class KontrolSekolahInklusi extends Controller
                 $query->where(function (Builder $query) use ($req) {
                     $query->where('nama', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('npsn', 'LIKE', '%' . $req->pencarian . '%')
-                        ->orWhere('jumlahPDBK', 'LIKE', '%' . $req->pencarian . '%');
+                        ->orWhere('jumlahPDBK', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('kota', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('nomorHP', 'LIKE', '%' . $req->pencarian . '%');
+                        
                 });
             }
         })->latest()->paginate(10);

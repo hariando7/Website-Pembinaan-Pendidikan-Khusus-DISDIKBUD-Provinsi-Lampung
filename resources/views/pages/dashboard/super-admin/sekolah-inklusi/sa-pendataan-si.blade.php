@@ -14,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Include SheetJS library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx-style/0.8.13/xlsx.full.min.js"></script>
     <style>
         .hide-scrollbar {
             scrollbar-width: thin;
@@ -91,7 +92,7 @@
                             </form>
                         </div>
                         <div class="basis-[10%]">
-                            <button id="print-button" type="button" onclick="showModal()"
+                            <button data-modal-target="modal-print" data-modal-toggle="modal-print" type="button"
                                 class="inline-flex w-full items-center gap-2 rounded-md border border-[#FA8F21] bg-[#FA8F21] px-5 py-2 text-center text-center text-sm font-medium text-white hover:bg-[#D87815] focus:outline-none focus:ring-2 focus:ring-[#FA8F21] dark:border-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] dark:focus:ring-[#FA8F21]">
                                 <x-svg-print />
                                 Print
@@ -115,7 +116,7 @@
                                             </div>
                                             <button type="button"
                                                 class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-white hover:bg-[#D87815] hover:text-white dark:hover:bg-[#D87815] dark:hover:text-white"
-                                                data-modal-close="modal-print" onclick="hideModal()">
+                                                data-modal-hide="modal-print">
                                                 <svg class="h-3 w-3" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 14 14">
@@ -131,7 +132,6 @@
                                             <button data-modal-hide="static-modal" type="button" id="downloadExcel"
                                                 class="btn rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300">Download
                                                 Excel</button>
-
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                                         No
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Tahun
+                                        Waktu Submit
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Nama Sekolah
@@ -155,7 +155,19 @@
                                         NPSN
                                     </th>
                                     <th scope="col" class="px-3 py-2">
+                                        Status Sekolah
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
+                                        Kota
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
                                         Jumlah PDBK
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
+                                        Nama Pembimbing PDBK
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
+                                        Nomor HP Pembimbing PDBK
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Aksi
@@ -189,7 +201,19 @@
                                             {{ $data['npsn'] }}
                                         </td>
                                         <td class="px-3 py-2">
+                                            {{ $data['statusSekolah'] }}
+                                        </td>
+                                        <td class="px-3 py-2">
+                                            {{ $data['kota'] }}
+                                        </td>
+                                        <td class="px-3 py-2">
                                             {{ $data['jumlah_pdbk'] }}
+                                        </td>
+                                        <td class="px-3 py-2">
+                                            {{ $data['namaPembimbing'] }}
+                                        </td>
+                                        <td class="px-3 py-2">
+                                            {{ $data['nomorHP'] }}
                                         </td>
                                         <td class="px-3 py-2">
                                             <div class="flex justify-items-center m-auto text-center gap-2">
@@ -208,7 +232,8 @@
                                                 <div class="div">
                                                     <button
                                                         class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer delete-button"
-                                                        title="Delete" type="button" data-index="<?= $data['id'] ?>">
+                                                        title="Delete" type="button"
+                                                        data-index="<?= $data['id'] ?>">
                                                         <x-svg-delete />
                                                     </button>
                                                 </div>
@@ -317,27 +342,137 @@
                 let allData = await data.json();
 
                 function createExcel(data) {
-                    const header = [
-                        'No',
-                        'Tahun',
-                        'Nama Sekolah',
-                        'NPSN',
-                        'Jumlah PDBK'
+                    const currentDate = new Date();
+                    const formattedDate = currentDate.toLocaleString('id-ID', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    });
+
+                    const titleHeader = [
+                        ['Laporan Data Sekolah Inklusi Provinsi Lampung'], // Judul
+                        ['Tanggal Unduh: ' + formattedDate], // Waktu download
+                        ['Pengunduh: Super Admin'], // Judul
+                        []
                     ];
 
-                    const excelData = [header];
+                    const header = [
+                        'No',
+                        'Waktu Submit',
+                        'Nama Sekolah',
+                        'NPSN Sekolah',
+                        'Status Sekolah',
+                        'Alamat Sekolah',
+                        'Kota Sekolah',
+                        'Jumlah PDBK',
+                        'Nama Pembimbing PDBK',
+                        'Jenis Kelamin Pembimbing PDKB',
+                        'Pangkat/Golongan Pembimbing PDBK',
+                        'Alamat Tinggal Pembimbing PDBK',
+                        'Nomor HP Pembimbing PDBK'
+                    ];
+
+                    const excelData = [...titleHeader, header];
                     data.forEach(function(item, index) {
                         const rowData = [
                             index + 1, // No
                             item.tahun,
                             item.nama_sekolah,
                             item.npsn,
-                            item.jumlah_pdbk
+                            item.statusSekolah,
+                            item.alamatSekolah,
+                            item.kota,
+                            item.jumlah_pdbk,
+                            item.namaPembimbing,
+                            item.jenisKelamin,
+                            item.pangkat,
+                            item.alamatTinggal,
+                            item.nomorHP
                         ];
                         excelData.push(rowData);
                     });
 
                     const ws = XLSX.utils.aoa_to_sheet(excelData);
+
+                    // Menggabungkan sel untuk judul dan tanggal
+                    ws['!merges'] = [{
+                            s: {
+                                r: 0,
+                                c: 0
+                            },
+                            e: {
+                                r: 0,
+                                c: 12
+                            }
+                        }, // Merge untuk judul
+                        {
+                            s: {
+                                r: 1,
+                                c: 0
+                            },
+                            e: {
+                                r: 1,
+                                c: 12
+                            }
+                        } // Merge untuk tanggal
+                    ];
+
+                    ws['!cols'] = [{
+                            wch: 5
+                        }, // No
+                        {
+                            wch: 20
+                        }, // Waktu Submit
+                        {
+                            wch: 30
+                        }, // Nama Sekolah
+                        {
+                            wch: 15
+                        }, // NPSN Sekolah
+                        {
+                            wch: 20
+                        }, // Status Sekolah
+                        {
+                            wch: 40
+                        }, // Alamat Sekolah
+                        {
+                            wch: 20
+                        }, // Kota Sekolah
+                        {
+                            wch: 15
+                        }, // Jumlah PDBK
+                        {
+                            wch: 30
+                        }, // Nama Pembimbing PDBK
+                        {
+                            wch: 25
+                        }, // Jenis Kelamin Pembimbing PDKB
+                        {
+                            wch: 25
+                        }, // Pangkat/Golongan Pembimbing PDBK
+                        {
+                            wch: 40
+                        }, // Alamat Tinggal Pembimbing PDBK
+                        {
+                            wch: 25
+                        } // Nomor HP Pembimbing PDBK
+                    ];
+
+                    ws['A1'].s = {
+                        font: {
+                            name: 'Arial',
+                            sz: 24, // ukuran huruf 24pt
+                            bold: true // teks bold
+                        },
+                        alignment: {
+                            horizontal: 'center',
+                            vertical: 'center'
+                        }
+                    };
+
                     const wb = XLSX.utils.book_new();
                     XLSX.utils.book_append_sheet(wb, ws, 'SekolahInklusi');
 
@@ -347,22 +482,6 @@
                 createExcel(allData);
             });
         });
-
-        function showModal() {
-            // Dapatkan modal
-            var modal = document.getElementById("modal-print");
-            // Tampilkan modal
-            modal.classList.remove("hidden");
-            modal.setAttribute("aria-hidden", "false");
-        }
-        // Close modal
-        function hideModal() {
-            // Dapatkan modal
-            var modal = document.getElementById("modal-print");
-            // Sembunyikan modal
-            modal.classList.add("hidden");
-            modal.setAttribute("aria-hidden", "true");
-        }
     </script>
 </body>
 
