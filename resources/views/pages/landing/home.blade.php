@@ -190,26 +190,6 @@
             opacity: 0.8;
         }
     </style>
-
-    <style>
-        @keyframes moving-border {
-            0% {
-                border-color: #C4DDDE;
-            }
-
-            50% {
-                border-color: #297785;
-            }
-
-            100% {
-                border-color: #C4DDDE;
-            }
-        }
-
-        #moving-border {
-            animation: moving-border 3s infinite;
-        }
-    </style>
     <style>
         @keyframes fadeInOut2 {
             0% {
@@ -224,17 +204,12 @@
                 opacity: 1;
             }
         }
-
-        /* .slideshow-2 img {
-            animation: fadeInOut2 6s infinite;
-        } */
     </style>
     <style>
         .text-typing {
             display: inline-block;
             overflow: hidden;
             border-right: .15em solid orange;
-            /* adjust thickness and color as needed */
             white-space: nowrap;
             margin: 0;
             animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
@@ -268,7 +243,6 @@
             transition: opacity 1s ease-in-out;
         }
 
-        /* Style to show the content with fade-in effect */
         .fade1.fadeIn {
             opacity: 1;
         }
@@ -278,7 +252,6 @@
             transition: opacity 1s ease-in-out;
         }
 
-        /* Style to show the content with fade-in effect */
         .fade2.fadeIn {
             opacity: 1;
         }
@@ -288,7 +261,6 @@
             transition: opacity 1s ease-in-out;
         }
 
-        /* Style to show the content with fade-in effect */
         .fade3.fadeIn {
             opacity: 1;
         }
@@ -298,7 +270,6 @@
             transition: opacity 1s ease-in-out;
         }
 
-        /* Style to show the content with fade-in effect */
         .fade4.fadeIn {
             opacity: 1;
         }
@@ -308,7 +279,6 @@
             transition: opacity 1s ease-in-out;
         }
 
-        /* Style to show the content with fade-in effect */
         .fade5.fadeIn {
             opacity: 1;
         }
@@ -318,7 +288,6 @@
             transition: opacity 1s ease-in-out;
         }
 
-        /* Style to show the content with fade-in effect */
         .fade6.fadeIn {
             opacity: 1;
         }
@@ -328,9 +297,27 @@
             transition: opacity 1s ease-in-out;
         }
 
-        /* Style to show the content with fade-in effect */
         .fade7.fadeIn {
             opacity: 1;
+        }
+    </style>
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: #C4DDDE;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: #C4DDDE;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
         }
     </style>
     <script>
@@ -498,7 +485,6 @@
                             <span class="text-typing">Dra. Suslina Sari, M.M.</span>
                         </div>
                         <script>
-                            // Function to trigger typing effect
                             function typeEffect(element, speed) {
                                 let text = element.getAttribute('data-text');
                                 element.innerHTML = '';
@@ -512,12 +498,11 @@
                                         clearInterval(timer);
                                         setTimeout(function() {
                                             deleteEffect(element, speed);
-                                        }, 1000); // Wait for 1 second before deleting
+                                        }, 1000);
                                     }
                                 }, speed);
                             }
 
-                            // Function to trigger delete effect
                             function deleteEffect(element, speed) {
                                 let text = element.innerHTML;
                                 let length = text.length;
@@ -529,15 +514,14 @@
                                         clearInterval(timer);
                                         setTimeout(function() {
                                             typeEffect(element, speed);
-                                        }, 500); // Wait for 0.5 second before typing again
+                                        }, 500);
                                     }
                                 }, speed);
                             }
 
-                            // Trigger typing effect for the specified element
                             let textElement = document.querySelector('.text-typing');
                             textElement.setAttribute('data-text', textElement.textContent.trim());
-                            typeEffect(textElement, 100); // Adjust speed as needed
+                            typeEffect(textElement, 100);
                         </script>
                     </div>
                     <div>
@@ -547,7 +531,8 @@
                             memiliki tugas
                             melaksanakan
                             penyusunan bahan perumusan dan pelaksanaan kebijakan di bidang pendidikan khusus.</p>
-                        <x-buttitle-landing ref="" color="#FA8F21" width="[10rem]" title="Selengkapnya"
+                        <x-buttitle-landing ref="/tentang-bidang-pembinaan-pendidikan-khusus" color="#FA8F21"
+                            width="[10rem]" title="Selengkapnya"
                             extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3 m-auto lg:m-0" />
                     </div>
                     <button id="sekapurSirihButton"
@@ -572,167 +557,23 @@
                 </div>
             </div>
         </div>
-        <div id="section2" class="w-full justify-center items-start bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
-            <div class="p-5 lg:p-20">
-                <div class="fade2 lg:w-full w-full lg:flex rounded shadow-lg border-solid border-4 border-[#297785]"
-                    id="moving-border">
-                    <div class="w-full lg:p-10">
-                        <h1
-                            class="text-2xl lg:text-4xl font-bold text-black pt-5 pb-5 lg:pb-10 text-center lg:text-center">
-                            Dokumentasi Kegiatan Bidang Diksus</h1>
-                        <div class="grid grid-cols-1 gap-5 pl-5 pr-5 pb-5 ">
-                            <div class="w-full rounded overflow-hidden">
-                                <div id="default-carousel" class="relative w-full z-0" data-carousel="slide">
-                                    <!-- Carousel wrapper -->
-                                    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                                        <!-- Item 1 -->
-                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                            <img src="{{ url(asset('storage/assets/a1.jpg')) }}"
-                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
-                                                alt="...">
-                                        </div>
-                                        <!-- Item 2 -->
-                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                            <img src="{{ url(asset('storage/assets/b1.jpg')) }}"
-                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
-                                                alt="...">
-                                        </div>
-                                        <!-- Item 3 -->
-                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                            <img src="{{ url(asset('storage/assets/c1.jpg')) }}"
-                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
-                                                alt="...">
-                                        </div>
-                                        <!-- Item 4 -->
-                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                            <img src="{{ url(asset('storage/assets/d3.jpg')) }}"
-                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
-                                                alt="...">
-                                        </div>
-                                        <!-- Item 5 -->
-                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                            <img src="{{ url(asset('storage/assets/e4.jpg')) }}"
-                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
-                                                alt="...">
-                                        </div>
-                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                            <img src="{{ url(asset('storage/assets/f2.jpg')) }}"
-                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
-                                                alt="...">
-                                        </div>
-                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                            <img src="{{ url(asset('storage/assets/g1.jpg')) }}"
-                                                class="absolute block w-full -translate-x-2/3 -translate-y-2/3 top-2/3 left-2/3 z-30"
-                                                alt="...">
-                                        </div>
-                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                            <img src="{{ url(asset('storage/assets/h6.jpg')) }}"
-                                                class="absolute block w-full -translate-x-2/3 -translate-y-2/3 top-2/3 left-2/3 z-30"
-                                                alt="...">
-                                        </div>
-                                    </div>
-                                    <!-- Slider indicators -->
-                                    <div
-                                        class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="true"
-                                            aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
-                                            aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
-                                            aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
-                                            aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
-                                            aria-label="Slide 5" data-carousel-slide-to="4"></button>
-                                    </div>
-                                    <!-- Slider controls -->
-                                    <button type="button"
-                                        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                                        data-carousel-prev>
-                                        <span
-                                            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 6 10">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-                                            </svg>
-                                            <span class="sr-only">Previous</span>
-                                        </span>
-                                    </button>
-                                    <button type="button"
-                                        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                                        data-carousel-next>
-                                        <span
-                                            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 6 10">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                                            </svg>
-                                            <span class="sr-only">Next</span>
-                                        </span>
-                                    </button>
-                                </div>
-                                <div class="px-6 py-4">
-                                    {{-- <div class="font-bold text-xl mb-2">Judul </div> --}}
-                                    <p class="text-gray-700 text-base">
-                                        Dokumentasi Kegiatan Bidang Pembinaan Pendidikan Khusus
-                                    </p>
-                                </div>
-                                <button id="open-modal-button"
-                                    class="text-white text-center mt-6 py-3 bg-[#FA8F21] hover:bg-[#D87815] w-[50%] lg:w-[50%] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] btn border-none m-auto">
-                                    Selengkapnya
-                                </button>
-                                <x-pop-up-landing />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="section3">
-            <div class="p-5 lg:p-20 pt-10 pb-10 gap-10 bg-white">
+        <div id="section2">
+            <div class="p-5 lg:p-20 pt-10 pb-10 gap-10 bg-[#EEEFF4]">
                 <div class="fade3">
                     <h1 class="text-2xl lg:text-4xl text-center m-auto text-center font-bold text-black pb-5 lg:pb-5">
                         Apa itu Disabilitas ?</h1>
-                    <div class="lg:flex justify-center gap-10">
-                        <div class="lg:w-[40%] order-2 lg:order-1 image-container relative slideshow-2">
-                            {{-- <img src="{{ url(asset('storage/assets/disabilitas1.jpg')) }}"
-                                class="w-full h-full m-auto items-center lg:mb-0 image-zoom" /> --}}
-                            <div class="w-full h-80 carousel rounded-box">
-                                <div class="carousel-item w-full">
-                                    <img src="{{ url(asset('storage/assets/disabilitas1.jpg')) }}" class="w-full"
-                                        alt="Tailwind CSS Carousel component" />
-                                </div>
-                                <div class="carousel-item w-full">
-                                    <img src="{{ url(asset('storage/assets/disabilitas2.jpg')) }}" class="w-full"
-                                        alt="Tailwind CSS Carousel component" />
-                                </div>
-                                <div class="carousel-item w-full">
-                                    <img src="{{ url(asset('storage/assets/disabilitas3.jpg')) }}" class="w-full"
-                                        alt="Tailwind CSS Carousel component" />
-                                </div>
-                                <div class="carousel-item w-full">
-                                    <img src="{{ url(asset('storage/assets/disabilitas4.jpg')) }}" class="w-full"
-                                        alt="Tailwind CSS Carousel component" />
-                                </div>
-                                <div class="carousel-item w-full">
-                                    <img src="{{ url(asset('storage/assets/disabilitas5.jpg')) }}" class="w-full"
-                                        alt="Tailwind CSS Carousel component" />
-                                </div>
-                                <div class="carousel-item w-full">
-                                    <img src="{{ url(asset('storage/assets/disabilitas6.jpg')) }}" class="w-full"
-                                        alt="Tailwind CSS Carousel component" />
-                                </div>
-                                <div class="carousel-item w-full">
-                                    <img src="{{ url(asset('storage/assets/disabilitas7.jpg')) }}" class="w-full"
-                                        alt="Tailwind CSS Carousel component" />
-                                </div>
+                    <div class="lg:flex justify-center gap-5">
+                        <div class="w-full order-2 lg:order-1 image-container relative slideshow-2">
+                            <div class="youtube-video">
+                                <iframe class="w-full" width="560" height="325"
+                                    src="https://www.youtube.com/embed/cgzq3zIloPo" title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; 
+                        encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
                             </div>
                         </div>
-                        <div class="lg:w-[60%] order-1 lg:order-2">
+                        <div class="lg:w-full order-1 lg:order-2">
                             <p class="py-2 text-black text-justify" id="apaItuDisabilitasText">Disabilitas adalah
                                 keterbatasan pada tubuh maupun pikiran yang menyebabkan pengidapnya kesulitan atau
                                 mengalami keterbatasan dalam melakukan aktivitas atau berinteraksi dengan lingkungan di
@@ -741,8 +582,9 @@
                                 serta pikiran mengalami kesulitan atau keterbatasan dalam menjalani aktivitas tertentu.
                                 Sementara itu, difabel adalah istilah atau sebutan bagi penyandang disabilitas.</p>
                             <div class="gap-10 flex justify-between mt-5 lg:mt-0">
-                                <x-buttitle-landing ref="/sekolah-luar-biasa" color="#FA8F21" width="[10rem]"
-                                    title="Selengkapnya"
+                                <x-buttitle-landing
+                                    ref="https://ditpsd.kemdikbud.go.id/artikel/detail/melindungi-dan-menjamin-hak-hak-anak-penyandang-disabilitas"
+                                    color="#FA8F21" width="[10rem]" title="Selengkapnya"
                                     extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3" />
                                 <button id="bacaTeks"
                                     class="bg-[#FA8F21]/[0.20] btn border-none hover:bg-[#D87815] text-white font-bold py-2 px-4 rounded mt-2 lg:mt-6">
@@ -764,31 +606,13 @@
                                         speechSynthesis.speak(speech);
                                     });
                                 </script>
-                                {{-- <script>
-                                    var images = [
-                                        "storage/assets/disabilitas2.jpg", // Ganti dengan URL gambar pertama
-                                        // "/assets/landing/apaItuDisabilitas.svg"
-                                        // "/assets/landing/bg-utama.png", // Ganti dengan URL gambar kedua
-                                        // "/assets/landing/apaItuDisabilitas.svg" // Ganti dengan URL gambar ketiga dst.
-                                    ];
-
-                                    var currentIndex = 0;
-                                    var imgElement = document.querySelector('.slideshow-2 img');
-
-                                    function changeImage() {
-                                        currentIndex = (currentIndex + 1) % images.length;
-                                        imgElement.src = images[currentIndex];
-                                    }
-
-                                    setInterval(changeImage, 10000); // Ganti gambar setiap 10 detik
-                                </script> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="section4" class="w-full justify-center items-start bg-[#EEEFF4]">
+        <div id="section3" class="w-full justify-center items-start bg-white">
             <div class="fade4 w-full p-5 lg:p-20 pt-10 pb-10">
                 <div class="text-center items-center">
                     <h1 class="text-2xl lg:text-4xl font-bold text-black pb-5 lg:pb-10">Jenis Disabilitas, Penyebab,
@@ -859,7 +683,7 @@
                                 class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-black border border-b-0 border-[#C4DDDE] focus:ring-4 focus:ring-[#C4DDDE] hover:bg-[#C4DDDE] gap-3    "
                                 data-accordion-target="#accordion-collapse-body-3" aria-expanded="false"
                                 aria-controls="accordion-collapse-body-2">
-                                <span>Penyebab Disabilitas</span>
+                                <span>Penanganan Disabilitas</span>
                                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="#C4DDDE" stroke-linecap="round" stroke-linejoin="round"
@@ -892,15 +716,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="youtube-video flex m-auto justify-center items-center mt-5 lg:mt-10">
+                        <iframe width="860" height="325" src="https://www.youtube.com/embed/oJrgshIm_KE"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; 
+                        encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center text-center pb-5 lg:mr-20 lg:-mt-20 lg:pb-20">
-                <x-buttitle-landing ref="" color="#FA8F21" width="[10rem]" title="Selengkapnya"
-                    extendClass="text-white text-center mt-2 lg:mt-6 py-2 lg:py-3" />
-            </div>
         </div>
-        <div id="section5">
-            <div class="p-5 lg:p-20 pt-10 pb-10 gap-10 bg-white">
+        <div id="section4">
+            <div class="p-5 lg:p-20 pt-10 pb-10 gap-10 bg-[#EEEFF4]">
                 <div class="fade5">
                     <h1 class="text-2xl lg:text-4xl text-center m-auto text-center font-bold text-black pb-5 lg:pb-5">
                         Sekolah
@@ -970,7 +797,7 @@
                 </div>
             </div>
         </div>
-        <div id="section6" class="w-full justify-center items-start bg-[#C4DDDE] pb-10 lg:pb-0 pt-10 lg:pt-0">
+        <div id="section5" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 pt-10 lg:pt-0">
             <div class="fade6 p-5 lg:p-20">
                 <div class="lg:w-full w-full lg:flex rounded shadow-lg border-solid border-4 border-[#297785]"
                     id="moving-border">
@@ -1048,8 +875,8 @@
                 </div>
             </div>
         </div>
-        <div id="section7">
-            <div class="w-full flex flex-col justify-center items-center pt-20 pb-20 bg-white">
+        <div id="section6">
+            <div class="w-full flex flex-col justify-center items-center pt-20 pb-20 bg-[#EEEFF4]">
                 <div class="fade7 w-[80%] bg-[#2E707B] p-5 rounded-lg">
                     <h1 class="lg:text-4xl md:text-4xl sm:text-2xl font-bold text-white text-center mb-5">SLB PROVINSI
                         LAMPUNG

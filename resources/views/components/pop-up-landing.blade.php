@@ -423,7 +423,8 @@
                                     <p>Bimtek Tenaga Pendidik Sekolah Inklusi Provinsi Lampung</p>
                                 </div>
                             </div>
-                            <div class="card card-compact w-72 lg:w-full bg-transparent text-white shadow-xl mb-5">
+                            {{-- kadis --}}
+                            {{-- <div class="card card-compact w-72 lg:w-full bg-transparent text-white shadow-xl mb-5">
                                 <figure>
                                     <div id="default-carousel" class="relative w-full z-0" data-carousel="slide">
                                         <!-- Carousel wrapper -->
@@ -490,7 +491,8 @@
                                     <h2 class="card-title text-lg font-semibold text-white">Kadis</h2>
                                     <p>Kadis</p>
                                 </div>
-                            </div>
+                            </div> --}}
+                            {{-- kadis --}}
                             <div class="card card-compact w-72 lg:w-full bg-transparent text-white shadow-xl mb-5">
                                 <figure>
                                     <div id="default-carousel" class="relative w-full z-0" data-carousel="slide">

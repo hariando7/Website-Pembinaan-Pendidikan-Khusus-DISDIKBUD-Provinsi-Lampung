@@ -181,6 +181,25 @@
             opacity: 0.8;
         }
     </style>
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: #C4DDDE;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: #C4DDDE;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
+        }
+    </style>
 </head>
 
 <body>
@@ -384,14 +403,134 @@
                 </div>
             </div>
         </div>
-        <div id="section4" class="w-full justify-center items-start bg-white">
+        {{-- <div id="section4" class="w-full justify-center items-start bg-white">
             <div class="lg:w-full p-5 lg:p-20 pt-10 pb-10">
                 <div class="text-center items-center">
                     <div class="text-2xl lg:text-3xl text-center lg:text-center font-bold text-black pb-5 lg:pb-10">
                         Struktur Bidang
                         Pembinaan Pendidikan Khusus</div>
-                    <img src="{{ url(asset('storage/assets/diksus.png')) }}" class="flex justify-center items-center m-auto"
-                        alt="">
+                    <img src="{{ url(asset('storage/assets/diksus.png')) }}"
+                        class="flex justify-center items-center m-auto" alt="">
+                </div>
+            </div>
+        </div> --}}
+        <div id="section4" class="w-full justify-center items-start bg-white pb-10 lg:pb-0 pt-10 lg:pt-0">
+            <div class="p-5 lg:p-20">
+                <div class="fade2 lg:w-full w-full lg:flex rounded shadow-lg border-solid border-4 border-[#297785]"
+                    id="moving-border">
+                    <div class="w-full lg:p-10">
+                        <h1
+                            class="text-2xl lg:text-4xl font-bold text-black pt-5 pb-5 lg:pb-10 text-center lg:text-center">
+                            Dokumentasi Kegiatan Bidang Diksus</h1>
+                        <div class="grid grid-cols-1 gap-5 pl-5 pr-5 pb-5 ">
+                            <div class="w-full rounded overflow-hidden">
+                                <div id="default-carousel" class="relative w-full z-0" data-carousel="slide">
+                                    <!-- Carousel wrapper -->
+                                    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                                        <!-- Item 1 -->
+                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                            <img src="{{ url(asset('storage/assets/a1.jpg')) }}"
+                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                alt="...">
+                                        </div>
+                                        <!-- Item 2 -->
+                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                            <img src="{{ url(asset('storage/assets/b1.jpg')) }}"
+                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                alt="...">
+                                        </div>
+                                        <!-- Item 3 -->
+                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                            <img src="{{ url(asset('storage/assets/c1.jpg')) }}"
+                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                alt="...">
+                                        </div>
+                                        <!-- Item 4 -->
+                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                            <img src="{{ url(asset('storage/assets/d3.jpg')) }}"
+                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                alt="...">
+                                        </div>
+                                        {{-- <!-- Item 5 -->
+                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                            <img src="{{ url(asset('storage/assets/e4.jpg')) }}"
+                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                alt="...">
+                                        </div> --}}
+                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                            <img src="{{ url(asset('storage/assets/f2.jpg')) }}"
+                                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30"
+                                                alt="...">
+                                        </div>
+                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                            <img src="{{ url(asset('storage/assets/g1.jpg')) }}"
+                                                class="absolute block w-full -translate-x-2/3 -translate-y-2/3 top-2/3 left-2/3 z-30"
+                                                alt="...">
+                                        </div>
+                                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                            <img src="{{ url(asset('storage/assets/h6.jpg')) }}"
+                                                class="absolute block w-full -translate-x-2/3 -translate-y-2/3 top-2/3 left-2/3 z-30"
+                                                alt="...">
+                                        </div>
+                                    </div>
+                                    <!-- Slider indicators -->
+                                    <div
+                                        class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="true"
+                                            aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                                            aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                                            aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                                            aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                                            aria-label="Slide 5" data-carousel-slide-to="4"></button>
+                                    </div>
+                                    <!-- Slider controls -->
+                                    <button type="button"
+                                        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                        data-carousel-prev>
+                                        <span
+                                            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 6 10">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                                            </svg>
+                                            <span class="sr-only">Previous</span>
+                                        </span>
+                                    </button>
+                                    <button type="button"
+                                        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                        data-carousel-next>
+                                        <span
+                                            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 6 10">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                            </svg>
+                                            <span class="sr-only">Next</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="px-6 py-4">
+                                    {{-- <div class="font-bold text-xl mb-2">Judul </div> --}}
+                                    <p class="text-gray-700 text-base">
+                                        Dokumentasi Kegiatan Bidang Pembinaan Pendidikan Khusus
+                                    </p>
+                                </div>
+                                <button id="open-modal-button"
+                                    class="text-white text-center mt-6 py-3 bg-[#FA8F21] hover:bg-[#D87815] w-[50%] lg:w-[50%] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] btn border-none m-auto">
+                                    Selengkapnya
+                                </button>
+                                <x-pop-up-landing />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -400,9 +539,11 @@
             style="background-size: 100% 100%;">
             <div class="lg:w-1/2 lg:p-5 relative">
                 <div class="absolute inset-0 bg-white opacity-20 rounded-lg"></div>
-                <div class="box relative w-[350px] h-[250px] lg:w-[600px] lg:h-[300px] m-auto flex items-center m-auto">
+                <div
+                    class="box relative w-[350px] h-[250px] lg:w-[600px] lg:h-[300px] m-auto flex items-center m-auto">
                     <form autocomplete="off" class="">
-                        <h2 class="mb-5 text-md lg:text-2xl font-bold">Portal Pendataan Sekolah Inklusi Dinas Pendidikan dan
+                        <h2 class="mb-5 text-md lg:text-2xl font-bold">Portal Pendataan Sekolah Inklusi Dinas
+                            Pendidikan dan
                             Kebudayaan Provinsi
                             Lampung
                         </h2>
