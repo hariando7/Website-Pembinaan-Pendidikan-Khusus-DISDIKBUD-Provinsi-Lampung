@@ -295,7 +295,7 @@
 
                     const header = [
                         'No',
-                        'Tahun',
+                        'Tahun Ajaran',
                         'Nama Sekolah',
                         'Judul Karya',
                         // 'Gambar',

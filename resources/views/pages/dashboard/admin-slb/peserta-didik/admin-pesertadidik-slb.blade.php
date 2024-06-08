@@ -192,7 +192,7 @@
                                         Tahun Ajaran
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Nama Siswa
+                                        Nama Peserta Didik
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Jenis Kelamin
@@ -376,9 +376,9 @@
 
                     const header = [
                         'No',
-                        'Tahun',
+                        'Tahun Ajaran',
                         'Nama Sekolah',
-                        'Nama Siswa',
+                        'Nama Peserta Didik',
                         'Jenis Kelamin',
                         'Jenis Ketunaan',
                         'Kelas',
