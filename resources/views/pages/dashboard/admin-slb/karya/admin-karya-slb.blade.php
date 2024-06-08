@@ -228,23 +228,18 @@
                                         echo strlen($judulKarya) > 100 ? substr($judulKarya, 0, 100) . '...' : $judulKarya;
                                         ?>
                                     </td>
-                                    <td class="px-32 py-2">
+                                    <td class="px-3 py-2">
                                         {{-- <img src="{{ url(asset('storage/' . $data['gambar'])) }}" alt=""> --}}
                                         {{-- @dd($data['gambar']) --}}
-                                        <div class="grid grid-cols-1 gap-5">
-                                            <div class="w-full rounded overflow-hidden">
-                                                <div id="default-carousel" class="relative w-full z-0"
-                                                    data-carousel="slide">
-                                                    <!-- Carousel wrapper -->
-                                                    <div
-                                                        class="relative h-[300px] w-[300px] overflow-hidden rounded-lg">
-                                                        <!-- Item 1 -->
-                                                        <div class="duration-700 ease-in-out" data-carousel-item>
-                                                            <img src="{{ url(asset('storage/' . $data['gambar'])) }}"
-                                                                alt=""
-                                                                class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30">
-                                                        </div>
-                                                    </div>
+                                        <div class="w-full rounded overflow-hidden">
+                                            <div id="default-carousel" class="relative w-full z-0"
+                                                data-carousel="slide">
+                                                <!-- Carousel wrapper -->
+                                                <div class="relative h-[300px] w-[300px] overflow-hidden rounded-lg">
+                                                    <!-- Item 1 -->
+                                                    <img src="{{ url(asset('storage/' . $data['gambar'])) }}"
+                                                        alt=""
+                                                        class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30 rounded-md">
                                                 </div>
                                             </div>
                                         </div>

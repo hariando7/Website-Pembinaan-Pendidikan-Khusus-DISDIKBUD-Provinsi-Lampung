@@ -241,12 +241,12 @@
                                                     data-carousel="slide">
                                                     <!-- Carousel wrapper -->
                                                     <div
-                                                        class="relative h-[200px] w-[250px] overflow-hidden rounded-lg">
+                                                        class="relative h-[200px] w-[250px] overflow-hidden">
                                                         <!-- Item 1 -->
                                                         <div class="duration-700 ease-in-out" data-carousel-item>
                                                             <img src="{{ url(asset('storage/' . $data['gambar'])) }}"
                                                                 alt=""
-                                                                class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30">
+                                                                class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-30 rounded-md">
                                                         </div>
                                                     </div>
                                                 </div>

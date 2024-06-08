@@ -97,7 +97,7 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
                 <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
-                    Pwserta Didik SLB By Sekolah Provinsi Lampung
+                    Peserta Didik SLB By Sekolah Provinsi Lampung
                 </div>
                 <div class="">
                     <x-sa-statistik-pd />

@@ -161,9 +161,9 @@
                                 accept="image/png, image/jpeg, image/jpg" class="custom-file-input"
                                 onchange="previewImages(event)" />
                             <div id="previewContainer" class="mt-5" style="display: flex; flex-wrap: wrap;"></div>
-                            <span id="deleteIcon" style="display: none; cursor: pointer;"><i
-                                    class="fas fa-times-circle">Hapus Gambar</i>
-                            </span>
+                            <div id="deleteButtonContainer" style="display: none;">
+                                <button id="deleteButton" onclick="deleteImages()">Hapus Gambar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,7 +180,7 @@
         function previewImages(event) {
             var files = event.target.files;
             var previewContainer = document.getElementById('previewContainer');
-            previewContainer.innerHTML = ''; // Clear previous previews
+            previewContainer.innerHTML = '';
             for (var i = 0; i < files.length; i++) {
                 (function(file) {
                     var reader = new FileReader();
@@ -189,21 +189,20 @@
                         output.src = reader.result;
                         output.style.maxWidth = '300px';
                         output.style.maxHeight = '300px';
-                        output.style.marginRight = '10px'; // Adjust spacing between images
+                        output.style.marginRight = '10px';
                         previewContainer.appendChild(output);
                     }
                     reader.readAsDataURL(file);
                 })(files[i]);
             }
-            document.getElementById('deleteIcon').style.display = 'inline-block';
+            document.getElementById('deleteButtonContainer').style.display = 'inline'; 
         }
-        window.onload = function() {
-            document.getElementById('deleteIcon').addEventListener('click', function() {
-                document.getElementById('gambarKarya').value = ''; // Reset input file
-                document.getElementById('previewContainer').innerHTML = ''; // Clear preview images
-                document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
-            });
-        };
+
+        function deleteImages() {
+            document.getElementById('gambarKarya').value = ''; 
+            document.getElementById('previewContainer').innerHTML = ''; 
+            document.getElementById('deleteButtonContainer').style.display = 'none';
+        }
 
         function populateTahunOptions() {
             var select = document.getElementById("tahun");

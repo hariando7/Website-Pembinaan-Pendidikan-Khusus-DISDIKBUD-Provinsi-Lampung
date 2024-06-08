@@ -353,7 +353,7 @@
                     });
 
                     const titleHeader = [
-                        ['Laporan Data Sekolah Inklusi Provinsi Lampung'], // Judul
+                        ['Daftar Sekolah Inklusi Provinsi Lampung'], // Judul
                         ['Tanggal Unduh: ' + formattedDate], // Waktu download
                         ['Pengunduh: Super Admin'], // Judul
                         []

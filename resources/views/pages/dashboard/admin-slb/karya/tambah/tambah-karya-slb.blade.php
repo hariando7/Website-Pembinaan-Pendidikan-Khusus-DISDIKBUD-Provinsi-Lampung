@@ -141,8 +141,10 @@
                                 onchange="previewImage(event)" required />
                             <img id="preview" src="" alt="Preview Gambar" class="mt-5"
                                 style="max-width: 300px; max-height: 300px;">
-                            <span id="deleteIcon" style="display: none; cursor: pointer;"><i
-                                    class="fas fa-times-circle">Hapus Gambar</i></span>
+                            <div id="deleteIconContainer" style="display: none;">
+                                <span id="deleteIcon" style="cursor: pointer;" onclick="deleteImage()">Hapus
+                                    Gambar</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -162,17 +164,16 @@
             reader.onload = function() {
                 var output = document.getElementById('preview');
                 output.src = reader.result;
-                document.getElementById('deleteIcon').style.display = 'inline-block';
+                document.getElementById('deleteIconContainer').style.display = 'inline';
             }
             reader.readAsDataURL(event.target.files[0]);
         }
-        window.onload = function() {
-            document.getElementById('deleteIcon').addEventListener('click', function() {
-                document.getElementById('gambarKarya').value = ''; // Reset input file
-                document.getElementById('preview').src = ''; // Clear preview image
-                document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
-            });
-        };
+
+        function deleteImage() {
+            document.getElementById('gambarKarya').value = ''; 
+            document.getElementById('preview').src = '';
+            document.getElementById('deleteIconContainer').style.display = 'none';
+        }
 
         function populateTahunOptions() {
             var select = document.getElementById("tahun");

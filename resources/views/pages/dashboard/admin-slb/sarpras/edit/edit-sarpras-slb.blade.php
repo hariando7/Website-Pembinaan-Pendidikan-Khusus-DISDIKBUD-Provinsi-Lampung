@@ -250,15 +250,17 @@
                             <input multiple type="file" name="daftarGambar[]" id="gambarKarya"
                                 accept="image/png, image/jpeg, image/jpg" class="custom-file-input"
                                 onchange="previewImages(event)" />
-
-                            @foreach ($daftarGambar as $gambar)
-                                <img id="preview" src="{{ url(asset('storage/' . $gambar->gambar)) }}"
-                                    alt="Preview Gambar" class="mt-5" style="max-width: 300px; max-height: 300px;">
-                            @endforeach
-
+                            <div id="existingImages" class="mt-5" style="display: flex; flex-wrap: wrap;">
+                                @foreach ($daftarGambar as $gambar)
+                                    <img class="existing-image" src="{{ url(asset('storage/' . $gambar->gambar)) }}"
+                                        alt="Preview Gambar" class="mt-5"
+                                        style="max-width: 300px; max-height: 300px;">
+                                @endforeach
+                            </div>
                             <div id="previewContainer" class="mt-5" style="display: flex; flex-wrap: wrap;"></div>
-                            <span id="deleteIcon" style="display: none; cursor: pointer;"><i
-                                    class="fas fa-times-circle">Hapus Gambar</i></span>
+                            <div id="deleteButtonContainer" style="display: none;">
+                                <button type="button" id="deleteButton">Hapus Gambar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -287,7 +289,11 @@
         function previewImages(event) {
             var files = event.target.files;
             var previewContainer = document.getElementById('previewContainer');
-            previewContainer.innerHTML = ''; // Clear previous previews
+            var existingImages = document.getElementById('existingImages');
+
+            previewContainer.innerHTML = '';
+            existingImages.innerHTML = '';
+
             for (var i = 0; i < files.length; i++) {
                 (function(file) {
                     var reader = new FileReader();
@@ -296,21 +302,29 @@
                         output.src = reader.result;
                         output.style.maxWidth = '300px';
                         output.style.maxHeight = '300px';
-                        output.style.marginRight = '10px'; // Adjust spacing between images
+                        output.style.marginRight = '10px'; 
                         previewContainer.appendChild(output);
                     }
                     reader.readAsDataURL(file);
                 })(files[i]);
             }
-            document.getElementById('deleteIcon').style.display = 'inline-block';
+
+            document.getElementById('deleteButtonContainer').style.display = 'inline'; 
         }
-        window.onload = function() {
-            document.getElementById('deleteIcon').addEventListener('click', function() {
-                document.getElementById('gambarKarya').value = ''; // Reset input file
-                document.getElementById('previewContainer').innerHTML = ''; // Clear preview images
-                document.getElementById('deleteIcon').style.display = 'none'; // Hide delete icon
+
+        function deleteImages() {
+            document.getElementById('gambarKarya').value = ''; 
+            document.getElementById('previewContainer').innerHTML = '';
+            document.getElementById('existingImages').innerHTML = ''; 
+            document.getElementById('deleteButtonContainer').style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('deleteButton').addEventListener('click', function(event) {
+                event.preventDefault();
+                deleteImages();
             });
-        };
+        });
 
         function populateTahunOptions() {
             var select = document.getElementById("tahun");

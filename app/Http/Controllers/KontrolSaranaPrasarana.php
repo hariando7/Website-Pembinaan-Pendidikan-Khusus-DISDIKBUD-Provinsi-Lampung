@@ -257,62 +257,59 @@ class KontrolSaranaPrasarana extends Controller
         $pengguna = Auth::user();
         $validasi = $req->validate([
             'id' => 'required',
+            'daftarGambar.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $saranaPrasarana = SaranaPrasarana::find($validasi['id']);
 
-        if ($saranaPrasarana) {
-            if ($saranaPrasarana->sekolah === $pengguna->sekolah) {
-                if ($req['tahun']) {
-                    Tahun::firstOrCreate(['tahun' => $req['tahun']]);
-                    $saranaPrasarana->tahun = $req['tahun'];
-                }
-                if ($req['nama']) {
-                    $saranaPrasarana->nama = $req['nama'];
-                }
-                if ($req['jumlah']) {
-                    $saranaPrasarana->jumlah = $req['jumlah'];
-                }
-                if ($req['kondisi']) {
-                    $saranaPrasarana->kondisi = $req['kondisi'];
-                }
-                if ($req['keterangan']) {
-                    $saranaPrasarana->keterangan = $req['keterangan'];
-                }
-
-                if ($req->hasFile('daftarGambar')) {
-                    $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana->id)->get();
-
-                    foreach ($daftarGambar as $gambar) {
-                        Storage::delete($gambar->gambar);
-                        $saranaPrasarana->gambar = $req->file('daftarGambar')->store('saranaPrasarana');
-                    }
-                    GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana->id)->delete();
-
-                    foreach ($req->file('daftarGambar') as $gambar) {
-                        $url = $gambar->store('saranaPrasarana');
-
-                        GambarSaranaPrasarana::create([
-                            'saranaPrasarana' => $saranaPrasarana->id,
-                            'gambar' => $url
-                        ]);
-                    }
-                }
-
-                $saranaPrasarana->save();
-
-                Session::flash('toast-edit', [
-                    'type' => 'toast-edit',
-                    'message' => 'Berhasil Edit Data'
-                ]);
-
-                // return 'true';
-                return redirect('/admin-sarpras-slb');
+        if ($saranaPrasarana && $saranaPrasarana->sekolah === $pengguna->sekolah) {
+            if ($req->filled('tahun')) {
+                Tahun::firstOrCreate(['tahun' => $req['tahun']]);
+                $saranaPrasarana->tahun = $req['tahun'];
             }
+            if ($req->filled('nama')) {
+                $saranaPrasarana->nama = $req['nama'];
+            }
+            if ($req->filled('jumlah')) {
+                $saranaPrasarana->jumlah = $req['jumlah'];
+            }
+            if ($req->filled('kondisi')) {
+                $saranaPrasarana->kondisi = $req['kondisi'];
+            }
+            if ($req->filled('keterangan')) {
+                $saranaPrasarana->keterangan = $req['keterangan'];
+            }
+
+            if ($req->hasFile('daftarGambar')) {
+                // Hapus gambar yang ada
+                $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana->id)->get();
+                foreach ($daftarGambar as $gambar) {
+                    Storage::delete($gambar->gambar);
+                }
+                GambarSaranaPrasarana::where('saranaPrasarana', $saranaPrasarana->id)->delete();
+
+                // Simpan gambar baru
+                foreach ($req->file('daftarGambar') as $gambar) {
+                    $url = $gambar->store('saranaPrasarana');
+
+                    GambarSaranaPrasarana::create([
+                        'saranaPrasarana' => $saranaPrasarana->id,
+                        'gambar' => $url
+                    ]);
+                }
+            }
+
+            $saranaPrasarana->save();
+
+            Session::flash('toast-edit', [
+                'type' => 'toast-edit',
+                'message' => 'Berhasil Edit Data'
+            ]);
+
+            return redirect('/admin-sarpras-slb');
         }
 
-        // return 'false';
-        // return back();
+        return back()->withErrors(['error' => 'Tidak dapat mengubah data']);
     }
 
     public function hapus($id)

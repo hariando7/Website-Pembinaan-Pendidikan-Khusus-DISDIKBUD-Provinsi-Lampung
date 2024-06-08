@@ -543,8 +543,6 @@
             });
         });
 
-
-
         function showModal() {
             // Dapatkan modal
             var modal = document.getElementById("modal-print");
