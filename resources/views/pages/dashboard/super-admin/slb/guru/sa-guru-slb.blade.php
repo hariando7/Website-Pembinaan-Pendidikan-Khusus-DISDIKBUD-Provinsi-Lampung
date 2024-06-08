@@ -192,7 +192,7 @@
                                         No
                                     </th>
                                     <th scope="col" class="px-3 py-2">
-                                        Tahun
+                                        Tahun Ajaran
                                     </th>
                                     <th scope="col" class="px-3 py-2">
                                         Nama Sekolah
