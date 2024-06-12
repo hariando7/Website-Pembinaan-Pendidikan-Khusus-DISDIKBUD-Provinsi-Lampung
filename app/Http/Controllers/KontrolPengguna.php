@@ -52,7 +52,10 @@ class KontrolPengguna extends Controller
                 $query->where('sekolah', (int) $req->filterSekolah);
             }
             if ($req->pencarian) {
-                $query->where('email', 'LIKE', '%' . $req->pencarian . '%');
+                $query->where('email', 'LIKE', '%' . $req->pencarian . '%')
+                    ->orWhereHas('relasiSekolah', function (Builder $query) use ($req) {
+                        $query->where('nama', $req->pencarian);
+                    });
             }
         })->latest()->paginate(10);
 
