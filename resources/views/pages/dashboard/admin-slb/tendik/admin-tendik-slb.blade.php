@@ -402,7 +402,7 @@
                     const header = [
                         'No',
                         'Tahun Ajaran',
-                        'Nama Sekolah',
+                        // 'Nama Sekolah',
                         'Nama Tendik',
                         'Jenis Kelamin',
                         'NIP',
@@ -415,7 +415,7 @@
                         const rowData = [
                             index + 1, // No
                             item.tahun,
-                            item.namaSekolah,
+                            // item.namaSekolah,
                             item.namaTendik,
                             item.jenisKelamin,
                             item.nip,
