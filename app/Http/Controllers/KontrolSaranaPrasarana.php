@@ -77,13 +77,32 @@ class KontrolSaranaPrasarana extends Controller
 
         return json_encode($data);
     }
-    public function lihatSemua()
+    
+    public function lihatSemua(Request $request)
     {
-        $saranaPrasarana = SaranaPrasarana::all();
-        $sekolah = Sekolah::all();
-        $gambar = GambarSaranaPrasarana::all();
+        $filterSekolah = $request->input('filterSekolah');
+        $tahun = $request->input('tahun');
+        $pencarian = $request->input('pencarian');
 
-        $dummyData = array_map(function ($data) use ($sekolah) {
+        $saranaPrasarana = SaranaPrasarana::where(function (Builder $query) use ($filterSekolah, $tahun, $pencarian) {
+            if ($filterSekolah) {
+                $query->where('sekolah', (int) $filterSekolah);
+            }
+            if ($tahun) {
+                $query->where('tahun', $tahun);
+            }
+            if ($pencarian) {
+                $query->where(function (Builder $query) use ($pencarian) {
+                    $query->where('nama', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('kondisi', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('keterangan', 'LIKE', '%' . $pencarian . '%');
+                });
+            }
+        })->get();
+
+        $sekolah = Sekolah::all();
+
+        $dummyData = $saranaPrasarana->map(function ($data) use ($sekolah) {
             $temp = $sekolah->find($data['sekolah']);
             $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $data['id'])->get();
             return [
@@ -96,10 +115,16 @@ class KontrolSaranaPrasarana extends Controller
                 'catatan' => $data['keterangan'],
                 'gambar' => $daftarGambar,
             ];
-        }, $saranaPrasarana->toArray());
+        });
 
-        return json_encode($dummyData);
-    }
+        $result = [
+            'data' => $dummyData,
+            'namaSekolah' => $filterSekolah ? $sekolah->find($filterSekolah)->nama : 'Semua Sekolah'
+        ];
+
+        return response()->json($result);
+}
+
     public function daftarSaranaPrasaranaSuperAdmin(Request $req)
     {
         $saranaPrasarana = $this->daftarSaranaPrasarana($req);

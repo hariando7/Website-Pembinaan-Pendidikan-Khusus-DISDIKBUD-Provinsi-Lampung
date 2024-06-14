@@ -81,12 +81,31 @@ class KontrolKebutuhanGuru extends Controller
 
         return json_encode($data);
     }
-    public function lihatSemua()
+    
+    public function lihatSemua(Request $request)
     {
-        $kebutuhanGuru = KebutuhanGuru::all();
+        $filterSekolah = $request->input('filterSekolah');
+        $tahun = $request->input('tahun');
+        $pencarian = $request->input('pencarian');
+
+        $kebutuhanGuru = KebutuhanGuru::where(function (Builder $query) use ($filterSekolah, $tahun, $pencarian) {
+            if ($filterSekolah) {
+                $query->where('sekolah', (int) $filterSekolah);
+            }
+            if ($tahun) {
+                $query->where('tahun', $tahun);
+            }
+            if ($pencarian) {
+                $query->where(function (Builder $query) use ($pencarian) {
+                    $query->where('mataPelajaran', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('keterangan', 'LIKE', '%' . $pencarian . '%');
+                });
+            }
+        })->get();
+
         $sekolah = Sekolah::all();
 
-        $dummyData = array_map(function ($data) use ($sekolah) {
+        $dummyData = $kebutuhanGuru->map(function ($data) use ($sekolah) {
             $temp = $sekolah->find($data['sekolah']);
             return [
                 'id' => $data['id'],
@@ -98,10 +117,16 @@ class KontrolKebutuhanGuru extends Controller
                 'lebihKurang' => $data['lebihKurang'],
                 'keterangan' => $data['keterangan'],
             ];
-        }, $kebutuhanGuru->toArray());
+        });
 
-        return json_encode($dummyData);
+        $result = [
+            'data' => $dummyData,
+            'namaSekolah' => $filterSekolah ? $sekolah->find($filterSekolah)->nama : 'Semua Sekolah'
+        ];
+
+        return response()->json($result);
     }
+
     public function daftarKebutuhanGuruSuperAdmin(Request $req)
     {
         $kebutuhanGuru = $this->daftarKebutuhanGuru($req);

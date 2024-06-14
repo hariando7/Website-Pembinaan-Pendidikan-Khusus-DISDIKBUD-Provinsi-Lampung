@@ -92,18 +92,18 @@
                                 <option value="">Semua Tahun</option>
                                 @foreach ($daftarTahun as $tahun)
                                     <option value="{{ $tahun->tahun }}"
-                                        @if (isset($_GET['tahun'])) @if ($_GET['tahun'] == $tahun->tahun) selected @endif
-                                        @endif>{{ $tahun->tahun }}</option>
+                                        @if (isset($_GET['tahun']) && $_GET['tahun'] == $tahun->tahun) selected @endif>{{ $tahun->tahun }}</option>
                                 @endforeach
                             </select>
                             <script>
                                 function filterTahun(e) {
-                                    console.log(e.value);
+                                    const params = new URLSearchParams(window.location.search);
                                     if (e.value === '') {
-                                        window.location.href = window.location.origin + window.location.pathname;
+                                        params.delete('tahun');
                                     } else {
-                                        e.form.submit();
+                                        params.set('tahun', e.value);
                                     }
+                                    window.location.search = params.toString();
                                 }
                             </script>
                         </div>
@@ -114,14 +114,31 @@
                                         <x-svg-search />
                                     </div>
                                     <input type="text" name="pencarian" id="simple-search"
-                                        class="mx-auto block w-full rounded-lg border-2 border-[#297785] p-2.5 ps-10 text-sm text-black placeholder-gray-400 hover:text-black focus:border-[#FA8F21] focus:ring-[#FA8F21] dark:border-[#297785] dark:placeholder-gray-400 dark:hover:text-black dark:focus:ring-[#FA8F21]"
-                                        placeholder="Cari Nama Siswa, Jenis Kelamin, Jenis Ketunaan dan Kelas"
-                                        oninput="cekKosong(this)"
+                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
+                                        placeholder="Cari Nama Peserta Didik, Jenis Ketunaan, Jenis Kelamin, Kelas..."
+                                        onkeypress="cariDenganEnter(event)" oninput="hapusPencarianKosong(event)"
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
-                                        function cekKosong(e) {
-                                            if (e.value === '') {
-                                                window.location.href = window.location.origin + window.location.pathname;
+                                        function cariDenganEnter(event) {
+                                            if (event.key === 'Enter') {
+                                                event.preventDefault();
+                                                const input = event.target;
+                                                const params = new URLSearchParams(window.location.search);
+                                                if (input.value === '') {
+                                                    params.delete('pencarian');
+                                                } else {
+                                                    params.set('pencarian', input.value);
+                                                }
+                                                window.location.search = params.toString();
+                                            }
+                                        }
+
+                                        function hapusPencarianKosong(event) {
+                                            const input = event.target;
+                                            const params = new URLSearchParams(window.location.search);
+                                            if (input.value === '') {
+                                                params.delete('pencarian');
+                                                window.location.search = params.toString();
                                             }
                                         }
                                     </script>
@@ -168,7 +185,8 @@
                                             class="m-auto flex items-center justify-center gap-5 rounded-b border-t border-gray-200 p-4 text-center dark:border-gray-600 md:p-5">
                                             <button data-modal-hide="static-modal" type="button" id="downloadExcel"
                                                 class="btn rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300">Download
-                                                Excel</button>
+                                                Excel
+                                            </button>
 
                                         </div>
                                         <!-- Button untuk cetak -->
@@ -340,10 +358,15 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="relative mt-5 flex justify-between">
-                        {{-- <div class="font-bold text-black">Jumlah : {{ $DATA->count() }}</div> --}}
+                    <div class="relative flex justify-between mt-5">
                         <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
-                        {{ $DATA->links() }}
+                        <div class="">
+                            {{ $DATA->appends([
+                                    'filterSekolah' => request('filterSekolah'),
+                                    'tahun' => request('tahun'),
+                                    'pencarian' => request('pencarian'),
+                                ])->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -352,8 +375,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('downloadExcel').addEventListener('click', async function() {
-                let data = await fetch('/api/peserta-didik');
-                let allData = await data.json();
+                const params = new URLSearchParams(window.location.search);
+                const tahun = params.get('tahun') || '';
+                const pencarian = params.get('pencarian') || '';
+
+                let data = await fetch(
+                    `/api/peserta-didik?filterSekolah={{ auth()->user()->sekolah }}&tahun=${tahun}&pencarian=${pencarian}`);
+                let result = await data.json();
+                let allData = result.data;
+                let namaSekolah = result.namaSekolah;
 
                 function createExcel(data) {
                     const sekolahNama = @json($sekolah->nama);

@@ -76,6 +76,7 @@ class KontrolTenagaPendidik extends Controller
 
         return json_encode($data);
     }
+    
     public function statistikTahun(Request $req)
     {
         $tenagaPendidik = TenagaPendidik::where(function (Builder $query) use ($req) {
@@ -100,12 +101,32 @@ class KontrolTenagaPendidik extends Controller
 
         return json_encode($data);
     }
-    public function lihatSemua()
+    public function lihatSemua(Request $request)
     {
-        $tenagaPendidik = TenagaPendidik::all();
+        $filterSekolah = $request->input('filterSekolah');
+        $tahun = $request->input('tahun');
+        $pencarian = $request->input('pencarian');
+
+        $tenagaPendidik = TenagaPendidik::where(function (Builder $query) use ($filterSekolah, $tahun, $pencarian) {
+            if ($filterSekolah) {
+                $query->where('sekolah', (int) $filterSekolah);
+            }
+            if ($tahun) {
+                $query->where('tahun', $tahun);
+            }
+            if ($pencarian) {
+                $query->where(function (Builder $query) use ($pencarian) {
+                    $query->where('nama', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('jenisKelamin', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('nip', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('bidangPekerjaan', 'LIKE', '%' . $pencarian . '%');
+                });
+            }
+        })->get();
+
         $sekolah = Sekolah::all();
 
-        $dummyData = array_map(function ($data) use ($sekolah) {
+        $dummyData = $tenagaPendidik->map(function ($data) use ($sekolah) {
             $temp = $sekolah->find($data['sekolah']);
             return [
                 'id' => $data['id'],
@@ -117,10 +138,16 @@ class KontrolTenagaPendidik extends Controller
                 'status' => $data['statusPNS'],
                 'bidangTugas' => $data['bidangPekerjaan'],
             ];
-        }, $tenagaPendidik->toArray());
+        });
 
-        return json_encode($dummyData);
+        $result = [
+            'data' => $dummyData,
+            'namaSekolah' => $filterSekolah ? $sekolah->find($filterSekolah)->nama : 'Semua Sekolah'
+        ];
+
+        return response()->json($result);
     }
+
     public function daftarTenagaPendidikSuperAdmin(Request $req)
     {
         $tenagaPendidik = $this->daftarTenagaPendidik($req);

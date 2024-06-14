@@ -64,12 +64,30 @@ class KontrolKarya extends Controller
 
         return json_encode($data);
     }
-    public function lihatSemua()
+    public function lihatSemua(Request $request)
     {
-        $karya = Karya::all();
+        $filterSekolah = $request->input('filterSekolah');
+        $tahun = $request->input('tahun');
+        $pencarian = $request->input('pencarian');
+
+        $karya = Karya::where(function (Builder $query) use ($filterSekolah, $tahun, $pencarian) {
+            if ($filterSekolah) {
+                $query->where('sekolah', (int) $filterSekolah);
+            }
+            if ($tahun) {
+                $query->where('tahun', $tahun);
+            }
+            if ($pencarian) {
+                $query->where(function (Builder $query) use ($pencarian) {
+                    $query->where('nama', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('deskripsi', 'LIKE', '%' . $pencarian . '%');
+                });
+            }
+        })->get();
+
         $sekolah = Sekolah::all();
 
-        $dummyData = array_map(function ($data) use ($sekolah) {
+        $dummyData = $karya->map(function ($data) use ($sekolah) {
             $temp = $sekolah->find($data['sekolah']);
             return [
                 'id' => $data['id'],
@@ -79,10 +97,16 @@ class KontrolKarya extends Controller
                 'gambar' => $data['gambar'],
                 'deskripsi' => $data['deskripsi'],
             ];
-        }, $karya->toArray());
+        });
 
-        return json_encode($dummyData);
+        $result = [
+            'data' => $dummyData,
+            'namaSekolah' => $filterSekolah ? $sekolah->find($filterSekolah)->nama : 'Semua Sekolah'
+        ];
+
+        return response()->json($result);
     }
+
     public function daftarKaryaSuperAdmin(Request $req)
     {
         $karya = $this->daftarKarya($req);

@@ -79,18 +79,18 @@
                                 <option value="">Semua Sekolah</option>
                                 @foreach ($sekolah as $data)
                                     <option value="{{ $data->id }}"
-                                        @if (isset($_GET['filterSekolah'])) @if ($_GET['filterSekolah'] == $data->id) selected @endif
-                                        @endif>{{ $data->nama }}</option>
+                                        @if (isset($_GET['filterSekolah']) && $_GET['filterSekolah'] == $data->id) selected @endif>{{ $data->nama }}</option>
                                 @endforeach
                             </select>
                             <script>
                                 function cariSekolah(e) {
-                                    console.log(e.value);
+                                    const params = new URLSearchParams(window.location.search);
                                     if (e.value === '') {
-                                        window.location.href = window.location.origin + window.location.pathname;
+                                        params.delete('filterSekolah');
                                     } else {
-                                        e.form.submit();
+                                        params.set('filterSekolah', e.value);
                                     }
+                                    window.location.search = params.toString();
                                 }
                             </script>
                         </div>
@@ -101,18 +101,18 @@
                                 <option value="">Semua Tahun</option>
                                 @foreach ($daftarTahun as $tahun)
                                     <option value="{{ $tahun->tahun }}"
-                                        @if (isset($_GET['tahun'])) @if ($_GET['tahun'] == $tahun->tahun) selected @endif
-                                        @endif>{{ $tahun->tahun }}</option>
+                                        @if (isset($_GET['tahun']) && $_GET['tahun'] == $tahun->tahun) selected @endif>{{ $tahun->tahun }}</option>
                                 @endforeach
                             </select>
                             <script>
                                 function filterTahun(e) {
-                                    console.log(e.value);
+                                    const params = new URLSearchParams(window.location.search);
                                     if (e.value === '') {
-                                        window.location.href = window.location.origin + window.location.pathname;
+                                        params.delete('tahun');
                                     } else {
-                                        e.form.submit();
+                                        params.set('tahun', e.value);
                                     }
+                                    window.location.search = params.toString();
                                 }
                             </script>
                         </div>
@@ -124,12 +124,29 @@
                                     </div>
                                     <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="cekKosong(this)"
+                                        placeholder="Cari Nama Peserta Didik, Jenis Ketunaan, Jenis Kelamin, Kelas..."
+                                        onkeypress="cariDenganEnter(event)" oninput="hapusPencarianKosong(event)"
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
-                                        function cekKosong(e) {
-                                            if (e.value === '') {
-                                                window.location.href = window.location.origin + window.location.pathname;
+                                        function cariDenganEnter(event) {
+                                            if (event.key === 'Enter') {
+                                                event.preventDefault();
+                                                const input = event.target;
+                                                const params = new URLSearchParams(window.location.search);
+                                                if (input.value === '') {
+                                                    params.delete('pencarian');
+                                                } else {
+                                                    params.set('pencarian', input.value);
+                                                }
+                                                window.location.search = params.toString();
+                                            }
+                                        }
+                                        function hapusPencarianKosong(event) {
+                                            const input = event.target;
+                                            const params = new URLSearchParams(window.location.search);
+                                            if (input.value === '') {
+                                                params.delete('pencarian');
+                                                window.location.search = params.toString();
                                             }
                                         }
                                     </script>
@@ -176,8 +193,8 @@
                                             class="m-auto flex items-center justify-center gap-5 rounded-b border-t border-gray-200 p-4 text-center dark:border-gray-600 md:p-5">
                                             <button data-modal-hide="static-modal" type="button" id="downloadExcel"
                                                 class="btn rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300">Download
-                                                Excel</button>
-
+                                                Excel
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -250,7 +267,11 @@
                     <div class="relative flex justify-between mt-5">
                         <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
                         <div class="">
-                            {{ $DATA->links() }}
+                            {{ $DATA->appends([
+                                    'filterSekolah' => request('filterSekolah'),
+                                    'tahun' => request('tahun'),
+                                    'pencarian' => request('pencarian'),
+                                ])->links() }}
                         </div>
                     </div>
                 </div>
@@ -260,8 +281,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('downloadExcel').addEventListener('click', async function() {
-                let data = await fetch('/api/peserta-didik');
-                let allData = await data.json();
+                const params = new URLSearchParams(window.location.search);
+                const filterSekolah = params.get('filterSekolah') || '';
+                const tahun = params.get('tahun') || '';
+                const pencarian = params.get('pencarian') || '';
+
+                let data =
+                    `/api/peserta-didik?filterSekolah=${filterSekolah}&tahun=${tahun}&pencarian=${pencarian}`;
+
+                let response = await fetch(data);
+                let result = await response.json();
+                let allData = result.data;
+                let namaSekolah = result.namaSekolah;
 
                 function createExcel(data) {
                     const currentDate = new Date();
@@ -275,9 +306,9 @@
                     });
 
                     const titleHeader = [
-                        ['Daftar Peserta Didik SLB Provinsi Lampung'], // Judul
+                        [`Daftar Peserta Didik SLB Provinsi Lampung || ${namaSekolah}`], // Judul
                         ['Tanggal Unduh: ' + formattedDate], // Waktu download
-                        ['Pengunduh: Super Admin'], // Judul
+                        ['Pengunduh: Super Admin'], // Pengunduh
                         []
                     ];
 
@@ -314,7 +345,7 @@
                             },
                             e: {
                                 r: 0,
-                                c: 12
+                                c: 6
                             }
                         }, // Merge untuk judul
                         {
@@ -324,7 +355,7 @@
                             },
                             e: {
                                 r: 1,
-                                c: 12
+                                c: 6
                             }
                         } // Merge untuk tanggal
                     ];
@@ -334,40 +365,22 @@
                         }, // No
                         {
                             wch: 20
-                        }, // Waktu Submit
+                        }, // Tahun Ajaran
                         {
                             wch: 30
                         }, // Nama Sekolah
                         {
-                            wch: 15
-                        }, // NPSN Sekolah
+                            wch: 30
+                        }, // Nama Peserta Didik
                         {
                             wch: 20
-                        }, // Status Sekolah
-                        {
-                            wch: 40
-                        }, // Alamat Sekolah
-                        {
-                            wch: 20
-                        }, // Kota Sekolah
-                        {
-                            wch: 15
-                        }, // Jumlah PDBK
+                        }, // Jenis Kelamin
                         {
                             wch: 30
-                        }, // Nama Pembimbing PDBK
+                        }, // Jenis Ketunaan
                         {
-                            wch: 25
-                        }, // Jenis Kelamin Pembimbing PDKB
-                        {
-                            wch: 25
-                        }, // Pangkat/Golongan Pembimbing PDBK
-                        {
-                            wch: 40
-                        }, // Alamat Tinggal Pembimbing PDBK
-                        {
-                            wch: 25
-                        } // Nomor HP Pembimbing PDBK
+                            wch: 20
+                        } // Kelas
                     ];
 
                     ws['A1'].s = {
@@ -382,17 +395,15 @@
                         }
                     };
 
-                    // const ws = XLSX.utils.aoa_to_sheet(excelData);
                     const wb = XLSX.utils.book_new();
                     XLSX.utils.book_append_sheet(wb, ws, 'PesertaDidik-SLB');
 
-                    XLSX.writeFile(wb, 'PesertaDidik-SLB.xlsx');
+                    XLSX.writeFile(wb, 'PesertaDidik-SLB-ProvinsiLampung.xlsx');
                 }
 
                 createExcel(allData);
             });
         });
-
 
         function showModal() {
             // Dapatkan modal
@@ -401,6 +412,7 @@
             modal.classList.remove("hidden");
             modal.setAttribute("aria-hidden", "false");
         }
+
         // Close modal
         function hideModal() {
             // Dapatkan modal

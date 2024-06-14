@@ -94,7 +94,7 @@
         <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
             <div class="flex justify-between pb-2">
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-pesertadidik-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/sa-peserta-didik-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
                 <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
                     Peserta Didik By Jenis Ketunaan Provinsi Lampung

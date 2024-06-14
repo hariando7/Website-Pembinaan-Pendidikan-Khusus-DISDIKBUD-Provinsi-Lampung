@@ -87,18 +87,18 @@
                                 <option value="">Semua Tahun</option>
                                 @foreach ($daftarTahun as $tahun)
                                     <option value="{{ $tahun->tahun }}"
-                                        @if (isset($_GET['tahun'])) @if ($_GET['tahun'] == $tahun->tahun) selected @endif
-                                        @endif>{{ $tahun->tahun }}</option>
+                                        @if (isset($_GET['tahun']) && $_GET['tahun'] == $tahun->tahun) selected @endif>{{ $tahun->tahun }}</option>
                                 @endforeach
                             </select>
                             <script>
                                 function filterTahun(e) {
-                                    console.log(e.value);
+                                    const params = new URLSearchParams(window.location.search);
                                     if (e.value === '') {
-                                        window.location.href = window.location.origin + window.location.pathname;
+                                        params.delete('tahun');
                                     } else {
-                                        e.form.submit();
+                                        params.set('tahun', e.value);
                                     }
+                                    window.location.search = params.toString();
                                 }
                             </script>
                         </div>
@@ -109,14 +109,31 @@
                                         <x-svg-search />
                                     </div>
                                     <input type="text" name="pencarian" id="simple-search"
-                                        class="mx-auto block w-full rounded-lg border-2 border-[#297785] p-2.5 ps-10 text-sm text-black placeholder-gray-400 hover:text-black focus:border-[#FA8F21] focus:ring-[#FA8F21] dark:border-[#297785] dark:placeholder-gray-400 dark:hover:text-black dark:focus:ring-[#FA8F21]"
-                                        placeholder="Cari Nama Tendik, Jenis Kelamin, NIP, PNS/NON, Bidang Tugas"
-                                        oninput="cekKosong(this)"
+                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
+                                        placeholder="Cari Nama Tendik, Jenis Kelamin, NIP, PNS/Non, Bidang Tugas Pekerjaan"
+                                        onkeypress="cariDenganEnter(event)" oninput="hapusPencarianKosong(event)"
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
-                                        function cekKosong(e) {
-                                            if (e.value === '') {
-                                                window.location.href = window.location.origin + window.location.pathname;
+                                        function cariDenganEnter(event) {
+                                            if (event.key === 'Enter') {
+                                                event.preventDefault();
+                                                const input = event.target;
+                                                const params = new URLSearchParams(window.location.search);
+                                                if (input.value === '') {
+                                                    params.delete('pencarian');
+                                                } else {
+                                                    params.set('pencarian', input.value);
+                                                }
+                                                window.location.search = params.toString();
+                                            }
+                                        }
+
+                                        function hapusPencarianKosong(event) {
+                                            const input = event.target;
+                                            const params = new URLSearchParams(window.location.search);
+                                            if (input.value === '') {
+                                                params.delete('pencarian');
+                                                window.location.search = params.toString();
                                             }
                                         }
                                     </script>
@@ -334,41 +351,13 @@
                     </div>
                     <div class="relative flex justify-between mt-5">
                         <div class="font-bold text-black">Jumlah : {{ $DATA->total() }}</div>
-                        {{ $DATA->links() }}
-                        {{-- <div class="">
-                            <nav aria-label="Page navigation example">
-                                <ul class="inline-flex -space-x-px text-sm gap-2">
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div> --}}
+                        <div class="">
+                            {{ $DATA->appends([
+                                    'filterSekolah' => request('filterSekolah'),
+                                    'tahun' => request('tahun'),
+                                    'pencarian' => request('pencarian'),
+                                ])->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -377,160 +366,160 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('downloadExcel').addEventListener('click', async function() {
-                let data = await fetch('/api/tenaga-pendidik');
-                let allData = await data.json();
+                const params = new URLSearchParams(window.location.search);
+                const tahun = params.get('tahun') || '';
+                const pencarian = params.get('pencarian') || '';
 
-                function createExcel(data) {
-                    const sekolahNama = @json($sekolah->nama);
-                    const currentDate = new Date();
-                    const formattedDate = currentDate.toLocaleString('id-ID', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                    });
+                try {
+                    let response = await fetch(
+                        `/api/tenaga-pendidik?filterSekolah={{ auth()->user()->sekolah }}&tahun=${tahun}&pencarian=${pencarian}`
+                    );
+                    let result = await response.json();
+                    let allData = result.data;
+                    let namaSekolah = result.namaSekolah;
 
-                    const titleHeader = [
-                        ['Daftar Tendik ' + sekolahNama], // Judul
-                        ['Tanggal Unduh: ' + formattedDate], // Waktu download
-                        ['Pengunduh: Admin ' + sekolahNama], // Judul
-                        []
-                    ];
-
-                    const header = [
-                        'No',
-                        'Tahun Ajaran',
-                        // 'Nama Sekolah',
-                        'Nama Tendik',
-                        'Jenis Kelamin',
-                        'NIP',
-                        'PNS/NON',
-                        'Bidang Tugas/Pekerjaan'
-                    ];
-
-                    const excelData = [...titleHeader, header];
-                    data.forEach(function(item, index) {
-                        const rowData = [
-                            index + 1, // No
-                            item.tahun,
-                            // item.namaSekolah,
-                            item.namaTendik,
-                            item.jenisKelamin,
-                            item.nip,
-                            item.status,
-                            item.bidangTugas
-                        ];
-                        excelData.push(rowData);
-                    });
-
-                    const ws = XLSX.utils.aoa_to_sheet(excelData);
-
-                    ws['!merges'] = [{
-                            s: {
-                                r: 0,
-                                c: 0
-                            },
-                            e: {
-                                r: 0,
-                                c: 12
-                            }
-                        }, // Merge untuk judul
-                        {
-                            s: {
-                                r: 1,
-                                c: 0
-                            },
-                            e: {
-                                r: 1,
-                                c: 12
-                            }
-                        } // Merge untuk tanggal
-                    ];
-
-                    ws['!cols'] = [{
-                            wch: 5
-                        }, // No
-                        {
-                            wch: 20
-                        }, // Waktu Submit
-                        {
-                            wch: 30
-                        }, // Nama Sekolah
-                        {
-                            wch: 15
-                        }, // NPSN Sekolah
-                        {
-                            wch: 20
-                        }, // Status Sekolah
-                        {
-                            wch: 40
-                        }, // Alamat Sekolah
-                        {
-                            wch: 20
-                        }, // Kota Sekolah
-                        {
-                            wch: 15
-                        }, // Jumlah PDBK
-                        {
-                            wch: 30
-                        }, // Nama Pembimbing PDBK
-                        {
-                            wch: 25
-                        }, // Jenis Kelamin Pembimbing PDKB
-                        {
-                            wch: 25
-                        }, // Pangkat/Golongan Pembimbing PDBK
-                        {
-                            wch: 40
-                        }, // Alamat Tinggal Pembimbing PDBK
-                        {
-                            wch: 25
-                        } // Nomor HP Pembimbing PDBK
-                    ];
-
-                    ws['A1'].s = {
-                        font: {
-                            name: 'Arial',
-                            sz: 24, // ukuran huruf 24pt
-                            bold: true // teks bold
-                        },
-                        alignment: {
-                            horizontal: 'center',
-                            vertical: 'center'
-                        }
-                    };
-
-                    const wb = XLSX.utils.book_new();
-                    // const ws = XLSX.utils.aoa_to_sheet(excelData);
-
-                    XLSX.utils.book_append_sheet(wb, ws, 'Tenaga-Pendidik-SLB');
-
-                    XLSX.writeFile(wb, 'Tenaga-Pendidik-SLB.xlsx');
+                    createExcel(allData, namaSekolah);
+                } catch (error) {
+                    console.error("Error fetching data:", error);
                 }
-
-                createExcel(allData);
             });
         });
 
+        function createExcel(data, namaSekolah) {
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleString('id-ID', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            const titleHeader = [
+                [`Daftar Tendik ${namaSekolah}`], // Judul
+                ['Tanggal Unduh: ' + formattedDate], // Waktu download
+                [`Pengunduh: Admin ${namaSekolah}`], // Judul
+                []
+            ];
+
+            const header = [
+                'No',
+                'Tahun Ajaran',
+                // 'Nama Sekolah',
+                'Nama Tendik',
+                'Jenis Kelamin',
+                'NIP',
+                'PNS/NON',
+                'Bidang Tugas/Pekerjaan'
+            ];
+
+            const excelData = [...titleHeader, header];
+            data.forEach((item, index) => {
+                const rowData = [
+                    index + 1,
+                    item.tahun,
+                    // item.namaSekolah,
+                    item.namaTendik,
+                    item.jenisKelamin,
+                    item.nip,
+                    item.status,
+                    item.bidangTugas
+                ];
+                excelData.push(rowData);
+            });
+
+            const ws = XLSX.utils.aoa_to_sheet(excelData);
+
+            ws['!merges'] = [{
+                    s: {
+                        r: 0,
+                        c: 0
+                    },
+                    e: {
+                        r: 0,
+                        c: 7
+                    }
+                },
+                {
+                    s: {
+                        r: 1,
+                        c: 0
+                    },
+                    e: {
+                        r: 1,
+                        c: 7
+                    }
+                },
+                {
+                    s: {
+                        r: 2,
+                        c: 0
+                    },
+                    e: {
+                        r: 2,
+                        c: 7
+                    }
+                }
+            ];
+
+            ws['!cols'] = [{
+                    wch: 5
+                },
+                {
+                    wch: 20
+                },
+                {
+                    wch: 30
+                },
+                {
+                    wch: 25
+                },
+                {
+                    wch: 15
+                },
+                {
+                    wch: 20
+                },
+                {
+                    wch: 15
+                },
+                {
+                    wch: 30
+                }
+            ];
+
+            ws['A1'].s = {
+                font: {
+                    name: 'Arial',
+                    sz: 24,
+                    bold: true
+                },
+                alignment: {
+                    horizontal: 'center',
+                    vertical: 'center'
+                }
+            };
+
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Tenaga-Pendidik-SLB');
+
+            XLSX.writeFile(wb, 'Tenaga-Pendidik-SLB.xlsx');
+        }
 
         function showModal() {
-            // Dapatkan modal
             var modal = document.getElementById("modal-print");
-            // Tampilkan modal
             modal.classList.remove("hidden");
             modal.setAttribute("aria-hidden", "false");
         }
-        // Close modal
+
         function hideModal() {
-            // Dapatkan modal
             var modal = document.getElementById("modal-print");
-            // Sembunyikan modal
             modal.classList.add("hidden");
             modal.setAttribute("aria-hidden", "true");
         }
     </script>
+
 </body>
 
 </html>
