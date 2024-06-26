@@ -100,10 +100,12 @@ class KontrolSekolahInklusi extends Controller
                 $query->where(function (Builder $query) use ($req) {
                     $query->where('nama', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('npsn', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('statusSekolah', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('jumlahPDBK', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('kota', 'LIKE', '%' . $req->pencarian . '%')
-                        ->orWhere('nomorHP', 'LIKE', '%' . $req->pencarian . '%');
-                        
+                        ->orWhere('namaPembimbing', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('nomorHP', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhereYear('created_at', $req->pencarian);
                 });
             }
         })->latest()->paginate(10);
@@ -185,7 +187,7 @@ class KontrolSekolahInklusi extends Controller
                 $sekolahInklusi->jumlahPDBK = $req['jumlahPDBK'];
             }
             if ($req['namaPembimbing']) {
-                $sekolahInklusi->namaPembimbing = $req['namaPembimbing'];
+                $sekolahInklusi->namaPembimbing = $req['namaPemb    imbing'];
             }
             if ($req['jenisKelamin']) {
                 $sekolahInklusi->jenisKelamin = $req['jenisKelamin'];
