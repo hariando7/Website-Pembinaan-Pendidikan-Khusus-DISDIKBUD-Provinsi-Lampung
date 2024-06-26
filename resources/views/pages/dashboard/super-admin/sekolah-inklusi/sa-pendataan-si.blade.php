@@ -59,6 +59,370 @@
                 <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Pendataan
                     Sekolah Inklusi Provinsi Lampung
                 </div>
+                <div class="flex justify-end gap-5">
+                    <div class="div">
+                        <button data-modal-target="default-modal-notif" data-modal-toggle="default-modal-notif"
+                            class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2">
+                            {{-- {{ $title }} --}}
+                            Data Masuk
+                            <span id="notificationBadge"
+                                class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
+                                style="display: none;">
+                                <!-- Jumlah notifikasi di sini -->
+                            </span>
+                        </button>
+                        <!-- Main modal -->
+                        <div id="default-modal-notif" tabindex="-1" aria-hidden="true"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-full max-h-full">
+                                <!-- Modal content -->
+                                <div class="relative bg-white rounded-lg shadow">
+                                    <!-- Modal header -->
+                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                                        <h3
+                                            class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">
+                                            Data Masuk Sekolah Inklusi
+                                        </h3>
+                                        <button type="button"
+                                            class="text-gray-400 hover:text-white bg-transparent hover:bg-[#D87815] rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                            data-modal-hide="default-modal-notif">
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="p-4 md:p-5 space-y-4">
+                                        <div class="basis-full">
+                                            <form class="flex items-center mx-auto my-auto">
+                                                <div class="relative w-full">
+                                                    <div
+                                                        class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                        <x-svg-search />
+                                                    </div>
+                                                    <input name="pencarian" type="text"
+                                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
+                                                        id="simple-search"
+                                                        class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
+                                                        placeholder="Search..." oninput="cekKosong(this)" required />
+                                                    <script>
+                                                        function cekKosong(e) {
+                                                            if (e.value === '') {
+                                                                window.location.href = window.location.origin + window.location.pathname;
+                                                            }
+                                                        }
+                                                    </script>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div
+                                            class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
+                                            <table
+                                                class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
+                                                <thead
+                                                    class="text-xs text-white uppercase bg-[#2F8386] dark:bg-[#2F8386] dark:text-white">
+                                                    <tr>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            No
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Waktu Submit
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Nama Sekolah
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            NPSN
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Status Sekolah
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Alamat Sekolah
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Kota
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Jumlah PDBK
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Nama Pembimbing PDBK
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Jenis Kelamin Pembimbing PDBK
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Pangkat (Jika ASN) Pembimbing PDBK
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Alamat Tinggal Pembimbing PDBK
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Nomor HP Pembimbing PDBK
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Keterangan Validasi
+                                                        </th>
+                                                        <th scope="col" class="px-3 py-2">
+                                                            Aksi
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    // $dummyData = [
+                                                    //     [
+                                                    //         'tahun' => '2023',
+                                                    //         'nama_sekolah' => 'SMA Negeri 1',
+                                                    //         'npsn' => '123456789',
+                                                    //         'statusSekolah' => 'negeri',
+                                                    //         'alamatSekolah' => 'required',
+                                                    //         'kota' => 'balam',
+                                                    //         'jumlah_pdbk' => '5',
+                                                    //         'namaPembimbing' => 'sugi',
+                                                    //         'jenisKelamin' => 'required',
+                                                    //         'pangkat' => 'required',
+                                                    //         'alamatTinggal' => 'required',
+                                                    //         'nomorHP' => '0808080808',
+                                                    //     ],
+                                                    // ];
+                                                    ?>
+                                                    @foreach ($dummyData as $index => $data)
+                                                        <tr
+                                                            class="bg-white border-b border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white text-xs">
+                                                            <td class="px-3 py-2">
+                                                                {{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['tahun'] }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['nama_sekolah'] }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['npsn'] }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['statusSekolah'] }}
+                                                            </td>
+                                                            {{-- alamat sekolah --}}
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['statusSekolah'] }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['kota'] }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['jumlah_pdbk'] }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['namaPembimbing'] }}
+                                                            </td>
+                                                            {{-- Jenis Kelamin --}}
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['statusSekolah'] }}
+                                                            </td>
+                                                            {{-- Pangkat --}}
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['statusSekolah'] }}
+                                                            </td>
+                                                            {{-- Alamat Tinggal --}}
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['statusSekolah'] }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{ $data['nomorHP'] }}
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                {{-- Divalidasi --}}
+                                                                {{-- <span
+                                                                    class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ">Divalidasi
+                                                                </span> --}}
+                                                                {{-- Belum Divalidasi --}}
+                                                                <span
+                                                                    class="w-full bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ">Belum
+                                                                    Divalidasi</span>
+                                                            </td>
+                                                            <td class="px-3 py-2">
+                                                                <div
+                                                                    class="flex justify-items-center m-auto text-center gap-2">
+                                                                    <button data-modal-target="default-modal"
+                                                                        data-modal-toggle="default-modal"
+                                                                        class="bg-[#0cdf41] hover:bg-[#357e47] p-1 rounded-md cursor-pointer"
+                                                                        title="Validasi" type="button">
+                                                                        <svg class="w-5 h-5" viewBox="0 0 24 24"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <g id="SVGRepo_bgCarrier"
+                                                                                stroke-width="0"></g>
+                                                                            <g id="SVGRepo_tracerCarrier"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"></g>
+                                                                            <g id="SVGRepo_iconCarrier">
+                                                                                <path
+                                                                                    d="M13.8179 4.54512L13.6275 4.27845C12.8298 3.16176 11.1702 3.16176 10.3725 4.27845L10.1821 4.54512C9.76092 5.13471 9.05384 5.45043 8.33373 5.37041L7.48471 5.27608C6.21088 5.13454 5.13454 6.21088 5.27608 7.48471L5.37041 8.33373C5.45043 9.05384 5.13471 9.76092 4.54512 10.1821L4.27845 10.3725C3.16176 11.1702 3.16176 12.8298 4.27845 13.6275L4.54512 13.8179C5.13471 14.2391 5.45043 14.9462 5.37041 15.6663L5.27608 16.5153C5.13454 17.7891 6.21088 18.8655 7.48471 18.7239L8.33373 18.6296C9.05384 18.5496 9.76092 18.8653 10.1821 19.4549L10.3725 19.7215C11.1702 20.8382 12.8298 20.8382 13.6275 19.7215L13.8179 19.4549C14.2391 18.8653 14.9462 18.5496 15.6663 18.6296L16.5153 18.7239C17.7891 18.8655 18.8655 17.7891 18.7239 16.5153L18.6296 15.6663C18.5496 14.9462 18.8653 14.2391 19.4549 13.8179L19.7215 13.6275C20.8382 12.8298 20.8382 11.1702 19.7215 10.3725L19.4549 10.1821C18.8653 9.76092 18.5496 9.05384 18.6296 8.33373L18.7239 7.48471C18.8655 6.21088 17.7891 5.13454 16.5153 5.27608L15.6663 5.37041C14.9462 5.45043 14.2391 5.13471 13.8179 4.54512Z"
+                                                                                    stroke="white" stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"></path>
+                                                                                <path
+                                                                                    d="M9 12L10.8189 13.8189V13.8189C10.9189 13.9189 11.0811 13.9189 11.1811 13.8189V13.8189L15 10"
+                                                                                    stroke="white" stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"></path>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <button data-modal-target="modal-hapus"
+                                                                        data-modal-toggle="modal-hapus"
+                                                                        class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer"
+                                                                        title="Delete" type="button">
+                                                                        <svg class="w-5 h-5" fill="white"
+                                                                            viewBox="0 0 24 24"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            id="cross-circle" class="icon glyph">
+                                                                            <g id="SVGRepo_bgCarrier"
+                                                                                stroke-width="0"></g>
+                                                                            <g id="SVGRepo_tracerCarrier"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"></g>
+                                                                            <g id="SVGRepo_iconCarrier">
+                                                                                <path
+                                                                                    d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm3.71,12.29a1,1,0,0,1,0,1.42,1,1,0,0,1-1.42,0L12,13.42,9.71,15.71a1,1,0,0,1-1.42,0,1,1,0,0,1,0-1.42L10.58,12,8.29,9.71A1,1,0,0,1,9.71,8.29L12,10.58l2.29-2.29a1,1,0,0,1,1.42,1.42L13.42,12Z">
+                                                                                </path>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <?php endforeach; ?>
+                                                                    <!-- Main modal -->
+                                                                    <div id="default-modal" tabindex="-1"
+                                                                        aria-hidden="true"
+                                                                        class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                                                        <div
+                                                                            class="relative p-4 w-full max-w-md max-h-full">
+                                                                            <div
+                                                                                class="relative bg-[#297785] rounded-lg shadow">
+                                                                                <button type="button"
+                                                                                    class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                                                    data-modal-hide="default-modal">
+                                                                                    <svg class="w-3 h-3"
+                                                                                        aria-hidden="true"
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        fill="white"
+                                                                                        viewBox="0 0 14 14">
+                                                                                        <path stroke="white"
+                                                                                            stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="2"
+                                                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                                                    </svg>
+                                                                                    <span class="sr-only">Close
+                                                                                        modal</span>
+                                                                                </button>
+                                                                                <div class="p-4 md:p-5 text-center">
+                                                                                    <svg class="mx-auto mb-4 text-white w-12 h-12"
+                                                                                        aria-hidden="true"
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        fill="none"
+                                                                                        viewBox="0 0 20 20">
+                                                                                        <path stroke="currentColor"
+                                                                                            stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="2"
+                                                                                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                                    </svg>
+                                                                                    <h3
+                                                                                        class="mb-5 text-lg font-normal text-white ">
+                                                                                        Anda Yakin Ingin Memvalidasi Data?
+                                                                                    </h3>
+                                                                                    <button
+                                                                                        data-modal-hide="popup-modal-ya"
+                                                                                        type="button"
+                                                                                        class="btn border-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                                                        Ya
+                                                                                    </button>
+                                                                                    <button
+                                                                                        data-modal-hide="default-modal"
+                                                                                        aria-hidden="true"
+                                                                                        type="button"
+                                                                                        class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="modal-hapus" tabindex="-1"
+                                                                        aria-hidden="true"
+                                                                        class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                                                        <div
+                                                                            class="relative p-4 w-full max-w-md max-h-full">
+                                                                            <div
+                                                                                class="relative bg-[#297785] rounded-lg shadow">
+                                                                                <button type="button"
+                                                                                    class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                                                    data-modal-hide="modal-hapus">
+                                                                                    <svg class="w-3 h-3"
+                                                                                        aria-hidden="true"
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        fill="white"
+                                                                                        viewBox="0 0 14 14">
+                                                                                        <path stroke="white"
+                                                                                            stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="2"
+                                                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                                                    </svg>
+                                                                                    <span class="sr-only">Close
+                                                                                        modal</span>
+                                                                                </button>
+                                                                                <div class="p-4 md:p-5 text-center">
+                                                                                    <svg class="mx-auto mb-4 text-white w-12 h-12"
+                                                                                        aria-hidden="true"
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        fill="none"
+                                                                                        viewBox="0 0 20 20">
+                                                                                        <path stroke="currentColor"
+                                                                                            stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="2"
+                                                                                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                                    </svg>
+                                                                                    <h3
+                                                                                        class="mb-5 text-lg font-normal text-white ">
+                                                                                        Anda Yakin Ingin Menghapus Data?
+                                                                                    </h3>
+                                                                                    <button
+                                                                                        data-modal-hide="modal-hapus-ya"
+                                                                                        type="button"
+                                                                                        class="btn border-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                                                        Ya
+                                                                                    </button>
+                                                                                    <button
+                                                                                        data-modal-hide="modal-hapus"
+                                                                                        aria-hidden="true"
+                                                                                        type="button"
+                                                                                        class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Modal Akhir -->
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal toggle -->
+                </div>
             </div>
             <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1"
                 id="moving-border">
@@ -120,8 +484,9 @@
                                                 <svg class="h-3 w-3" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 14 14">
-                                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                    <path stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                 </svg>
                                                 <span class="sr-only">Close modal</span>
                                             </button>
@@ -170,6 +535,9 @@
                                         Nomor HP Pembimbing PDBK
                                     </th>
                                     <th scope="col" class="px-3 py-2">
+                                        Keterangan Validasi
+                                    </th>
+                                    <th scope="col" class="px-3 py-2">
                                         Aksi
                                     </th>
                                 </tr>
@@ -187,7 +555,7 @@
                                 ?>
                                 @foreach ($dummyData as $index => $data)
                                     <tr
-                                        class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white">
+                                        class="bg-white border-b border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white text-xs">
                                         <td class="px-3 py-2">
                                             {{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}
                                         </td>
@@ -214,6 +582,16 @@
                                         </td>
                                         <td class="px-3 py-2">
                                             {{ $data['nomorHP'] }}
+                                        </td>
+                                        <td class="px-3 py-2">
+                                            {{-- Divalidasi --}}
+                                            <span
+                                                class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ">Divalidasi
+                                            </span>
+                                            {{-- Belum Divalidasi --}}
+                                            {{-- <span
+                                                    class="w-full bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ">Belum
+                                                    Divalidasi</span> --}}
                                         </td>
                                         <td class="px-3 py-2">
                                             <div class="flex justify-items-center m-auto text-center gap-2">
