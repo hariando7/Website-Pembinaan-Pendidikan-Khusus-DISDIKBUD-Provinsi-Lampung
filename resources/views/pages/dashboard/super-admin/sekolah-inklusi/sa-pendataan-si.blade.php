@@ -49,6 +49,25 @@
             animation: moving-border 3s infinite;
         }
     </style>
+    <style>
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .text-blink {
+            animation: blink 3s infinite;
+        }
+    </style>
 </head>
 
 <body class="bg-white z-10">
@@ -337,7 +356,8 @@
                                                                                     </svg>
                                                                                     <h3
                                                                                         class="mb-5 text-lg font-normal text-white ">
-                                                                                        Anda Yakin Ingin Memvalidasi Data?
+                                                                                        Anda Yakin Ingin Memvalidasi
+                                                                                        Data?
                                                                                     </h3>
                                                                                     <button
                                                                                         data-modal-hide="popup-modal-ya"
@@ -858,6 +878,26 @@
 
                 createExcel(allData);
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pass the data count from the server-side
+            const notificationsCount = {{ count($dummyData) }};
+
+            // Update the notification badge
+            const notificationBadge = document.getElementById('notificationBadge');
+            if (notificationBadge) {
+                notificationBadge.innerText = notificationsCount;
+                if (notificationsCount > 0) {
+                    notificationBadge.style.display = 'inline-flex';
+                } else {
+                    notificationBadge.style.display = 'none';
+                }
+                setInterval(function() {
+                    notificationBadge.classList.toggle('text-blink');
+                }, 500);
+            }
         });
     </script>
 </body>
