@@ -302,8 +302,7 @@
                                                                         title="Delete" type="button">
                                                                         <svg class="w-5 h-5" fill="white"
                                                                             viewBox="0 0 24 24"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            id="cross-circle" class="icon glyph">
+                                                                            xmlns="http://www.w3.org/2000/svg">
                                                                             <g id="SVGRepo_bgCarrier"
                                                                                 stroke-width="0"></g>
                                                                             <g id="SVGRepo_tracerCarrier"
@@ -326,7 +325,7 @@
                                                                             <div
                                                                                 class="relative bg-[#297785] rounded-lg shadow">
                                                                                 <button type="button"
-                                                                                    class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                                                    class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                                                                                     data-modal-hide="default-modal">
                                                                                     <svg class="w-3 h-3"
                                                                                         aria-hidden="true"
@@ -355,25 +354,61 @@
                                                                                             d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                                                     </svg>
                                                                                     <h3
-                                                                                        class="mb-5 text-lg font-normal text-white ">
+                                                                                        class="mb-5 text-lg font-normal text-white">
                                                                                         Anda Yakin Ingin Memvalidasi
-                                                                                        Data?
-                                                                                    </h3>
+                                                                                        Data?</h3>
                                                                                     <button
-                                                                                        data-modal-hide="popup-modal-ya"
+                                                                                        data-modal-hide="default-modal"
                                                                                         type="button"
                                                                                         class="btn border-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                                                        Ya
+                                                                                        Ya, Validasi
                                                                                     </button>
                                                                                     <button
                                                                                         data-modal-hide="default-modal"
                                                                                         aria-hidden="true"
                                                                                         type="button"
-                                                                                        class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
+                                                                                        class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10">
+                                                                                        Tidak
+                                                                                    </button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <script>
+                                                                        document.addEventListener('DOMContentLoaded', function() {
+                                                                            const deleteButtons = document.querySelectorAll('.delete-button');
+                                                                            const modal = document.getElementById('default-modal');
+
+                                                                            deleteButtons.forEach(button => {
+                                                                                button.addEventListener('click', function() {
+                                                                                    const index = this.dataset.index;
+                                                                                    modal.classList.remove('hidden');
+                                                                                    modal.setAttribute('aria-hidden', 'false');
+                                                                                    modal.setAttribute('tabindex', '0');
+
+                                                                                    const closeButton = modal.querySelector('[data-modal-hide="default-modal"]');
+                                                                                    closeButton.addEventListener('click', () => {
+                                                                                        modal.classList.add('hidden');
+                                                                                        modal.setAttribute('aria-hidden', 'true');
+                                                                                        modal.setAttribute('tabindex', '-1');
+                                                                                    });
+
+                                                                                    const confirmButton = modal.querySelector('[data-modal-hide="default-modal"]');
+                                                                                    confirmButton.addEventListener('click', () => {
+                                                                                        window.location.href = window.location.origin +
+                                                                                            '/sa-pendataan-si/delete/' + index;
+                                                                                    });
+
+                                                                                    const cancelButton = modal.querySelector('[data-modal-hide="default-modal"]');
+                                                                                    cancelButton.addEventListener('click', () => {
+                                                                                        modal.classList.add('hidden');
+                                                                                        modal.setAttribute('aria-hidden', 'true');
+                                                                                        modal.setAttribute('tabindex', '-1');
+                                                                                    });
+                                                                                });
+                                                                            });
+                                                                        });
+                                                                    </script>
                                                                     <div id="modal-hapus" tabindex="-1"
                                                                         aria-hidden="true"
                                                                         class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
@@ -382,7 +417,7 @@
                                                                             <div
                                                                                 class="relative bg-[#297785] rounded-lg shadow">
                                                                                 <button type="button"
-                                                                                    class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                                                    class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                                                                                     data-modal-hide="modal-hapus">
                                                                                     <svg class="w-3 h-3"
                                                                                         aria-hidden="true"
@@ -411,24 +446,56 @@
                                                                                             d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                                                     </svg>
                                                                                     <h3
-                                                                                        class="mb-5 text-lg font-normal text-white ">
-                                                                                        Anda Yakin Ingin Menghapus Data?
-                                                                                    </h3>
+                                                                                        class="mb-5 text-lg font-normal text-white">
+                                                                                        Anda Yakin Ingin Menghapus Data
+                                                                                        Ini?</h3>
                                                                                     <button
-                                                                                        data-modal-hide="modal-hapus-ya"
+                                                                                        data-modal-hide="modal-hapus"
+                                                                                        data-action="confirm"
                                                                                         type="button"
-                                                                                        class="btn border-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                                                        Ya
+                                                                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                                                        Ya, Hapus
                                                                                     </button>
                                                                                     <button
                                                                                         data-modal-hide="modal-hapus"
                                                                                         aria-hidden="true"
                                                                                         type="button"
-                                                                                        class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10 ">Tidak</button>
+                                                                                        class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10">
+                                                                                        Tidak
+                                                                                    </button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <script>
+                                                                        document.addEventListener('DOMContentLoaded', function() {
+                                                                            const deleteButtons = document.querySelectorAll('.delete-button');
+                                                                            const modal = document.getElementById('modal-hapus');
+
+                                                                            deleteButtons.forEach(button => {
+                                                                                button.addEventListener('click', function() {
+                                                                                    const index = this.dataset.index;
+                                                                                    modal.classList.remove('hidden');
+                                                                                    modal.setAttribute('aria-hidden', 'false');
+                                                                                    modal.setAttribute('tabindex', '0');
+
+                                                                                    const closeButton = modal.querySelector('[data-modal-hide="modal-hapus"]');
+                                                                                    closeButton.addEventListener('click', () => {
+                                                                                        modal.classList.add('hidden');
+                                                                                        modal.setAttribute('aria-hidden', 'true');
+                                                                                        modal.setAttribute('tabindex', '-1');
+                                                                                    });
+
+                                                                                    const confirmButton = modal.querySelector('[data-action="confirm"]');
+                                                                                    confirmButton.addEventListener('click', () => {
+                                                                                        window.location.href = window.location.origin +
+                                                                                            '/sa-pendataan-si/delete/' + index;
+                                                                                    });
+                                                                                });
+                                                                            });
+                                                                        });
+                                                                    </script>
+
                                                                     <!-- Modal Akhir -->
                                                                 </div>
                                                             </td>
