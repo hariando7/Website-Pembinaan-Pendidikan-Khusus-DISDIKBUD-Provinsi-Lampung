@@ -270,8 +270,8 @@
                                                             <td class="px-3 py-2">
                                                                 <div
                                                                     class="flex justify-items-center m-auto text-center gap-2">
-                                                                    <button data-modal-target="default-modal"
-                                                                        data-modal-toggle="default-modal"
+                                                                    <button data-modal-target="modal-validasi"
+                                                                        data-modal-toggle="modal-validasi"
                                                                         class="bg-[#0cdf41] hover:bg-[#357e47] p-1 rounded-md cursor-pointer"
                                                                         title="Validasi" type="button">
                                                                         <svg class="w-5 h-5" viewBox="0 0 24 24"
@@ -296,8 +296,8 @@
                                                                             </g>
                                                                         </svg>
                                                                     </button>
-                                                                    <button data-modal-target="modal-hapus"
-                                                                        data-modal-toggle="modal-hapus"
+                                                                    <button data-modal-target="modal-hapus-validasi"
+                                                                        data-modal-toggle="modal-hapus-validasi"
                                                                         class="bg-[#FF0000] hover:bg-[#D51717] p-1 rounded-md cursor-pointer"
                                                                         title="Delete" type="button">
                                                                         <svg class="w-5 h-5" fill="white"
@@ -317,7 +317,7 @@
                                                                     </button>
                                                                     <?php endforeach; ?>
                                                                     <!-- Main modal -->
-                                                                    <div id="default-modal" tabindex="-1"
+                                                                    <div id="modal-validasi" tabindex="-2"
                                                                         aria-hidden="true"
                                                                         class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
                                                                         <div
@@ -326,7 +326,7 @@
                                                                                 class="relative bg-[#297785] rounded-lg shadow">
                                                                                 <button type="button"
                                                                                     class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                                                    data-modal-hide="default-modal">
+                                                                                    data-modal-hide="modal-validasi-delete">
                                                                                     <svg class="w-3 h-3"
                                                                                         aria-hidden="true"
                                                                                         xmlns="http://www.w3.org/2000/svg"
@@ -358,13 +358,13 @@
                                                                                         Anda Yakin Ingin Memvalidasi
                                                                                         Data?</h3>
                                                                                     <button
-                                                                                        data-modal-hide="default-modal"
+                                                                                        data-modal-hide="modal-validasi-ya"
                                                                                         type="button"
                                                                                         class="btn border-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                                                                         Ya, Validasi
                                                                                     </button>
                                                                                     <button
-                                                                                        data-modal-hide="default-modal"
+                                                                                        data-modal-hide="modal-validasi-tidak"
                                                                                         aria-hidden="true"
                                                                                         type="button"
                                                                                         class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10">
@@ -377,39 +377,45 @@
                                                                     <script>
                                                                         document.addEventListener('DOMContentLoaded', function() {
                                                                             const deleteButtons = document.querySelectorAll('.delete-button');
-                                                                            const modal = document.getElementById('default-modal');
-
                                                                             deleteButtons.forEach(button => {
                                                                                 button.addEventListener('click', function() {
                                                                                     const index = this.dataset.index;
+                                                                                    const modal = document.getElementById('modal-validasi');
                                                                                     modal.classList.remove('hidden');
                                                                                     modal.setAttribute('aria-hidden', 'false');
                                                                                     modal.setAttribute('tabindex', '0');
-
-                                                                                    const closeButton = modal.querySelector('[data-modal-hide="default-modal"]');
+                                                                                    const modalTidak = document.getElementById('modal-validasi');
+                                                                                    modalTidak.classList.remove('hidden');
+                                                                                    modalTidak.setAttribute('aria-hidden', 'false');
+                                                                                    modalTidak.setAttribute('tabindex', '0');
+                                                                                    const closeButton = modal.querySelector(
+                                                                                        '[data-modal-hide="modal-validasi-delete"]');
                                                                                     closeButton.addEventListener('click', () => {
                                                                                         modal.classList.add('hidden');
                                                                                         modal.setAttribute('aria-hidden', 'true');
                                                                                         modal.setAttribute('tabindex', '-1');
                                                                                     });
 
-                                                                                    const confirmButton = modal.querySelector('[data-modal-hide="default-modal"]');
-                                                                                    confirmButton.addEventListener('click', () => {
+                                                                                    const closeButtonYa = modal.querySelector(
+                                                                                        '[data-modal-hide="modal-validasi-ya"]');
+                                                                                    closeButtonYa.addEventListener('click', () => {
                                                                                         window.location.href = window.location.origin +
-                                                                                            '/sa-pendataan-si/delete/' + index;
+                                                                                            '/sa-pendataan-si/delete/' + button.getAttribute(
+                                                                                                'data-index');
                                                                                     });
 
-                                                                                    const cancelButton = modal.querySelector('[data-modal-hide="default-modal"]');
-                                                                                    cancelButton.addEventListener('click', () => {
-                                                                                        modal.classList.add('hidden');
-                                                                                        modal.setAttribute('aria-hidden', 'true');
-                                                                                        modal.setAttribute('tabindex', '-1');
+                                                                                    const closeButtonTidak = modalTidak.querySelector(
+                                                                                        '[data-modal-hide="modal-validasi-tidak"]');
+                                                                                    closeButtonTidak.addEventListener('click', () => {
+                                                                                        modalTidak.classList.add('hidden');
+                                                                                        modalTidak.setAttribute('aria-hidden', 'true');
+                                                                                        modalTidak.setAttribute('tabindex', '-1');
                                                                                     });
                                                                                 });
                                                                             });
                                                                         });
                                                                     </script>
-                                                                    <div id="modal-hapus" tabindex="-1"
+                                                                    <div id="modal-hapus-validasi" tabindex="-2"
                                                                         aria-hidden="true"
                                                                         class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
                                                                         <div
@@ -418,7 +424,7 @@
                                                                                 class="relative bg-[#297785] rounded-lg shadow">
                                                                                 <button type="button"
                                                                                     class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                                                    data-modal-hide="modal-hapus">
+                                                                                    data-modal-hide="modal-hapus-validasi-delete">
                                                                                     <svg class="w-3 h-3"
                                                                                         aria-hidden="true"
                                                                                         xmlns="http://www.w3.org/2000/svg"
@@ -450,14 +456,14 @@
                                                                                         Anda Yakin Ingin Menghapus Data
                                                                                         Ini?</h3>
                                                                                     <button
-                                                                                        data-modal-hide="modal-hapus"
+                                                                                        data-modal-hide="modal-hapus-validasi-ya"
                                                                                         data-action="confirm"
                                                                                         type="button"
                                                                                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                                                                         Ya, Hapus
                                                                                     </button>
                                                                                     <button
-                                                                                        data-modal-hide="modal-hapus"
+                                                                                        data-modal-hide="modal-hapus-validasi-tidak"
                                                                                         aria-hidden="true"
                                                                                         type="button"
                                                                                         class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white focus:z-10">
@@ -470,32 +476,44 @@
                                                                     <script>
                                                                         document.addEventListener('DOMContentLoaded', function() {
                                                                             const deleteButtons = document.querySelectorAll('.delete-button');
-                                                                            const modal = document.getElementById('modal-hapus');
-
                                                                             deleteButtons.forEach(button => {
                                                                                 button.addEventListener('click', function() {
                                                                                     const index = this.dataset.index;
+                                                                                    const modal = document.getElementById('modal-hapus-validasi');
                                                                                     modal.classList.remove('hidden');
                                                                                     modal.setAttribute('aria-hidden', 'false');
                                                                                     modal.setAttribute('tabindex', '0');
-
-                                                                                    const closeButton = modal.querySelector('[data-modal-hide="modal-hapus"]');
+                                                                                    const modalTidak = document.getElementById('modal-hapus-validasi');
+                                                                                    modalTidak.classList.remove('hidden');
+                                                                                    modalTidak.setAttribute('aria-hidden', 'false');
+                                                                                    modalTidak.setAttribute('tabindex', '0');
+                                                                                    const closeButton = modal.querySelector(
+                                                                                        '[data-modal-hide="modal-hapus-validasi-delete"]');
                                                                                     closeButton.addEventListener('click', () => {
                                                                                         modal.classList.add('hidden');
                                                                                         modal.setAttribute('aria-hidden', 'true');
                                                                                         modal.setAttribute('tabindex', '-1');
                                                                                     });
 
-                                                                                    const confirmButton = modal.querySelector('[data-action="confirm"]');
-                                                                                    confirmButton.addEventListener('click', () => {
+                                                                                    const closeButtonYa = modal.querySelector(
+                                                                                        '[data-modal-hide="modal-hapus-validasi-ya"]');
+                                                                                    closeButtonYa.addEventListener('click', () => {
                                                                                         window.location.href = window.location.origin +
-                                                                                            '/sa-pendataan-si/delete/' + index;
+                                                                                            '/sa-pendataan-si/delete/' + button.getAttribute(
+                                                                                                'data-index');
+                                                                                    });
+
+                                                                                    const closeButtonTidak = modalTidak.querySelector(
+                                                                                        '[data-modal-hide="modal-hapus-validasi-tidak"]');
+                                                                                    closeButtonTidak.addEventListener('click', () => {
+                                                                                        modalTidak.classList.add('hidden');
+                                                                                        modalTidak.setAttribute('aria-hidden', 'true');
+                                                                                        modalTidak.setAttribute('tabindex', '-1');
                                                                                     });
                                                                                 });
                                                                             });
                                                                         });
                                                                     </script>
-
                                                                     <!-- Modal Akhir -->
                                                                 </div>
                                                             </td>
