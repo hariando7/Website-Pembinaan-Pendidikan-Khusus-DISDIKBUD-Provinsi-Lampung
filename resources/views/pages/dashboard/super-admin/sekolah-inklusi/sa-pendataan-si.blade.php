@@ -211,7 +211,7 @@
                                                     //     ],
                                                     // ];
                                                     ?>
-                                                    @foreach ($dummyData as $index => $data)
+                                                    @foreach ($dummyDataMasuk as $index => $data)
                                                         <tr
                                                             class="bg-white border-b border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white text-xs">
                                                             <td class="px-3 py-2">
@@ -272,6 +272,7 @@
                                                                     class="flex justify-items-center m-auto text-center gap-2">
                                                                     <button data-modal-target="modal-validasi"
                                                                         data-modal-toggle="modal-validasi"
+                                                                        data-index="<?= $data['id'] ?>"
                                                                         class="bg-[#0cdf41] hover:bg-[#357e47] p-1 rounded-md cursor-pointer modal-validasi"
                                                                         title="Validasi" type="button">
                                                                         <svg class="w-5 h-5" viewBox="0 0 24 24"
@@ -389,28 +390,13 @@
                                                                                     modalTidak.classList.remove('hidden');
                                                                                     modalTidak.setAttribute('aria-hidden', 'false');
                                                                                     modalTidak.setAttribute('tabindex', '0');
-                                                                                    const closeButton = modal.querySelector(
-                                                                                        '[data-modal-hide="modal-validasi-delete"]');
-                                                                                    closeButton.addEventListener('click', () => {
-                                                                                        modal.classList.add('hidden');
-                                                                                        modal.setAttribute('aria-hidden', 'true');
-                                                                                        modal.setAttribute('tabindex', '-1');
-                                                                                    });
-
-                                                                                    // const closeButtonYa = modal.querySelector(
-                                                                                    //     '[data-modal-hide="modal-validasi-ya"]');
-                                                                                    // closeButtonYa.addEventListener('click', () => {
-                                                                                    //     window.location.href = window.location.origin +
-                                                                                    //         '/sa-pendataan-si/delete/' + button.getAttribute(
-                                                                                    //             'data-index');
-                                                                                    // });
                                                                                     const closeButtonYa = modal.querySelector(
                                                                                         '[data-modal-hide="modal-validasi-ya"]');
                                                                                     closeButtonYa.addEventListener('click', () => {
                                                                                         const dataIndex = button.getAttribute('data-index');
                                                                                         if (dataIndex) {
                                                                                             window.location.href = window.location.origin +
-                                                                                                '/sa-pendataan-si/delete/' + dataIndex;
+                                                                                                '/sa-pendataan-si/validasi/' + dataIndex;
                                                                                         } else {
                                                                                             alert('Data index tidak ditemukan!');
                                                                                         }
@@ -962,7 +948,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Pass the data count from the server-side
-            const notificationsCount = {{ count($dummyData) }};
+            const notificationsCount = {{ count($dummyDataMasuk) }};
 
             // Update the notification badge
             const notificationBadge = document.getElementById('notificationBadge');

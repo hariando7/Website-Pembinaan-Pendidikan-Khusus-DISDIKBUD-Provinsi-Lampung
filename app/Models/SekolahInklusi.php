@@ -24,5 +24,6 @@ class SekolahInklusi extends Model
         'pangkat',
         'alamatTinggal',
         'nomorHP',
+        'status',
     ];
 }

@@ -64,7 +64,8 @@ class KontrolSekolahInklusi extends Controller
     }
     public function daftarSekolahInklusiSuperAdmin(Request $req)
     {
-        $sekolahInklusi = $this->daftarSekolahInklusi($req);
+        $sekolahInklusi = $this->daftarSekolahInklusi($req, 1);
+        $sekolahInklusiMasuk = $this->daftarSekolahInklusi($req, 0);
 
         $dummyData = array_map(function ($data) {
             return [
@@ -83,19 +84,37 @@ class KontrolSekolahInklusi extends Controller
                 'nomorHP' => $data->nomorHP
             ];
         }, $sekolahInklusi->items());
+        $dummyDataMasuk = array_map(function ($data) {
+            return [
+                'id' => $data->id,
+                'tahun' => Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+                'nama_sekolah' => $data->nama,
+                'npsn' => $data->npsn,
+                'statusSekolah' => $data->statusSekolah,
+                'alamatSekolah' => $data->alamatSekolah,
+                'kota' => $data->kota,
+                'jumlah_pdbk' => $data->jumlahPDBK,
+                'namaPembimbing' => $data->namaPembimbing,
+                'jenisKelamin' => $data->jenisKelamin,
+                'pangkat' => $data->pangkat,
+                'alamatTinggal' => $data->alamatTinggal,
+                'nomorHP' => $data->nomorHP
+            ];
+        }, $sekolahInklusiMasuk->items());
 
         // return json_encode($sekolahInklusi);
         return view('pages/dashboard/super-admin/sekolah-inklusi/sa-pendataan-si', [
             'dummyData' => $dummyData,
+            'dummyDataMasuk' => $dummyDataMasuk,
             'DATA' => $sekolahInklusi
         ]);
     }
 
-    public function daftarSekolahInklusi(Request $req)
+    public function daftarSekolahInklusi(Request $req, bool $status)
     {
         $pengguna = Auth::user();
 
-        $sekolahInklusi = SekolahInklusi::where(function (Builder $query) use ($req, $pengguna) {
+        $sekolahInklusi = SekolahInklusi::where('status', $status)->where(function (Builder $query) use ($req, $pengguna) {
             if ($req->pencarian) {
                 $query->where(function (Builder $query) use ($req) {
                     $query->where('nama', 'LIKE', '%' . $req->pencarian . '%')
@@ -216,6 +235,19 @@ class KontrolSekolahInklusi extends Controller
         }
 
         // return back();
+    }
+
+    public function validasi($id)
+    {
+        $sekolahInklusi = SekolahInklusi::find($id);
+
+        if ($sekolahInklusi) {
+            $sekolahInklusi->update(['status' => true]);
+
+            return redirect('/sa-pendataan-si');
+        }
+
+        return back();
     }
 
     public function hapus($id)

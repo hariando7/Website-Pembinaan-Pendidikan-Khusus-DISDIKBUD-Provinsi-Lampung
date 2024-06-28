@@ -202,6 +202,7 @@ Route::controller(KontrolSekolahInklusi::class) -> group(function () {
         Route::get('/sa-pendataan-si/edit/{id}', 'tampilanEdit');
         Route::put('/sa-pendataan-si/edit/{id}', 'ubah');
         Route::get('/sa-pendataan-si/delete/{id}', 'hapus');
+        Route::get('/sa-pendataan-si/validasi/{id}', 'validasi');
     });
 });
 

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('pangkat');
             $table->string('alamatTinggal');
             $table->string('nomorHP');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotifikasiMailer;
 use App\Models\Pengumuman;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class KontrolPengumuman extends Controller
@@ -50,7 +54,7 @@ class KontrolPengumuman extends Controller
 
     public function tambahSLB (Request $req) {
         $validate = $req -> validate([
-            'tanggalMulai' => 'required',
+            'tanggalMulai' => 'required|date',
             'tanggalAkhir' => 'required',
             'nama' => 'required',
             'detail' => 'required',
@@ -60,6 +64,18 @@ class KontrolPengumuman extends Controller
         $validate['kirimEmail'] = isset($req['kirimEmail']) ? 'yes' : 'no';
 
         Pengumuman::create($validate);
+
+        $date = Carbon::parse($validate['tanggalMulai']);
+
+        if ($validate['kirimEmail'] === 'yes') {
+            $users = User::where('akses', 'admin')->pluck('email')->each(function ($email) use ($validate, $date) {
+                try{
+                    Mail::to($email)->later($date, new NotifikasiMailer($validate));
+                } catch(\Exception $e) {
+                    
+                }
+            });
+        }
 
         Session::flash('toast-tambah', [
             'type' => 'toast-tambah',
