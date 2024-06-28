@@ -56,7 +56,8 @@ class KontrolSekolahInklusi extends Controller
                 'jenisKelamin' => $data['jenisKelamin'],
                 'pangkat' => $data['pangkat'],
                 'alamatTinggal' => $data['alamatTinggal'],
-                'nomorHP' => $data['nomorHP']
+                'nomorHP' => $data['nomorHP'],
+                'status' => $data['status'] ? 'Sudah Divalidasi' : 'Belum Divalidasi'
             ];
         }, $sekolahInklusi->toArray());
 

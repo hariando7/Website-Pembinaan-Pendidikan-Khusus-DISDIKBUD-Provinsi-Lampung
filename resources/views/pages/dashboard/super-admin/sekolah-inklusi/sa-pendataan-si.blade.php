@@ -835,7 +835,8 @@
                         'Jenis Kelamin Pembimbing PDKB',
                         'Pangkat/Golongan Pembimbing PDBK',
                         'Alamat Tinggal Pembimbing PDBK',
-                        'Nomor HP Pembimbing PDBK'
+                        'Nomor HP Pembimbing PDBK',
+                        'Keterangan Validasi'
                     ];
 
                     const excelData = [...titleHeader, header];
@@ -853,7 +854,8 @@
                             item.jenisKelamin,
                             item.pangkat,
                             item.alamatTinggal,
-                            item.nomorHP
+                            item.nomorHP,
+                            item.status
                         ];
                         excelData.push(rowData);
                     });
