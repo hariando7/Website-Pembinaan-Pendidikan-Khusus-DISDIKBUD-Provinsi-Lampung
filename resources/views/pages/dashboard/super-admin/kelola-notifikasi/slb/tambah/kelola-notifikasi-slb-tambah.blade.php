@@ -62,8 +62,8 @@
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
-                            <label for="notificationDateTime">Tanggal dan Waktu Selesai Notifikasi</label>
-                            <input name="tanggalAkhir" type="datetime-local" id="notificationDateTime"
+                            <label for="notificationDateTimeEnd">Tanggal dan Waktu Selesai Notifikasi</label>
+                            <input name="tanggalAkhir" type="datetime-local" id="notificationDateTimeEnd"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
@@ -127,6 +127,30 @@
             </form>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const input = document.getElementById('notificationDateTime');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const currentDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            input.min = currentDateTime;
+        });
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const input = document.getElementById('notificationDateTimeEnd');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const currentDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            input.min = currentDateTime;
+        });
+    </script>
 </body>
 
 </html>
