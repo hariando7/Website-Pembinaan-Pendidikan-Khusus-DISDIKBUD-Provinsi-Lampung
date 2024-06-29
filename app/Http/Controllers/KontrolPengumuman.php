@@ -97,26 +97,40 @@ class KontrolPengumuman extends Controller
         return back();
     }
 
-    public function editSLB (Request $req, $id) {
+    public function editSLB(Request $req, $id) {
         $pengumuman = Pengumuman::find($id);
 
         if ($pengumuman) {
-            if ($req['tanggalMulai']) {
-                $pengumuman -> tanggalMulai = $req['tanggalMulai'];
-            }
-            if ($req['tanggalAkhir']) {
-                $pengumuman -> tanggalAkhir = $req['tanggalAkhir'];
-            }
-            if ($req['nama']) {
-                $pengumuman -> nama = $req['nama'];
-            }
-            if ($req['detail']) {
-                $pengumuman -> detail = $req['detail'];
+            if ($req->has('tanggalMulai')) {
+                $pengumuman->tanggalMulai = $req->input('tanggalMulai');
             }
 
-            $pengumuman -> kirimEmail = isset($req['kirimEmail']) ? 'yes' : 'no';
+            if ($req->has('tanggalAkhir')) {
+                $pengumuman->tanggalAkhir = $req->input('tanggalAkhir');
+            }
 
-            $pengumuman -> save();
+            if ($req->has('nama')) {
+                $pengumuman->nama = $req->input('nama');
+            }
+
+            if ($req->has('detail')) {
+                $pengumuman->detail = $req->input('detail');
+            }
+
+            $pengumuman->kirimEmail = $req->has('kirimEmail') ? 'yes' : 'no';
+            $pengumuman->save();
+
+            if ($pengumuman->kirimEmail === 'yes') {
+                $date = Carbon::parse($pengumuman->tanggalMulai);
+                $users = User::where('akses', 'admin')->pluck('email');
+
+                foreach ($users as $email) {
+                    try {
+                        Mail::to($email)->later($date, new NotifikasiMailer($pengumuman->toArray()));
+                    } catch (\Exception $e) {
+                    }
+                }
+            }
 
             Session::flash('toast-edit', [
                 'type' => 'toast-edit',
@@ -124,6 +138,8 @@ class KontrolPengumuman extends Controller
             ]);
 
             return redirect('/sa-kelola-notifikasi-slb');
+        } else {
+            return redirect('/sa-kelola-notifikasi-slb')->with('error', 'Pengumuman tidak ditemukan');
         }
     }
 

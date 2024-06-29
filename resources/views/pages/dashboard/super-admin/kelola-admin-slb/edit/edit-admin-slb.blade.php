@@ -111,7 +111,7 @@
                                         class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Nama Sekolah</h3>
-                                            <p>Masukkan Nama Sekolah yang sesuai dan sudah terdata di Disdikbud</p>
+                                            <p>Masukkan Nama Sekolah Yang Sesuai</p>
                                         </div>
                                         <div data-popper-arrow></div>
                                     </div>
@@ -138,7 +138,7 @@
                                         class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">NPSN Sekolah</h3>
-                                            <p>Masukkan NPSN Sekolah yang sesuai dan sudah terdata di Disdikbud</p>
+                                            <p>Masukkan NPSN Sekolah Yang Sesuai</p>
                                         </div>
                                         <div data-popper-arrow></div>
                                     </div>
@@ -368,7 +368,7 @@
                                         class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Alamat Sekolah</h3>
-                                            <p>Masukkan Alamat Sekolah yang sesuai dan sudah terdata di Disdikbud
+                                            <p>Masukkan Alamat Sekolah Yang Sesuai.
                                             </p>
                                         </div>
                                         <div data-popper-arrow></div>

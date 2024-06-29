@@ -112,8 +112,7 @@
                                             <h3 class="font-semibold text-gray-900">Password</h3>
                                             <p>Masukkan Password (Minimal 8 Karakter), Masukkan minimal 6 karakter
                                                 random. Apabila password
-                                                lupa, dapat melakukan reset password menggunakan Email aktif. Atau
-                                                menghubungi admin Dinas</p>
+                                                lupa, dapat melakukan reset password menggunakan Email aktif yang terdaftar.</p>
                                             <a href="https://wa.me/0895637316999"
                                                 class="flex items-center font-medium text-blue-600 hover:text-blue-700 hover:underline">Selengkapnya
                                                 <svg class="w-2 h-2 ms-1.5 rtl:rotate-180" aria-hidden="true"
@@ -153,8 +152,7 @@
                                             class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                             <div class="p-3 space-y-2">
                                                 <h3 class="font-semibold text-gray-900">Nama Sekolah</h3>
-                                                <p>Masukkan Nama Sekolah (Maksimal 100 karakter) yang sesuai dan sudah
-                                                    terdata di Disdikbud</p>
+                                                <p>Masukkan Nama Sekolah (Maksimal 100 karakter) Yang Sesuai</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
@@ -181,8 +179,7 @@
                                             class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
                                             <div class="p-3 space-y-2">
                                                 <h3 class="font-semibold text-gray-900">NPSN Sekolah</h3>
-                                                <p>Masukkan NPSN Sekolah (Minimal 8 Karakter) yang sesuai dan sudah
-                                                    terdata di Disdikbud</p>
+                                                <p>Masukkan NPSN Sekolah (Minimal 8 Karakter) Yang Sesuai</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>

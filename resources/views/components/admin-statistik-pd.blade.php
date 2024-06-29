@@ -1,5 +1,5 @@
 <!-- Modal toggle -->
-<button data-modal-target="select-modal" data-modal-toggle="select-modal"
+<button data-modal-target="select-modal" data-modal-toggle="select-modal" title="Visualisasi Statistik Peserta Didik SLB Berdasarkan Kelas, Jenis Ketunaan, dan Tahun Ajaran"
     class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 pl-2 pr-2"
     type="button">
     Statistik Peserta Didik

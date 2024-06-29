@@ -85,7 +85,7 @@
                     {{-- isi konten disini --}}
                     <form class="flex flex-row gap-2">
                         <div class="basis-[20%]">
-                            <select name="tahun" id="tahun"
+                            <select name="tahun" id="tahun" title="Filter Berdasarkan Tahun"
                                 class="focus:ring-none z-10 inline-flex w-full items-center rounded-lg border-2 border-[#297785] py-2.5 pl-2 text-center text-sm font-medium text-[#297785] focus:border-[#FA8F21] dark:border-[#297785] dark:text-[#297785]"
                                 onchange="filterTahun(this)">
                                 <option value="">Semua Tahun</option>
@@ -108,7 +108,7 @@
                         </div>
                         <div class="basis-[70%]">
                             <div class="mx-auto my-auto flex items-center">
-                                <div class="relative w-full">
+                                <div class="relative w-full" title="Cari Data">
                                     <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                                         <x-svg-search />
                                     </div>
@@ -147,8 +147,8 @@
                         <div class="basis-[10%]">
                             <button id="print-button" type="button" onclick="showModal()"
                                 class="inline-flex w-full items-center gap-2 rounded-md border border-[#FA8F21] bg-[#FA8F21] px-5 py-2 text-center text-center text-sm font-medium text-white hover:bg-[#D87815] focus:outline-none focus:ring-2 focus:ring-[#FA8F21] dark:border-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] dark:focus:ring-[#FA8F21]">
-                                <x-svg-print />
-                                Print
+                                <x-svg-excel />
+                                {{-- Print --}}
                             </button>
                             <!-- Main modal -->
                             <div id="modal-print" tabindex="-1" aria-hidden="true"

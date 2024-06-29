@@ -181,7 +181,7 @@
             var year = date.getFullYear();
             var month = date.getMonth() + 1;
             select.innerHTML = '';
-            if (month >= 1 && month <= 7) {
+            if (month >= 1 && month <= 9) {
                 select.add(new Option((year - 1) + "/" + year, (year - 1) + "/" + year));
                 select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
             } else {

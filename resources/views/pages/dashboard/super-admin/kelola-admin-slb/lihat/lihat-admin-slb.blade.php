@@ -51,7 +51,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="email_sekolah">Email Sekolah</label>
-                            <input name="email" type="email" id="email_sekolah"
+                            <input name="email" type="email" id="email_sekolah" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="contoh@sekolah.com" value="{{ $DATA['email'] }}" required />
                         </div>
@@ -68,13 +68,13 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="nama_sekolah">Nama Sekolah</label>
-                            <input name="nama" type="text" id="nama_sekolah"
+                            <input name="nama" type="text" id="nama_sekolah" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="SMA Negeri 1" value="{{ $DATA['nama'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="npsn">NPSN</label>
-                            <input name="npsn" type="text" id="npsn"
+                            <input name="npsn" type="text" id="npsn" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="12345678" value="{{ $DATA['npsn'] }}" required />
                         </div>
@@ -84,7 +84,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="kabkota">Kab/Kota</label>
-                            <select name="kota" id="kabkota" name="kabkota" value="{{ $DATA['kota'] }}"
+                            <select name="kota" id="kabkota" name="kabkota" value="{{ $DATA['kota'] }}" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required onchange="populateKecamatan(this.value)">
                                 <option value="{{ $DATA['kota'] }}" selected>{{ $DATA['kota'] }}</option>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="kecamatan">Kecamatan</label>
-                            <select name="kecamatan" id="kecamatan" name="kecamatan" value="{{ $DATA['kecamatan'] }}"
+                            <select name="kecamatan" id="kecamatan" name="kecamatan" value="{{ $DATA['kecamatan'] }}" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>
                                 <option value="{{ $DATA['kecamatan'] }}" selected>{{ $DATA['kecamatan'] }}</option>
@@ -104,13 +104,13 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="alamat">Alamat</label>
-                            <input name="alamat" type="text" id="alamat" value="{{ $DATA['alamat'] }}"
+                            <input name="alamat" type="text" id="alamat" value="{{ $DATA['alamat'] }}" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Alamat Sekolah" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="link_website">Link Website Sekolah</label>
-                            <input name="linkWebsiteSekolah" type="url" id="link_website"
+                            <input name="linkWebsiteSekolah" type="url" id="link_website" disabled
                                 value="{{ $DATA['linkWebsiteSekolah'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Link Website Sekolah" required />
@@ -121,7 +121,7 @@
                     <div class="gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="jenis_ketunaan">Jenis Ketunaan</label>
-                            <input name="jenisKetunaan" type="text" id="jenis_ketunaan"
+                            <input name="jenisKetunaan" type="text" id="jenis_ketunaan" disabled
                                 value="{{ $DATA['jenisKetunaan'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jenis Ketunaan Yang Ada Di Sekolah" required />

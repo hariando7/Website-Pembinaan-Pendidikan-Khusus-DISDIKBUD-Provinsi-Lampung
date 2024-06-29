@@ -60,7 +60,7 @@
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="notificationDateTime">Tanggal dan Waktu Mulai Notifikasi</label>
-                            <input name="{{ $DATA['tanggalMulai'] }}" type="datetime-local" id="notificationDateTime1"
+                            <input name="tanggalMulai" type="datetime-local" id="notificationDateTime1"
                                 value="{{ $DATA['tanggalMulai'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
