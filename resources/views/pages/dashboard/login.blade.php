@@ -236,7 +236,8 @@
         <div class="absolute inset-0 bg-[#000000]/[0.10] bg-blend-overlay"></div>
         <div class="flex justify-between pl-10 pr-10 pt-10 absolute w-full">
             <div class="">
-                <img src="assets/landing/prov-lampung2.svg" alt="" class="lg:w-[100px] w-[80px] h-[80px] lg:h-full">
+                <img src="assets/landing/prov-lampung2.svg" alt=""
+                    class="lg:w-[100px] w-[80px] h-[80px] lg:h-full">
             </div>
             <div class="flex items-start">
                 <x-buttitle-landing ref="/" color="#FA8F21" width="[10rem]" title="Home"
@@ -246,6 +247,7 @@
         <div class="box relative w-full lg:w-[400px] h-[500px] m-auto flex items-center m-auto mt-32 lg:mt-10">
             <div class="flex m-auto justify-center items-center">
                 <x-toast-login-gagal />
+                <x-toast-login-sukses />
             </div>
             <form autocomplete="off" class="" action={{ url('/login') }} method="POST">
                 @csrf

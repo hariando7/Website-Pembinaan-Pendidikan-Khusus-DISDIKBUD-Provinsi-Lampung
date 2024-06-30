@@ -534,7 +534,7 @@
                 </div>
             </div>
         </div>
-        <div id="section5"
+        {{-- <div id="section5"
             class="bg-[url({{ '/assets/landing/disdikbud.png' }})] w-full h-[500px] lg:min-h-screen bg-cover bg-no-repeat bg-[#000000]/[0.50] bg-blend-overlay flex justify-center items-center"
             style="background-size: 100% 100%;">
             <div class="lg:w-1/2 lg:p-5 relative">
@@ -553,7 +553,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </x-layout-landing>
 </body>
 

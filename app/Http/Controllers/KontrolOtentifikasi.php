@@ -68,6 +68,10 @@ class KontrolOtentifikasi extends Controller
             return redirect('/otp?email=' . $validasi['email']);
         }
 
+        Session::flash('toast-login-gagal', [
+            'type' => 'toast-login-gagal',
+            'message' => 'Email Tidak Ditemukan, Kesalahan Data.'
+        ]);
         return back();
     }
 
@@ -85,6 +89,10 @@ class KontrolOtentifikasi extends Controller
             }
         }
 
+        Session::flash('toast-login-gagal', [
+            'type' => 'toast-login-gagal',
+            'message' => 'OTP Salah, Ulang!'
+        ]);
         return back();
     }
 
@@ -103,7 +111,6 @@ class KontrolOtentifikasi extends Controller
                     'password' => Hash::make($validasi['password']),
                     'otp' => null
                 ]);
-
                 return redirect('/login');
             }
         }
