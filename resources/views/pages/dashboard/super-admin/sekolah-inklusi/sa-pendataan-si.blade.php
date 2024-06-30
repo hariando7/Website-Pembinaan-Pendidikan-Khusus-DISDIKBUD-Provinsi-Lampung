@@ -85,7 +85,7 @@
                             {{-- {{ $title }} --}}
                             Data Masuk
                             <span id="notificationBadge"
-                                class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
+                                class="inline-flex items-center justify-center w-6 h-6 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
                                 style="display: none;">
                                 <!-- Jumlah notifikasi di sini -->
                             </span>
@@ -118,20 +118,38 @@
                                     <div class="p-4 md:p-5 space-y-4">
                                         <div class="basis-full">
                                             <form class="flex items-center mx-auto my-auto">
-                                                <div class="relative w-full">
+                                                <div class="relative w-full" title="Cari Data">
                                                     <div
-                                                        class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                        class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                                                         <x-svg-search />
                                                     </div>
-                                                    <input name="pencarian" type="text"
-                                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
-                                                        id="simple-search"
+                                                    <input type="text" name="pencarian" id="simple-search"
                                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                                        placeholder="Search..." oninput="cekKosong(this)" required />
+                                                        placeholder="Cari..."
+                                                        onkeypress="cariDenganEnter(event)"
+                                                        oninput="hapusPencarianKosong(event)"
+                                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                                     <script>
-                                                        function cekKosong(e) {
-                                                            if (e.value === '') {
-                                                                window.location.href = window.location.origin + window.location.pathname;
+                                                        function cariDenganEnter(event) {
+                                                            if (event.key === 'Enter') {
+                                                                event.preventDefault();
+                                                                const input = event.target;
+                                                                const params = new URLSearchParams(window.location.search);
+                                                                if (input.value === '') {
+                                                                    params.delete('pencarian');
+                                                                } else {
+                                                                    params.set('pencarian', input.value);
+                                                                }
+                                                                window.location.search = params.toString();
+                                                            }
+                                                        }
+
+                                                        function hapusPencarianKosong(event) {
+                                                            const input = event.target;
+                                                            const params = new URLSearchParams(window.location.search);
+                                                            if (input.value === '') {
+                                                                params.delete('pencarian');
+                                                                window.location.search = params.toString();
                                                             }
                                                         }
                                                     </script>
@@ -501,6 +519,16 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <div class="relative flex justify-between mt-5">
+                                            <div class="font-bold text-black">Jumlah : {{ $DATA_MASUK->total() }}
+                                            </div>
+                                            <div class="">
+                                                {{ $DATA_MASUK->links() }}
+                                            </div>
+                                        </div>
+                                        @php
+                                            $totalDataMasuk = $DATA_MASUK->total();
+                                        @endphp
                                     </div>
                                 </div>
                             </div>
@@ -521,19 +549,36 @@
                     <div class="flex flex-row gap-2">
                         <div class="basis-[90%]">
                             <form class="flex items-center mx-auto my-auto">
-                                <div class="relative w-full">
-                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <div class="relative w-full" title="Cari Data">
+                                    <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                                         <x-svg-search />
                                     </div>
-                                    <input name="pencarian" type="text"
-                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}"
-                                        id="simple-search"
+                                    <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search..." oninput="cekKosong(this)" required />
+                                        placeholder="cari..."
+                                        onkeypress="cariDenganEnter(event)" oninput="hapusPencarianKosong(event)"
+                                        value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
-                                        function cekKosong(e) {
-                                            if (e.value === '') {
-                                                window.location.href = window.location.origin + window.location.pathname;
+                                        function cariDenganEnter(event) {
+                                            if (event.key === 'Enter') {
+                                                event.preventDefault();
+                                                const input = event.target;
+                                                const params = new URLSearchParams(window.location.search);
+                                                if (input.value === '') {
+                                                    params.delete('pencarian');
+                                                } else {
+                                                    params.set('pencarian', input.value);
+                                                }
+                                                window.location.search = params.toString();
+                                            }
+                                        }
+
+                                        function hapusPencarianKosong(event) {
+                                            const input = event.target;
+                                            const params = new URLSearchParams(window.location.search);
+                                            if (input.value === '') {
+                                                params.delete('pencarian');
+                                                window.location.search = params.toString();
                                             }
                                         }
                                     </script>
@@ -543,8 +588,8 @@
                         <div class="basis-[10%]">
                             <button data-modal-target="modal-print" data-modal-toggle="modal-print" type="button"
                                 class="inline-flex w-full items-center gap-2 rounded-md border border-[#FA8F21] bg-[#FA8F21] px-5 py-2 text-center text-center text-sm font-medium text-white hover:bg-[#D87815] focus:outline-none focus:ring-2 focus:ring-[#FA8F21] dark:border-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] dark:focus:ring-[#FA8F21]">
-                                <x-svg-print />
-                                Print
+                                <x-svg-excel />
+                                {{-- Print --}}
                             </button>
                             <!-- Main modal -->
                             <div id="modal-print" tabindex="-1" aria-hidden="true"
@@ -949,10 +994,8 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Pass the data count from the server-side
-            const notificationsCount = {{ count($dummyDataMasuk) }};
+            const notificationsCount = {{ $totalDataMasuk }};
 
-            // Update the notification badge
             const notificationBadge = document.getElementById('notificationBadge');
             if (notificationBadge) {
                 notificationBadge.innerText = notificationsCount;
@@ -967,6 +1010,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>

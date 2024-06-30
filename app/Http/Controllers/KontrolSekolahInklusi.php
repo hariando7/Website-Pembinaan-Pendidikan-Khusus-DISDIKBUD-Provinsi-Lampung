@@ -39,8 +39,25 @@ class KontrolSekolahInklusi extends Controller
     //     'pangkat',
     //     'alamatTinggal',
     //     'nomorHP',
-    public function lihatSemua()
+    public function lihatSemua(Request $request)
     {
+        $pencarian = $request->input('pencarian');
+
+        $sekolahInklusi = sekolahInklusi::where(function (Builder $query) use ($pencarian) {
+            if ($pencarian) {
+                $query->where(function (Builder $query) use ($pencarian) {
+                    $query->where('nama', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('npsn', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('statusSekolah', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('jumlahPDBK', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('kota', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('namaPembimbing', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('nomorHP', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('status', 'LIKE', '%' . $pencarian . '%')
+                        ->orWhere('created_at', 'LIKE', '%' . $pencarian . '%');
+                });
+            }
+        })->get();
         $sekolahInklusi = SekolahInklusi::all();
         $dummyData = array_map(function ($data) {
             return [
@@ -107,7 +124,8 @@ class KontrolSekolahInklusi extends Controller
         return view('pages/dashboard/super-admin/sekolah-inklusi/sa-pendataan-si', [
             'dummyData' => $dummyData,
             'dummyDataMasuk' => $dummyDataMasuk,
-            'DATA' => $sekolahInklusi
+            'DATA' => $sekolahInklusi,
+            'DATA_MASUK' => $sekolahInklusiMasuk
         ]);
     }
 
@@ -125,8 +143,8 @@ class KontrolSekolahInklusi extends Controller
                         ->orWhere('kota', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('namaPembimbing', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('nomorHP', 'LIKE', '%' . $req->pencarian . '%')
-                        ->orWhereYear('created_at', $req->pencarian);
-                        
+                        ->orWhere('status', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere('created_at', 'LIKE', '%' . $req->pencarian . '%');
                 });
             }
         })->latest()->paginate(10);
