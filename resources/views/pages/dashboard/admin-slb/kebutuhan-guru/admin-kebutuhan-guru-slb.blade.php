@@ -371,6 +371,12 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-image/dist/xlsx-image.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-populate/browser/xlsx-populate.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('downloadExcel').addEventListener('click', async function() {
@@ -386,14 +392,14 @@
                     let allData = result.data;
                     let namaSekolah = result.namaSekolah;
 
-                    createExcel(allData, namaSekolah);
+                    await createExcel(allData, namaSekolah);
                 } catch (error) {
                     console.error("Error fetching data:", error);
                 }
             });
         });
 
-        function createExcel(data, namaSekolah) {
+        async function createExcel(data, namaSekolah) {
             const currentDate = new Date();
             const formattedDate = currentDate.toLocaleString('id-ID', {
                 year: 'numeric',
@@ -437,82 +443,75 @@
                 excelData.push(rowData);
             });
 
-            const ws = XLSX.utils.aoa_to_sheet(excelData);
+            const workbook = new ExcelJS.Workbook();
+            const sheet = workbook.addWorksheet('KebutuhanGuru-SLB');
 
-            ws['!merges'] = [{
-                    s: {
-                        r: 0,
-                        c: 0
-                    },
-                    e: {
-                        r: 0,
-                        c: 7
-                    }
-                },
-                {
-                    s: {
-                        r: 1,
-                        c: 0
-                    },
-                    e: {
-                        r: 1,
-                        c: 7
-                    }
-                },
-                {
-                    s: {
-                        r: 2,
-                        c: 0
-                    },
-                    e: {
-                        r: 2,
-                        c: 7
-                    }
-                }
-            ];
+            for (let i = 0; i < 6; i++) {
+                sheet.addRow([]);
+            }
 
-            ws['!cols'] = [{
-                    wch: 5
-                },
-                {
-                    wch: 20
-                },
-                {
-                    wch: 30
-                },
-                {
-                    wch: 30
-                },
-                {
-                    wch: 30
-                },
-                {
-                    wch: 30
-                },
-                {
-                    wch: 30
-                },
-                {
-                    wch: 50
-                }
-            ];
+            sheet.addRows(excelData);
 
-            ws['A1'].s = {
-                font: {
-                    name: 'Arial',
-                    sz: 24,
-                    bold: true
-                },
-                alignment: {
-                    horizontal: 'center',
-                    vertical: 'center'
-                }
+            sheet.mergeCells('A7:G7');
+            sheet.mergeCells('A8:G8');
+            sheet.mergeCells('A9:G9');
+            sheet.getCell('A7').value = `Daftar Kebutuhan Guru ${namaSekolah}`;
+            sheet.getCell('A8').value = `Tanggal Unduh: ${formattedDate}`;
+            sheet.getCell('A9').value = `Pengunduh: Admin ${namaSekolah}`;
+
+            sheet.getCell('A7').font = {
+                name: 'Arial',
+                size: 18,
+                bold: true
+            };
+            sheet.getCell('A7').alignment = {
+                horizontal: 'center',
+                vertical: 'center'
+            };
+            sheet.getCell('A8').font = {
+                bold: true
+            };
+            sheet.getCell('A8').alignment = {
+                horizontal: 'center',
+                vertical: 'center'
+            };
+            sheet.getCell('A9').font = {
+                bold: true
+            };
+            sheet.getCell('A9').alignment = {
+                horizontal: 'center',
+                vertical: 'center'
             };
 
-            const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, 'KebutuhanGuru-SLB');
+            const widths = [5, 20, 30, 30, 30, 30, 30, 50];
+            widths.forEach((width, index) => {
+                sheet.getColumn(index + 1).width = width;
+            });
 
-            XLSX.writeFile(wb, 'KebutuhanGuru-SLB.xlsx');
+            const imageResponse = await fetch('/assets/landing/kop_surat.png');
+            const imageBlob = await imageResponse.blob();
+            const imageBuffer = await imageBlob.arrayBuffer();
+            const imageId = workbook.addImage({
+                buffer: imageBuffer,
+                extension: 'png',
+            });
+
+            sheet.addImage(imageId, {
+                tl: {
+                    col: 3,
+                    row: 0
+                },
+                ext: {
+                    width: 600,
+                    height: 100
+                },
+            });
+
+            const buffer = await workbook.xlsx.writeBuffer();
+            const blob = new Blob([buffer], {
+                type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            });
+            saveAs(blob, 'KebutuhanGuru-SLB.xlsx');
         }
 
         function showModal() {

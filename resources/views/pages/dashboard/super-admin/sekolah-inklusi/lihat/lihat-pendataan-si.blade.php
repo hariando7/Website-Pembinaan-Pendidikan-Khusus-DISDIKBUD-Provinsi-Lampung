@@ -91,7 +91,7 @@
                             </div>
                             <input type="text" name="nama" id="name"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                placeholder="Masukkan Nama Sekolah" value="{{ $DATA['nama'] }}" required />
+                                placeholder="Masukkan Nama Sekolah" value="{{ $DATA['nama'] }}" required disabled />
                         </div>
                     </div>
                 </div>
@@ -120,13 +120,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="number" name="npsn" id="name"
+                            <input type="number" name="npsn" id="name" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan NPSN" value="{{ $DATA['npsn'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="statusSekolah" class="">Status Sekolah</label>
-                            <select id="statusSekolah" name="statusSekolah"
+                            <select id="statusSekolah" name="statusSekolah" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Status Sekolah" required>
                                 <option value="{{ $DATA['statusSekolah'] }}">{{ $DATA['statusSekolah'] }}</option>
@@ -162,13 +162,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="text" name="alamatSekolah" id="namasekolah"
+                            <input type="text" name="alamatSekolah" id="namasekolah" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Alamat Sekolah" value="{{ $DATA['alamatSekolah'] }}" required />
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="kota" class="">Kab/Kota</label>
-                            <select id="kota" name="kota"
+                            <select id="kota" name="kota" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Status Sekolah" required>
                                 <option value="{{ $DATA['kota'] }}">{{ $DATA['kota'] }}</option>
@@ -196,7 +196,7 @@
                         <div class="flex flex-col flex-1 mb-4">
                             <label for="visitors" class="">Jumlah Peserta Didik Berkebutuhan Khusus
                                 (PDBK)</label>
-                            <input type="number" name="jumlahPDBK" id="visitors"
+                            <input type="number" name="jumlahPDBK" id="visitors" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Jumlah PDBK" value="{{ $DATA['jumlahPDBK'] }}" required />
                         </div>
@@ -226,7 +226,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="text" name="namaPembimbing" id="romble"
+                            <input type="text" name="namaPembimbing" id="romble" disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Nama Pembimbing PDBK" value="{{ $DATA['namaPembimbing'] }}"
                                 required />
@@ -236,7 +236,7 @@
                         <div class="flex gap-x-2">
                             <div class="flex flex-col flex-1 mb-4">
                                 <label for="jenisKelamin" class="">Jenis Kelamin</label>
-                                <select id="jenisKelamin" name="jenisKelamin"
+                                <select id="jenisKelamin" name="jenisKelamin" disabled
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     required>
                                     <option value="{{ $DATA['jenisKelamin'] }}">{{ $DATA['jenisKelamin'] }}</option>
@@ -268,7 +268,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="pangkat" id="romble"
+                                <input type="text" name="pangkat" id="romble" disabled
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Pangkat/Golongan" value="{{ $DATA['pangkat'] }}"
                                     required />
@@ -302,7 +302,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="alamatTinggal" id="romble"
+                                <input type="text" name="alamatTinggal" id="romble" disabled
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Alamat Tinggal" value="{{ $DATA['alamatTinggal'] }}"
                                     required />
@@ -332,7 +332,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="nomorHP" id="romble"
+                                <input type="text" name="nomorHP" id="romble" disabled
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan No HP" value="{{ $DATA['nomorHP'] }}" required />
                             </div>

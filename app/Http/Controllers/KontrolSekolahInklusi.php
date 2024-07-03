@@ -43,23 +43,28 @@ class KontrolSekolahInklusi extends Controller
     {
         $pencarian = $request->input('pencarian');
 
-        $sekolahInklusi = sekolahInklusi::where(function (Builder $query) use ($pencarian) {
+        $sekolahInklusi = SekolahInklusi::where(function (Builder $query) use ($pencarian) {
             if ($pencarian) {
-                $query->where(function (Builder $query) use ($pencarian) {
-                    $query->where('nama', 'LIKE', '%' . $pencarian . '%')
-                        ->orWhere('npsn', 'LIKE', '%' . $pencarian . '%')
-                        ->orWhere('statusSekolah', 'LIKE', '%' . $pencarian . '%')
-                        ->orWhere('jumlahPDBK', 'LIKE', '%' . $pencarian . '%')
-                        ->orWhere('kota', 'LIKE', '%' . $pencarian . '%')
-                        ->orWhere('namaPembimbing', 'LIKE', '%' . $pencarian . '%')
-                        ->orWhere('nomorHP', 'LIKE', '%' . $pencarian . '%')
-                        ->orWhere('status', 'LIKE', '%' . $pencarian . '%')
-                        ->orWhere('created_at', 'LIKE', '%' . $pencarian . '%');
-                });
+                $query->where('nama', 'LIKE', '%' . $pencarian . '%')
+                    ->orWhere('npsn', 'LIKE', '%' . $pencarian . '%')
+                    ->orWhere('statusSekolah', 'LIKE', '%' . $pencarian . '%')
+                    ->orWhere('jumlahPDBK', 'LIKE', '%' . $pencarian . '%')
+                    ->orWhere('kota', 'LIKE', '%' . $pencarian . '%')
+                    ->orWhere('namaPembimbing', 'LIKE', '%' . $pencarian . '%')
+                    ->orWhere('nomorHP', 'LIKE', '%' . $pencarian . '%')
+                    ->orWhere('created_at', 'LIKE', '%' . $pencarian . '%')
+                    ->orWhere(function ($query) use ($pencarian) {
+                        // Pencarian status validasi
+                        if ($pencarian === 'Divalidasi') {
+                            $query->where('status', true);
+                        } elseif ($pencarian === 'Belum Divalidasi') {
+                            $query->where('status', false);
+                        }
+                    });
             }
         })->get();
-        $sekolahInklusi = SekolahInklusi::all();
-        $dummyData = array_map(function ($data) {
+
+        $dummyData = $sekolahInklusi->map(function ($data) {
             return [
                 'id' => $data['id'],
                 'tahun' => Carbon::parse($data['created_at'])->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
@@ -76,10 +81,11 @@ class KontrolSekolahInklusi extends Controller
                 'nomorHP' => $data['nomorHP'],
                 'status' => $data['status'] ? 'Sudah Divalidasi' : 'Belum Divalidasi'
             ];
-        }, $sekolahInklusi->toArray());
+        });
 
-        return json_encode($dummyData);
+        return response()->json($dummyData);
     }
+
     public function daftarSekolahInklusiSuperAdmin(Request $req)
     {
         $sekolahInklusi = $this->daftarSekolahInklusi($req, 1);
@@ -143,11 +149,22 @@ class KontrolSekolahInklusi extends Controller
                         ->orWhere('kota', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('namaPembimbing', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere('nomorHP', 'LIKE', '%' . $req->pencarian . '%')
-                        ->orWhere('status', 'LIKE', '%' . $req->pencarian . '%')
-                        ->orWhere('created_at', 'LIKE', '%' . $req->pencarian . '%');
+                        ->orWhere('created_at', 'LIKE', '%' . $req->pencarian . '%')
+                        ->orWhere(function ($query) use ($req) {
+                            // Pencarian  status validasi
+                            if ($req->pencarian === 'Divalidasi') {
+                                $query->where('status', true);
+                            } elseif ($req->pencarian === 'Belum Divalidasi') {
+                                $query->where('status', false);
+                            }
+                        });
                 });
             }
         })->latest()->paginate(10);
+
+        if ($req->pencarian) {
+            $sekolahInklusi->appends(['pencarian' => $req->pencarian]);
+        }
 
         return $sekolahInklusi;
     }

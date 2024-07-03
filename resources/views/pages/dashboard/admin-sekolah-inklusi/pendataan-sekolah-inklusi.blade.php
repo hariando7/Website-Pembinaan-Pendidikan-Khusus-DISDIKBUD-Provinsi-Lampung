@@ -260,35 +260,6 @@
                     Selamat Datang di Portal <br>
                     Pendataan Sekolah Inklusi <br>
                     Dinas Pendidikan Dan Kebudayaan Provinsi Lampung</h2>
-                {{-- <div class="">
-                    <div class="lg:flex gap-x-2">
-                        <div class="flex flex-col flex-1">
-                            <div class="inputBox relative w-full mt-5">
-                                <select class="text-black" id="tahun" name="tahun" type="select" required>
-                                </select>
-                                <span>Tahun Ajaran</span>
-                                <i></i>
-                                <script>
-                                    function populateTahunOptions() {
-                                        var select = document.getElementById("tahun");
-                                        var date = new Date();
-                                        var year = date.getFullYear();
-                                        var month = date.getMonth() + 1;
-                                        select.innerHTML = '';
-                                        if (month >= 1 && month <= 7) {
-                                            select.add(new Option((year - 1) + "/" + year, year - 1));
-                                            select.add(new Option(year + "/" + (year + 1), year));
-                                        } else {
-                                            select.add(new Option(year + "/" + (year + 1), year));
-                                            select.add(new Option((year + 1) + "/" + (year + 2), year + 1));
-                                        }
-                                    }
-                                    window.onload = populateTahunOptions;
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="">
                     <div class="flex gap-x-2">
                         <div class="flex flex-col flex-1 mb-4">

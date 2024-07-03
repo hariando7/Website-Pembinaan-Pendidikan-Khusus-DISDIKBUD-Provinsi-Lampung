@@ -372,6 +372,12 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-image/dist/xlsx-image.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-populate/browser/xlsx-populate.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('downloadExcel').addEventListener('click', async function() {
@@ -379,159 +385,149 @@
                 const tahun = params.get('tahun') || '';
                 const pencarian = params.get('pencarian') || '';
 
-                let data = await fetch(
-                    `/api/peserta-didik?filterSekolah={{ auth()->user()->sekolah }}&tahun=${tahun}&pencarian=${pencarian}`);
-                let result = await data.json();
-                let allData = result.data;
-                let namaSekolah = result.namaSekolah;
+                try {
+                    let response = await fetch(
+                        `/api/peserta-didik?filterSekolah={{ auth()->user()->sekolah }}&tahun=${tahun}&pencarian=${pencarian}`
+                    );
+                    let result = await response.json();
+                    let allData = result.data;
+                    let namaSekolah = result.namaSekolah;
 
-                function createExcel(data) {
-                    const sekolahNama = @json($sekolah->nama);
-                    const currentDate = new Date();
-                    const formattedDate = currentDate.toLocaleString('id-ID', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                    });
-
-                    const titleHeader = [
-                        ['Daftar Peserta Didik ' + sekolahNama], // Judul
-                        ['Tanggal Unduh: ' + formattedDate], // Waktu download
-                        ['Pengunduh: Admin ' + sekolahNama], // Judul
-                        []
-                    ];
-
-                    const header = [
-                        'No',
-                        'Tahun Ajaran',
-                        // 'Nama Sekolah',
-                        'Nama Peserta Didik',
-                        'Jenis Kelamin',
-                        'Jenis Ketunaan',
-                        'Kelas',
-                    ];
-
-                    const excelData = [...titleHeader, header];
-                    data.forEach(function(item, index) {
-                        const rowData = [
-                            index + 1, // No
-                            item.tahun,
-                            // item.namaSekolah,
-                            item.namaSiswa,
-                            item.jenisKelamin,
-                            item.jenisKetunaan,
-                            item.kelas,
-                        ];
-                        excelData.push(rowData);
-                    });
-
-                    const ws = XLSX.utils.aoa_to_sheet(excelData);
-
-                    ws['!merges'] = [{
-                            s: {
-                                r: 0,
-                                c: 0
-                            },
-                            e: {
-                                r: 0,
-                                c: 12
-                            }
-                        }, // Merge untuk judul
-                        {
-                            s: {
-                                r: 1,
-                                c: 0
-                            },
-                            e: {
-                                r: 1,
-                                c: 12
-                            }
-                        } // Merge untuk tanggal
-                    ];
-
-                    ws['!cols'] = [{
-                            wch: 5
-                        }, // No
-                        {
-                            wch: 20
-                        }, // Waktu Submit
-                        {
-                            wch: 30
-                        }, // Nama Sekolah
-                        {
-                            wch: 15
-                        }, // NPSN Sekolah
-                        {
-                            wch: 20
-                        }, // Status Sekolah
-                        {
-                            wch: 40
-                        }, // Alamat Sekolah
-                        {
-                            wch: 20
-                        }, // Kota Sekolah
-                        {
-                            wch: 15
-                        }, // Jumlah PDBK
-                        {
-                            wch: 30
-                        }, // Nama Pembimbing PDBK
-                        {
-                            wch: 25
-                        }, // Jenis Kelamin Pembimbing PDKB
-                        {
-                            wch: 25
-                        }, // Pangkat/Golongan Pembimbing PDBK
-                        {
-                            wch: 40
-                        }, // Alamat Tinggal Pembimbing PDBK
-                        {
-                            wch: 25
-                        } // Nomor HP Pembimbing PDBK
-                    ];
-
-                    ws['A1'].s = {
-                        font: {
-                            name: 'Arial',
-                            sz: 24, // ukuran huruf 24pt
-                            bold: true // teks bold
-                        },
-                        alignment: {
-                            horizontal: 'center',
-                            vertical: 'center'
-                        }
-                    };
-
-                    // const ws = XLSX.utils.aoa_to_sheet(excelData);
-                    const wb = XLSX.utils.book_new();
-                    XLSX.utils.book_append_sheet(wb, ws, 'PesertaDidik-SLB');
-
-                    XLSX.writeFile(wb, 'PesertaDidik-SLB.xlsx');
+                    await createExcel(allData, namaSekolah);
+                } catch (error) {
+                    console.error("Error fetching data:", error);
                 }
-
-                createExcel(allData);
             });
         });
 
+        async function createExcel(data, namaSekolah) {
+            const sekolahNama = @json($sekolah->nama); // Assuming Laravel Blade syntax here
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleString('id-ID', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            const titleHeader = [
+                [`Daftar Peserta Didik ${sekolahNama}`],
+                [`Tanggal Unduh: ${formattedDate}`],
+                [`Pengunduh: Admin ${sekolahNama}`],
+                []
+            ];
+
+            const header = [
+                'No',
+                'Tahun Ajaran',
+                // 'Nama Sekolah',
+                'Nama Peserta Didik',
+                'Jenis Kelamin',
+                'Jenis Ketunaan',
+                'Kelas'
+            ];
+
+            const excelData = [...titleHeader, header];
+            data.forEach((item, index) => {
+                const rowData = [
+                    index + 1,
+                    item.tahun,
+                    // item.namaSekolah,
+                    item.namaSiswa,
+                    item.jenisKelamin,
+                    item.jenisKetunaan,
+                    item.kelas
+                ];
+                excelData.push(rowData);
+            });
+
+            const workbook = new ExcelJS.Workbook();
+            const sheet = workbook.addWorksheet('PesertaDidik-SLB');
+
+            for (let i = 0; i < 6; i++) {
+                sheet.addRow([]);
+            }
+
+            sheet.addRows(excelData);
+
+            sheet.mergeCells('A7:F7');
+            sheet.mergeCells('A8:F8');
+            sheet.mergeCells('A9:F9');
+
+            sheet.getCell('A7').value = `Daftar Peserta Didik ${sekolahNama}`;
+            sheet.getCell('A8').value = `Tanggal Unduh: ${formattedDate}`;
+            sheet.getCell('A9').value = `Pengunduh: Admin ${sekolahNama}`;
+
+            sheet.getCell('A7').font = {
+                name: 'Arial',
+                size: 18,
+                bold: true
+            };
+            sheet.getCell('A7').alignment = {
+                horizontal: 'center',
+                vertical: 'center'
+            };
+            sheet.getCell('A8').font = {
+                bold: true
+            };
+            sheet.getCell('A8').alignment = {
+                horizontal: 'center',
+                vertical: 'center'
+            };
+            sheet.getCell('A9').font = {
+                bold: true
+            };
+            sheet.getCell('A9').alignment = {
+                horizontal: 'center',
+                vertical: 'center'
+            };
+
+            const widths = [5, 20, 30, 20, 20, 20];
+            widths.forEach((width, index) => {
+                sheet.getColumn(index + 1).width = width;
+            });
+
+            const imageResponse = await fetch('/assets/landing/kop_surat.png');
+            const imageBlob = await imageResponse.blob();
+            const imageBuffer = await imageBlob.arrayBuffer();
+            const imageId = workbook.addImage({
+                buffer: imageBuffer,
+                extension: 'png',
+            });
+
+            sheet.addImage(imageId, {
+                tl: {
+                    col: 1,
+                    row: 0
+                },
+                ext: {
+                    width: 800,
+                    height: 100
+                },
+            });
+
+            const buffer = await workbook.xlsx.writeBuffer();
+            const blob = new Blob([buffer], {
+                type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            });
+            saveAs(blob, 'PesertaDidik-SLB.xlsx');
+        }
+
         function showModal() {
-            // Dapatkan modal
             var modal = document.getElementById("modal-print");
-            // Tampilkan modal
             modal.classList.remove("hidden");
             modal.setAttribute("aria-hidden", "false");
         }
-        // Close modal
+
         function hideModal() {
-            // Dapatkan modal
             var modal = document.getElementById("modal-print");
-            // Sembunyikan modal
             modal.classList.add("hidden");
             modal.setAttribute("aria-hidden", "true");
         }
     </script>
+
 </body>
 
 </html>
