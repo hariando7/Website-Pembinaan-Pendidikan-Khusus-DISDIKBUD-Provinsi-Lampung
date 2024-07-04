@@ -279,7 +279,10 @@ class KontrolSekolahInklusi extends Controller
 
         if ($sekolahInklusi) {
             $sekolahInklusi->update(['status' => true]);
-
+            Session::flash('toast-tambah', [
+                'type' => 'toast-tambah',
+                'message' => 'Berhasil Validasi Data Sekolah'
+            ]);
             return redirect('/sa-pendataan-si');
         }
 
