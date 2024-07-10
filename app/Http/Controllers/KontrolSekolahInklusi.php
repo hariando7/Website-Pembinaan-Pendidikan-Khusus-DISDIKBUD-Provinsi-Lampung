@@ -55,11 +55,11 @@ class KontrolSekolahInklusi extends Controller
                     ->orWhere('created_at', 'LIKE', '%' . $pencarian . '%')
                     ->orWhere(function ($query) use ($pencarian) {
                         // Pencarian status validasi
-                        if ($pencarian === 'Divalidasi') {
-                            $query->where('status', true);
-                        } elseif ($pencarian === 'Belum Divalidasi') {
-                            $query->where('status', false);
-                        }
+                        if (strtolower($pencarian) === 'divalidasi') {
+                                $query->where('status', true);
+                            } elseif (strtolower($pencarian) === 'belum divalidasi') {
+                                $query->where('status', false);
+                            }
                     });
             }
         })->get();
@@ -152,9 +152,9 @@ class KontrolSekolahInklusi extends Controller
                         ->orWhere('created_at', 'LIKE', '%' . $req->pencarian . '%')
                         ->orWhere(function ($query) use ($req) {
                             // Pencarian  status validasi
-                            if ($req->pencarian === 'Divalidasi') {
+                            if (strtolower($req->pencarian) === 'divalidasi') {
                                 $query->where('status', true);
-                            } elseif ($req->pencarian === 'Belum Divalidasi') {
+                            } elseif (strtolower($req->pencarian) === 'belum divalidasi') {
                                 $query->where('status', false);
                             }
                         });
@@ -279,7 +279,10 @@ class KontrolSekolahInklusi extends Controller
 
         if ($sekolahInklusi) {
             $sekolahInklusi->update(['status' => true]);
-
+            Session::flash('toast-tambah', [
+                'type' => 'toast-tambah',
+                'message' => 'Berhasil Validasi Data Sekolah'
+            ]);
             return redirect('/sa-pendataan-si');
         }
 

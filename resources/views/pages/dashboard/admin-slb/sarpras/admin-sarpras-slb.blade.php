@@ -56,29 +56,67 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-slb />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
-            <div class="flex justify-between pb-2">
-                <div class="text-left items-center justify-center text-[#297785] font-bold text-[24px] m-auto w-[40%]">
+        <x-dashboard-sidebar-admin />
+        <div class="p-4 sm:ml-64 min-h-screen">
+            <div class="grid grid-cols-1 gap-4 mb-4">
+                <p class="text-2xl justify-center text-left items-center text-[24px] font-bold text-[#297785] m-auto">
                     Sarpras SLB - {{ $sekolah->nama }}
-                </div>
-                <div class="flex justify-end gap-5 w-[60%]">
-                    <!-- Modal toggle -->
-                    <x-admin-statistik-sarpras />
-                    <x-notifikasi-slb title="Notifikasi Dinas" :notifications="$pengumuman" />
-                    <x-buttitle-landing ref="/admin-sarpras-slb/tambah" color="#FA8F21" width="[13rem]"
-                        title="+ Tambah Sarpras" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                </p>
+                <div class="flex items-center justify-center rounded gap-2 h-20 border-dashed border-2 border-[#297785] rounded-lg"
+                    id="border-tombol">
+                    <div>
+                        {{-- Button Panduan --}}
+                        <button data-modal-target="button-panduan" data-modal-toggle="button-panduan" type="button"
+                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
+                            <x-svg-panduan />
+                            <span class="hidden sm:inline">Panduan Pengisian</span>
+                        </button>
+                    </div>
+                    <div>
+                        {{-- Button Notifikasi --}}
+                        <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                            title="Tombol Notifikasi Dari Bidang Pembinaan Pendidikan Khusus"
+                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
+                            <x-svg-notifikasi />
+                            <span class="hidden sm:inline">
+                                Notifikasi Dinas
+                                <span id="notificationBadge"
+                                    class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
+                                    style="display: none;">
+                                </span>
+                            </span>
+                        </button>
+                        <x-notifikasi-slb :notifications="$pengumuman" />
+                    </div>
+                    <div>
+                        {{-- Button Statistik --}}
+                        <button data-modal-target="select-modal" data-modal-toggle="select-modal"
+                            title="Visualisasi Statistik Sarpras SLB Berdasarkan Tahun Ajaran"
+                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2"
+                            type="button">
+                            <x-svg-statistik />
+                            <span class="hidden sm:inline">Statistik Sarpras</span>
+                        </button>
+                        <x-admin-statistik-sarpras />
+                    </div>
+                    <div>
+                        {{-- Button Tambah --}}
+                        <a href="/admin-sarpras-slb/tambah" type="button"
+                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
+                            <x-svg-tambah />
+                            <span class="hidden sm:inline">Tambah Sarpras</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="rounded shadow-lg h-full border-solid border-4 border-[#297785] pt-5 pl-5 pr-3 pb-1"
-                id="moving-border">
-                <div class="max-h-[calc(100%-1rem)] overflow-y-auto overflow-x-auto hide-scrollbar">
-                    <div class="flex m-auto justify-center items-center">
+            <div class="p-4 border-4 border-solid border-[#297785] rounded-lg" id="moving-border">
+                <div class="hide-scrollbar max-h-[calc(100%-1rem)] overflow-y-auto">
+                    {{-- isi konten disini --}}
+                    <div class="m-auto flex items-center justify-center">
                         <x-toast-tambah />
                         <x-toast-edit />
                         <x-toast-hapus />
                     </div>
-                    {{-- isi konten disini --}}
                     <form class="flex flex-row gap-2">
                         <div class="basis-[20%]">
                             <select name="tahun" id="tahun" title="Filter Berdasarkan Tahun"
@@ -141,14 +179,16 @@
                             </div>
                         </div>
                         <div class="basis-[10%]">
-                            <button id="print-button" type="button" onclick="showModal()"
-                                class="inline-flex w-full items-center gap-2 rounded-md border border-[#FA8F21] bg-[#FA8F21] px-5 py-2 text-center text-center text-sm font-medium text-white hover:bg-[#D87815] focus:outline-none focus:ring-2 focus:ring-[#FA8F21] dark:border-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] dark:focus:ring-[#FA8F21]">
-                                <x-svg-excel />
-                                {{-- Print --}}
-                            </button>
+                            <div>
+                                <button id="print-button" type="button" onclick="showModal()" type="button"
+                                    class="btn border-none text-white text-center w-[4rem] lg:w-[8rem] flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] gap-2">
+                                    <x-svg-excel />
+                                    <span class="hidden sm:inline">Unduh</span>
+                                </button>
+                            </div>
                             <!-- Main modal -->
                             <div id="modal-print" tabindex="-1" aria-hidden="true"
-                                class="fixed bottom-0 left-[260px] right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
+                                class="fixed bottom-0 left-0 right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
                                 <div class="relative max-h-full w-full max-w-md p-4">
                                     <!-- Modal content -->
                                     <div class="relative rounded-lg bg-[#297785] shadow dark:bg-[#297785]">
@@ -169,8 +209,9 @@
                                                 <svg class="h-3 w-3" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 14 14">
-                                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                    <path stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                 </svg>
                                                 <span class="sr-only">Close modal</span>
                                             </button>
@@ -178,19 +219,19 @@
                                         <!-- Modal footer -->
                                         <div
                                             class="m-auto flex items-center justify-center gap-5 rounded-b border-t border-gray-200 p-4 text-center dark:border-gray-600 md:p-5">
-                                            <button data-modal-hide="static-modal" type="button" id="downloadExcel"
-                                                class="btn rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300">Download
-                                                Excel</button>
-
+                                            <div>
+                                                <button data-modal-hide="static-modal" type="button"
+                                                    id="downloadExcel"
+                                                    class="btn rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 gap-2">
+                                                    <x-svg-excel />
+                                                    Download Excel
+                                                </button>
+                                            </div>
                                         </div>
-                                        <!-- Button untuk cetak -->
-                                        {{-- <button id="download-pdf" onclick="printPDF()"
-                                                class="btn border-none bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
-                                                Download PDF
-                                            </button> --}}
                                     </div>
                                 </div>
                             </div>
+                            {{-- Modal Import Excel --}}
                         </div>
                     </form>
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">

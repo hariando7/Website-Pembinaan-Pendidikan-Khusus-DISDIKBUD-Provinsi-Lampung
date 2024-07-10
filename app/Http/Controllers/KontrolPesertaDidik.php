@@ -311,7 +311,8 @@ class KontrolPesertaDidik extends Controller
 
     public function tampilanEdit($id)
     {
-        $pesertaDidik = PesertaDidik::find($id);
+        // $pesertaDidik = PesertaDidik::find($id);
+        $pesertaDidik = PesertaDidik::whereKey($id)->where('sekolah', auth()->user()->sekolah)->firstOrFail();
         return view('pages/dashboard/admin-slb/peserta-didik/edit/edit-pesertadidik-slb', [
             'id' => $id,
             'DATA' => $pesertaDidik

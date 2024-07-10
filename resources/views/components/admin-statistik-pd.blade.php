@@ -1,10 +1,3 @@
-<!-- Modal toggle -->
-<button data-modal-target="select-modal" data-modal-toggle="select-modal" title="Visualisasi Statistik Peserta Didik SLB Berdasarkan Kelas, Jenis Ketunaan, dan Tahun Ajaran"
-    class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 pl-2 pr-2"
-    type="button">
-    Statistik Peserta Didik
-</button>
-
 <!-- Main modal -->
 <div id="select-modal" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -31,19 +24,6 @@
             <div class="p-4 md:p-5">
                 <p class="text-white mb-4">Pilih berdasarkan jenis statistik yang diinginkan</p>
                 <ul class="space-y-4 mb-4">
-                    {{-- <li>
-                        <a href="/admin-statistik-pd-jenisKelamin" for="job-1"
-                            class="inline-flex items-center justify-between w-full p-5 text-white border border-[#FA8F21] rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-white hover:text-white bg-[#FA8F21] hover:bg-[#D87815]">
-                            <div class="block">
-                                <div class="w-full text-lg font-semibold text-white">Statistik Jenis Kelamin</div>
-                            </div>
-                            <svg class="w-4 h-4 ms-3 rtl:rotate-180 text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                            </svg>
-                        </a>
-                    </li> --}}
                     <li>
                         <a href="/admin-statistik-pd-kelas" for="job-1"
                             class="inline-flex items-center justify-between w-full p-5 text-white border border-[#FA8F21] rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-white hover:text-white bg-[#FA8F21] hover:bg-[#D87815]">

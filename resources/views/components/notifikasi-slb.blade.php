@@ -18,20 +18,6 @@
     }
 </style>
 
-
-<!-- Modal toggle -->
-<button data-modal-target="default-modal" data-modal-toggle="default-modal" title="Tombol Notifikasi Dari Bidang Pembinaan Pendidikan Khusus"
-    class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2">
-    {{-- {{ $title }} --}}
-    Notifikasi Dinas
-    <span id="notificationBadge"
-        class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
-        style="display: none;">
-        <!-- Jumlah notifikasi di sini -->
-    </span>
-
-</button>
-
 <!-- Main modal -->
 <div id="default-modal" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">

@@ -1,4 +1,4 @@
-<svg fill="white" class="w-7 h-7 m-auto flex" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true"
+<svg fill="white" class="w-7 h-7" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg">
     <title>Download Excel.xlxs (Dapat melakukan download Excel berdasarkan filter dan search)</title>
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

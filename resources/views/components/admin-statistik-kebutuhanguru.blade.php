@@ -1,10 +1,3 @@
-<!-- Modal toggle -->
-<button data-modal-target="select-modal" data-modal-toggle="select-modal" title="Visualisasi Statistik Kebutuhan Guru SLB Berdasarkan Tahun Ajaran"
-    class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 pl-2 pr-2"
-    type="button">
-    Statistik Kebutuhan Guru
-</button>
-
 <!-- Main modal -->
 <div id="select-modal" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
