@@ -23,7 +23,6 @@
 
         .hide-scrollbar::-webkit-scrollbar {
             width: 6px;
-            /* Atur lebar scrollbar sesuai keinginan */
         }
 
         .hide-scrollbar::-webkit-scrollbar-thumb {
@@ -130,19 +129,37 @@
                     </div>
                     <div>
                         {{-- Button Statistik --}}
-                        <button data-modal-target="select-modal" data-modal-toggle="select-modal"
+                        <button data-modal-target="modal-admin-karya" data-modal-toggle="modal-admin-karya"
                             title="Visualisasi Statistik Karya SLB Berdasarkan Tahun Ajaran"
-                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2"
+                            class="btn border-none text-white text-center py-2 lg:py-2 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] gap-2"
                             type="button">
                             <x-svg-statistik />
                             <span class="hidden sm:inline">Statistik Karya</span>
                         </button>
                         <x-admin-statistik-karya />
+                        {{-- Kondisi cek Hanya 1 Kali muncul modal --}}
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const toggleButtons = document.querySelectorAll('[data-modal-toggle="modal-admin-karya"]');
+                                const modal = document.getElementById('modal-admin-karya');
+                                toggleButtons.forEach(button => {
+                                    button.addEventListener('click', function() {
+                                        if (modal.classList.contains('hidden')) {
+                                            modal.classList.remove('hidden');
+                                            modal.classList.add('flex');
+                                        } else {
+                                            modal.classList.add('hidden');
+                                            modal.classList.remove('flex');
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
                     </div>
                     <div>
                         {{-- Button Tambah --}}
                         <a href="/admin-karya-slb/tambah" type="button"
-                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
+                            class="btn border-none text-white text-center py-2 lg:py-2 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
                             <x-svg-tambah />
                             <span class="hidden sm:inline">Tambah Karya</span>
                         </a>
@@ -206,7 +223,6 @@
                                                 window.location.search = params.toString();
                                             }
                                         }
-
                                         function hapusPencarianKosong(event) {
                                             const input = event.target;
                                             const params = new URLSearchParams(window.location.search);
@@ -356,7 +372,7 @@
                                             <?php endforeach; ?>
                                             <!-- Modal -->
                                             <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
+                                                class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
                                                 <div class="relative p-4 w-full max-w-md max-h-full">
                                                     <div class="relative bg-[#297785] rounded-lg shadow">
                                                         <button type="button"

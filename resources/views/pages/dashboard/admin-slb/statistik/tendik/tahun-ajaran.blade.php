@@ -90,9 +90,9 @@
 
 <body class="z-10 bg-white">
     <div>
-        <x-dashboard-side-bar-slb />
-        <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
-            <div class="flex justify-between pb-2">
+        <x-dashboard-sidebar-admin />
+        <div class="p-4 sm:ml-64 min-h-screen">
+            <div class="lg:flex lg:justify-between pb-2">
                 <div class="div">
                     <x-buttitle-landing ref="/admin-tendik-slb" color="#FA8F21" width="[13rem]" title="Kembali"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
@@ -100,7 +100,17 @@
                 <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
                     Tendik By Tahun Ajaran
                 </div>
-                <x-admin-statistik-tendik />
+                <div>
+                    {{-- Button Statistik --}}
+                    <button data-modal-target="modal-admin-tendik" data-modal-toggle="modal-admin-tendik"
+                        title="Visualisasi Statistik Tendik SLB Berdasarkan PNS, dan Tahun Ajaran"
+                        class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2"
+                        type="button">
+                        <x-svg-statistik />
+                        <span class="hidden sm:inline">Statistik Tendik</span>
+                    </button>
+                    <x-admin-statistik-tendik />
+                </div>
             </div>
             <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg"
                 id="moving-border">

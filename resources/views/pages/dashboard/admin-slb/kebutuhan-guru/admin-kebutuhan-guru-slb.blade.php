@@ -48,6 +48,43 @@
             animation: moving-border 3s infinite;
         }
     </style>
+    <style>
+        @keyframes moving-border {
+            0% {
+                border-color: white;
+            }
+
+            50% {
+                border-color: #297785;
+            }
+
+            100% {
+                border-color: white;
+            }
+        }
+
+        #moving-border {
+            animation: moving-border 3s infinite;
+        }
+
+        @keyframes border-tombol {
+            0% {
+                border-color: #297785;
+            }
+
+            50% {
+                border-color: #FA8F21;
+            }
+
+            100% {
+                border-color: #297785;
+            }
+        }
+
+        #border-tombol {
+            animation: border-tombol 3s infinite;
+        }
+    </style>
 </head>
 @use('App\Models\Sekolah')
 @php
@@ -91,7 +128,8 @@
                     </div>
                     <div>
                         {{-- Button Statistik --}}
-                        <button data-modal-target="select-modal" data-modal-toggle="select-modal"
+                        <button data-modal-target="modal-admin-kebutuhan-guru"
+                            data-modal-toggle="modal-admin-kebutuhan-guru"
                             title="Visualisasi Statistik Kebutuhan Guru SLB Berdasarkan Tahun Ajaran"
                             class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2"
                             type="button">
@@ -142,7 +180,7 @@
                                             </button>
                                         </div>
                                         <div>
-                                            <a href="/admin-pesertadidik-slb/tambah"
+                                            <a href="/admin-kebutuhan-guru-slb/tambah"
                                                 class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[9rem] lg:w-[11.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
                                                 <x-svg-tambah />
                                                 Manual
@@ -552,7 +590,7 @@
                                 <?php foreach ($dummyData as $index => $data): ?>
                                 <tr
                                     class="bg-white border-b dark:bg-white dark:border-gray-700 border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-whitee">
-                                    <td class="px-3 py-2"><?= $index + 1 ?></td>
+                                    <td class="px-3 py-2">{{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}</td>
                                     <td class="px-3 py-2"><?= $data['tahun'] ?></td>
                                     <td class="px-3 py-2">
                                         <?php
@@ -583,7 +621,7 @@
                                             <?php endforeach; ?>
                                             <!-- Modal -->
                                             <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
+                                                class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
                                                 <div class="relative p-4 w-full max-w-md max-h-full">
                                                     <div class="relative bg-[#297785] rounded-lg shadow">
                                                         <button type="button"

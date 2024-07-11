@@ -110,7 +110,7 @@
                     </div>
                     <div>
                         {{-- Button Statistik --}}
-                        <button data-modal-target="select-modal" data-modal-toggle="select-modal"
+                        <button data-modal-target="modal-admin-peserta-didik" data-modal-toggle="modal-admin-peserta-didik"
                             title="Visualisasi Statistik Peserta Didik SLB Berdasarkan Kelas, Jenis Ketunaan, dan Tahun Ajaran"
                             class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2"
                             type="button">
@@ -594,7 +594,7 @@
                                             <?php endforeach; ?>
                                             <!-- Modal -->
                                             <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                class="fixed bottom-0 left-[260px] right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-md">
+                                                class="fixed bottom-0 left-0 right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-md">
                                                 <div class="relative max-h-full w-full max-w-md p-4">
                                                     <div class="relative rounded-lg bg-[#297785] shadow">
                                                         <button type="button"

@@ -129,7 +129,7 @@
                     </div>
                     <div>
                         {{-- Button Statistik --}}
-                        <button data-modal-target="select-modal" data-modal-toggle="select-modal"
+                        <button data-modal-target="modal-admin-guru" data-modal-toggle="modal-admin-guru"
                             title="Visualisasi Statistik Guru SLB Berdasarkan PNS, Sertifikasi dan Tahun Ajaran"
                             class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2"
                             type="button">
@@ -180,7 +180,7 @@
                                             </button>
                                         </div>
                                         <div>
-                                            <a href="/admin-pesertadidik-slb/tambah"
+                                            <a href="/admin-guru-slb/tambah"
                                                 class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[9rem] lg:w-[11.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
                                                 <x-svg-tambah />
                                                 Manual
@@ -249,7 +249,6 @@
                                                 window.location.search = params.toString();
                                             }
                                         }
-
                                         function hapusPencarianKosong(event) {
                                             const input = event.target;
                                             const params = new URLSearchParams(window.location.search);
@@ -627,7 +626,7 @@
                                             <?php endforeach; ?>
                                             <!-- Modal -->
                                             <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
+                                                class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
                                                 <div class="relative p-4 w-full max-w-md max-h-full">
                                                     <div class="relative bg-[#297785] rounded-lg shadow">
                                                         <button type="button"
