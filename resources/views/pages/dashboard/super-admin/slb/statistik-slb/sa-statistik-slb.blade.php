@@ -83,19 +83,20 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-10 pr-5 pb-28">
-            <div class="flex justify-between mb-5">
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
                 <div class="div">
                     <x-buttitle-landing ref="/sa-dashboard-slb" color="#FA8F21" width="[13rem]" title="Kembali"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
-                <div class="text-[#297785] font-bold text-[32px]">Statistik SLB
+                <div class="text-[#297785] font-bold text-[20px] lg:text-[28px]">Statistik SLB
                     Provinsi Lampung
                 </div>
             </div>
             <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-10 font-bold text-black"
                 id="moving-border">
+                {{-- isi konten disini --}}
                 {{-- isi konten disini --}}
                 <x-sa-statistik-pd />
                 <x-sa-statistik-guru />
@@ -103,10 +104,11 @@
                 <x-sa-statistik-sarpras />
                 <x-sa-statistik-kebutuhanguru />
                 <x-sa-statistik-karya />
-                <div class="flex justify-center">
-                    <button data-modal-target="select-modal1" data-modal-toggle="select-modal1">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                    <div
+                        class="flex items-center justify-center rounded-lg h-32 bg-[#297785] hover:bg-[#143D44] shadow-lg">
+                        <button data-modal-target="select-modal1" data-modal-toggle="select-modal1">
+                            <div class="rounded-t-lg text-xl p-3 pl-4 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -119,17 +121,18 @@
                                         d="M4.16667 16.6664C3.0616 16.6664 2.00179 17.1054 1.22039 17.8868C0.438988 18.6682 0 19.728 0 20.833V66.6664C0 67.7715 0.438988 68.8313 1.22039 69.6127C2.00179 70.3941 3.0616 70.8331 4.16667 70.8331C5.27174 70.8331 6.33154 70.3941 7.11294 69.6127C7.89435 68.8313 8.33333 67.7715 8.33333 66.6664V20.833C8.33333 19.728 7.89435 18.6682 7.11294 17.8868C6.33154 17.1054 5.27174 16.6664 4.16667 16.6664Z"
                                         fill="white" />
                                 </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Peserta Didik SLB
+                                <div class="flex">
+                                    <div class="justify-center items-center flex text-center m-auto text-white">
+                                        Peserta Didik SLB
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </button>
-                    <button data-modal-target="select-modal2" data-modal-toggle="select-modal2">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
+                        </button>
+                    </div>
+                    <div
+                        class="flex items-center justify-center rounded-lg h-32 bg-[#297785] hover:bg-[#143D44] shadow-lg">
+                        <button data-modal-target="select-modal2" data-modal-toggle="select-modal2">
+                            <div class="rounded-t-lg text-xl p-3 pl-4 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -142,17 +145,18 @@
                                         d="M4.16667 16.6664C3.0616 16.6664 2.00179 17.1054 1.22039 17.8868C0.438988 18.6682 0 19.728 0 20.833V66.6664C0 67.7715 0.438988 68.8313 1.22039 69.6127C2.00179 70.3941 3.0616 70.8331 4.16667 70.8331C5.27174 70.8331 6.33154 70.3941 7.11294 69.6127C7.89435 68.8313 8.33333 67.7715 8.33333 66.6664V20.833C8.33333 19.728 7.89435 18.6682 7.11294 17.8868C6.33154 17.1054 5.27174 16.6664 4.16667 16.6664Z"
                                         fill="white" />
                                 </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Guru SLB
+                                <div class="flex">
+                                    <div class="justify-center items-center flex text-center m-auto text-white">
+                                        Guru SLB
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </button>
-                    <button data-modal-target="select-modal6" data-modal-toggle="select-modal6">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
+                        </button>
+                    </div>
+                    <div
+                        class="flex items-center justify-center rounded-lg h-32 bg-[#297785] hover:bg-[#143D44] shadow-lg">
+                        <button data-modal-target="select-modal6" data-modal-toggle="select-modal6">
+                            <div class="rounded-t-lg text-xl p-3 pl-4 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -165,19 +169,18 @@
                                         d="M4.16667 16.6664C3.0616 16.6664 2.00179 17.1054 1.22039 17.8868C0.438988 18.6682 0 19.728 0 20.833V66.6664C0 67.7715 0.438988 68.8313 1.22039 69.6127C2.00179 70.3941 3.0616 70.8331 4.16667 70.8331C5.27174 70.8331 6.33154 70.3941 7.11294 69.6127C7.89435 68.8313 8.33333 67.7715 8.33333 66.6664V20.833C8.33333 19.728 7.89435 18.6682 7.11294 17.8868C6.33154 17.1054 5.27174 16.6664 4.16667 16.6664Z"
                                         fill="white" />
                                 </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Tendik SLB
+                                <div class="flex">
+                                    <div class="justify-center items-center flex text-center m-auto text-white">
+                                        Tendik SLB
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </button>
-                </div>
-                <div class="flex justify-center">
-                    <button data-modal-target="select-modal5" data-modal-toggle="select-modal5">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
+                        </button>
+                    </div>
+                    <div
+                        class="flex items-center justify-center rounded-lg h-32 bg-[#297785] hover:bg-[#143D44] shadow-lg">
+                        <button data-modal-target="select-modal5" data-modal-toggle="select-modal5">
+                            <div class="rounded-t-lg text-xl p-3 pl-4 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -190,17 +193,18 @@
                                         d="M4.16667 16.6664C3.0616 16.6664 2.00179 17.1054 1.22039 17.8868C0.438988 18.6682 0 19.728 0 20.833V66.6664C0 67.7715 0.438988 68.8313 1.22039 69.6127C2.00179 70.3941 3.0616 70.8331 4.16667 70.8331C5.27174 70.8331 6.33154 70.3941 7.11294 69.6127C7.89435 68.8313 8.33333 67.7715 8.33333 66.6664V20.833C8.33333 19.728 7.89435 18.6682 7.11294 17.8868C6.33154 17.1054 5.27174 16.6664 4.16667 16.6664Z"
                                         fill="white" />
                                 </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Sarpras SLB
+                                <div class="flex">
+                                    <div class="justify-center items-center flex text-center m-auto text-white">
+                                        Sarpras SLB
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </button>
-                    <button data-modal-target="select-modal4" data-modal-toggle="select-modal4">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
+                        </button>
+                    </div>
+                    <div
+                        class="flex items-center justify-center rounded-lg h-32 bg-[#297785] hover:bg-[#143D44] shadow-lg">
+                        <button data-modal-target="select-modal4" data-modal-toggle="select-modal4">
+                            <div class="rounded-t-lg text-xl p-3 ml-5 mt-2 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" class=""
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -213,17 +217,18 @@
                                         d="M4.16667 16.6664C3.0616 16.6664 2.00179 17.1054 1.22039 17.8868C0.438988 18.6682 0 19.728 0 20.833V66.6664C0 67.7715 0.438988 68.8313 1.22039 69.6127C2.00179 70.3941 3.0616 70.8331 4.16667 70.8331C5.27174 70.8331 6.33154 70.3941 7.11294 69.6127C7.89435 68.8313 8.33333 67.7715 8.33333 66.6664V20.833C8.33333 19.728 7.89435 18.6682 7.11294 17.8868C6.33154 17.1054 5.27174 16.6664 4.16667 16.6664Z"
                                         fill="white" />
                                 </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Kebutuhan Guru SLB
+                                <div class="flex">
+                                    <div class="justify-center items-center flex text-center m-auto text-white">
+                                        Kebutuhan Guru SLB
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </button>
-                    <button data-modal-target="select-modal3" data-modal-toggle="select-modal3">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 pl-10 justify-center items-center flex">
+                        </button>
+                    </div>
+                    <div
+                        class="flex items-center justify-center rounded-lg h-32 bg-[#297785] hover:bg-[#143D44] shadow-lg">
+                        <button data-modal-target="select-modal3" data-modal-toggle="select-modal3">
+                            <div class="rounded-t-lg text-xl mt-5 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
                                     class="" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -236,14 +241,14 @@
                                         d="M4.16667 16.6664C3.0616 16.6664 2.00179 17.1054 1.22039 17.8868C0.438988 18.6682 0 19.728 0 20.833V66.6664C0 67.7715 0.438988 68.8313 1.22039 69.6127C2.00179 70.3941 3.0616 70.8331 4.16667 70.8331C5.27174 70.8331 6.33154 70.3941 7.11294 69.6127C7.89435 68.8313 8.33333 67.7715 8.33333 66.6664V20.833C8.33333 19.728 7.89435 18.6682 7.11294 17.8868C6.33154 17.1054 5.27174 16.6664 4.16667 16.6664Z"
                                         fill="white" />
                                 </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Karya SLB
+                                <div class="flex pb-4">
+                                    <div class="justify-center items-center flex text-center m-auto text-white">
+                                        Karya SLB
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

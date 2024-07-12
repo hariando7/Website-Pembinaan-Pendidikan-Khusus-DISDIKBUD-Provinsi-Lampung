@@ -214,6 +214,10 @@
             document.getElementById('deleteButtonContainer').style.display = 'none';
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('deleteButton').addEventListener('click', deleteImages);
+        });
+
         function populateTahunOptions() {
             var select = document.getElementById("tahun");
             var date = new Date();

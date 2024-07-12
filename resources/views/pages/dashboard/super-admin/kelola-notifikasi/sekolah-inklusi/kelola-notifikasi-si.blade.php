@@ -49,17 +49,28 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
-            <div class="flex justify-between pb-2 gap-2">
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
                 <div class="text-center items-center justify-center text-[#297785] font-bold text-[26px]">Kelola
                     Notifikasi Sekolah Inklusi Provinsi Lampung
                 </div>
-                <div class="flex justify-end gap-5">
+                <div class="flex justify-center lg:justify-end gap-5">
+                    {{-- Button Notifikasi --}}
                     <!-- Modal toggle -->
-                    <x-notifikasi-sekolah-inklusi title="Cek Notifikasi" :notifications="$pengumuman" />
-                </div>
-                <div class="flex justify-end gap-5">
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        class="btn border-none text-white text-center py-2 lg:py-2 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 dark:bg-[#FA8F21] dark:hover:bg-[#D87815] pl-2 pr-2 gap-2">
+                        {{-- {{ $title }} --}}
+                        <x-svg-notifikasi />
+                        <span class="hidden sm:inline">
+                            Notifikasi Dinas
+                            <span id="notificationBadge"
+                                class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
+                                style="display: none;">
+                            </span>
+                        </span>
+                    </button>
+                    <x-notifikasi-sekolah-inklusi :notifications="$pengumuman" />
                     <x-buttitle-landing ref="/sa-kelola-notifikasi-si/tambah" color="#FA8F21" width="[13rem]"
                         title="+ Tambah notifikasi"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
@@ -95,13 +106,6 @@
                                 </div>
                             </form>
                         </div>
-                        {{-- <div class="basis-[10%]">
-                            <button type="button"
-                                class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
-                                <x-svg-print />
-                                Print
-                            </button>
-                        </div> --}}
                     </div>
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
@@ -136,18 +140,6 @@
                                 //         'nama_notifikasi' => 'Notifikasi 1',
                                 //         'deskripsi_notifikasi' => 'Deskripsi notifikasi 1',
                                 //     ],
-                                //     [
-                                //         'tanggal_mulai' => '2024-03-18',
-                                //         'tanggal_akhir' => '2024-03-25',
-                                //         'nama_notifikasi' => 'Notifikasi 2',
-                                //         'deskripsi_notifikasi' => 'Deskripsi notifikasi 2',
-                                //     ],
-                                //     [
-                                //         'tanggal_mulai' => '2024-03-22',
-                                //         'tanggal_akhir' => '2024-03-28',
-                                //         'nama_notifikasi' => 'Notifikasi 3',
-                                //         'deskripsi_notifikasi' => 'Deskripsi notifikasi 3',
-                                //     ],
                                 // ];
                                 ?>
                                 <?php foreach ($dummyData as $index => $data): ?>
@@ -176,7 +168,7 @@
                                             <?php endforeach; ?>
                                             <!-- Modal -->
                                             <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                                class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
                                                 <div class="relative p-4 w-full max-w-md max-h-full">
                                                     <div class="relative bg-[#297785] rounded-lg shadow">
                                                         <button type="button"
@@ -262,40 +254,6 @@
                     <div class="relative flex justify-between mt-5">
                         <div class="font-bold text-black">Jumlah : {{ $dummyData->total() }}</div>
                         {{ $dummyData->links() }}
-                        {{-- <div class="">
-                            <nav aria-label="Page navigation example">
-                                <ul class="inline-flex -space-x-px text-sm gap-2">
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div> --}}
                     </div>
                 </div>
             </div>

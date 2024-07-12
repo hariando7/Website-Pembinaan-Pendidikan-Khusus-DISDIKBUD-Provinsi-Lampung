@@ -49,10 +49,10 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
-            <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Kelola Admin
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
+                <div class="text-center items-center justify-center text-[#297785] font-bold text-[20px] lg:text-[28px]">Kelola Admin
                     SLB Provinsi Lampung
                 </div>
                 <div class="">
@@ -104,7 +104,8 @@
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" type="text"
                                         id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Cari Nama Sekolah, Email Sekolah" oninput="cekKosong(this)" required />
+                                        placeholder="Cari Nama Sekolah, Email Sekolah" oninput="cekKosong(this)"
+                                        required />
                                     <script>
                                         function cekKosong(e) {
                                             if (e.value === '') {
@@ -115,13 +116,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="basis-[10%]">
-                            <button type="button"
-                                class="text-white bg-[#FA8F21] hover:bg-[#D87815] border border-[#FA8F21] dark:border-[#FA8F21] focus:ring-2 focus:outline-none focus:ring-[#FA8F21] font-medium rounded-md text-sm px-5 py-2 text-center inline-flex items-center dark:focus:ring-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] w-full gap-2 text-center">
-                                <x-svg-print />
-                                Print
-                            </button>
-                        </div> --}}
                     </form>
                     <div class="relative overflow-x-auto overflow-y-auto shadow-sm sm:rounded-lg mt-5">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-white">
@@ -190,7 +184,7 @@
                                                 <?php endforeach; ?>
                                                 <!-- Modal -->
                                                 <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                    class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
+                                                    class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
                                                     <div class="relative p-4 w-full max-w-md max-h-full">
                                                         <div class="relative bg-[#297785] rounded-lg shadow">
                                                             <button type="button"
@@ -215,7 +209,9 @@
                                                                         d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                                 </svg>
                                                                 <h3 class="mb-5 text-lg font-normal text-white ">
-                                                                    Anda Yakin Ingin Menghapus Data Ini? Semua data pada akun ini akan di hapus secara permanen, yakin ingin menghapus?</h3>
+                                                                    Anda Yakin Ingin Menghapus Data Ini? Semua data pada
+                                                                    akun ini akan di hapus secara permanen, yakin ingin
+                                                                    menghapus?</h3>
                                                                 <button data-modal-hide="popup-modal-ya"
                                                                     type="button"
                                                                     class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">

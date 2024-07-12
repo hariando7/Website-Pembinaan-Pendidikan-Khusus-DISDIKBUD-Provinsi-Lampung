@@ -90,9 +90,9 @@
 
 <body class="z-10 bg-white">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
-            <div class="flex justify-between pb-2">
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
                 <div class="div">
                     <x-buttitle-landing ref="/sa-peserta-didik-slb" color="#FA8F21" width="[13rem]" title="Kembali"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
@@ -190,7 +190,7 @@
 
             const temp = await fetch(
                 `/api/statistik-peserta-didik-kelas?tahun=${ encodeURI(filterTahun.value) }&sekolah=${ encodeURI(filterSekolah.value) }&jenisKetunaan=${ encodeURI(filterDisabilitas.value) }`
-                );
+            );
             const dummyData = await temp.json();
 
             // const dummyData = [{

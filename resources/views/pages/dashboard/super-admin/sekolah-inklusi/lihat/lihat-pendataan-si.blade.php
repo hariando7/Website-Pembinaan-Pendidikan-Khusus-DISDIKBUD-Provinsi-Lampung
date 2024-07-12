@@ -9,9 +9,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="/assets/landing/prov-lampung2.svg">
+    <link rel="icon" type="image/x-icon" href="assets/landing/prov-lampung2.svg">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include SheetJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx-style/0.8.13/xlsx.full.min.js"></script>
     <style>
         .hide-scrollbar {
             scrollbar-width: thin;
@@ -50,9 +53,9 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa id="{{ $id }}" />
-        <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
-            <div class="text-[#297785] font-bold text-[32px]">Lihat
+        <x-dashboard-sidebar-superadmin id="{{ $id }}" />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="text-[#297785] font-bold text-[20px] lg:text-[28px]">Lihat
                 Pendataan Sekolah Inklusi Provinsi Lampung
             </div>
             <div class="flex justify-between pb-2">
@@ -61,7 +64,7 @@
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
             </div>
-            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black"
+            <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-5 font-bold text-black text-sm"
                 id="moving-border">
                 {{-- isi konten disini --}}
                 <div class=''>
@@ -80,7 +83,7 @@
                                         </svg><span class="sr-only">Show information</span>
                                     </button>
                                     <div data-popover id="popover-namaSekolah" role="tooltip"
-                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Nama Sekolah</h3>
                                             <p>Masukkan Nama Sekolah yang sesuai dan sudah terdata di Disdikbud</p>
@@ -111,7 +114,7 @@
                                         </svg><span class="sr-only">Show information</span>
                                     </button>
                                     <div data-popover id="popover-npsn" role="tooltip"
-                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">NPSN Sekolah</h3>
                                             <p>Masukkan NPSN Sekolah Aktif</p>
@@ -152,7 +155,7 @@
                                         </svg><span class="sr-only">Show information</span>
                                     </button>
                                     <div data-popover id="popover-alamat" role="tooltip"
-                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Alamat Sekolah</h3>
                                             <p>Masukkan Alamat Sekolah yang sesuai dan sudah terdata di Disdikbud
@@ -292,7 +295,7 @@
                                             </svg><span class="sr-only">Show information</span>
                                         </button>
                                         <div data-popover id="popover-alamat-tinggal" role="tooltip"
-                                            class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                            class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                             <div class="p-3 space-y-2">
                                                 <h3 class="font-semibold text-gray-900">Alamat Tinggal</h3>
                                                 <p>Masukkan alamat tinggal pembimbing PDBK
@@ -312,7 +315,7 @@
                                     <label htmlFor="no-hp">No HP
                                     </label>
                                     <div class="div">
-                                        <button data-popover-target="popover-no-hp" data-popover-placement="right"
+                                        <button data-popover-target="popover-no-hp" data-popover-placement="left"
                                             type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
                                                 aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -322,7 +325,7 @@
                                             </svg><span class="sr-only">Show information</span>
                                         </button>
                                         <div data-popover id="popover-no-hp" role="tooltip"
-                                            class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                            class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                             <div class="p-3 space-y-2">
                                                 <h3 class="font-semibold text-gray-900">Nomor Hp</h3>
                                                 <p>Masukkan No HP Pembimbing PDBK

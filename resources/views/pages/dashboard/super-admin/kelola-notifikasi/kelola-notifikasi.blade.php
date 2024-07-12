@@ -80,8 +80,8 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-10 pr-5 pb-28">
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen">
             <div class="flex m-auto justify-center items-center">
                 <x-toast-login-sukses />
             </div>
@@ -94,10 +94,11 @@
             <div class="rounded shadow-lg border-solid border-4 border-[#297785] p-10 font-bold text-black"
                 id="moving-border">
                 {{-- isi konten disini --}}
-                <div class="flex justify-center">
-                    <a href="/sa-kelola-notifikasi-slb">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 justify-center items-center flex">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                    <div
+                        class="flex items-center justify-center rounded-lg h-32 lg:h-52 bg-[#297785] hover:bg-[#143D44] shadow-lg">
+                        <a href="/sa-kelola-notifikasi-slb">
+                            <div class="rounded-t-lg text-xl p-3 pl-4 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -110,31 +111,32 @@
                                         d="M73.5123 5.64581C72.8881 6.1907 72.5059 6.96119 72.4496 7.78786C72.3933 8.61453 72.6677 9.42971 73.2123 10.0541L78.5957 16.2208C80.6843 18.6157 81.8643 21.6688 81.929 24.8458L82.1665 36.1666C82.175 36.577 82.2642 36.9817 82.4291 37.3576C82.594 37.7335 82.8313 38.0733 83.1275 38.3574C83.4236 38.6416 83.7729 38.8647 84.1553 39.0139C84.5377 39.1631 84.9457 39.2355 85.3561 39.2271C85.7665 39.2186 86.1712 39.1293 86.5471 38.9645C86.9229 38.7996 87.2627 38.5623 87.5469 38.2661C87.8311 37.9699 88.0541 37.6207 88.2033 37.2383C88.3525 36.8559 88.425 36.4479 88.4165 36.0375L88.179 24.7125C88.0822 20.0707 86.3566 15.6107 83.304 12.1125L77.9207 5.94581C77.3758 5.32159 76.6053 4.93933 75.7786 4.88307C74.9519 4.82681 74.1368 5.10117 73.5123 5.64581Z"
                                         fill="white" />
                                 </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Notifikasi SLB
+                                <div class="flex">
+                                    <div class="justify-center items-center flex text-center m-auto text-white">
+                                        Notifikasi SLB
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <a href="/sa-kelola-notifikasi-si">
-                        <div class="m-4 w-72 bg-[#297785] hover:bg-[#143D44] shadow-lg rounded-lg">
-                            <div class="rounded-t-lg text-xl pt-6 justify-center items-center flex">
+                        </a>
+                    </div>
+                    <div
+                        class="flex items-center justify-center rounded-lg h-32 lg:h-52 bg-[#297785] hover:bg-[#143D44] shadow-lg">
+                        <a href="/sa-kelola-notifikasi-si">
+                            <div class="rounded-t-lg text-xl p-3 pl-4 justify-center items-center flex">
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M16.6663 79.1667V70.8333H24.9997V41.6667C24.9997 35.9028 26.7358 30.7819 30.208 26.3042C33.6802 21.8264 38.1941 18.8917 43.7497 17.5V14.5833C43.7497 12.8472 44.358 11.3722 45.5747 10.1583C46.7913 8.94444 48.2663 8.33611 49.9997 8.33333C51.7358 8.33333 53.2122 8.94167 54.4288 10.1583C55.6455 11.375 56.2525 12.85 56.2497 14.5833V17.5C61.8052 18.8889 66.3191 21.8236 69.7913 26.3042C73.2636 30.7847 74.9997 35.9056 74.9997 41.6667V70.8333H83.333V79.1667H16.6663ZM49.9997 91.6667C47.708 91.6667 45.7469 90.8514 44.1163 89.2208C42.4858 87.5903 41.6691 85.6278 41.6663 83.3333H58.333C58.333 85.625 57.5177 87.5875 55.8872 89.2208C54.2566 90.8542 52.2941 91.6694 49.9997 91.6667ZM8.33301 41.6667C8.33301 34.7222 9.87884 28.3514 12.9705 22.5542C16.0622 16.7569 20.2108 11.9472 25.4163 8.125L30.3122 14.7917C26.1455 17.8472 22.8302 21.7014 20.3663 26.3542C17.9025 31.0069 16.6691 36.1111 16.6663 41.6667H8.33301ZM83.333 41.6667C83.333 36.1111 82.0997 31.0069 79.633 26.3542C77.1663 21.7014 73.8525 17.8472 69.6913 14.7917L74.5872 8.125C79.7955 11.9444 83.9455 16.7542 87.0372 22.5542C90.1288 28.3542 91.6719 34.725 91.6664 41.6667H83.333Z"
                                         fill="white" />
                                 </svg>
-                            </div>
-                            <div class="flex pb-4">
-                                <div class="justify-center items-center flex text-center m-auto text-white">
-                                    Notifikasi Sekolah Inklusi
+                                <div class="flex">
+                                    <div class="justify-center items-center flex text-center m-auto text-white">
+                                        Notifikasi Sekolah Inklusi
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

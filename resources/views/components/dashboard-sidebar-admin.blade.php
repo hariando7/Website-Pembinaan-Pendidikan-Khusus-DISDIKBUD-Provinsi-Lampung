@@ -333,8 +333,8 @@
             </li>
             <div id="dropdown-cta" class="p-4 mt-6 rounded-lg bg-blue-900" role="alert">
                 <div class="flex items-center mb-3">
-                    <span
-                        class="bg-orange-200 text-orange-900 text-sm font-semibold me-2 px-2.5 py-0.5 rounded">Beta</span>
+                    <span class="bg-orange-200 text-orange-900 text-sm font-semibold me-2 px-2.5 py-0.5 rounded">Versi
+                        1.0</span>
                     <button type="button"
                         class="ms-auto -mx-1.5 -my-1.5 bg-transparent inline-flex justify-center items-center w-6 h-6 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 text-sm text-white hover:bg-[#D87815] hover:text-white dark:hover:bg-[#D87815] dark:hover:text-white"
                         data-dismiss-target="#dropdown-cta" aria-label="Close">
@@ -347,12 +347,11 @@
                     </button>
                 </div>
                 <p class="mb-3 text-sm text-blue-400">
-                    Preview the new Flowbite dashboard navigation! You can turn the new navigation off for a limited
-                    time in
-                    your profile.
+                    Dibuat Oleh Bidang Pembinaan Pendidikan Khusus Provinsi Lampung.
                 </p>
-                <a class="text-sm text-blue-400 underline font-medium hover:text-blue-300" href="#">Turn new
-                    navigation off</a>
+                <a href="http://diksusprovlampung.com/"
+                    class="text-sm text-blue-400 underline font-medium hover:text-blue-300" href="#">Website
+                    Diksus Prov Lampung</a>
             </div>
             <li>
                 <button data-modal-target="popUp-keluar-slb" data-modal-toggle="popUp-keluar-slb" type="button"

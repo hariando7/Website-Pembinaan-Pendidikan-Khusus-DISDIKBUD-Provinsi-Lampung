@@ -90,28 +90,33 @@
 
 <body class="z-10 bg-white">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="min-h-screen pb-28 pl-[280px] pr-5 pt-5">
-            <div class="flex justify-between pb-2">
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
                 <div class="div">
-                    <x-buttitle-landing ref="/sa-sarpras-slb" color="#FA8F21" width="[13rem]" title="Kembali" extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
+                    <x-buttitle-landing ref="/sa-sarpras-slb" color="#FA8F21" width="[13rem]" title="Kembali"
+                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
                 </div>
                 <div class="m-auto items-center justify-center text-center text-xl font-bold text-[#297785]">Statistik
                     Sarpras By Tahun Ajaran Provinsi Lampung
                 </div>
                 <div class="">
                     <x-sa-statistik-sarpras />
-                    <button data-modal-target="select-modal5" data-modal-toggle="select-modal5" class="btn my-2 flex items-center justify-center rounded-md border-none bg-[#FA8F21] py-2 pl-2 pr-2 text-center text-white hover:bg-[#D87815] focus:ring-4 lg:py-2" type="button">
+                    <button data-modal-target="select-modal5" data-modal-toggle="select-modal5"
+                        class="btn my-2 flex items-center justify-center rounded-md border-none bg-[#FA8F21] py-2 pl-2 pr-2 text-center text-white hover:bg-[#D87815] focus:ring-4 lg:py-2"
+                        type="button">
                         Statistik Sarpras SLB
                     </button>
                 </div>
             </div>
-            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg" id="moving-border">
+            <div class="relative rounded border-4 border-solid border-[#297785] p-5 font-bold text-black shadow-lg"
+                id="moving-border">
                 <div class="mb-4 flex justify-between">
                     <div class="relative">
                         <label for="filterSekolah" class="block text-sm font-medium text-gray-700">Nama
                             Sekolah</label>
-                        <select id="filterSekolah" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                        <select id="filterSekolah"
+                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                             <option value="">Semua</option>
                         </select>
                         <script>
@@ -143,7 +148,8 @@
             const ctx = document.getElementById('myChart');
             const filterSekolah = document.getElementById('filterSekolah');
 
-            const temp = await fetch(`/api/statistik-sarana-prasarana-tahun?sekolah=${ encodeURI(filterSekolah.value) }`);
+            const temp = await fetch(
+                `/api/statistik-sarana-prasarana-tahun?sekolah=${ encodeURI(filterSekolah.value) }`);
             const dummyData = await temp.json();
 
             // const dummyData = [{

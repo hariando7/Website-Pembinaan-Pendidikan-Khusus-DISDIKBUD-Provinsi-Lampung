@@ -35,10 +35,10 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa id="{{ $id }}" />
-        <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
-            <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Edit Admin SLB Provinsi Lampung
+        <x-dashboard-sidebar-superadmin id="{{ $id }}" />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
+                <div class="text-[#297785] font-bold text-[20px] lg:text-[28px]">Edit Admin SLB Provinsi Lampung
                 </div>
                 <div class="">
                     <x-buttitle-landing ref="/kelola-admin-slb" color="#FA8F21" width="[7rem]" title="Kembali"
@@ -68,7 +68,7 @@
                                         </svg><span class="sr-only">Show information</span>
                                     </button>
                                     <div data-popover id="popover-email" role="tooltip"
-                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Email Sekolah</h3>
                                             <p>Masukkan Email Sekolah Aktif, diusahakan menggunakan @gmail.com. Supaya
@@ -108,7 +108,7 @@
                                         </svg><span class="sr-only">Show information</span>
                                     </button>
                                     <div data-popover id="popover-namaSekolah" role="tooltip"
-                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Nama Sekolah</h3>
                                             <p>Masukkan Nama Sekolah Yang Sesuai</p>
@@ -125,7 +125,7 @@
                             <div class="flex">
                                 <label htmlFor="npsn">NPSN Sekolah</label>
                                 <div class="div">
-                                    <button data-popover-target="popover-npsn" data-popover-placement="right"
+                                    <button data-popover-target="popover-npsn" data-popover-placement="left"
                                         type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
                                             aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +135,7 @@
                                         </svg><span class="sr-only">Show information</span>
                                     </button>
                                     <div data-popover id="popover-npsn" role="tooltip"
-                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">NPSN Sekolah</h3>
                                             <p>Masukkan NPSN Sekolah Yang Sesuai</p>
@@ -365,7 +365,7 @@
                                         </svg><span class="sr-only">Show information</span>
                                     </button>
                                     <div data-popover id="popover-alamat" role="tooltip"
-                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Alamat Sekolah</h3>
                                             <p>Masukkan Alamat Sekolah Yang Sesuai.
@@ -405,7 +405,7 @@
                                         </svg><span class="sr-only">Show information</span>
                                     </button>
                                     <div data-popover id="popover-ketunaan" role="tooltip"
-                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72">
+                                        class="absolute z-30 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-32 lg:w-72">
                                         <div class="p-3 space-y-2">
                                             <h3 class="font-semibold text-gray-900">Janis Ketunaan</h3>
                                             <p>Masukkan Jenis Ketunaan yang ada disekolah. Apabila lebih dari 1,

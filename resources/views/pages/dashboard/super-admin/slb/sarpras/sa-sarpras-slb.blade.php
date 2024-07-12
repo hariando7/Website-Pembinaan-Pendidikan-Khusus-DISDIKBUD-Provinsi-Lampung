@@ -52,10 +52,10 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
-            <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Sarpras SLB
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
+                <div class="text-center items-center justify-center text-[#297785] font-bold text-[20px] lg:text-[28px]">Sarpras SLB
                     Provinsi Lampung
                 </div>
                 <div class="">
@@ -164,7 +164,7 @@
                             </button>
                             <!-- Main modal -->
                             <div id="modal-print" tabindex="-1" aria-hidden="true"
-                                class="fixed bottom-0 left-[260px] right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
+                                class="fixed bottom-0 left-0 right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
                                 <div class="relative max-h-full w-full max-w-md p-4">
                                     <!-- Modal content -->
                                     <div class="relative rounded-lg bg-[#297785] shadow dark:bg-[#297785]">
@@ -279,7 +279,7 @@
                                             $temp = $gambar->where('saranaPrasarana', $data['id'])->all();
                                         @endphp
                                         <div id="popup-modal-{{ $index }}" tabindex="-1" aria-hidden="true"
-                                            class="z-30 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
+                                            class="z-30 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-md bg-opacity-50">
                                             <div class="relative p-4 w-full max-w-2xl max-h-full">
                                                 <div class="relative bg-[#297785] rounded-lg shadow">
 

@@ -34,10 +34,10 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa id="{{ $id }}" />
-        <div class="pl-[280px] min-h-screen pt-2 pr-5 pb-28">
-            <div class="pb-2 mt-5">
-                <div class="text-[#297785] font-bold text-[32px]">Lihat Admin SLB Provinsi Lampung
+        <x-dashboard-sidebar-superadmin id="{{ $id }}" />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
+                <div class="text-[#297785] font-bold text-[20px] lg:text-[28px]">Lihat Admin SLB Provinsi Lampung
                 </div>
                 <div class="">
                     <x-buttitle-landing ref="/kelola-admin-slb" color="#FA8F21" width="[7rem]" title="Kembali"
@@ -55,13 +55,6 @@
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="contoh@sekolah.com" value="{{ $DATA['email'] }}" required />
                         </div>
-                        {{-- <div class="flex flex-col flex-1 mb-4 relative">
-                            <label htmlFor="password">Password</label>
-                            <input name="password" type="password" id="password"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 pl-2 pr-10 w-full"
-                                placeholder="********" />
-                            <x-icon-password />
-                        </div> --}}
                     </div>
                 </div>
                 <div class=''>
@@ -92,10 +85,12 @@
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
                             <label htmlFor="kecamatan">Kecamatan</label>
-                            <select name="kecamatan" id="kecamatan" name="kecamatan" value="{{ $DATA['kecamatan'] }}" disabled
+                            <select name="kecamatan" id="kecamatan" name="kecamatan" value="{{ $DATA['kecamatan'] }}"
+                                disabled
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 required>
-                                <option value="{{ $DATA['kecamatan'] }}" selected>{{ $DATA['kecamatan'] }}</option>
+                                <option value="{{ $DATA['kecamatan'] }}" selected>{{ $DATA['kecamatan'] }}
+                                </option>
                             </select>
                         </div>
                     </div>

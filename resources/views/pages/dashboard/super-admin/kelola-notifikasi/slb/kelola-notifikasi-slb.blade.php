@@ -50,17 +50,27 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
-            <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Kelola
-                    Notifikasi SLB Provinsi Lampung
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
+                <div class="text-left justify-start text-[#297785] font-bold text-[28px]">Kelola
+                    Notifikasi <br> SLB Provinsi Lampung
                 </div>
-                <div class="flex justify-end gap-5">
-                    <!-- Modal toggle -->
-                    <x-notifikasi-slb title="Cek Notifikasi" :notifications="$pengumuman" />
-                </div>
-                <div class="flex justify-end gap-5">
+                <div class="flex justify-center lg:justify-end gap-5">
+                    {{-- Button Notifikasi --}}
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        title="Tombol Notifikasi Dari Bidang Pembinaan Pendidikan Khusus"
+                        class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
+                        <x-svg-notifikasi />
+                        <span class="hidden sm:inline">
+                            Notifikasi Dinas
+                            <span id="notificationBadge"
+                                class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-[#FA8F21] bg-white rounded-full"
+                                style="display: none;">
+                            </span>
+                        </span>
+                    </button>
+                    <x-notifikasi-slb :notifications="$pengumuman" />
                     <x-buttitle-landing ref="/sa-kelola-notifikasi-slb/tambah" color="#FA8F21" width="[13rem]"
                         title="+ Tambah notifikasi"
                         extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
@@ -84,7 +94,8 @@
                                     </div>
                                     <input type="text" name="pencarian" id="simple-search"
                                         class="mx-auto border-2 border-[#297785] dark:border-[#297785] text-black text-sm rounded-lg focus:border-[#FA8F21] block w-full ps-10 p-2.5 dark:hover:text-black hover:text-black dark:placeholder-gray-400 placeholder-gray-400 dark:focus:ring-[#FA8F21] focus:ring-[#FA8F21]"
-                                        placeholder="Search Nama Notifikasi, Tanggal Awal, Tanggal Akhir dan Deskripsi" oninput="cekKosong(this)"
+                                        placeholder="Search Nama Notifikasi, Tanggal Awal, Tanggal Akhir dan Deskripsi"
+                                        oninput="cekKosong(this)"
                                         value="{{ isset($_GET['pencarian']) ? $_GET['pencarian'] : '' }}" />
                                     <script>
                                         function cekKosong(e) {
@@ -177,7 +188,7 @@
                                             <?php endforeach; ?>
                                             <!-- Modal -->
                                             <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                                class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                                class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
                                                 <div class="relative p-4 w-full max-w-md max-h-full">
                                                     <div class="relative bg-[#297785] rounded-lg shadow">
                                                         <button type="button"
@@ -263,40 +274,6 @@
                     <div class="relative flex justify-between mt-5">
                         <div class="font-bold text-black">Jumlah : {{ $dummyData->total() }}</div>
                         {{ $dummyData->links() }}
-                        {{-- <div class="">
-                            <nav aria-label="Page navigation example">
-                                <ul class="inline-flex -space-x-px text-sm gap-2">
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" aria-current="page"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 leading-tight text-black bg-[#FCC68F] rounded-lg hover:bg-[#FA8F21] hover:text-black dark:bg-[#FCC68F] dark:text-black dark:hover:bg-[#FA8F21] dark:hover:text-white font-bold ">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-[#FA8F21] hover:text-[#D87815] dark:text-[#FA8F21] font-bold">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div> --}}
                     </div>
                 </div>
             </div>

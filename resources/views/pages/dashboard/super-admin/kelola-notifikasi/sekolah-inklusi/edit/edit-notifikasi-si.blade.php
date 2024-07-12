@@ -34,13 +34,11 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-28">
-            <div class="flex justify-between">
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
                 <div class="pb-2 mt-5 flex gap-5">
-                    <x-buttitle-landing ref="/sa-kelola-notifikasi-si" color="#FA8F21" width="[7rem]" title="Kembali"
-                        extendClass="text-white text-center py-2 lg:py-2 hover:bg-[#D87815]" />
-                    <div class="text-[#297785] font-bold text-[32px]">
+                    <div class="text-[#297785] font-bold text-[20px] lg:text-[28px]">
                         Edit Notifikasi Sekolah Inklusi
                     </div>
                 </div>
@@ -55,15 +53,15 @@
                 @method('PUT')
                 {{-- isi konten disini --}}
                 <div class=''>
-                    <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="flex flex-col flex-1 mb-2">
                             <label for="notificationDateTime">Tanggal dan Waktu Mulai Notifikasi</label>
                             <input type="datetime-local" id="notificationDateTime1" name="tanggalMulai"
                                 value="{{ $DATA['tanggalMulai'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                 placeholder="Masukkan Tanggal dan Waktu notifikasi" required />
                         </div>
-                        <div class="flex flex-col flex-1 mb-4">
+                        <div class="flex flex-col flex-1 mb-2">
                             <label for="notificationDateTimeEnd">Tanggal dan Waktu Selesai Notifikasi</label>
                             <input type="datetime-local" id="notificationDateTimeEnd" name="tanggalAkhir"
                                 value="{{ $DATA['tanggalAkhir'] }}"
@@ -74,7 +72,7 @@
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
+                        <div class="flex flex-col flex-1 mb-2">
                             <label for="notificationName">Nama Notifikasi</label>
                             <input type="text" id="notificationName" name="nama" value="{{ $DATA['nama'] }}"
                                 class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
@@ -84,7 +82,7 @@
                 </div>
                 <div class=''>
                     <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
+                        <div class="flex flex-col flex-1 mb-2">
                             <label for="notificationDescription">Deskripsi Notifikasi</label>
                             <input type="text" id="notificationDescription" name="detail"
                                 value="{{ $DATA['detail'] }}"
@@ -93,7 +91,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-end mt-4">
+                <div class="flex justify-between mt-4">
+                    <a href="/sa-kelola-notifikasi-si"
+                        class="btn border-none flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
+                        Kembali
+                    </a>
                     <button type="submit"
                         class="btn border-none flex justify-center py-2 items-center w-32 h-9 bg-[#FA8F21] hover:bg-[#D87815] focus:ring-4 focus:ring-[#D87815] text-white rounded-lg text-sm">
                         <div class="flex gap-2">

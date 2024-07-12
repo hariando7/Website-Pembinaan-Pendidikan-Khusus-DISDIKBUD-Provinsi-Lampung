@@ -72,10 +72,12 @@
 
 <body class="bg-white z-10">
     <div>
-        <x-dashboard-side-bar-sa />
-        <div class="pl-[280px] h-screen pt-2 pr-5 pb-[85px] full-height">
-            <div class="flex justify-between pb-2">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[32px]">Pendataan
+        <x-dashboard-sidebar-superadmin />
+        <div class="p-4 sm:ml-64 min-h-screen text-sm">
+            <div class="lg:flex lg:justify-between pb-2 gap-5">
+                <div
+                    class="text-center items-center justify-center text-[#297785] font-bold text-[20px] lg:text-[28px]">
+                    Pendataan
                     Sekolah Inklusi Provinsi Lampung
                 </div>
                 <div class="flex justify-end gap-5">
@@ -212,7 +214,7 @@
                                                 <tbody>
                                                     @foreach ($dummyDataMasuk as $index => $data)
                                                         <tr
-                                                            class="bg-white border-b border-gray-700 hover:bg-[#C4DDDE] dark:hover:bg-[#C4DDDE] text-black hover:text-white text-xs">
+                                                            class="bg-white border-b border-gray-700 hover:bg-[#C4DDDE] text-black hover:text-white text-xs">
                                                             <td class="px-3 py-2">
                                                                 {{ ($DATA->currentPage() - 1) * 10 + $index + 1 }}
                                                             </td>
@@ -518,7 +520,7 @@
                             </button>
                             <!-- Main modal -->
                             <div id="modal-share" tabindex="-1" aria-hidden="true"
-                                class="fixed bottom-0 left-[260px] right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
+                                class="fixed bottom-0 left-0 right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
                                 <div class="relative max-h-full w-full max-w-lg p-2">
                                     <!-- Modal content -->
                                     <div class="relative rounded-lg bg-[#297785] shadow dark:bg-[#297785]">
@@ -652,14 +654,16 @@
                             </form>
                         </div>
                         <div class="basis-[10%]">
-                            <button data-modal-target="modal-print" data-modal-toggle="modal-print" type="button"
-                                class="inline-flex w-full items-center gap-2 rounded-md border border-[#FA8F21] bg-[#FA8F21] px-5 py-2 text-center text-center text-sm font-medium text-white hover:bg-[#D87815] focus:outline-none focus:ring-2 focus:ring-[#FA8F21] dark:border-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] dark:focus:ring-[#FA8F21]">
-                                <x-svg-excel />
-                                {{-- Print --}}
-                            </button>
+                            <div>
+                                <button data-modal-target="modal-print" data-modal-toggle="modal-print" type="button"
+                                    class="btn border-none text-white text-center w-[4rem] lg:w-[8rem] flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] gap-2">
+                                    <x-svg-excel />
+                                    <span class="hidden sm:inline">Unduh</span>
+                                </button>
+                            </div>
                             <!-- Main modal -->
                             <div id="modal-print" tabindex="-1" aria-hidden="true"
-                                class="fixed bottom-0 left-[260px] right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
+                                class="fixed bottom-0 left-0 right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
                                 <div class="relative max-h-full w-full max-w-md p-4">
                                     <!-- Modal content -->
                                     <div class="relative rounded-lg bg-[#297785] shadow dark:bg-[#297785]">
@@ -807,7 +811,7 @@
                                 @endforeach
                                 <!-- Modal -->
                                 <div id="popup-modal" tabindex="-1" aria-hidden="true"
-                                    class="z-50 hidden fixed top-0 right-0 left-[260px] bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                                    class="z-50 hidden fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
                                     <div class="relative p-4 w-full max-w-md max-h-full">
                                         <div class="relative bg-[#297785] rounded-lg shadow">
                                             <button type="button"
