@@ -18,6 +18,7 @@ use App\Models\User;
 use App\Models\Sekolah;
 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
 
 class KontrolPengguna extends Controller
 {
@@ -71,39 +72,49 @@ class KontrolPengguna extends Controller
 
     public function tambah(Request $req)
     {
-        $validasi = $req->validate([
-            'email' => 'required|email|unique:pengguna',
-            'password' => 'required',
-            'nama' => 'required',
-            'npsn' => 'required',
-            'kota' => 'required',
-            'kecamatan' => 'required',
-            'alamat' => 'required',
-            'jenisKetunaan' => 'required',
-            'linkWebsiteSekolah' => 'required'
-        ]);
+        try {
+            $validasi = $req->validate([
+                'email' => 'required|email|unique:pengguna',
+                'password' => 'required',
+                'nama' => 'required',
+                'npsn' => 'required',
+                'kota' => 'required',
+                'kecamatan' => 'required',
+                'alamat' => 'required',
+                'jenisKetunaan' => 'required',
+                'linkWebsiteSekolah' => 'required'
+            ]);
 
-        // dd($req);
+            // dd($req);
 
-        $sekolah = Sekolah::firstWhere('nama', $validasi['nama']);
-        if (!$sekolah) {
-            Sekolah::create($req->except(['email', 'password']));
             $sekolah = Sekolah::firstWhere('nama', $validasi['nama']);
+            if (!$sekolah) {
+                Sekolah::create($req->except(['email', 'password']));
+                $sekolah = Sekolah::firstWhere('nama', $validasi['nama']);
+            }
+
+            User::create([
+                'email' => $validasi['email'],
+                'password' => Hash::make($validasi['password']),
+                'sekolah' => $sekolah->id,
+                'akses' => 'admin'
+            ]);
+
+            Session::flash('toast-tambah', [
+                'type' => 'toast-tambah',
+                'message' => 'Berhasil Menambahkan Data'
+            ]);
+
+            return redirect('/kelola-admin-slb');
+
+        } catch (ValidationException $e) {
+            Session::flash('toast-hapus', [
+                'type' => 'toast-hapus',
+                'message' => 'Gagal Simpan, Cek Inputan!!!'
+            ]);
+            
+            return redirect()->back()->withErrors($e->validator->errors())->withInput();
         }
-
-        User::create([
-            'email' => $validasi['email'],
-            'password' => Hash::make($validasi['password']),
-            'sekolah' => $sekolah->id,
-            'akses' => 'admin'
-        ]);
-
-        Session::flash('toast-tambah', [
-            'type' => 'toast-tambah',
-            'message' => 'Berhasil Menambahkan Data'
-        ]);
-
-        return redirect('/kelola-admin-slb');
     }
 
     public function tampilanEdit($id)
