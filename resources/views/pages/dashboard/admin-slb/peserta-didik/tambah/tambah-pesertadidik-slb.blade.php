@@ -48,7 +48,7 @@
             <div class="p-4 border-4 border-solid border-[#297785] rounded-lg" id="moving-border">
                 <div class="hide-scrollbar max-h-[calc(100%-1rem)] overflow-y-auto">
                     {{-- isi konten disini --}}
-                    <form method="POST" class="font-bold text-black text-sm">
+                    <form method="POST" class="font-bold text-black text-sm" onsubmit="return validateForm()">
                         @csrf
                         <div class="grid grid-cols-1 gap-2 mb-2">
                             <div class=''>
@@ -86,6 +86,20 @@
                                 <input type="text" name="nama" id="name" maxlength="100"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Nama Peserta Didik (Maksimal 100 Karakter)" required />
+                                <script>
+                                    function validateForm() {
+                                        const input = document.getElementById('name');
+                                        const value = input.value.trim();
+                                        const letterCount = value.replace(/\s/g, '').length;
+                                        if (letterCount <= 4 || letterCount >= 100) {
+                                            alert("Nama harus ALFABET lebih dari 4 kata!");
+                                            return false;
+                                        }
+                                        const regex = /[^a-zA-Z\s']/g;
+                                        input.value = value.replace(regex, '');
+                                        return true;
+                                    }
+                                </script>
                             </div>
                             <div class=''>
                                 <label for="jeniskelamin">Jenis Kelamin (JK)</label>

@@ -13,6 +13,8 @@ use App\Models\Sekolah;
 use App\Models\KebutuhanGuru;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\KebutuhanGuruImport;
 
 class KontrolKebutuhanGuru extends Controller
 {
@@ -258,7 +260,8 @@ class KontrolKebutuhanGuru extends Controller
 
     public function tampilanEdit($id)
     {
-        $kebutuhanGuru = KebutuhanGuru::find($id);
+        // $kebutuhanGuru = KebutuhanGuru::find($id);
+        $kebutuhanGuru = KebutuhanGuru::whereKey($id)->where('sekolah', auth()->user()->sekolah)->firstOrFail();
         return view('pages/dashboard/admin-slb/kebutuhan-guru/edit/edit-kebutuhan-guru-slb', [
             'id' => $id,
             'DATA' => $kebutuhanGuru
@@ -335,5 +338,37 @@ class KontrolKebutuhanGuru extends Controller
 
         // return 'false';
         // return back();
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $import = new KebutuhanGuruImport;
+
+        try {
+            Excel::import($import, $request->file('file'));
+
+            if ($import->getNewDataCount() > 0) {
+                Session::flash('toast-tambah', [
+                    'type' => 'toast-tambah',
+                    'message' => 'Berhasil Mengimpor Data'
+                ]);
+            } else {
+                Session::flash('toast-hapus', [
+                    'type' => 'toast-hapus',
+                    'message' => 'Data sudah ada di database'
+                ]);
+            }
+        } catch (\Exception $e) {
+            Session::flash('toast-hapus', [
+                'type' => 'toast-hapus',
+                'message' => 'Gagal Mengimpor Data.' . $e->getMessage()
+            ]);
+        }
+
+        return back();
     }
 }

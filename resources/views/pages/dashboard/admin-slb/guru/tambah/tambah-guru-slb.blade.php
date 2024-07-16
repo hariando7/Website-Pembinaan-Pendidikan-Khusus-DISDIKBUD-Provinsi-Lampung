@@ -48,7 +48,7 @@
             <div class="p-4 border-4 border-solid border-[#297785] rounded-lg" id="moving-border">
                 <div class="hide-scrollbar max-h-[calc(100%-1rem)] overflow-y-auto">
                     {{-- isi konten disini --}}
-                    <form method="POST" class="font-bold text-black text-sm">
+                    <form method="POST" class="font-bold text-black text-sm" onsubmit="return validateForm()">
                         @csrf
                         <div class="grid grid-cols-1 gap-2 mb-2">
                             <div class=''>
@@ -82,6 +82,20 @@
                                 <input name="nama" type="text" id="name" maxlength="100"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
                                     placeholder="Masukkan Nama Guru (Maksimal 100 Karakter)" required />
+                                <script>
+                                    function validateForm() {
+                                        const input = document.getElementById('name');
+                                        const value = input.value.trim();
+                                        const letterCount = value.replace(/\s/g, '').length;
+                                        if (letterCount <= 4 || letterCount >= 100) {
+                                            alert("Nama harus ALFABET lebih dari 4 kata!");
+                                            return false;
+                                        }
+                                        const regex = /[^a-zA-Z\s']/g;
+                                        input.value = value.replace(regex, '');
+                                        return true;
+                                    }
+                                </script>
                             </div>
                             <div class=''>
                                 <label for="jeniskelamin">Jenis Kelamin (JK)</label>
@@ -97,9 +111,22 @@
                         <div class="grid grid-cols-1 gap-2 mb-2">
                             <div class=''>
                                 <label htmlFor="nip">NIP</label>
-                                <input name="nip" type="number" id="nip" maxlength="20" minlength="8"
+                                <input name="nip" type="number" id="nip" pattern="\d{16,}"
                                     class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                    placeholder="Masukkan NIP" required />
+                                    placeholder="Masukkan NIP (Minimal 16 Digit)" required />
+                                <script>
+                                    document.querySelector('form').addEventListener('submit', function(event) {
+                                        var nipInput = document.getElementById('nip');
+                                        var nipValue = nipInput.value;
+                                        if (nipValue.length < 16) {
+                                            alert('NIP Minimal 16 digit.');
+                                            event.preventDefault();
+                                        } else if (nipValue.length > 20) {
+                                            alert('NIP Maksimal 20 digit.');
+                                            event.preventDefault();
+                                        }
+                                    });
+                                </script>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-2 mb-2">

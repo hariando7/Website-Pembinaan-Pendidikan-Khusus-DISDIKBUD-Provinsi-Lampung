@@ -201,7 +201,9 @@
                         <x-toast-edit />
                         <x-toast-hapus />
                     </div>
-                    <form class="flex flex-row gap-2">
+                    <form class="flex flex-row gap-2" action="{{ route('kontrolKebutuhanGuru.import') }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
                         <div class="basis-[20%]">
                             <select name="tahun" id="tahun" title="Filter Berdasarkan Tahun"
                                 class="focus:ring-none z-10 inline-flex w-full items-center rounded-lg border-2 border-[#297785] py-2.5 pl-2 text-center text-sm font-medium text-[#297785] focus:border-[#FA8F21] dark:border-[#297785] dark:text-[#297785]"
@@ -415,11 +417,11 @@
                                                     <time
                                                         class="block mb-3 text-sm font-bold leading-none text-red-800">Unduh
                                                         Tamplate Berikut Ini!</time>
-                                                    <button type="button"
+                                                    <a href="{{ route('download.template.kebutuhanGuru') }}"
                                                         class="btn border-none bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white gap-2">
                                                         <x-svg-excel />
-                                                        Unduh Tamplate
-                                                    </button>
+                                                        Unduh Template
+                                                    </a>
                                                 </li>
                                                 <li class="mb-2 ms-8">
                                                     <span
@@ -450,6 +452,7 @@
                                                         class="block mb-3 text-sm font-bold leading-none text-red-800">Upload
                                                         Excel Di Sini!</time>
                                                     <button type="button"
+                                                        onclick="document.getElementById('excelInput').click()"
                                                         class="btn border-none bg-[#FA8F21] hover:bg-[#D87815] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white gap-2">
                                                         <svg viewBox="0 0 24 24" class="w-7 h-7" fill="white"
                                                             xmlns="http://www.w3.org/2000/svg">
@@ -468,6 +471,21 @@
                                                         </svg>
                                                         Upload Excel
                                                     </button>
+                                                    <input type="file" id="excelInput" name="file"
+                                                        accept=".xlsx, .xls" required style="display:none"
+                                                        onchange="handleFileUpload(event)">
+                                                    <p id="fileName"
+                                                        class="block mt-2 mb-3 text-sm font-bold leading-none text-red-800">
+                                                    </p>
+                                                    <script>
+                                                        function handleFileUpload(event) {
+                                                            const file = event.target.files[0];
+                                                            if (file) {
+                                                                const fileNameElement = document.getElementById('fileName');
+                                                                fileNameElement.textContent = `File yang diunggah: ${file.name}`;
+                                                            }
+                                                        }
+                                                    </script>
                                                 </li>
                                                 <li class="mb-2 ms-8">
                                                     <span
@@ -518,7 +536,7 @@
                                                 </svg>
                                                 <span class="hidden sm:inline">Kembali</span>
                                             </button>
-                                            <button data-modal-hide="import-excel" type="button"
+                                            <button data-modal-hide="import-excel" type="submit"
                                                 class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[11rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
                                                 <svg viewBox="0 0 24 24" class="w-7 h-7" fill="white"
                                                     xmlns="http://www.w3.org/2000/svg">

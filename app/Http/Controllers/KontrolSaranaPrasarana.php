@@ -268,7 +268,8 @@ class KontrolSaranaPrasarana extends Controller
 
     public function tampilanEdit($id)
     {
-        $saranaprasarana = SaranaPrasarana::find($id);
+        // $saranaprasarana = SaranaPrasarana::find($id);
+        $saranaprasarana = SaranaPrasarana::whereKey($id)->where('sekolah', auth()->user()->sekolah)->firstOrFail();
         $daftarGambar = GambarSaranaPrasarana::where('saranaPrasarana', $id)->get();
         return view('pages/dashboard/admin-slb/sarpras/edit/edit-sarpras-slb', [
             'id' => $id,

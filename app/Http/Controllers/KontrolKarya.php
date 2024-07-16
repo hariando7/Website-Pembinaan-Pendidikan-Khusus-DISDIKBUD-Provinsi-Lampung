@@ -255,7 +255,8 @@ class KontrolKarya extends Controller
 
     public function tampilanEdit($id)
     {
-        $karya = Karya::find($id);
+        // $karya = Karya::find($id);
+        $karya = Karya::whereKey($id)->where('sekolah', auth()->user()->sekolah)->firstOrFail();
         return view('pages/dashboard/admin-slb/karya/edit/edit-karya-slb', [
             'id' => $id,
             'DATA' => $karya

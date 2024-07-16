@@ -332,3 +332,28 @@ Route::get('/storage', function(){
     Artisan::call("storage:link");
     return 0;
 });
+
+Route::get('/download-template-pesertaDidik', function () {
+    $file = storage_path('app/public/templates/PesertaDidik-SLB.xlsx');
+    return response()->download($file);
+})->name('download.template.pesertaDidik');
+
+Route::get('/download-template-guru', function () {
+    $file = storage_path('app/public/templates/Guru-SLB.xlsx');
+    return response()->download($file);
+})->name('download.template.guru');
+
+Route::get('/download-template-kebutuhanGuru', function () {
+    $file = storage_path('app/public/templates/KebutuhanGuru-SLB.xlsx');
+    return response()->download($file);
+})->name('download.template.kebutuhanGuru');
+
+Route::get('/download-template-tendik', function () {
+    $file = storage_path('app/public/templates/Tenaga-Pendidik-SLB.xlsx');
+    return response()->download($file);
+})->name('download.template.tendik');
+
+Route::post('/kontrolPesertaDidik/import', [KontrolPesertaDidik::class, 'import'])->name('kontrolPesertaDidik.import');
+Route::post('/kontrolGuru/import', [KontrolGuru::class, 'import'])->name('kontrolGuru.import');
+Route::post('/kontrolKebutuhanGuru/import', [KontrolKebutuhanGuru::class, 'import'])->name('kontrolKebutuhanGuru.import');
+Route::post('/kontrolTendik/import', [KontrolTenagaPendidik::class, 'import'])->name('kontrolTendik.import');

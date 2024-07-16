@@ -72,7 +72,7 @@
                             <div class="flex">
                                 <label htmlFor="nama_sekolah">Nama Sekolah</label>
                                 <div class="div">
-                                    <button data-popover-target="popover-namaSekolah" data-popover-placement="left"
+                                    <button data-popover-target="popover-namaSekolah" data-popover-placement="right"
                                         type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
                                             aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -160,8 +160,6 @@
                                 <option value="SLB_HARAPAN_IBU">SLB HARAPAN IBU</option>
                                 <!-- 31 -->
                                 <option value="SLB_WIYATA_DHARMA">SLB WIYATA DHARMA</option>
-
-
                             </select>
                         </div>
                         <div class="flex flex-col flex-1 mb-4">
@@ -628,7 +626,7 @@
                                 <div class="flex">
                                     <label htmlFor="alamat">Alamat Link Maps Sekolah</label>
                                     <div class="div">
-                                        <button data-popover-target="popover-alamat" data-popover-placement="left"
+                                        <button data-popover-target="popover-alamat" data-popover-placement="right"
                                             type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500"
                                                 aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                                 xmlns="http://www.w3.org/2000/svg">

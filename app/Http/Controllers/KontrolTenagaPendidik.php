@@ -13,6 +13,8 @@ use App\Models\Sekolah;
 use App\Models\TenagaPendidik;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\TendikImport;
 
 class KontrolTenagaPendidik extends Controller
 {
@@ -279,7 +281,8 @@ class KontrolTenagaPendidik extends Controller
 
     public function tampilanEdit($id)
     {
-        $tenagaPendidik = TenagaPendidik::find($id);
+        // $tenagaPendidik = TenagaPendidik::find($id);
+        $tenagaPendidik = TenagaPendidik::whereKey($id)->where('sekolah', auth()->user()->sekolah)->firstOrFail();
         return view('pages/dashboard/admin-slb/tendik/edit/edit-tendik-slb', [
             'id' => $id,
             'DATA' => $tenagaPendidik
@@ -356,5 +359,37 @@ class KontrolTenagaPendidik extends Controller
 
         // return 'false';
         // return back();
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $import = new TendikImport;
+
+        try {
+            Excel::import($import, $request->file('file'));
+
+            if ($import->getNewDataCount() > 0) {
+                Session::flash('toast-tambah', [
+                    'type' => 'toast-tambah',
+                    'message' => 'Berhasil Mengimpor Data'
+                ]);
+            } else {
+                Session::flash('toast-hapus', [
+                    'type' => 'toast-hapus',
+                    'message' => 'Data sudah ada di database'
+                ]);
+            }
+        } catch (\Exception $e) {
+            Session::flash('toast-hapus', [
+                'type' => 'toast-hapus',
+                'message' => 'Gagal Mengimpor Data.' . $e->getMessage()
+            ]);
+        }
+
+        return back();
     }
 }
