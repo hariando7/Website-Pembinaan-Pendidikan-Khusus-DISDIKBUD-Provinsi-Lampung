@@ -103,11 +103,7 @@
                     id="border-tombol">
                     <div>
                         {{-- Button Panduan --}}
-                        <button data-modal-target="button-panduan" data-modal-toggle="button-panduan" type="button"
-                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
-                            <x-svg-panduan />
-                            <span class="hidden sm:inline">Panduan Pengisian</span>
-                        </button>
+                        <x-guide-book />
                     </div>
                     <div>
                         {{-- Button Notifikasi --}}

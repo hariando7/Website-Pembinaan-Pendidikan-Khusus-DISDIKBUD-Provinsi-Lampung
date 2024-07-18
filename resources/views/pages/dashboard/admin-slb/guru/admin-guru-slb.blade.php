@@ -105,11 +105,7 @@
                     id="border-tombol">
                     <div>
                         {{-- Button Panduan --}}
-                        <button data-modal-target="button-panduan" data-modal-toggle="button-panduan" type="button"
-                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
-                            <x-svg-panduan />
-                            <span class="hidden sm:inline">Panduan Pengisian</span>
-                        </button>
+                        <x-guide-book />
                     </div>
                     <div>
                         {{-- Button Notifikasi --}}
@@ -161,8 +157,9 @@
                                         <button type="button"
                                             class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-white hover:bg-[#D87815] hover:text-white dark:hover:bg-[#D87815] dark:hover:text-white"
                                             data-modal-hide="button-tambah">
-                                            <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 14 14">
+                                            <svg class="h-3 w-3" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 14 14">
                                                 <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
                                                     stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                             </svg>

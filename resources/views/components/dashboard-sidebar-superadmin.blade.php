@@ -322,7 +322,7 @@
                 <a href="http://diksusprovlampung.com/" class="text-sm text-blue-400 underline font-medium hover:text-blue-300" href="#">Website Diksus Prov Lampung</a>
             </div>
             <li>
-                <button data-modal-target="popUp-keluar-sa" data-modal-toggle="popUp-keluar-sa" type="button"
+                <button data-modal-target="popUp-keluar" data-modal-toggle="popUp-keluar" type="button"
                     class="btn border-none gap-3 w-52 py-1 mb-5 flex items-center justify-center m-auto rounded-md bg-[#FF0000] hover:bg-[#D51717] text-white p-2 pt-2 pb-2">
                     Logout
                 </button>
@@ -331,13 +331,13 @@
     </div>
 </aside>
 
-<div id="popUp-keluar-slb" tabindex="-1"
+<div id="popUp-keluar" tabindex="-1"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-[#297785] rounded-lg shadow">
             <button type="button"
                 class="absolute top-3 end-2.5 text-white bg-transparent hover:bg-[#D87815] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                data-modal-hide="popUp-keluar-slb">
+                data-modal-hide="popUp-keluar">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -356,7 +356,7 @@
                     class="btn border-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                     Ya
                 </a>
-                <button data-modal-hide="popUp-keluar-slb" type="button"
+                <button data-modal-hide="popUp-keluar" type="button"
                     class="btn border-none py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg text-white bg-[#FA8F21] rounded-lg hover:bg-[#D87815] hover:text-white">Tidak</button>
             </div>
         </div>

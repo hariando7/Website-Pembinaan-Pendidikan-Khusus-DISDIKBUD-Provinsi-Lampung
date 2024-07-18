@@ -357,3 +357,8 @@ Route::post('/kontrolPesertaDidik/import', [KontrolPesertaDidik::class, 'import'
 Route::post('/kontrolGuru/import', [KontrolGuru::class, 'import'])->name('kontrolGuru.import');
 Route::post('/kontrolKebutuhanGuru/import', [KontrolKebutuhanGuru::class, 'import'])->name('kontrolKebutuhanGuru.import');
 Route::post('/kontrolTendik/import', [KontrolTenagaPendidik::class, 'import'])->name('kontrolTendik.import');
+
+Route::get('/download-guidebook', function () {
+    $file = storage_path('app/public/guidebook/guidebook.pdf');
+    return response()->download($file);
+})->name('download.guidebook');

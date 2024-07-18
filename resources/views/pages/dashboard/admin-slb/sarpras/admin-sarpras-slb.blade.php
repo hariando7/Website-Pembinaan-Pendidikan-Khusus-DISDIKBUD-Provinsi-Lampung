@@ -103,11 +103,7 @@
                     id="border-tombol">
                     <div>
                         {{-- Button Panduan --}}
-                        <button data-modal-target="button-panduan" data-modal-toggle="button-panduan" type="button"
-                            class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4.5rem] lg:w-[14.5rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
-                            <x-svg-panduan />
-                            <span class="hidden sm:inline">Panduan Pengisian</span>
-                        </button>
+                        <x-guide-book />
                     </div>
                     <div>
                         {{-- Button Notifikasi --}}
@@ -256,8 +252,7 @@
                                         <div
                                             class="m-auto flex items-center justify-center gap-5 rounded-b border-t border-gray-200 p-4 text-center dark:border-gray-600 md:p-5">
                                             <div>
-                                                <button data-modal-hide="static-modal" type="button"
-                                                    id="downloadExcel"
+                                                <button data-modal-hide="static-modal" type="button" id="downloadExcel"
                                                     class="btn rounded-lg border-none bg-[#FA8F21] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#D87815] hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 gap-2">
                                                     <x-svg-excel />
                                                     Download Excel
