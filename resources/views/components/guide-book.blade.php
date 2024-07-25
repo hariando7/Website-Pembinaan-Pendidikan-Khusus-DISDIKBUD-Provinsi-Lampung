@@ -5,7 +5,7 @@
                                                      <span class="hidden sm:inline">Panduan Pengisian</span>
                                                  </button>
                                                  <div id="button-panduan" tabindex="-1" aria-hidden="true"
-                                                     class="fixed bottom-0 left-0 right-0 top-0 z-50 flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
+                                                     class="fixed bottom-0 left-0 right-0 top-0 z-[60] flex hidden items-center justify-center bg-opacity-50 backdrop-blur-sm">
                                                      <div class="relative max-h-full w-full max-w-sm lg:max-w-4xl p-4">
                                                          <!-- Modal content -->
                                                          <div class="relative rounded-lg bg-[#297785] shadow">
@@ -34,7 +34,7 @@
                                                              <div
                                                                  class="m-auto flex items-center justify-center gap-2 rounded-b border-t border-gray-200 p-4 text-center md:p-5">
                                                                  <div>
-                                                                     <a href="" target="_blank" title="Video Youtube"
+                                                                     <a href="https://youtu.be/BZgKHsxNjK8" target="_blank" title="Video Youtube"
                                                                          class="btn border-none text-white text-center py-2 lg:py-2 hover:bg-[#D87815 w-[4rem] lg:w-[16rem] py-1 my-2 flex items-center justify-center rounded-md bg-[#FA8F21] bg-[#FA8F21] hover:bg-[#D87815] gap-2">
                                                                          <svg class="w-7 h-7" fill="white"
                                                                              version="1.1"

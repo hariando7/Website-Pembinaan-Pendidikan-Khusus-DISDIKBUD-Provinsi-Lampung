@@ -55,7 +55,9 @@
         <x-dashboard-sidebar-superadmin />
         <div class="p-4 sm:ml-64 min-h-screen text-sm">
             <div class="lg:flex lg:justify-between pb-2 gap-5">
-                <div class="text-center items-center justify-center text-[#297785] font-bold text-[20px] lg:text-[28px]">Peserta Didik
+                <div
+                    class="text-center items-center justify-center text-[#297785] font-bold text-[20px] lg:text-[28px]">
+                    Peserta Didik
                     SLB Provinsi Lampung
                 </div>
                 <div class="">
@@ -157,10 +159,10 @@
                             </div>
                         </div>
                         <div class="basis-[10%]">
-                            <button id="print-button" type="button" onclick="showModal()"
-                                class="inline-flex w-full items-center gap-2 rounded-md border border-[#FA8F21] bg-[#FA8F21] px-5 py-2 text-center text-center text-sm font-medium text-white hover:bg-[#D87815] focus:outline-none focus:ring-2 focus:ring-[#FA8F21] dark:border-[#FA8F21] dark:bg-[#FA8F21] dark:text-white dark:hover:bg-[#D87815] dark:focus:ring-[#FA8F21]">
+                            <button id="print-button" type="button" onclick="showModal()" type="button"
+                                class="btn border-none text-white text-center w-[4rem] lg:w-[8rem] flex items-center justify-center rounded-md bg-[#FA8F21] hover:bg-[#D87815] gap-2">
                                 <x-svg-excel />
-                                {{-- Print --}}
+                                <span class="hidden sm:inline">Unduh</span>
                             </button>
                             <!-- Main modal -->
                             <div id="modal-print" tabindex="-1" aria-hidden="true"
